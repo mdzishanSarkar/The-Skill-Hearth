@@ -1,0 +1,22 @@
+{
+  "folders": [
+	{
+		"name": "CP",
+		"path": "../../../CP"
+	},
+	{
+		"name": "__Note Journal",
+		"path": "../../../../Documents/__Note Journal"
+	},
+	{
+		"path": "../../../DSA"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Express",
+    "git.ignoreLimitWarning": true
+  }
+}
