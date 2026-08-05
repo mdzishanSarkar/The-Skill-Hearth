@@ -1,0 +1,217 @@
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-container img,
+.leaflet-container .leaflet-tile,
+.leaflet-container .leaflet-marker-icon,
+.leaflet-container .leaflet-marker-shadow {
+  max-width: none !important;
+}
+
+.skill-map-pin {
+  background: transparent;
+  border: none;
+}
+
+.skill-map-pin__bubble {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 42px;
+  font-size: 17px;
+  line-height: 1;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 2.5px solid #4f46e5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  box-sizing: border-box;
+}
+
+.skill-map-pin__bubble--learn {
+  border-color: #f59e0b;
+}
+
+.skill-map-pin__bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-right: 2.5px solid #4f46e5;
+  border-bottom: 2.5px solid #4f46e5;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.skill-map-pin__bubble--learn::after {
+  border-right-color: #f59e0b;
+  border-bottom-color: #f59e0b;
+}
+
+.skill-map-pin__bubble span {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-map-popup__type {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.skill-map-popup__type--teach {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.skill-map-popup__type--learn {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.skill-map-popup__cta--secondary {
+  display: block;
+  margin-top: 6px;
+  text-align: center;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skill-map-popup__cta--secondary:hover {
+  background: #f9fafb;
+}
+
+.marker-cluster-small {
+  background-color: rgba(79, 70, 229, 0.28);
+}
+
+.marker-cluster-small div {
+  background-color: rgba(79, 70, 229, 0.72);
+  color: #ffffff;
+}
+
+.marker-cluster-medium {
+  background-color: rgba(79, 70, 229, 0.35);
+}
+
+.marker-cluster-medium div {
+  background-color: rgba(79, 70, 229, 0.8);
+  color: #ffffff;
+}
+
+.marker-cluster-large {
+  background-color: rgba(124, 58, 237, 0.45);
+}
+
+.marker-cluster-large div {
+  background-color: rgba(124, 58, 237, 0.9);
+  color: #ffffff;
+}
+
+.skill-map-popup {
+  min-width: 190px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.skill-map-popup__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-map-popup__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.skill-map-popup__avatar--blur {
+  filter: blur(4px);
+}
+
+.skill-map-popup__avatar--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #4f46e5;
+  background: #e0e7ff;
+}
+
+.skill-map-popup__identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.skill-map-popup__name {
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.skill-map-popup__rating {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.skill-map-popup__skill {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.skill-map-popup__category {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.skill-map-popup__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.skill-map-popup__cta {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skill-map-popup__cta:hover {
+  background: #4338ca;
+}

@@ -8,7 +8,7 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { status } = useAuth();
+  const { status, user } = useAuth();
   const location = useLocation();
 
   if (status === 'loading') {
@@ -21,6 +21,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   if (status === 'unauthenticated') {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+  }
+
+  if (user && !user.hasCompletedOnboarding && location.pathname !== '/onboarding') {
+    return <Navigate to="/onboarding" replace />;
   }
 
   return <>{children}</>;

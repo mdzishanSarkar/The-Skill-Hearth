@@ -9,8 +9,9 @@ import { resolveMediaUrl } from '../../utils/media';
 import Avatar from '../../components/ui/Avatar';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import AvailabilityCalendar from '../../components/social/AvailabilityCalendar';
 
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 const RADIUS_OPTIONS = [1, 3, 5, 10, 20];
 const DAYS = [
@@ -50,7 +51,7 @@ export default function EditProfilePage() {
       return;
     }
     if (file.size > MAX_IMAGE_SIZE) {
-      setError('Image must be 5MB or smaller');
+      setError('Image must be 2MB or smaller');
       return;
     }
     setError('');
@@ -140,7 +141,7 @@ export default function EditProfilePage() {
           </div>
         </div>
         <p className="mt-3 text-xs text-gray-500">
-          JPEG, PNG, WebP or GIF up to 5MB.
+          JPEG, PNG, WebP or GIF up to 2MB.
         </p>
       </div>
 
@@ -280,6 +281,8 @@ export default function EditProfilePage() {
             <p className="mt-2 text-sm text-gray-400">No availability set yet.</p>
           )}
         </div>
+
+        <AvailabilityCalendar />
 
         <label className="flex items-center gap-2 text-sm text-gray-700">
           <input

@@ -3,7 +3,6 @@ import {
   EmailVerificationToken,
   PasswordResetToken,
   RefreshToken,
-  TokenBlacklist,
 } from '../models';
 import type { IUser } from '../models';
 import {
@@ -16,63 +15,26 @@ import {
 import { generateToken, hashToken } from '../utils/token';
 import { sendVerificationEmail, sendPasswordResetEmail } from '../utils/email';
 import { HttpError } from '../utils/errors';
+import { blacklistToken, ACCESS_TOKEN_TTL_SECONDS, REFRESH_TOKEN_TTL_SECONDS } from '../utils/blacklist';
+import {
+  clearLoginFailures,
+  isLoginLocked,
+  recordLoginFailure,
+} from '../utils/loginAttempts';
 
 const VERIFICATION_TTL_MS = 24 * 60 * 60 * 1000;
 const RESET_TTL_MS = 60 * 60 * 1000;
 const REFRESH_TTL_MS = 7 * 24 * 60 * 60 * 1000;
-const ACCESS_TTL_MS = 15 * 60 * 1000;
 
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const PASSWORD_MIN = 8;
 const PASSWORD_MAX = 72;
 
-const LOGIN_WINDOW_MS = 15 * 60 * 1000;
-const LOGIN_MAX_ATTEMPTS = 10;
-const LOCK_DURATION_MS = 10 * 60 * 1000;
-
-const loginAttempts = new Map<
-  string,
-  { count: number; windowStart: number; lockUntil: number }
->();
-
 export function sanitizeUser(user: IUser): Record<string, unknown> {
   const json = user.toJSON() as Record<string, unknown>;
   delete json.passwordHash;
+  json.hasCompletedOnboarding = user.hasCompletedOnboarding !== false;
   return json;
-}
-
-function getAttemptKey(email: string, ip?: string): string {
-  return `${email.toLowerCase()}:${ip || 'unknown'}`;
-}
-
-function isLockedOut(email: string, ip?: string): boolean {
-  const entry = loginAttempts.get(getAttemptKey(email, ip));
-  if (!entry) return false;
-  const now = Date.now();
-  if (entry.lockUntil > now) return true;
-  if (entry.windowStart + LOGIN_WINDOW_MS < now) {
-    loginAttempts.delete(getAttemptKey(email, ip));
-    return false;
-  }
-  return false;
-}
-
-function recordFailedAttempt(email: string, ip?: string): void {
-  const key = getAttemptKey(email, ip);
-  const now = Date.now();
-  const entry = loginAttempts.get(key);
-  if (!entry || entry.windowStart + LOGIN_WINDOW_MS < now) {
-    loginAttempts.set(key, { count: 1, windowStart: now, lockUntil: 0 });
-    return;
-  }
-  entry.count += 1;
-  if (entry.count >= LOGIN_MAX_ATTEMPTS) {
-    entry.lockUntil = now + LOCK_DURATION_MS;
-  }
-}
-
-function clearAttempts(email: string, ip?: string): void {
-  loginAttempts.delete(getAttemptKey(email, ip));
 }
 
 export interface RegisterInput {
@@ -125,6 +87,7 @@ export async function register(input: RegisterInput) {
     displayName,
     bio: input.bio?.trim() || '',
     role,
+    hasCompletedOnboarding: false,
   });
 
   const token = generateToken();
@@ -201,7 +164,7 @@ export async function login({ email, password, ip }: LoginInput) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Email and password are required');
   }
 
-  if (isLockedOut(emailNorm, ip)) {
+  if (await isLoginLocked(emailNorm, ip)) {
     throw new HttpError(
       429,
       'ACCOUNT_LOCKED',
@@ -211,7 +174,7 @@ export async function login({ email, password, ip }: LoginInput) {
 
   const user = await User.findOne({ email: emailNorm });
   if (!user) {
-    recordFailedAttempt(emailNorm, ip);
+    await recordLoginFailure(emailNorm, ip);
     throw new HttpError(401, 'INVALID_CREDENTIALS', 'Invalid email or password');
   }
 
@@ -224,11 +187,11 @@ export async function login({ email, password, ip }: LoginInput) {
 
   const valid = await user.comparePassword(password);
   if (!valid) {
-    recordFailedAttempt(emailNorm, ip);
+    await recordLoginFailure(emailNorm, ip);
     throw new HttpError(401, 'INVALID_CREDENTIALS', 'Invalid email or password');
   }
 
-  clearAttempts(emailNorm, ip);
+  await clearLoginFailures(emailNorm, ip);
 
   if (!user.isEmailVerified) {
     throw new HttpError(
@@ -307,6 +270,10 @@ export async function refresh(refreshToken: string | undefined) {
 
 export async function logout(refreshToken: string | undefined, accessToken?: string) {
   if (refreshToken) {
+    const payload = verifyRefreshToken(refreshToken);
+    if (payload) {
+      await blacklistToken(payload.tokenId, 'refresh', REFRESH_TOKEN_TTL_SECONDS);
+    }
     await RefreshToken.updateOne(
       { tokenHash: hashToken(refreshToken), revokedAt: null },
       { $set: { revokedAt: new Date() } }
@@ -316,11 +283,7 @@ export async function logout(refreshToken: string | undefined, accessToken?: str
   if (accessToken) {
     const payload = verifyAccessToken(accessToken);
     if (payload) {
-      await TokenBlacklist.updateOne(
-        { tokenId: payload.tokenId, type: 'access' },
-        { $setOnInsert: { expiresAt: new Date(Date.now() + ACCESS_TTL_MS) } },
-        { upsert: true }
-      );
+      await blacklistToken(payload.tokenId, 'access', ACCESS_TOKEN_TTL_SECONDS);
     }
   }
 }

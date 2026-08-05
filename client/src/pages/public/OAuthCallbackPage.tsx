@@ -1,0 +1,63 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { setAccessToken } from '../../services/tokenStore';
+import Spinner from '../../components/ui/Spinner';
+
+export default function OAuthCallbackPage() {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { setUser } = useAuth();
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const token = searchParams.get('token');
+    const newUser = searchParams.get('newUser');
+
+    if (!token) {
+      setError('No authentication token received');
+      return;
+    }
+
+    setAccessToken(token);
+
+    import('../../services/auth.service').then((authService) => {
+      authService.refreshSession()
+        .then((result) => {
+          setUser(result.user);
+          if (newUser === '1') {
+            navigate('/onboarding', { replace: true });
+          } else {
+            navigate('/dashboard', { replace: true });
+          }
+        })
+        .catch(() => {
+          setError('Failed to complete authentication');
+        });
+    });
+  }, [searchParams, navigate, setUser]);
+
+  if (error) {
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+        <h1 className="text-xl font-semibold text-gray-900">Authentication failed</h1>
+        <p className="mt-2 text-sm text-gray-600">{error}</p>
+        <button
+          onClick={() => navigate('/login')}
+          className="mt-6 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+        >
+          Back to login
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="text-center">
+        <Spinner size="lg" />
+        <p className="mt-4 text-sm text-gray-600">Completing sign-in...</p>
+      </div>
+    </div>
+  );
+}

@@ -54,3 +54,24 @@ export type { IEmailVerificationToken } from './EmailVerificationToken';
 
 export { default as RefreshToken } from './RefreshToken';
 export type { IRefreshToken } from './RefreshToken';
+
+export { default as OAuthProvider } from './OAuthProvider';
+export type { IOAuthProvider, OAuthProviderName } from './OAuthProvider';
+
+export { default as TwoFactorSecret } from './TwoFactorSecret';
+export type { ITwoFactorSecret } from './TwoFactorSecret';
+
+export { default as SkillSuggestion } from './SkillSuggestion';
+export type { ISkillSuggestion, SkillSuggestionStatus } from './SkillSuggestion';
+
+export { default as SkillBundle } from './SkillBundle';
+export type { ISkillBundle } from './SkillBundle';
+
+export { default as BlockOutDate } from './BlockOutDate';
+export type { IBlockOutDate } from './BlockOutDate';
+
+export { default as LearnerRequest } from './LearnerRequest';
+export type { ILearnerRequest, LearnerRequestStatus } from './LearnerRequest';
+
+export { default as SessionNote } from './SessionNote';
+export type { ISessionNote } from './SessionNote';

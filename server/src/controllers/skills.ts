@@ -2,6 +2,9 @@ import { Request, Response } from 'express';
 import { asyncHandler } from '../utils/errors';
 import * as skillService from '../services/skill';
 import { AuthRequest } from '../middleware/auth';
+import { Skill } from '../models';
+import { HttpError } from '../utils/errors';
+import { uploadSkillImage } from '../utils/upload';
 
 export const listCategories = asyncHandler(async (_req: Request, res: Response) => {
   const categories = await skillService.listCategories();
@@ -70,4 +73,53 @@ export const listSkills = asyncHandler(async (req: Request, res: Response) => {
 export const listSkillReviews = asyncHandler(async (req: Request, res: Response) => {
   const reviews = await skillService.listSkillReviews(String(req.params.id));
   res.json({ success: true, data: { reviews } });
+});
+
+export const addSkillMedia = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const file = req.file;
+  if (!file) {
+    res.status(400).json({ success: false, error: { code: 'NO_FILE', message: 'No image uploaded' } });
+    return;
+  }
+
+  const skill = await Skill.findOne({ _id: req.params.id, userId: req.userId!, isDeleted: false });
+  if (!skill) {
+    throw new HttpError(404, 'NOT_FOUND', 'Skill not found');
+  }
+
+  if (skill.media.length >= 5) {
+    throw new HttpError(400, 'MEDIA_LIMIT', 'Maximum 5 images per skill');
+  }
+
+  const result = await uploadSkillImage(file.buffer, file.mimetype);
+  if (!result) {
+    throw new HttpError(500, 'UPLOAD_FAILED', 'Failed to upload image');
+  }
+
+  skill.media.push({ url: result.url, publicId: result.publicId });
+  await skill.save();
+
+  res.json({ success: true, data: { media: skill.media } });
+});
+
+export const removeSkillMedia = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const skill = await Skill.findOne({ _id: req.params.id, userId: req.userId!, isDeleted: false });
+  if (!skill) {
+    throw new HttpError(404, 'NOT_FOUND', 'Skill not found');
+  }
+
+  const mediaIndex = skill.media.findIndex((m) => m.publicId === req.params.mediaId);
+  if (mediaIndex === -1) {
+    throw new HttpError(404, 'NOT_FOUND', 'Media not found');
+  }
+
+  const removed = skill.media.splice(mediaIndex, 1)[0];
+  await skill.save();
+
+  if (removed.publicId) {
+    const { destroyCloudinaryImage } = await import('../config/cloudinary');
+    await destroyCloudinaryImage(removed.publicId);
+  }
+
+  res.json({ success: true, data: { media: skill.media } });
 });

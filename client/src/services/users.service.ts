@@ -1,5 +1,9 @@
 import api from './api';
-import type { UpdateProfileInput, User } from '../types/user.types';
+import type {
+  OnboardingInput,
+  UpdateProfileInput,
+  User,
+} from '../types/user.types';
 
 export async function getMe(): Promise<User> {
   const { data } = await api.get('/users/me');
@@ -8,6 +12,11 @@ export async function getMe(): Promise<User> {
 
 export async function updateMe(input: UpdateProfileInput): Promise<User> {
   const { data } = await api.put('/users/me', input);
+  return (data.data as { user: User }).user;
+}
+
+export async function completeOnboarding(input: OnboardingInput): Promise<User> {
+  const { data } = await api.post('/users/me/onboarding', input);
   return (data.data as { user: User }).user;
 }
 

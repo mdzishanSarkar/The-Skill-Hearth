@@ -10,6 +10,7 @@ import Avatar from '../../components/ui/Avatar';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import ReportForm from '../../components/forms/ReportForm';
 import { getSkillEmoji } from '../../data/skillVisuals';
 
 export default function ProfilePage() {
@@ -21,6 +22,7 @@ export default function ProfilePage() {
   const [learnSkills, setLearnSkills] = useState<SkillWithTeacher[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [showReport, setShowReport] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -104,6 +106,11 @@ export default function ProfilePage() {
             </Button>
           </Link>
         )}
+        {!isSelf && me && (
+          <Button variant="secondary" size="sm" onClick={() => setShowReport(true)}>
+            Report user
+          </Button>
+        )}
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -162,6 +169,16 @@ export default function ProfilePage() {
 
       <SkillListBlock title="I can teach" skills={teachSkills} empty="Nothing listed yet." />
       <SkillListBlock title="I want to learn" skills={learnSkills} empty="Nothing listed yet." />
+
+      {!isSelf && me && (
+        <ReportForm
+          open={showReport}
+          onClose={() => setShowReport(false)}
+          targetType="user"
+          targetId={profile._id}
+          targetName={profile.displayName}
+        />
+      )}
     </div>
   );
 }

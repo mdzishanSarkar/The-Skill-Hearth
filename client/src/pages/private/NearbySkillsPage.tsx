@@ -13,9 +13,12 @@ import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
 import SkillCard from '../../components/shared/SkillCard';
+import SkillListRow from '../../components/shared/SkillListRow';
 import Pagination from '../../components/shared/Pagination';
 
 const PAGE_SIZE = 20;
+
+const DISTANCE_OPTIONS = [5, 10, 25, 50, 100] as const;
 
 const selectClass =
   'rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
@@ -30,9 +33,13 @@ export default function NearbySkillsPage() {
   const [availability, setAvailability] = useState(false);
   const [sort, setSort] = useState<SkillSort>('newest');
   const [view, setView] = useState<'grid' | 'list'>('grid');
+  const [distance, setDistance] = useState<number | ''>('');
   const [page, setPage] = useState(1);
   const [result, setResult] = useState<SkillListResult | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const coords = user?.location.coordinates;
+  const hasCoords = Boolean(coords && (coords[0] !== 0 || coords[1] !== 0));
 
   useEffect(() => {
     getCategories()
@@ -47,13 +54,20 @@ export default function NearbySkillsPage() {
 
   useEffect(() => {
     setPage(1);
-  }, [debouncedQ, categoryId, format, availability, sort]);
+  }, [debouncedQ, categoryId, format, availability, sort, distance]);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const coords = user?.location.coordinates;
-      const hasCoords = coords && (coords[0] !== 0 || coords[1] !== 0);
+      const locationCoords = user?.location.coordinates;
+      const hasGeo = Boolean(locationCoords && (locationCoords[0] !== 0 || locationCoords[1] !== 0));
+      const radiusKm = hasGeo
+        ? distance === ''
+          ? user?.location.radiusPreference
+          : distance === 0
+            ? undefined
+            : distance
+        : undefined;
       const resultData = await listSkills({
         page,
         limit: PAGE_SIZE,
@@ -62,7 +76,7 @@ export default function NearbySkillsPage() {
         format: format || undefined,
         availability: availability || undefined,
         sort,
-        ...(hasCoords ? { lat: coords[1], lng: coords[0], radiusKm: user?.location.radiusPreference } : {}),
+        ...(hasGeo && locationCoords ? { lat: locationCoords[1], lng: locationCoords[0], radiusKm } : {}),
       });
       setResult(resultData);
     } catch (err) {
@@ -71,14 +85,14 @@ export default function NearbySkillsPage() {
     } finally {
       setLoading(false);
     }
-  }, [page, debouncedQ, categoryId, format, availability, sort, user]);
+  }, [page, debouncedQ, categoryId, format, availability, sort, distance, user]);
 
   useEffect(() => {
     load();
   }, [load]);
 
   const hasFilters =
-    debouncedQ || categoryId || format || availability || sort !== 'newest';
+    debouncedQ || categoryId || format || availability || distance !== '' || sort !== 'newest';
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -111,6 +125,21 @@ export default function NearbySkillsPage() {
             <option value="in-person">In-person</option>
             <option value="online">Online</option>
             <option value="either">Either</option>
+          </select>
+          <select
+            value={distance}
+            onChange={(e) => setDistance(e.target.value === '' ? '' : Number(e.target.value))}
+            className={selectClass}
+            disabled={!hasCoords}
+            title={hasCoords ? 'Filter by distance' : 'Set your location to filter by distance'}
+          >
+            <option value="">Nearby (my radius)</option>
+            {DISTANCE_OPTIONS.map((km) => (
+              <option key={km} value={km}>
+                Within {km} km
+              </option>
+            ))}
+            <option value="0">Any distance</option>
           </select>
           <select value={sort} onChange={(e) => setSort(e.target.value as SkillSort)} className={selectClass}>
             <option value="newest">Newest</option>
@@ -159,6 +188,7 @@ export default function NearbySkillsPage() {
                 setCategoryId('');
                 setFormat('');
                 setAvailability(false);
+                setDistance('');
                 setSort('newest');
               }}
             >
@@ -190,7 +220,7 @@ export default function NearbySkillsPage() {
           ) : (
             <div className="mt-4 flex flex-col gap-3">
               {result.skills.map((skill: SkillWithTeacher) => (
-                <SkillCard key={skill._id} skill={skill} />
+                <SkillListRow key={skill._id} skill={skill} />
               ))}
             </div>
           )}

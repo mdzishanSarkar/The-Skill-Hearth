@@ -3,6 +3,7 @@ import type { PipelineStage } from 'mongoose';
 import { Category, Skill, Review, User } from '../models';
 import { SKILL_TAXONOMY } from '../data/skillTaxonomy';
 import { HttpError } from '../utils/errors';
+import { haversineKm } from '../utils/geo';
 
 export type SkillType = 'teach' | 'learn';
 export type ProficiencyLevel = 'beginner' | 'intermediate' | 'advanced';
@@ -40,16 +41,6 @@ const VALID_FORMATS: SessionFormat[] = ['in-person', 'online', 'either'];
 const VALID_LENGTHS: SessionLength[] = ['30min', '1hr', '2hr+'];
 
 const EARTH_RADIUS_KM = 6378.1;
-
-function haversineKm(a: [number, number], b: [number, number]): number {
-  const toRad = (deg: number) => (deg * Math.PI) / 180;
-  const dLat = toRad(b[1] - a[1]);
-  const dLng = toRad(b[0] - a[0]);
-  const h =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(a[1])) * Math.cos(toRad(b[1])) * Math.sin(dLng / 2) ** 2;
-  return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
-}
 
 function pagination(page?: number, limit?: number) {
   const p = Math.max(1, page || 1);

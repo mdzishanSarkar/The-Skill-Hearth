@@ -1,632 +1,318 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import clsx from 'clsx';
 import { useAuth } from '../../hooks/useAuth';
-import * as reportsService from '../../services/reports';
 import * as adminService from '../../services/admin.service';
 import { getApiError } from '../../types/api.types';
-import type { Report, ReportStatus, ReportTargetType } from '../../types/report.types';
-import {
-  REPORT_ACTION_LABELS,
-  REPORT_REASON_LABELS,
-  REPORT_STATUS_LABELS,
-} from '../../types/report.types';
-import Avatar from '../../components/ui/Avatar';
-import Badge from '../../components/ui/Badge';
-import Button from '../../components/ui/Button';
+import type { Report, ReportStatus } from '../../types/report.types';
 import Spinner from '../../components/ui/Spinner';
-import Modal from '../../components/ui/Modal';
+import Button from '../../components/ui/Button';
+import Badge from '../../components/ui/Badge';
+import Avatar from '../../components/ui/Avatar';
 
-const FILTERS: Array<{ value: string; label: string }> = [
-  { value: '', label: 'All' },
-  { value: 'open', label: 'Open' },
-  { value: 'under_review', label: 'Under review' },
-  { value: 'resolved', label: 'Resolved' },
-  { value: 'dismissed', label: 'Dismissed' },
-];
+const STATUS_OPTIONS: (ReportStatus | 'all')[] = ['all', 'open', 'under_review', 'resolved', 'dismissed'];
+const TARGET_OPTIONS = ['all', 'user', 'skill', 'message', 'review', 'post'] as const;
 
-const statusBadge: Record<ReportStatus, string> = {
-  open: 'bg-red-100 text-red-800',
+const statusColors: Record<string, string> = {
+  open: 'bg-blue-100 text-blue-800',
   under_review: 'bg-amber-100 text-amber-800',
   resolved: 'bg-green-100 text-green-800',
-  dismissed: 'bg-gray-100 text-gray-700',
+  dismissed: 'bg-gray-100 text-gray-600',
 };
 
-const targetBadge: Record<ReportTargetType, string> = {
-  user: 'indigo',
-  skill: 'green',
-  message: 'blue',
-  review: 'purple',
-  post: 'teal',
+const reasonLabels: Record<string, string> = {
+  harassment: 'Harassment',
+  inappropriate: 'Inappropriate',
+  spam: 'Spam',
+  fake: 'Fake',
+  'no-show': 'No-show',
+  misleading: 'Misleading',
+  other: 'Other',
 };
 
 export default function AdminReportsPage() {
   const { user: me, status } = useAuth();
   const [reports, setReports] = useState<Report[]>([]);
   const [total, setTotal] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
-  const [filter, setFilter] = useState('open');
+  const [statusFilter, setStatusFilter] = useState<ReportStatus | 'all'>('all');
+  const [targetFilter, setTargetFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [selected, setSelected] = useState<Report | null>(null);
-  const [detailOpen, setDetailOpen] = useState(false);
+  const [selectedReport, setSelectedReport] = useState<Report | null>(null);
+  const [resolving, setResolving] = useState(false);
+  const [resolveAction, setResolveAction] = useState('');
+  const [resolveResolution, setResolveResolution] = useState('');
 
-  const load = useCallback(async () => {
+  if (status === 'loading') return <Spinner />;
+  if (!me || (me.role !== 'admin' && me.role !== 'moderator')) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  useEffect(() => {
+    loadReports();
+  }, [page, statusFilter, targetFilter]);
+
+  async function loadReports() {
     setLoading(true);
     setError('');
     try {
-      const result = await reportsService.listReports({ status: filter, page, limit: 20 });
+      const params: adminService.AdminListParams & { status?: string; targetType?: string } = { page, limit: 20 };
+      if (statusFilter !== 'all') params.status = statusFilter;
+      if (targetFilter !== 'all') params.targetType = targetFilter;
+      const result = await adminService.listReports(params);
       setReports(result.reports);
-      setTotal(result.total);
-      setTotalPages(result.totalPages);
+      setTotal(result.totalPages);
     } catch (err) {
       setError(getApiError(err));
     } finally {
       setLoading(false);
     }
-  }, [filter, page]);
-
-  useEffect(() => {
-    load();
-  }, [load]);
-
-  if (status !== 'authenticated') {
-    return <Navigate to="/login" replace />;
-  }
-  if (me?.role !== 'admin') {
-    return <Navigate to="/dashboard" replace />;
   }
 
-  async function refresh() {
-    await load();
-    if (selected) {
-      try {
-        const fresh = await reportsService.getReport(selected._id);
-        setSelected(fresh);
-      } catch {
-        setSelected(null);
-      }
-    }
-  }
-
-  function openReport(report: Report) {
-    setSelected(report);
-    setDetailOpen(true);
-  }
-
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Reports queue</h1>
-        <p className="mt-1 text-sm text-gray-600">
-          {total} {total === 1 ? 'report' : 'reports'}
-        </p>
-      </div>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        {FILTERS.map((item) => (
-          <button
-            key={item.value}
-            type="button"
-            onClick={() => {
-              setFilter(item.value);
-              setPage(1);
-            }}
-            className={clsx(
-              'rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-              filter === item.value
-                ? 'bg-indigo-600 text-white'
-                : 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50'
-            )}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-
-      {error && <div className="mt-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
-
-      <div className="mt-6 overflow-x-auto rounded-lg border border-gray-200 bg-white">
-        {loading ? (
-          <div className="flex justify-center py-16">
-            <Spinner size="lg" />
-          </div>
-        ) : reports.length === 0 ? (
-          <p className="py-16 text-center text-sm text-gray-500">No reports in this view.</p>
-        ) : (
-          <ul className="divide-y divide-gray-200">
-            {reports.map((report) => (
-              <li key={report._id}>
-                <button
-                  type="button"
-                  onClick={() => openReport(report)}
-                  className="flex w-full items-center gap-4 px-4 py-3 text-left transition-colors hover:bg-gray-50"
-                >
-                  <Badge color={targetBadge[report.targetType] as 'indigo'}>
-                    {report.targetType}
-                  </Badge>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-gray-900">
-                      {getTargetLabel(report)}
-                    </p>
-                    <p className="truncate text-xs text-gray-500">
-                      {REPORT_REASON_LABELS[report.reason]}
-                      {report.description ? ` · ${report.description}` : ''}
-                    </p>
-                  </div>
-                  <div className="hidden shrink-0 items-center gap-2 sm:flex">
-                    {report.reporter && (
-                      <span className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <Avatar
-                          src={report.reporter.avatar || undefined}
-                          name={report.reporter.displayName}
-                          size="sm"
-                        />
-                        {report.reporter.displayName}
-                      </span>
-                    )}
-                    <span
-                      className={clsx(
-                        'inline-flex rounded-full px-2 py-0.5 text-xs font-medium',
-                        statusBadge[report.status]
-                      )}
-                    >
-                      {REPORT_STATUS_LABELS[report.status]}
-                    </span>
-                  </div>
-                  <span className="shrink-0 text-xs text-gray-400">
-                    {formatDate(report.createdAt)}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      {totalPages > 1 && (
-        <div className="mt-4 flex items-center justify-between">
-          <p className="text-sm text-gray-500">
-            Page {page} of {totalPages}
-          </p>
-          <div className="flex gap-2">
-            <Button
-              variant="secondary"
-              size="sm"
-              disabled={page <= 1 || loading}
-              onClick={() => setPage((p) => p - 1)}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="secondary"
-              size="sm"
-              disabled={page >= totalPages || loading}
-              onClick={() => setPage((p) => p + 1)}
-            >
-              Next
-            </Button>
-          </div>
-        </div>
-      )}
-
-      <ReportDetailModal
-        report={selected}
-        meId={me._id}
-        open={detailOpen}
-        onClose={() => setDetailOpen(false)}
-        onChanged={refresh}
-      />
-    </div>
-  );
-}
-
-function getTargetLabel(report: Report): string {
-  const target = report.target;
-  if (!target) return 'Removed content';
-  switch (report.targetType) {
-    case 'user':
-      return 'displayName' in target ? target.displayName : 'User';
-    case 'skill':
-      return 'skillName' in target ? target.skillName : 'Skill';
-    case 'message':
-      return 'content' in target && target.content ? String(target.content).slice(0, 60) : 'Message';
-    case 'review':
-      return 'rating' in target ? `Review (${target.rating}★)` : 'Review';
-    case 'post':
-      return 'content' in target ? String(target.content).slice(0, 60) : 'Post';
-  }
-}
-
-function formatDate(value: string): string {
-  return new Date(value).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-}
-
-interface ReportDetailModalProps {
-  report: Report | null;
-  meId: string;
-  open: boolean;
-  onClose: () => void;
-  onChanged: () => Promise<void>;
-}
-
-function ReportDetailModal({ report, meId, open, onClose, onChanged }: ReportDetailModalProps) {
-  const [busy, setBusy] = useState(false);
-  const [durationDays, setDurationDays] = useState(7);
-  const [resolution, setResolution] = useState('');
-  const [actionReason, setActionReason] = useState('');
-
-  useEffect(() => {
-    if (open) {
-      setDurationDays(7);
-      setResolution('');
-      setActionReason('');
-    }
-  }, [open]);
-
-  async function run(action: () => Promise<unknown>, successMessage: string) {
-    setBusy(true);
+  async function handleAssign(id: string) {
     try {
-      await action();
-      toast.success(successMessage);
-      await onChanged();
-      onClose();
+      await adminService.assignReport(id);
+      toast.success('Report assigned to you');
+      loadReports();
+    } catch (err) {
+      toast.error(getApiError(err));
+    }
+  }
+
+  async function handleResolve(id: string) {
+    if (!resolveAction) {
+      toast.error('Please select an action.');
+      return;
+    }
+    setResolving(true);
+    try {
+      await adminService.resolveReport(id, {
+        status: 'resolved',
+        action: resolveAction,
+        resolution: resolveResolution.trim() || undefined,
+      });
+      toast.success('Report resolved');
+      setSelectedReport(null);
+      setResolveAction('');
+      setResolveResolution('');
+      loadReports();
     } catch (err) {
       toast.error(getApiError(err));
     } finally {
-      setBusy(false);
+      setResolving(false);
     }
   }
 
-  if (!report) return null;
-  const current = report;
-
-  const isOpen = current.status === 'open' || current.status === 'under_review';
-  const assignedToMe = current.assignedTo === meId;
-
-  function userAction(actionName: 'warn' | 'suspend' | 'ban') {
-    if (actionName === 'suspend') {
-      return run(
-        () =>
-          adminService.suspendUser(current.targetId, durationDays, {
-            reportId: current._id,
-            resolution: resolution.trim() || undefined,
-            reason: actionReason.trim() || undefined,
-          }),
-        `Account suspended for ${durationDays} days`
-      );
+  async function handleDismiss(id: string) {
+    try {
+      await adminService.resolveReport(id, { status: 'dismissed' });
+      toast.success('Report dismissed');
+      setSelectedReport(null);
+      loadReports();
+    } catch (err) {
+      toast.error(getApiError(err));
     }
-    if (actionName === 'warn') {
-      return run(
-        () =>
-          adminService.warnUser(current.targetId, {
-            reportId: current._id,
-            resolution: resolution.trim() || undefined,
-            reason: actionReason.trim() || undefined,
-          }),
-        'Warning issued'
-      );
-    }
-    return run(
-      () =>
-        adminService.banUser(current.targetId, {
-          reportId: current._id,
-          resolution: resolution.trim() || undefined,
-          reason: actionReason.trim() || undefined,
-        }),
-      'Account banned'
-    );
   }
 
   return (
-    <Modal open={open} onClose={onClose} title="Report details" maxWidth="max-w-2xl">
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge color={targetBadge[current.targetType] as 'indigo'}>{current.targetType}</Badge>
-        <Badge color="amber">{REPORT_REASON_LABELS[current.reason]}</Badge>
-        <span
-          className={clsx(
-            'inline-flex rounded-full px-2 py-0.5 text-xs font-medium',
-            statusBadge[current.status]
-          )}
+    <div className="mx-auto max-w-5xl px-4 py-8">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-gray-900">Reports Queue</h1>
+        <span className="text-sm text-gray-500">{total} total reports</span>
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-3">
+        <select
+          value={statusFilter}
+          onChange={(e) => { setStatusFilter(e.target.value as ReportStatus | 'all'); setPage(1); }}
+          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
         >
-          {REPORT_STATUS_LABELS[current.status]}
-        </span>
+          {STATUS_OPTIONS.map((s) => (
+            <option key={s} value={s}>{s === 'all' ? 'All statuses' : s.replace('_', ' ')}</option>
+          ))}
+        </select>
+        <select
+          value={targetFilter}
+          onChange={(e) => { setTargetFilter(e.target.value); setPage(1); }}
+          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
+        >
+          {TARGET_OPTIONS.map((t) => (
+            <option key={t} value={t}>{t === 'all' ? 'All targets' : t}</option>
+          ))}
+        </select>
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
-        <p>
-          Reported by{' '}
-          <span className="font-medium text-gray-900">{current.reporter?.displayName ?? 'Unknown'}</span>
-        </p>
-        <p>
-          {current.assignedTo ? (
-            assignedToMe ? (
-              <span className="text-green-700">Assigned to you</span>
-            ) : (
-              'Assigned'
-            )
-          ) : (
-            'Unassigned'
-          )}
-        </p>
-        <p>{formatDate(current.createdAt)}</p>
-      </div>
+      {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
 
-      {current.description && (
-        <div className="mt-4 rounded-md bg-gray-50 p-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
-            Reporter details
-          </p>
-          <p className="mt-1 text-sm text-gray-700">{current.description}</p>
-        </div>
-      )}
+      <div className="mt-6 space-y-3">
+        {loading && reports.length === 0 && (
+          <div className="py-12 text-center"><Spinner /></div>
+        )}
 
-      <TargetContent report={current} />
+        {!loading && reports.length === 0 && (
+          <p className="py-12 text-center text-sm text-gray-500">No reports found.</p>
+        )}
 
-      {isOpen && (
-        <>
-          {!assignedToMe && (
-            <div className="mt-4">
+        {reports.map((report) => (
+          <div
+            key={report._id}
+            className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm cursor-pointer hover:border-indigo-200"
+            onClick={() => setSelectedReport(report)}
+          >
+            <div className="flex items-start justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[report.status] || 'bg-gray-100 text-gray-800'}`}>
+                    {report.status.replace('_', ' ')}
+                  </span>
+                  <span className="text-xs font-medium text-gray-500 uppercase">{report.targetType}</span>
+                  <span className="text-xs text-gray-400">{reasonLabels[report.reason] || report.reason}</span>
+                </div>
+                <p className="text-sm text-gray-700 line-clamp-2">
+                  {report.description || 'No description provided.'}
+                </p>
+                <div className="flex items-center gap-2 text-xs text-gray-400">
+                  <span>{new Date(report.createdAt).toLocaleString()}</span>
+                  {report.reporter && <span>by {report.reporter.displayName}</span>}
+                  {report.assignedTo && <span>Assigned</span>}
+                </div>
+              </div>
               <Button
                 variant="secondary"
-                size="sm"
-                loading={busy}
-                onClick={() =>
-                  run(
-                    () => reportsService.assignReportToSelf(current._id),
-                    'Report assigned to you'
-                  )
-                }
+                className="shrink-0 text-xs"
+                onClick={(e) => { e.stopPropagation(); setSelectedReport(report); }}
               >
-                Assign to me
-              </Button>
-            </div>
-          )}
-
-          <div className="mt-4 rounded-md border border-gray-200 p-4">
-            <p className="text-sm font-semibold text-gray-900">Moderation action</p>
-            <p className="mt-0.5 text-xs text-gray-500">
-              Taking an action resolves this report and notifies the affected user.
-            </p>
-
-            <div className="mt-3">
-              <label htmlFor="action-reason" className="block text-sm font-medium text-gray-700">
-                Reason given to the user <span className="font-normal text-gray-400">(optional)</span>
-              </label>
-              <input
-                id="action-reason"
-                value={actionReason}
-                onChange={(e) => setActionReason(e.target.value)}
-                placeholder="e.g. Repeated harassment in chat"
-                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-              />
-            </div>
-
-            <div className="mt-3">
-              <label htmlFor="resolution-note" className="block text-sm font-medium text-gray-700">
-                Resolution note <span className="font-normal text-gray-400">(optional)</span>
-              </label>
-              <input
-                id="resolution-note"
-                value={resolution}
-                onChange={(e) => setResolution(e.target.value)}
-                placeholder="Internal note saved on the report"
-                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-              />
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {current.targetType === 'user' ? (
-                <>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    loading={busy}
-                    onClick={() => userAction('warn')}
-                  >
-                    Warn
-                  </Button>
-                  <div className="flex items-center gap-2">
-                    <label htmlFor="suspend-days" className="text-sm text-gray-600">
-                      Suspend
-                    </label>
-                    <input
-                      id="suspend-days"
-                      type="number"
-                      min={1}
-                      max={30}
-                      value={durationDays}
-                      onChange={(e) => setDurationDays(Number(e.target.value) || 7)}
-                      className="w-16 rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                    />
-                    <span className="text-sm text-gray-600">days</span>
-                    <Button size="sm" loading={busy} onClick={() => userAction('suspend')}>
-                      Suspend
-                    </Button>
-                  </div>
-                  <Button size="sm" variant="danger" loading={busy} onClick={() => userAction('ban')}>
-                    Ban
-                  </Button>
-                </>
-              ) : current.targetType === 'skill' ? (
-                <Button
-                  size="sm"
-                  variant="danger"
-                  loading={busy}
-                  onClick={() =>
-                    run(
-                      () =>
-                        adminService.removeSkill(current.targetId, {
-                          reportId: current._id,
-                          resolution: resolution.trim() || undefined,
-                          reason: actionReason.trim() || undefined,
-                        }),
-                      'Listing removed'
-                    )
-                  }
-                >
-                  Remove listing
-                </Button>
-              ) : current.targetType === 'message' ? (
-                <Button
-                  size="sm"
-                  variant="danger"
-                  loading={busy}
-                  onClick={() =>
-                    run(
-                      () =>
-                        adminService.deleteMessage(current.targetId, {
-                          reportId: current._id,
-                          resolution: resolution.trim() || undefined,
-                          reason: actionReason.trim() || undefined,
-                        }),
-                      'Message removed'
-                    )
-                  }
-                >
-                  Remove message
-                </Button>
-              ) : (
-                <Button
-                  size="sm"
-                  variant="danger"
-                  loading={busy}
-                  onClick={() =>
-                    run(
-                      () =>
-                        adminService.removeReview(current.targetId, {
-                          reportId: current._id,
-                          resolution: resolution.trim() || undefined,
-                          reason: actionReason.trim() || undefined,
-                        }),
-                      'Review removed'
-                    )
-                  }
-                >
-                  Remove review
-                </Button>
-              )}
-              <Button
-                size="sm"
-                variant="ghost"
-                loading={busy}
-                onClick={() =>
-                  run(
-                    () =>
-                      reportsService.resolveReport(current._id, {
-                        status: 'dismissed',
-                        action: 'no_action',
-                        resolution: resolution.trim() || 'No action taken',
-                      }),
-                    'Report dismissed'
-                  )
-                }
-              >
-                Dismiss — no action
+                Review
               </Button>
             </div>
           </div>
-        </>
-      )}
+        ))}
+      </div>
 
-      {!isOpen && (
-        <div className="mt-4 rounded-md bg-gray-50 p-3 text-sm text-gray-700">
-          <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Outcome</p>
-          <p className="mt-1">
-            {current.action ? REPORT_ACTION_LABELS[current.action] : 'No action taken'}
-            {current.resolution ? ` — ${current.resolution}` : ''}
-          </p>
+      {total > 1 && (
+        <div className="mt-6 flex justify-center gap-2">
+          <Button variant="secondary" disabled={page <= 1} onClick={() => setPage(page - 1)}>Prev</Button>
+          <span className="py-2 text-sm text-gray-600">Page {page} of {total}</span>
+          <Button variant="secondary" disabled={page >= total} onClick={() => setPage(page + 1)}>Next</Button>
         </div>
       )}
-    </Modal>
-  );
-}
 
-function TargetContent({ report }: { report: Report }) {
-  const target = report.target;
+      {selectedReport && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-gray-900/50" onClick={() => setSelectedReport(null)} />
+          <div className="relative z-10 w-full max-w-lg rounded-lg bg-white p-6 shadow-xl max-h-[80vh] overflow-y-auto">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-gray-900">Report Detail</h2>
+              <button
+                type="button"
+                onClick={() => setSelectedReport(null)}
+                className="rounded-md p-1 text-gray-400 hover:bg-gray-100"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-  if (report.targetType === 'message') {
-    return (
-      <div className="mt-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
-          Message in context
-        </p>
-        <div className="mt-2 rounded-md border border-gray-200 bg-gray-50 p-3">
-          {report.contextMessages && report.contextMessages.length > 0 ? (
-            <div className="flex flex-col gap-1.5">
-              {report.contextMessages.map((item) => {
-                const isTarget = item._id === report.targetId;
-                return (
-                  <p
-                    key={item._id}
-                    className={clsx(
-                      'rounded-md px-2 py-1 text-sm',
-                      isTarget ? 'bg-red-50 font-medium text-red-800' : 'text-gray-700'
-                    )}
-                  >
-                    {item.content ?? '[removed]'}
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-gray-500">Target</span>
+                  <p className="font-medium text-gray-900">{selectedReport.targetType}</p>
+                </div>
+                <div>
+                  <span className="text-gray-500">Reason</span>
+                  <p className="font-medium text-gray-900">{reasonLabels[selectedReport.reason] || selectedReport.reason}</p>
+                </div>
+                <div>
+                  <span className="text-gray-500">Status</span>
+                  <p className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${statusColors[selectedReport.status]}`}>
+                    {selectedReport.status.replace('_', ' ')}
                   </p>
-                );
-              })}
+                </div>
+                <div>
+                  <span className="text-gray-500">Created</span>
+                  <p className="font-medium text-gray-900">{new Date(selectedReport.createdAt).toLocaleString()}</p>
+                </div>
+              </div>
+
+              {selectedReport.reporter && (
+                <div>
+                  <span className="text-sm text-gray-500">Reporter</span>
+                  <div className="mt-1 flex items-center gap-2">
+                    <Avatar src={selectedReport.reporter.avatar} name={selectedReport.reporter.displayName} size="xs" />
+                    <span className="text-sm font-medium text-gray-900">{selectedReport.reporter.displayName}</span>
+                  </div>
+                </div>
+              )}
+
+              {selectedReport.description && (
+                <div>
+                  <span className="text-sm text-gray-500">Description</span>
+                  <p className="mt-1 text-sm text-gray-700">{selectedReport.description}</p>
+                </div>
+              )}
+
+              {selectedReport.contextMessages && selectedReport.contextMessages.length > 0 && (
+                <div>
+                  <span className="text-sm text-gray-500">Context messages</span>
+                  <div className="mt-1 space-y-1">
+                    {selectedReport.contextMessages.map((msg, i) => (
+                      <p key={i} className="rounded bg-gray-50 p-2 text-xs text-gray-600">{msg}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedReport.resolution && (
+                <div>
+                  <span className="text-sm text-gray-500">Resolution</span>
+                  <p className="mt-1 text-sm text-gray-700">{selectedReport.resolution}</p>
+                </div>
+              )}
+
+              <div className="border-t border-gray-100 pt-4">
+                <span className="text-sm font-medium text-gray-700">Resolve</span>
+                <div className="mt-2 space-y-2">
+                  <select
+                    value={resolveAction}
+                    onChange={(e) => setResolveAction(e.target.value)}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+                  >
+                    <option value="">Select action...</option>
+                    <option value="warn_user">Warn user</option>
+                    <option value="suspend_user">Suspend user</option>
+                    <option value="ban_user">Ban user</option>
+                    <option value="remove_content">Remove content</option>
+                    <option value="no_action">No action needed</option>
+                  </select>
+                  <textarea
+                    value={resolveResolution}
+                    onChange={(e) => setResolveResolution(e.target.value)}
+                    rows={2}
+                    placeholder="Resolution notes (optional)"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2 pt-2">
+                {!selectedReport.assignedTo && me.role === 'admin' && (
+                  <Button variant="secondary" onClick={() => handleAssign(selectedReport._id)}>
+                    Assign to me
+                  </Button>
+                )}
+                <Button variant="secondary" onClick={() => handleDismiss(selectedReport._id)}>
+                  Dismiss
+                </Button>
+                <Button loading={resolving} onClick={() => handleResolve(selectedReport._id)}>
+                  Resolve
+                </Button>
+              </div>
             </div>
-          ) : (
-            <p className="text-sm text-gray-500">No surrounding context captured.</p>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (!target) {
-    return (
-      <div className="mt-4 rounded-md bg-gray-50 p-3 text-sm text-gray-500">
-        The reported content has already been removed.
-      </div>
-    );
-  }
-
-  return (
-    <div className="mt-4 rounded-md border border-gray-200 p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
-        Reported {report.targetType}
-      </p>
-      {report.targetType === 'user' && 'displayName' in target && (
-        <div className="mt-2 flex items-center gap-3">
-          <Avatar src={target.avatar || undefined} name={target.displayName} size="md" />
-          <div>
-            <p className="text-sm font-medium text-gray-900">{target.displayName}</p>
-            <p className="text-xs text-gray-500">{target.email}</p>
-            <p className="mt-0.5 text-xs text-gray-500">
-              Role: {target.role} · Status:{' '}
-              <span className={target.status === 'active' ? 'text-green-700' : 'text-red-700'}>
-                {target.status}
-              </span>
-            </p>
           </div>
         </div>
-      )}
-      {report.targetType === 'skill' && 'skillName' in target && (
-        <div className="mt-2">
-          <p className="text-sm font-medium text-gray-900">{target.skillName}</p>
-          <p className="text-xs text-gray-500">
-            {target.categoryName} · {target.type}
-            {target.isDeleted ? ' · removed' : ''}
-          </p>
-        </div>
-      )}
-      {report.targetType === 'review' && 'rating' in target && (
-        <div className="mt-2">
-          <p className="text-sm font-medium text-gray-900">
-            Rating: {'★'.repeat(target.rating)}
-            {'☆'.repeat(5 - target.rating)}
-          </p>
-          <p className="mt-1 text-sm text-gray-700">{target.content || 'No written review'}</p>
-        </div>
-      )}
-      {report.targetType === 'post' && 'content' in target && (
-        <p className="mt-2 text-sm text-gray-700">{target.content}</p>
       )}
     </div>
   );

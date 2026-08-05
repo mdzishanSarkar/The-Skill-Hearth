@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import Avatar from '../ui/Avatar';
 import Button from '../ui/Button';
+import NotificationBell from './NotificationBell';
 
 const linkClass = 'text-sm font-medium text-gray-600 hover:text-indigo-600';
 
@@ -18,17 +19,32 @@ export default function Navbar() {
           <NavLink to="/skills" className={linkClass}>
             Browse skills
           </NavLink>
+          <NavLink to="/map" className={linkClass}>
+            Map
+          </NavLink>
           {isAuthenticated && user ? (
             <>
+              {!user.hasCompletedOnboarding && (
+                <Link
+                  to="/onboarding"
+                  className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1.5 text-sm font-medium text-amber-800 hover:bg-amber-200"
+                >
+                  Finish setup
+                </Link>
+              )}
               <NavLink to="/dashboard" className={linkClass}>
                 Dashboard
               </NavLink>
               <NavLink to="/my-skills" className={linkClass}>
                 My skills
               </NavLink>
+              <NavLink to="/messages" className={linkClass}>
+                Messages
+              </NavLink>
               <NavLink to="/edit-profile" className={linkClass}>
                 Edit Profile
               </NavLink>
+              <NotificationBell />
               {user.role === 'admin' && (
                 <NavLink to="/admin/users" className={linkClass}>
                   Admin

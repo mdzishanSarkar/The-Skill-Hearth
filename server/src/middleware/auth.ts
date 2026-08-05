@@ -1,16 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import User, { IUser } from '../models/User';
-import TokenBlacklist from '../models/TokenBlacklist';
 import { verifyAccessToken } from '../utils/jwt';
+import { isTokenBlacklisted } from '../utils/blacklist';
 
 export interface AuthRequest extends Request {
   user?: IUser;
   userId?: string;
-}
-
-async function isBlacklisted(tokenId: string): Promise<boolean> {
-  const entry = await TokenBlacklist.findOne({ tokenId, type: 'access' });
-  return Boolean(entry);
 }
 
 export async function authenticate(
@@ -31,7 +26,7 @@ export async function authenticate(
     return;
   }
 
-  if (await isBlacklisted(payload.tokenId)) {
+  if (await isTokenBlacklisted(payload.tokenId)) {
     res.status(401).json({ success: false, error: { code: 'TOKEN_REVOKED', message: 'Token has been revoked' } });
     return;
   }
@@ -70,7 +65,7 @@ export async function optionalAuth(
   if (authHeader?.startsWith('Bearer ')) {
     const token = authHeader.split(' ')[1];
     const payload = verifyAccessToken(token);
-    if (payload && !(await isBlacklisted(payload.tokenId))) {
+    if (payload && !(await isTokenBlacklisted(payload.tokenId))) {
       req.userId = payload.userId;
     }
   }

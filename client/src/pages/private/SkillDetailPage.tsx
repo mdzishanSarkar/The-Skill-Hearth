@@ -17,6 +17,8 @@ import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
 import ReviewCard from '../../components/shared/ReviewCard';
+import ConnectionRequestForm from '../../components/forms/ConnectionRequestForm';
+import ReportForm from '../../components/forms/ReportForm';
 import { getCategoryVisual, getSkillEmoji } from '../../data/skillVisuals';
 
 export default function SkillDetailPage() {
@@ -26,6 +28,8 @@ export default function SkillDetailPage() {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [showRequestForm, setShowRequestForm] = useState(false);
+  const [showReport, setShowReport] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -138,15 +142,31 @@ export default function SkillDetailPage() {
                 </Button>
               </div>
             ) : (
-              <Button
-                onClick={() =>
-                  toast('Session requests arrive with the Connections module.', {
-                    icon: '🔗',
-                  })
-                }
-              >
-                Request a Session
-              </Button>
+              <div className="w-full">
+                {!showRequestForm ? (
+                  <div className="flex items-center gap-3">
+                    <Button onClick={() => setShowRequestForm(true)}>
+                      Request a Session
+                    </Button>
+                    {me && (
+                      <Button variant="secondary" size="sm" onClick={() => setShowReport(true)}>
+                        Report skill
+                      </Button>
+                    )}
+                  </div>
+                ) : (
+                  <ConnectionRequestForm
+                    teacherId={current.userId}
+                    skillId={current._id}
+                    skillName={current.skillName}
+                    onSuccess={() => {
+                      setShowRequestForm(false);
+                      toast.success('Request sent! Check your outbox for updates.');
+                    }}
+                    onCancel={() => setShowRequestForm(false)}
+                  />
+                )}
+              </div>
             )}
           </div>
         </div>
@@ -172,6 +192,21 @@ export default function SkillDetailPage() {
               {skill.teacher.bio && <p className="mt-2 text-sm text-gray-600">{skill.teacher.bio}</p>}
             </div>
           </div>
+          {skill.teacher.availability.length > 0 && (
+            <div className="mt-4 border-t border-gray-100 pt-4">
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Availability</h3>
+              <ul className="mt-2 flex flex-wrap gap-1.5">
+                {skill.teacher.availability.map((slot, index) => (
+                  <li
+                    key={`${slot.day}-${index}`}
+                    className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700"
+                  >
+                    <span className="capitalize">{slot.day}</span>: {slot.startTime}–{slot.endTime}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 
@@ -192,6 +227,16 @@ export default function SkillDetailPage() {
           </div>
         )}
       </div>
+
+      {!isOwner && me && (
+        <ReportForm
+          open={showReport}
+          onClose={() => setShowReport(false)}
+          targetType="skill"
+          targetId={current._id}
+          targetName={current.skillName}
+        />
+      )}
     </div>
   );
 }

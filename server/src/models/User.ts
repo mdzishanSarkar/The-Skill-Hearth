@@ -27,6 +27,7 @@ export interface IUser extends Document {
   displayName: string;
   bio: string;
   avatar: string;
+  avatarPublicId: string;
   role: 'user' | 'admin' | 'moderator';
   status: 'active' | 'suspended' | 'banned';
   suspensionExpiresAt?: Date;
@@ -35,6 +36,7 @@ export interface IUser extends Document {
   availability: IAvailabilitySlot[];
   stats: IUserStats;
   isEmailVerified: boolean;
+  hasCompletedOnboarding: boolean;
   isIdVerified: boolean;
   lastActive: Date;
   createdAt: Date;
@@ -83,6 +85,10 @@ const userSchema = new Schema<IUser>(
       type: String,
       default: '',
     },
+    avatarPublicId: {
+      type: String,
+      default: '',
+    },
     role: {
       type: String,
       enum: ['user', 'admin', 'moderator'],
@@ -127,6 +133,10 @@ const userSchema = new Schema<IUser>(
     isEmailVerified: {
       type: Boolean,
       default: false,
+    },
+    hasCompletedOnboarding: {
+      type: Boolean,
+      default: true,
     },
     isIdVerified: {
       type: Boolean,

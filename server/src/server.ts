@@ -1,13 +1,18 @@
 import dotenv from "dotenv";
+import http from "http";
 import app from "./app";
 import { connectDatabase, disconnectDatabase } from "./models/db";
 import { seedCategories } from "./services/skill";
+import { initializeSocket } from "./config/socket";
 
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, async () => {
+const httpServer = http.createServer(app);
+initializeSocket(httpServer);
+
+const server = httpServer.listen(PORT, async () => {
   await connectDatabase();
   try {
     await seedCategories();
