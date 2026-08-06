@@ -9,6 +9,9 @@ import {
   AuditLog,
   Connection,
   RefreshToken,
+  CommunityPost,
+  GroupSession,
+  Block,
 } from '../models';
 import type { IUser } from '../models';
 import type { NotificationType } from '../models';
@@ -298,7 +301,7 @@ export async function deleteMessage(messageId: string, context: ModerationContex
 
 export async function getModerationStats() {
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-  const [users, skills, sessions, reportsThisWeek, openReports, suspended, banned] =
+  const [users, skills, sessions, reportsThisWeek, openReports, suspended, banned, shadowBanned] =
     await Promise.all([
       User.countDocuments(),
       Skill.countDocuments({ isDeleted: false }),
@@ -307,6 +310,7 @@ export async function getModerationStats() {
       Report.countDocuments({ status: 'open' }),
       User.countDocuments({ status: 'suspended' }),
       User.countDocuments({ status: 'banned' }),
+      User.countDocuments({ isShadowBanned: true }),
     ]);
 
   return {
@@ -317,5 +321,151 @@ export async function getModerationStats() {
     openReports,
     suspendedUsers: suspended,
     bannedUsers: banned,
+    shadowBannedUsers: shadowBanned,
   };
+}
+
+export async function shadowBanUser(userId: string, context: ModerationContext) {
+  const id = toObjectId(userId);
+  const user = await User.findById(id);
+  if (!user) throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+  if (user.role === 'admin') {
+    throw new HttpError(400, 'CANNOT_SHADOW_BAN_ADMIN', 'Cannot shadow ban an admin');
+  }
+
+  const before = { isShadowBanned: user.isShadowBanned };
+  user.isShadowBanned = true;
+  await user.save();
+
+  await logAudit({
+    performedBy: toObjectId(context.adminId),
+    action: 'shadow_ban',
+    targetType: 'user',
+    targetId: id,
+    before,
+    after: { isShadowBanned: true },
+    metadata: { reason: context.reason },
+  });
+
+  return { user: sanitizeUser(user) };
+}
+
+export async function removeShadowBan(userId: string, context: ModerationContext) {
+  const id = toObjectId(userId);
+  const user = await User.findById(id);
+  if (!user) throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+
+  const before = { isShadowBanned: user.isShadowBanned };
+  user.isShadowBanned = false;
+  await user.save();
+
+  await logAudit({
+    performedBy: toObjectId(context.adminId),
+    action: 'remove_shadow_ban',
+    targetType: 'user',
+    targetId: id,
+    before,
+    after: { isShadowBanned: false },
+    metadata: { reason: context.reason },
+  });
+
+  return { user: sanitizeUser(user) };
+}
+
+export async function removePost(postId: string, context: ModerationContext) {
+  const id = toObjectId(postId);
+  const post = await CommunityPost.findById(id);
+  if (!post) throw new HttpError(404, 'POST_NOT_FOUND', 'Post not found');
+
+  const before = { isDeleted: post.isDeleted };
+  post.isDeleted = true;
+  await post.save();
+
+  await logAudit({
+    performedBy: toObjectId(context.adminId),
+    action: 'remove',
+    targetType: 'post',
+    targetId: id,
+    before,
+    after: { isDeleted: true },
+    metadata: { reason: context.reason },
+  });
+  await resolveReportIfProvided(context, 'remove_content');
+
+  return { postId: id.toString() };
+}
+
+export interface SuspiciousActivityResult {
+  userId: string;
+  displayName: string;
+  email: string;
+  reason: string;
+  severity: 'low' | 'medium' | 'high';
+  detectedAt: Date;
+}
+
+export async function detectSuspiciousActivity(): Promise<SuspiciousActivityResult[]> {
+  const flagged: SuspiciousActivityResult[] = [];
+  const now = new Date();
+  const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+  const twoDaysAgo = new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000);
+
+  const recentAccounts = await User.find({
+    createdAt: { $gte: oneDayAgo },
+    status: 'active',
+    role: 'user',
+  }).select('displayName email createdAt');
+
+  for (const account of recentAccounts) {
+    const requestCount = await Connection.countDocuments({
+      requesterId: account._id,
+      createdAt: { $gte: account.createdAt },
+    });
+
+    if (requestCount >= 10) {
+      flagged.push({
+        userId: String(account._id),
+        displayName: account.displayName,
+        email: account.email,
+        reason: `Sent ${requestCount} requests within 24 hours of account creation`,
+        severity: requestCount >= 20 ? 'high' : 'medium',
+        detectedAt: now,
+      });
+    }
+  }
+
+  const usersWithMultipleReports = await Report.aggregate([
+    {
+      $match: {
+        createdAt: { $gte: twoDaysAgo },
+        targetType: 'user',
+      },
+    },
+    {
+      $group: {
+        _id: '$targetId',
+        reportCount: { $sum: 1 },
+        reasons: { $push: '$reason' },
+      },
+    },
+    {
+      $match: { reportCount: { $gte: 3 } },
+    },
+  ]);
+
+  for (const item of usersWithMultipleReports) {
+    const user = await User.findById(item._id).select('displayName email status');
+    if (!user || user.status !== 'active') continue;
+
+    flagged.push({
+      userId: String(item._id),
+      displayName: user.displayName,
+      email: user.email,
+      reason: `Received ${item.reportCount} reports in 48 hours (reasons: ${[...new Set(item.reasons)].join(', ')})`,
+      severity: item.reportCount >= 5 ? 'high' : 'medium',
+      detectedAt: now,
+    });
+  }
+
+  return flagged;
 }

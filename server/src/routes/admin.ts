@@ -17,6 +17,10 @@ import {
   removeReview,
   deleteMessage,
   getModerationStats,
+  shadowBanUser,
+  removeShadowBan,
+  removePost,
+  detectSuspiciousActivity,
 } from '../controllers/admin';
 
 const router = Router();
@@ -42,5 +46,10 @@ router.patch('/reports/:id/resolve', ...adminOnly, resolveReport);
 router.post('/skills/:id/remove', ...adminOnly, removeSkill);
 router.post('/reviews/:id/remove', ...adminOnly, removeReview);
 router.post('/messages/:id/remove', ...adminOnly, deleteMessage);
+router.post('/posts/:id/remove', ...adminOnly, removePost);
+
+router.post('/users/:id/shadow-ban', ...adminOnly, shadowBanUser);
+router.post('/users/:id/remove-shadow-ban', ...adminOnly, removeShadowBan);
+router.get('/suspicious-activity', ...adminOnly, detectSuspiciousActivity);
 
 export default router;

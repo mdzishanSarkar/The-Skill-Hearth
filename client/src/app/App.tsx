@@ -30,6 +30,14 @@ import SkillSuggestionsPage from '../pages/private/SkillSuggestionsPage';
 import BundlesPage from '../pages/private/BundlesPage';
 import LearnerBoardPage from '../pages/private/LearnerBoardPage';
 import NeighborhoodPageView from '../pages/private/NeighborhoodPageView';
+import CommunityBoardPage from '../pages/private/CommunityBoardPage';
+import GroupSessionsPage from '../pages/private/GroupSessionsPage';
+import CoursesPage from '../pages/private/CoursesPage';
+import ChallengesPage from '../pages/private/ChallengesPage';
+import MentorshipsPage from '../pages/private/MentorshipsPage';
+import ShowcasePage from '../pages/private/ShowcasePage';
+import IntegrationsPage from '../pages/private/IntegrationsPage';
+import UpgradePage from '../pages/private/UpgradePage';
 
 const MapDiscoveryPage = lazy(() => import('../pages/private/MapDiscoveryPage'));
 const InboxPage = lazy(() => import('../pages/private/InboxPage'));
@@ -170,6 +178,74 @@ function AppContent() {
         <Route
           path="/neighborhood/:city/:neighborhood?"
           element={<NeighborhoodPageView />}
+        />
+        <Route
+          path="/community/:city/:neighborhood?"
+          element={
+            <ProtectedRoute>
+              <CommunityBoardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/community"
+          element={
+            <ProtectedRoute>
+              <CommunityBoardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/group-sessions"
+          element={
+            <ProtectedRoute>
+              <GroupSessionsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/courses"
+          element={
+            <ProtectedRoute>
+              <CoursesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/challenges"
+          element={
+            <ProtectedRoute>
+              <ChallengesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mentorships"
+          element={
+            <ProtectedRoute>
+              <MentorshipsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/showcase"
+          element={
+            <ProtectedRoute>
+              <ShowcasePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/integrations"
+          element={
+            <ProtectedRoute>
+              <IntegrationsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/upgrade"
+          element={<UpgradePage />}
         />
         <Route
           path="/admin/users"

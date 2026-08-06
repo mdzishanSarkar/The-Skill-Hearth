@@ -142,6 +142,41 @@ export const deleteMessage = asyncHandler(async (req: AuthRequest, res: Response
   res.json({ success: true, data });
 });
 
+export const shadowBanUser = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { reason, reportId } = req.body || {};
+  const data = await moderationService.shadowBanUser(String(req.params.id), {
+    adminId: String(req.userId),
+    reason: reason ? String(reason) : undefined,
+    reportId: reportId ? String(reportId) : undefined,
+  });
+  res.json({ success: true, data });
+});
+
+export const removeShadowBan = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { reason } = req.body || {};
+  const data = await moderationService.removeShadowBan(String(req.params.id), {
+    adminId: String(req.userId),
+    reason: reason ? String(reason) : undefined,
+  });
+  res.json({ success: true, data });
+});
+
+export const removePost = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { reason, reportId, resolution } = req.body || {};
+  const data = await moderationService.removePost(String(req.params.id), {
+    adminId: String(req.userId),
+    reason: reason ? String(reason) : undefined,
+    reportId: reportId ? String(reportId) : undefined,
+    resolution: resolution ? String(resolution) : undefined,
+  });
+  res.json({ success: true, data });
+});
+
+export const detectSuspiciousActivity = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const data = await moderationService.detectSuspiciousActivity();
+  res.json({ success: true, data: { flagged: data } });
+});
+
 export const getModerationStats = asyncHandler(async (_req: Request, res: Response) => {
   const data = await moderationService.getModerationStats();
   res.json({ success: true, data });

@@ -24,7 +24,19 @@ import discoveryEnhancedRoutes from "./routes/discoveryEnhanced";
 import messageEnhancedRoutes from "./routes/messageEnhanced";
 import sessionRoutes from "./routes/sessions";
 import savedSearchRoutes from "./routes/savedSearches";
-import { globalRateLimiter } from "./middleware/rateLimit";
+import communityRoutes from "./routes/community";
+import groupSessionRoutes from "./routes/groupSessions";
+import blockRoutes from "./routes/block";
+import billingRoutes from "./routes/billing";
+import courseRoutes from "./routes/courses";
+import challengeRoutes from "./routes/challenges";
+import mentorshipRoutes from "./routes/mentorships";
+import showcaseRoutes from "./routes/showcase";
+import webhookRoutes from "./routes/webhooks";
+import apiPublicRoutes from "./routes/apiPublic";
+import calendarRoutes from "./routes/calendars";
+import botRoutes from "./routes/bots";
+import { tieredRateLimiter } from "./middleware/rateLimit";
 import { UPLOADS_DIR } from "./utils/upload";
 
 dotenv.config();
@@ -43,7 +55,7 @@ app.use(
   })
 );
 
-app.use(globalRateLimiter);
+app.use(tieredRateLimiter);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -74,6 +86,18 @@ app.use("/api/discover", discoveryEnhancedRoutes);
 app.use("/api/chat", messageEnhancedRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/saved-searches", savedSearchRoutes);
+app.use("/api/community", communityRoutes);
+app.use("/api/group-sessions", groupSessionRoutes);
+app.use("/api/blocks", blockRoutes);
+app.use("/api/billing", billingRoutes);
+app.use("/api/courses", courseRoutes);
+app.use("/api/challenges", challengeRoutes);
+app.use("/api/mentorships", mentorshipRoutes);
+app.use("/api/showcase", showcaseRoutes);
+app.use("/api/webhooks", webhookRoutes);
+app.use("/api/integrations", apiPublicRoutes);
+app.use("/api/calendars", calendarRoutes);
+app.use("/api/bots", botRoutes);
 
 // Global error handler
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {

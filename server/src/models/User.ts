@@ -38,6 +38,11 @@ export interface IUser extends Document {
   isEmailVerified: boolean;
   hasCompletedOnboarding: boolean;
   isIdVerified: boolean;
+  isShadowBanned: boolean;
+  isPro: boolean;
+  proExpiresAt?: Date;
+  stripeCustomerId?: string;
+  stripeSubscriptionId?: string;
   lastActive: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -141,6 +146,26 @@ const userSchema = new Schema<IUser>(
     isIdVerified: {
       type: Boolean,
       default: false,
+    },
+    isShadowBanned: {
+      type: Boolean,
+      default: false,
+    },
+    isPro: {
+      type: Boolean,
+      default: false,
+    },
+    proExpiresAt: {
+      type: Date,
+      default: undefined,
+    },
+    stripeCustomerId: {
+      type: String,
+      sparse: true,
+    },
+    stripeSubscriptionId: {
+      type: String,
+      sparse: true,
     },
     lastActive: {
       type: Date,

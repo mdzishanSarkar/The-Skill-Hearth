@@ -34,6 +34,7 @@ export interface User {
   isEmailVerified: boolean;
   hasCompletedOnboarding: boolean;
   isIdVerified: boolean;
+  isShadowBanned?: boolean;
   lastActive: string;
   createdAt: string;
   updatedAt: string;

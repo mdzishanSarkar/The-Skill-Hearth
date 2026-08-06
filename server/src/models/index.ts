@@ -32,7 +32,7 @@ export { default as SkillSwap } from './SkillSwap';
 export type { ISkillSwap, SwapStatus } from './SkillSwap';
 
 export { default as GroupSession } from './GroupSession';
-export type { IGroupSession, GroupSessionStatus } from './GroupSession';
+export type { IGroupSession, GroupSessionStatus, GroupSessionType } from './GroupSession';
 
 export { default as SavedSearch } from './SavedSearch';
 export type { ISavedSearch, ISavedSearchFilter } from './SavedSearch';
@@ -75,3 +75,33 @@ export type { ILearnerRequest, LearnerRequestStatus } from './LearnerRequest';
 
 export { default as SessionNote } from './SessionNote';
 export type { ISessionNote } from './SessionNote';
+
+export { default as Tip } from './Tip';
+export type { ITip, TipStatus } from './Tip';
+
+export { default as Course } from './Course';
+export type { ICourse, ICourseSession, CourseStatus } from './Course';
+
+export { default as CourseEnrollment } from './CourseEnrollment';
+export type { ICourseEnrollment, ISessionProgress, EnrollmentStatus } from './CourseEnrollment';
+
+export { default as Challenge } from './Challenge';
+export type { IChallenge, IChallengeParticipant, ChallengeStatus } from './Challenge';
+
+export { default as Mentorship } from './Mentorship';
+export type { IMentorship, IGoal, ICheckIn, MentorshipStatus } from './Mentorship';
+
+export { default as Showcase } from './Showcase';
+export type { IShowcase, IShowcaseMedia, IShowcaseLike } from './Showcase';
+
+export { default as Webhook } from './Webhook';
+export type { IWebhook, IWebhookLog, WebhookEvent, WebhookStatus } from './Webhook';
+
+export { default as ApiKey } from './ApiKey';
+export type { IApiKey, ApiKeyStatus } from './ApiKey';
+
+export { default as CalendarIntegration } from './CalendarIntegration';
+export type { ICalendarIntegration, ICalendarEvent, CalendarProvider, CalendarSyncStatus } from './CalendarIntegration';
+
+export { default as BotInstallation } from './BotInstallation';
+export type { IBotInstallation, BotPlatform, BotStatus } from './BotInstallation';

@@ -13,6 +13,8 @@ export interface ICommunityPost extends Document {
   voteScore: number;
   userVotes: IUserVote[];
   isDeleted: boolean;
+  isFlagged: boolean;
+  flagReason?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -60,6 +62,14 @@ const communityPostSchema = new Schema<ICommunityPost>(
     isDeleted: {
       type: Boolean,
       default: false,
+    },
+    isFlagged: {
+      type: Boolean,
+      default: false,
+    },
+    flagReason: {
+      type: String,
+      maxlength: 500,
     },
   },
   {

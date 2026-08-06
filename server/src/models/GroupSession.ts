@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema, Types } from 'mongoose';
 
 export type GroupSessionStatus = 'open' | 'full' | 'completed' | 'cancelled';
+export type GroupSessionType = 'regular' | 'workshop';
 
 export interface IGroupSession extends Document {
   teacherId: Types.ObjectId;
@@ -13,8 +14,11 @@ export interface IGroupSession extends Document {
   location?: string;
   scheduledAt?: Date;
   status: GroupSessionStatus;
+  sessionType: GroupSessionType;
   chatRoomId: string;
   cancelledReason?: string;
+  isFlagged: boolean;
+  flagReason?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -69,6 +73,11 @@ const groupSessionSchema = new Schema<IGroupSession>(
       enum: ['open', 'full', 'completed', 'cancelled'],
       default: 'open',
     },
+    sessionType: {
+      type: String,
+      enum: ['regular', 'workshop'],
+      default: 'regular',
+    },
     chatRoomId: {
       type: String,
       required: true,
@@ -77,6 +86,14 @@ const groupSessionSchema = new Schema<IGroupSession>(
     cancelledReason: {
       type: String,
       maxlength: 300,
+    },
+    isFlagged: {
+      type: Boolean,
+      default: false,
+    },
+    flagReason: {
+      type: String,
+      maxlength: 500,
     },
   },
   {

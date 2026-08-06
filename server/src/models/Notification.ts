@@ -10,7 +10,11 @@ export type NotificationType =
   | 'account_suspended'
   | 'account_banned'
   | 'skill_removed'
-  | 'review_received';
+  | 'review_received'
+  | 'group_session_joined'
+  | 'group_session_left'
+  | 'group_session_completed'
+  | 'group_session_cancelled';
 
 export interface INotification extends Document {
   userId: Types.ObjectId;
@@ -43,6 +47,10 @@ const notificationSchema = new Schema<INotification>(
         'account_banned',
         'skill_removed',
         'review_received',
+        'group_session_joined',
+        'group_session_left',
+        'group_session_completed',
+        'group_session_cancelled',
       ],
       required: true,
     },
@@ -51,7 +59,7 @@ const notificationSchema = new Schema<INotification>(
     },
     referenceModel: {
       type: String,
-      enum: ['Connection', 'Message', 'Review', 'Skill', 'Report'],
+      enum: ['Connection', 'Message', 'Review', 'Skill', 'Report', 'GroupSession'],
     },
     message: {
       type: String,
