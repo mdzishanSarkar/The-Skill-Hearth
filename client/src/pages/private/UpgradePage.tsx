@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FiZap, FiCheck, FiExternalLink, FiClock, FiBarChart2, FiShield } from 'react-icons/fi';
+import { FiZap, FiExternalLink, FiClock, FiBarChart2, FiShield } from 'react-icons/fi';
 import { getSubscriptionStatus, createCheckoutSession, createPortalSession } from '../../services/billing.service';
 import toast from 'react-hot-toast';
 import type { SubscriptionStatus } from '../../types/billing.types';

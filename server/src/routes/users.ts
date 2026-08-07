@@ -6,6 +6,7 @@ import {
   getUser,
   uploadAvatar,
   completeOnboarding,
+  skipOnboarding,
   getProfileCompleteness,
   exportData,
   requestAccountDeletion,
@@ -17,6 +18,7 @@ const router = Router();
 router.get('/me', authenticate, getMe);
 router.put('/me', authenticate, updateMe);
 router.post('/me/onboarding', authenticate, completeOnboarding);
+router.post('/me/onboarding/skip', authenticate, skipOnboarding);
 router.post('/me/avatar', authenticate, handleUpload('avatar'), uploadAvatar);
 router.get('/me/completeness', authenticate, getProfileCompleteness);
 router.get('/me/export', authenticate, exportData);

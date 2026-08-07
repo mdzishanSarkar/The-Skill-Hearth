@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import L from 'leaflet';
 import { MapContainer, TileLayer, useMap, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
@@ -35,6 +36,37 @@ function MapSizer() {
   return null;
 }
 
+function FitResultsButton({ pins, center }: { pins: MapPin[]; center: [number, number] }) {
+  const map = useMap();
+  function handleClick() {
+    if (pins.length === 0) {
+      map.setView(center, 12);
+      return;
+    }
+    const bounds = L.latLngBounds(
+      pins.map((p) => [p.coordinates[1], p.coordinates[0]] as [number, number]),
+    );
+    map.fitBounds(bounds, { padding: [56, 56], maxZoom: 15 });
+  }
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      aria-label="Zoom to all results"
+      title="Zoom to all results"
+      className="map-fit-button"
+    >
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+        />
+      </svg>
+    </button>
+  );
+}
+
 export default function MapView({ pins, center, zoom = 12, isAuthenticated }: MapViewProps) {
   const centerLatLng: [number, number] = [center[1], center[0]];
   return (
@@ -46,6 +78,7 @@ export default function MapView({ pins, center, zoom = 12, isAuthenticated }: Ma
       <ZoomControl position="bottomleft" />
       <MapSizer />
       <Recenter center={centerLatLng} zoom={zoom} />
+      <FitResultsButton pins={pins} center={centerLatLng} />
       <ClusterLayer pins={pins} isAuthenticated={isAuthenticated} />
     </MapContainer>
   );

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { FiX } from 'react-icons/fi';
 import { createPost } from '../../services/community.service';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
+import Modal from '../ui/Modal';
 
 interface CreatePostModalProps {
   isOpen: boolean;
@@ -53,15 +53,8 @@ export default function CreatePostModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="mx-4 w-full max-w-lg rounded-xl bg-white shadow-xl">
-        <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
-          <h2 className="text-lg font-semibold text-gray-900">Create a Post</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-            <FiX className="h-5 w-5" />
-          </button>
-        </div>
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+    <Modal open={isOpen} onClose={onClose} title="Create a Post">
+      <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">What's on your mind?</label>
             <textarea
@@ -114,7 +107,6 @@ export default function CreatePostModal({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

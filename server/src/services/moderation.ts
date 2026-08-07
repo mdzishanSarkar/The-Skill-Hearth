@@ -5,7 +5,6 @@ import {
   Review,
   Message,
   Report,
-  Notification,
   AuditLog,
   Connection,
   RefreshToken,
@@ -17,6 +16,7 @@ import type { IUser } from '../models';
 import type { NotificationType } from '../models';
 import type { ReportAction } from '../models/Report';
 import { HttpError } from '../utils/errors';
+import { createNotification } from './notification';
 
 export interface ModerationContext {
   adminId: string;
@@ -61,7 +61,7 @@ async function resolveReportIfProvided(context: ModerationContext, action: Repor
 }
 
 async function notify(userId: Types.ObjectId, type: NotificationType, message: string, reportId?: string) {
-  await Notification.create({
+  await createNotification({
     userId,
     type,
     message,

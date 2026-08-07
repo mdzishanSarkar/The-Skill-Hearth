@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
-import { FiArrowUp, FiArrowDown, FiMessageSquare, FiFlag, FiTrash2 } from 'react-icons/fi';
+import { FiArrowUp, FiArrowDown, FiFlag, FiTrash2 } from 'react-icons/fi';
 import { votePost, deletePost, reportPost } from '../../services/community.service';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
@@ -68,6 +68,8 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
           <button
             onClick={() => handleVote('up')}
             disabled={!user || isVoting}
+            aria-label="Upvote post"
+            aria-pressed={userVote === 'up'}
             className={`rounded p-1 transition-colors ${
               userVote === 'up'
                 ? 'text-emerald-600 bg-emerald-50'
@@ -82,6 +84,8 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
           <button
             onClick={() => handleVote('down')}
             disabled={!user || isVoting}
+            aria-label="Downvote post"
+            aria-pressed={userVote === 'down'}
             className={`rounded p-1 transition-colors ${
               userVote === 'down'
                 ? 'text-red-600 bg-red-50'

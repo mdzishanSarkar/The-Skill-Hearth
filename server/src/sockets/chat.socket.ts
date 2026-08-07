@@ -48,20 +48,6 @@ export function setupChatSockets(io: Server, socket: Socket, user: SocketUser) {
       };
 
       io.to(`chat_${data.connectionId}`).emit('message:new', eventPayload);
-
-      const connection = await Connection.findById(data.connectionId);
-      if (connection) {
-        const otherUserId =
-          String(connection.requesterId) === user.userId
-            ? String(connection.teacherId)
-            : String(connection.requesterId);
-        io.to(`user_${otherUserId}`).emit('notification:new', {
-          type: 'new_message',
-          message: `New message from ${user.displayName}`,
-          referenceId: data.connectionId,
-          referenceModel: 'Connection',
-        });
-      }
     } catch {
       socket.emit('message:error', { message: 'Failed to send message' });
     }

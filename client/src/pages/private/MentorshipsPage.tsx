@@ -43,8 +43,8 @@ export default function MentorshipsPage() {
   }
 
   function statusBadge(status: string) {
-    const colors: Record<string, string> = {
-      pending: 'yellow',
+    const colors: Record<string, NonNullable<React.ComponentProps<typeof Badge>['color']>> = {
+      pending: 'amber',
       active: 'green',
       paused: 'blue',
       completed: 'gray',

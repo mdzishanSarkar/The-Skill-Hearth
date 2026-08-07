@@ -16,10 +16,10 @@ import {
 
 const router = Router();
 
-router.get('/google/url', authenticate, getGoogleAuthUrl);
+router.get('/google/url', getGoogleAuthUrl);
 router.get('/google/callback', googleCallback);
 router.post('/apple/callback', appleCallback);
-router.get('/apple/url', authenticate, getAppleAuthUrl);
+router.get('/apple/url', getAppleAuthUrl);
 router.get('/providers', authenticate, getLinkedProviders);
 router.delete('/providers/:provider', authenticate, unlinkProvider);
 router.post('/2fa/setup', authenticate, setupTwoFactor);

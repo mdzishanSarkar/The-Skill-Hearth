@@ -1,5 +1,6 @@
 import { Job } from 'bull';
-import { SavedSearch, Skill, User, Notification } from '../models';
+import { SavedSearch, Skill, User } from '../models';
+import { createNotification } from '../services/notification';
 
 export async function processSavedSearchAlert(job: Job): Promise<void> {
   console.log('[Job:SavedSearchAlert] Processing...');
@@ -34,7 +35,7 @@ export async function processSavedSearchAlert(job: Job): Promise<void> {
       });
 
       if (newCount > 0) {
-        await Notification.create({
+        await createNotification({
           userId: user._id,
           type: 'system_warning',
           message: `${newCount} new skill(s) match your saved search "${search.name || 'Unnamed'}"`,

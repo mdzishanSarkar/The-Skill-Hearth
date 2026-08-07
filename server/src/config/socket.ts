@@ -2,7 +2,6 @@ import type { Server } from 'http';
 import { Server as SocketServer, type Socket } from 'socket.io';
 import { socketAuth } from '../middleware/socketAuth';
 import { setupChatSockets } from '../sockets/chat.socket';
-import { setupNotificationSockets } from '../sockets/notification.socket';
 import type { SocketUser } from '../types/socket.types';
 
 let io: SocketServer;
@@ -33,7 +32,6 @@ export function initializeSocket(httpServer: Server): SocketServer {
     socket.join(`user_${user.userId}`);
 
     setupChatSockets(io, socket, user);
-    setupNotificationSockets(io, socket, user);
 
     socket.on('disconnect', () => {
       console.log(`Socket disconnected: ${user.userId}`);

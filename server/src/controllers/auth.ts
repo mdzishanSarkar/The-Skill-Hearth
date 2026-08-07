@@ -6,7 +6,7 @@ import { AuthRequest } from '../middleware/auth';
 const REFRESH_COOKIE = 'refreshToken';
 const REFRESH_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
-function setRefreshCookie(res: Response, token: string): void {
+export function setRefreshCookie(res: Response, token: string): void {
   res.cookie(REFRESH_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

@@ -39,6 +39,11 @@ export const completeOnboarding = asyncHandler(async (req: AuthRequest, res: Res
   res.json({ success: true, data: { user } });
 });
 
+export const skipOnboarding = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const user = await userService.skipOnboarding(req.userId!);
+  res.json({ success: true, data: { user } });
+});
+
 export const getProfileCompleteness = asyncHandler(async (req: AuthRequest, res: Response) => {
   const user = await User.findById(req.userId!);
   if (!user) {

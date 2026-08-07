@@ -3,6 +3,34 @@
   height: 100%;
 }
 
+.leaflet-container .leaflet-marker-icon {
+  cursor: pointer;
+}
+
+.map-fit-button {
+  position: absolute;
+  right: 12px;
+  bottom: 100px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #374151;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.map-fit-button:hover {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
 .leaflet-container img,
 .leaflet-container .leaflet-tile,
 .leaflet-container .leaflet-marker-icon,
@@ -13,6 +41,7 @@
 .skill-map-pin {
   background: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .skill-map-pin__bubble {

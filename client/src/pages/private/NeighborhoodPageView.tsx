@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { getNeighborhoodPage } from '../../services/discoveryEnhanced.service';
 import type { NeighborhoodPage } from '../../types/discovery.types';
 import { getApiError } from '../../types/api.types';

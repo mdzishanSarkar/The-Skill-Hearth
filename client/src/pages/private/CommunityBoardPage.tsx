@@ -105,6 +105,7 @@ export default function CommunityBoardPage() {
         <div className="flex-1" />
         <button
           onClick={fetchPosts}
+          aria-label="Refresh posts"
           className="text-gray-400 hover:text-gray-600"
         >
           <FiRefreshCw className="h-4 w-4" />

@@ -49,7 +49,7 @@ export default function ChatWindow({ connection }: ChatWindowProps) {
       }
     };
 
-    const handleRead = (data: { connectionId: string; userId: string }) => {
+    const handleRead = (data: { connectionId: string; userId: string; readAt: string }) => {
       if (data.connectionId === connection._id && data.userId !== me?._id) {
         setMessages((prev) =>
           prev.map((m) =>

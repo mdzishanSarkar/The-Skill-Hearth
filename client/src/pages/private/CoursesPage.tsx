@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { listCourses, enrollInCourse } from '../../services/course.service';
-import type { Course, CourseListResult } from '../../types/course.types';
+import type { CourseListResult } from '../../types/course.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';

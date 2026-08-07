@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { setupTwoFactor, verifyAndEnableTwoFactor, disableTwoFactor, getTwoFactorStatus } from '../../services/social.service';
+import { setupTwoFactor, verifyAndEnableTwoFactor, disableTwoFactor } from '../../services/social.service';
 import type { TwoFactorSetup as TwoFactorSetupType, TwoFactorStatus } from '../../types/social.types';
 import { getApiError } from '../../types/api.types';
 import Button from '../ui/Button';

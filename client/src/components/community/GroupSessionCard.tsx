@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
-import { FiUsers, FiMapPin, FiCalendar, FiVideo, FiClock } from 'react-icons/fi';
+import { FiUsers, FiMapPin, FiCalendar, FiVideo } from 'react-icons/fi';
 import type { GroupSession } from '../../types/groupSession.types';
 
 interface GroupSessionCardProps {

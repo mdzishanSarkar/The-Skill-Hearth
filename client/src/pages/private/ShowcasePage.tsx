@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { listShowcases, likeShowcase } from '../../services/showcase.service';
-import type { Showcase, ShowcaseListResult } from '../../types/showcase.types';
+import type { ShowcaseListResult } from '../../types/showcase.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';

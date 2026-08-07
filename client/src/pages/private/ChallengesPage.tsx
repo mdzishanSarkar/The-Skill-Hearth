@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { listChallenges, joinChallenge } from '../../services/challenge.service';
-import type { Challenge, ChallengeListResult } from '../../types/challenge.types';
+import type { ChallengeListResult } from '../../types/challenge.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';

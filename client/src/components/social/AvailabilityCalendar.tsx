@@ -4,7 +4,6 @@ import { getBlockOutDates, addBlockOutDate, removeBlockOutDate } from '../../ser
 import type { BlockOutDate } from '../../types/social.types';
 import { getApiError } from '../../types/api.types';
 import Button from '../ui/Button';
-import Input from '../ui/Input';
 
 export default function AvailabilityCalendar() {
   const [blockOutDates, setBlockOutDates] = useState<BlockOutDate[]>([]);

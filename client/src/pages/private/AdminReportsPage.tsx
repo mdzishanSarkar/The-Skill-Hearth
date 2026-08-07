@@ -7,7 +7,6 @@ import { getApiError } from '../../types/api.types';
 import type { Report, ReportStatus } from '../../types/report.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
-import Badge from '../../components/ui/Badge';
 import Avatar from '../../components/ui/Avatar';
 
 const STATUS_OPTIONS: (ReportStatus | 'all')[] = ['all', 'open', 'under_review', 'resolved', 'dismissed'];
@@ -44,14 +43,17 @@ export default function AdminReportsPage() {
   const [resolveAction, setResolveAction] = useState('');
   const [resolveResolution, setResolveResolution] = useState('');
 
-  if (status === 'loading') return <Spinner />;
-  if (!me || (me.role !== 'admin' && me.role !== 'moderator')) {
-    return <Navigate to="/dashboard" replace />;
-  }
+  const isModerator = me && (me.role === 'admin' || me.role === 'moderator');
 
   useEffect(() => {
+    if (!isModerator) return;
     loadReports();
-  }, [page, statusFilter, targetFilter]);
+  }, [page, statusFilter, targetFilter, isModerator]);
+
+  if (status === 'loading') return <Spinner />;
+  if (!isModerator) {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   async function loadReports() {
     setLoading(true);
@@ -157,8 +159,16 @@ export default function AdminReportsPage() {
         {reports.map((report) => (
           <div
             key={report._id}
+            role="button"
+            tabIndex={0}
             className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm cursor-pointer hover:border-indigo-200"
             onClick={() => setSelectedReport(report)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelectedReport(report);
+              }
+            }}
           >
             <div className="flex items-start justify-between">
               <div className="space-y-1">
@@ -207,6 +217,7 @@ export default function AdminReportsPage() {
               <button
                 type="button"
                 onClick={() => setSelectedReport(null)}
+                aria-label="Close"
                 className="rounded-md p-1 text-gray-400 hover:bg-gray-100"
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -241,7 +252,7 @@ export default function AdminReportsPage() {
                 <div>
                   <span className="text-sm text-gray-500">Reporter</span>
                   <div className="mt-1 flex items-center gap-2">
-                    <Avatar src={selectedReport.reporter.avatar} name={selectedReport.reporter.displayName} size="xs" />
+                    <Avatar src={selectedReport.reporter.avatar} name={selectedReport.reporter.displayName} size="sm" />
                     <span className="text-sm font-medium text-gray-900">{selectedReport.reporter.displayName}</span>
                   </div>
                 </div>

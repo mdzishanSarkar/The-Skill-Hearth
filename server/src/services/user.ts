@@ -159,13 +159,26 @@ function validateSelections(
   selections: OnboardingSkillSelection[],
   label: string
 ): void {
-  if (!Array.isArray(selections) || selections.length < 1 || selections.length > MAX_ONBOARDING_SKILLS) {
+  if (!Array.isArray(selections) || selections.length > MAX_ONBOARDING_SKILLS) {
     throw new HttpError(
       400,
       'VALIDATION_ERROR',
-      `Select between 1 and ${MAX_ONBOARDING_SKILLS} skills you ${label}`
+      `Select up to ${MAX_ONBOARDING_SKILLS} skills you ${label}`
     );
   }
+}
+
+export async function skipOnboarding(userId: string) {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+  }
+  if (user.hasCompletedOnboarding) {
+    throw new HttpError(400, 'ONBOARDING_ALREADY_COMPLETED', 'You have already completed onboarding');
+  }
+  user.hasCompletedOnboarding = true;
+  await user.save();
+  return sanitizeUser(user);
 }
 
 export async function completeOnboarding(userId: string, input: OnboardingInput) {
@@ -182,14 +195,17 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
   validateSelections(teach, 'can teach');
   validateSelections(learn, 'want to learn');
 
-  const location = input?.location;
-  if (!location || typeof location.city !== 'string' || !location.city.trim()) {
-    throw new HttpError(400, 'VALIDATION_ERROR', 'City is required');
-  }
+  const location = (input?.location ?? {}) as {
+    city?: string;
+    neighborhood?: string;
+    coordinates?: [number, number];
+    radiusPreference?: number;
+  };
+  const city = typeof location.city === 'string' ? location.city.trim() : '';
   if (location.coordinates !== undefined && !isValidCoordinatePair(location.coordinates)) {
     throw new HttpError(400, 'INVALID_COORDINATES', 'Invalid coordinates');
   }
-  const radius = Number(location.radiusPreference);
+  const radius = Number(location.radiusPreference ?? 5);
   if (!Number.isFinite(radius) || radius < 1 || radius > 100) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Radius must be between 1 and 100 km');
   }
@@ -207,7 +223,6 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
   const snapped = location.coordinates
     ? snapCoordinates(location.coordinates[0], location.coordinates[1])
     : ([0, 0] as [number, number]);
-  const city = location.city.trim();
   const neighborhood = (location.neighborhood ?? '').trim();
 
   await Skill.updateMany(
@@ -273,7 +288,7 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
   user.location.coordinates = snapped;
   user.location.radiusPreference = radius;
   user.bio = bio;
-  user.showOnMap = true;
+  user.showOnMap = Boolean(city && snapped[0] !== 0 && snapped[1] !== 0);
   if (Array.isArray(input.availability)) {
     user.availability = input.availability;
   }

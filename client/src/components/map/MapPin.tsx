@@ -70,7 +70,7 @@ export function buildPinPopup(pin: MapPin, isAuthenticated: boolean): string {
         <span>${formatLabel}</span>
         <span>${sessionLengthLabel}</span>
       </div>
-      <a class="skill-map-popup__cta" href="/skills/${escapeHtml(pin.id)}">View skill details</a>
+      <a class="skill-map-popup__cta" href="/skills/${escapeHtml(pin.id)}" data-skill-id="${escapeHtml(pin.id)}">View skill details</a>
       <a class="skill-map-popup__cta--secondary" href="/profile/${escapeHtml(pin.userId)}">View profile</a>
     </div>
   `;

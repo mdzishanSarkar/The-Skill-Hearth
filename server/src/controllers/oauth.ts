@@ -3,6 +3,7 @@ import { AuthRequest } from '../middleware/auth';
 import * as oauthService from '../services/oauth';
 import * as twoFactorService from '../services/twoFactor';
 import { asyncHandler } from '../utils/errors';
+import { setRefreshCookie } from './auth';
 
 export const getGoogleAuthUrl = asyncHandler(async (req: AuthRequest, res: Response) => {
   const url = oauthService.getGoogleAuthUrl();
@@ -17,13 +18,7 @@ export const googleCallback = asyncHandler(async (req: AuthRequest, res: Respons
   }
 
   const result = await oauthService.handleGoogleCallback(code);
-  res.cookie('refreshToken', (await import('../services/auth')).sanitizeUser(result.user as never), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/api/auth',
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+  setRefreshCookie(res, result.refreshToken);
 
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
   const isNewUser = result.isNewUser ? '1' : '0';
@@ -46,6 +41,7 @@ export const appleCallback = asyncHandler(async (req: AuthRequest, res: Response
   }
 
   const result = await oauthService.handleAppleCallback(code, idToken, user);
+  setRefreshCookie(res, result.refreshToken);
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
   const isNewUser = result.isNewUser ? '1' : '0';
   res.redirect(`${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`);

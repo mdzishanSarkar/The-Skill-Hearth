@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
-import { Mentorship, Skill, User, Notification } from '../models';
+import { Mentorship, Skill, User } from '../models';
 import { HttpError } from '../utils/errors';
+import { createNotification } from './notification';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -50,7 +51,7 @@ export async function requestMentorship(input: CreateMentorshipInput) {
     targetEndDate: new Date(Date.now() + (input.durationMonths || 3) * 30 * 24 * 60 * 60 * 1000),
   });
 
-  await Notification.create({
+  await createNotification({
     userId: toObjectId(input.mentorId),
     type: 'system_warning',
     referenceId: mentorship._id,
@@ -78,7 +79,7 @@ export async function respondToMentorship(
   mentorship.status = action === 'accept' ? 'active' : 'cancelled';
   await mentorship.save();
 
-  await Notification.create({
+  await createNotification({
     userId: mentorship.menteeId,
     type: action === 'accept' ? 'system_warning' : 'system_warning',
     referenceId: mentorship._id,
@@ -156,7 +157,7 @@ export async function completeMentorship(mentorshipId: string, userId: string) {
   await mentorship.save();
 
   for (const uid of [mentorship.mentorId, mentorship.menteeId]) {
-    await Notification.create({
+    await createNotification({
       userId: uid,
       type: 'system_warning',
       referenceId: mentorship._id,

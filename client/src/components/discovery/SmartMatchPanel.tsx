@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { getSmartMatches } from '../../services/discoveryEnhanced.service';
 import type { SmartMatch } from '../../types/discovery.types';
-import { getApiError } from '../../types/api.types';
 import Spinner from '../ui/Spinner';
 
 export default function SmartMatchPanel() {

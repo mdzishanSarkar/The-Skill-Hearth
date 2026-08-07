@@ -11,7 +11,7 @@ import { getTwoFactorStatus } from '../../services/social.service';
 import { useEffect } from 'react';
 
 export default function AccountSettingsPage() {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const [twoFAStatus, setTwoFAStatus] = useState<TwoFactorStatus>({ enabled: false, lastUsedAt: null });
   const [exporting, setExporting] = useState(false);
   const [deleting, setDeleting] = useState(false);

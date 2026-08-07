@@ -10,7 +10,7 @@ import {
 
 const router = Router();
 
-router.get('/:city/:neighborhood?', optionalAuth, listPosts);
+router.get('/:city{/:neighborhood}', optionalAuth, listPosts);
 router.get('/posts/:id', optionalAuth, getPost);
 router.post('/', authenticate, createPost);
 router.delete('/posts/:id', authenticate, deletePost);

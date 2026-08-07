@@ -8,12 +8,12 @@ import { RefreshToken } from '../models';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
-const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || 'http://localhost:5000/api/auth/google/callback';
+const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || 'http://localhost:5000/api/oauth/google/callback';
 const APPLE_CLIENT_ID = process.env.APPLE_CLIENT_ID || '';
 const APPLE_TEAM_ID = process.env.APPLE_TEAM_ID || '';
 const APPLE_KEY_ID = process.env.APPLE_KEY_ID || '';
 const APPLE_PRIVATE_KEY = process.env.APPLE_PRIVATE_KEY || '';
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+const APPLE_REDIRECT_URI = process.env.APPLE_REDIRECT_URI || 'http://localhost:5000/api/oauth/apple/callback';
 
 interface OAuthUserInfo {
   providerUserId: string;
@@ -34,7 +34,7 @@ export function getGoogleAuthUrl(): string {
   return `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 }
 
-export async function handleGoogleCallback(code: string): Promise<{ user: Record<string, unknown>; accessToken: string; isNewUser: boolean }> {
+export async function handleGoogleCallback(code: string): Promise<{ user: Record<string, unknown>; accessToken: string; refreshToken: string; isNewUser: boolean }> {
   const tokenResponse = await axios.post('https://oauth2.googleapis.com/token', {
     code,
     client_id: GOOGLE_CLIENT_ID,
@@ -59,7 +59,7 @@ export async function handleGoogleCallback(code: string): Promise<{ user: Record
 export function getAppleAuthUrl(): string {
   const params = new URLSearchParams({
     client_id: APPLE_CLIENT_ID,
-    redirect_uri: `${CLIENT_URL}/auth/apple/callback`,
+    redirect_uri: APPLE_REDIRECT_URI,
     response_type: 'code id_token',
     scope: 'name email',
     response_mode: 'form_post',
@@ -70,14 +70,20 @@ export function getAppleAuthUrl(): string {
 export async function handleAppleCallback(
   code: string,
   idToken: string,
-  user?: { name?: string; email?: string },
-): Promise<{ user: Record<string, unknown>; accessToken: string; isNewUser: boolean }> {
+  user?: { name?: string | { firstName?: string; lastName?: string }; email?: string },
+): Promise<{ user: Record<string, unknown>; accessToken: string; refreshToken: string; isNewUser: boolean }> {
   const payload = JSON.parse(Buffer.from(idToken.split('.')[1], 'base64').toString());
+
+  const name = user?.name;
+  const displayName =
+    typeof name === 'string'
+      ? name
+      : [name?.firstName, name?.lastName].filter(Boolean).join(' ');
 
   const userInfo: OAuthUserInfo = {
     providerUserId: payload.sub,
     email: user?.email || payload.email || '',
-    displayName: user?.name || '',
+    displayName,
     avatar: '',
   };
 
@@ -87,7 +93,7 @@ export async function handleAppleCallback(
 async function handleOAuthLogin(
   provider: 'google' | 'apple',
   userInfo: OAuthUserInfo,
-): Promise<{ user: Record<string, unknown>; accessToken: string; isNewUser: boolean }> {
+): Promise<{ user: Record<string, unknown>; accessToken: string; refreshToken: string; isNewUser: boolean }> {
   let isNewUser = false;
 
   let oauthRecord = await OAuthProvider.findOne({
@@ -148,6 +154,7 @@ async function handleOAuthLogin(
   return {
     user: sanitizeUser(user),
     accessToken,
+    refreshToken,
     isNewUser,
   };
 }

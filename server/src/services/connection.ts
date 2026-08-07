@@ -1,7 +1,8 @@
 import { Types } from 'mongoose';
-import { Connection, Skill, User, Notification } from '../models';
+import { Connection, Skill, User } from '../models';
 import type { ConnectionStatus } from '../models';
 import { HttpError } from '../utils/errors';
+import { createNotification } from './notification';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -66,7 +67,7 @@ export async function sendRequest(input: SendRequestInput) {
     status: 'pending',
   });
 
-  await Notification.create({
+  await createNotification({
     userId: teacherObjectId,
     type: 'request_received',
     referenceId: connection._id,
@@ -102,7 +103,7 @@ export async function respondToRequest(
   if (responseMessage) connection.responseMessage = responseMessage.slice(0, 500);
   await connection.save();
 
-  await Notification.create({
+  await createNotification({
     userId: connection.requesterId,
     type: action === 'accepted' ? 'request_accepted' : 'request_rejected',
     referenceId: connection._id,
@@ -156,7 +157,7 @@ export async function cancelConnection(connectionId: string, userId: string, rea
       ? String(connection.teacherId)
       : String(connection.requesterId);
 
-  await Notification.create({
+  await createNotification({
     userId: new Types.ObjectId(otherUserId),
     type: 'system_warning',
     referenceId: connection._id,
@@ -187,7 +188,7 @@ export async function markCompleted(connectionId: string, userId: string) {
 
   const participants = [String(connection.requesterId), String(connection.teacherId)];
   for (const uid of participants) {
-    await Notification.create({
+    await createNotification({
       userId: new Types.ObjectId(uid),
       type: 'review_prompt',
       referenceId: connection._id,

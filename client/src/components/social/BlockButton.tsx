@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FiBan, FiCheck } from 'react-icons/fi';
+import { FiUserX, FiCheck } from 'react-icons/fi';
 import { blockUser, unblockUser, getBlockedUsers } from '../../services/block.service';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
@@ -69,7 +69,7 @@ export default function BlockButton({ targetUserId }: BlockButtonProps) {
           </>
         ) : (
           <>
-            <FiBan className="h-4 w-4" />
+            <FiUserX className="h-4 w-4" />
             Block
           </>
         )}

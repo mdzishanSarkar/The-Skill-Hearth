@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
-import { Course, CourseEnrollment, Skill, User, Notification } from '../models';
+import { Course, CourseEnrollment, Skill, User } from '../models';
 import { HttpError } from '../utils/errors';
+import { createNotification } from './notification';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -129,7 +130,7 @@ export async function enrollInCourse(courseId: string, learnerId: string) {
   course.enrollmentCount += 1;
   await course.save();
 
-  await Notification.create({
+  await createNotification({
     userId: course.teacherId,
     type: 'system_warning',
     referenceId: course._id,

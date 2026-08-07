@@ -1,3 +1,42 @@
+export type MapSkillType = 'teach' | 'learn';
+
+export interface MapPin {
+  id: string;
+  userId: string;
+  type: MapSkillType;
+  categoryName: string;
+  skillName: string;
+  format: string;
+  sessionLength: '30min' | '1hr' | '2hr+';
+  coordinates: [number, number];
+  distanceKm?: number;
+  teacher: {
+    _id: string;
+    displayName: string;
+    avatar: string;
+    rating: number;
+    reviewCount: number;
+  };
+}
+
+export interface MapDiscoveryParams {
+  lat?: number;
+  lng?: number;
+  radiusKm?: number;
+  categoryIds?: string[];
+  type?: MapSkillType;
+  availability?: boolean;
+  limit?: number;
+}
+
+export interface GeocodedPlace {
+  lat: number;
+  lng: number;
+  displayName: string;
+  label: string;
+  localName?: string;
+}
+
 export interface NeighborhoodPage {
   city: string;
   neighborhood: string;

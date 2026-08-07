@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
-import { Message, Connection, Notification } from '../models';
+import { Message, Connection } from '../models';
 import { HttpError } from '../utils/errors';
+import { createNotification } from './notification';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -40,7 +41,7 @@ export async function sendMessage(connectionId: string, senderId: string, conten
       ? String(connection.teacherId)
       : String(connection.requesterId);
 
-  await Notification.create({
+  await createNotification({
     userId: new Types.ObjectId(otherUserId),
     type: 'new_message',
     referenceId: message._id,

@@ -1,5 +1,6 @@
 import { Job } from 'bull';
-import { User, Skill, SkillSwap, Notification } from '../models';
+import { User, Skill, SkillSwap } from '../models';
+import { createNotification } from '../services/notification';
 
 export async function processSkillSwapMatch(job: Job): Promise<void> {
   console.log('[Job:SkillSwapMatch] Processing...');
@@ -70,7 +71,7 @@ export async function processSkillSwapMatch(job: Job): Promise<void> {
               status: 'suggested',
             });
 
-            await Notification.create({
+            await createNotification({
               userId: userA._id,
               type: 'system_warning',
               message: `New skill swap suggestion: Teach ${teachSkill.skillName}, Learn ${learnSkill.skillName}`,

@@ -8,7 +8,7 @@ export default function NotificationBell() {
     <Link
       to="/notifications"
       className="relative text-sm font-medium text-gray-600 hover:text-indigo-600"
-      title="Notifications"
+      aria-label="Notifications"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

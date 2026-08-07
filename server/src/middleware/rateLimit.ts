@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import rateLimit, { ipKeyGenerator } from 'express-rate-limit';
-import { redisGet, redisSetEx, redisIncr, redisExpire, isRedisAvailable } from '../config/redis';
-import { AuthRequest } from './auth';
+import { redisIncr, redisExpire, isRedisAvailable } from '../config/redis';
+import User from '../models/User';
+import { verifyAccessToken } from '../utils/jwt';
 
 interface RateLimitInfoOnRequest {
   rateLimit?: {
@@ -66,26 +67,58 @@ const TIER_LIMITS: Record<string, number> = {
   admin: 1000,
 };
 
-function getTierFromRequest(req: Request): string {
-  const authReq = req as AuthRequest;
-  if (!authReq.userId) return 'guest';
-  if ((authReq as any).user?.role === 'admin') return 'admin';
-  if ((authReq as any).user?.role === 'moderator') return 'moderator';
-  if ((authReq as any).user?.isPro) return 'pro';
-  return 'user';
+// Paths that must never be throttled: health checks and static file serving.
+const RATE_LIMIT_EXEMPT_PATHS = [/^\/api\/health(?:\/|$)/, /^\/uploads(?:\/|$)/];
+
+// The global tiered limiter runs before route auth middleware, so it must
+// resolve the requester itself from the access token instead of relying on
+// req.userId (which is only set by `authenticate` later in the pipeline).
+async function resolveTier(req: Request): Promise<{ tier: string; key: string }> {
+  const authHeader = req.headers.authorization;
+  let userId: string | null = null;
+  if (authHeader?.startsWith('Bearer ')) {
+    userId = verifyAccessToken(authHeader.slice(7))?.userId ?? null;
+  }
+
+  const guestKey = `guest:${ipKeyGenerator(req.ip ?? '')}:anon`;
+  if (!userId) return { tier: 'guest', key: guestKey };
+
+  const user = await User.findById(userId).select('role isPro').lean();
+  if (!user) return { tier: 'guest', key: guestKey };
+
+  const tier =
+    user.role === 'admin' ? 'admin'
+    : user.role === 'moderator' ? 'moderator'
+    : user.isPro ? 'pro'
+    : 'user';
+
+  return { tier, key: `${tier}:${userId}` };
 }
 
 export async function tieredRateLimiter(req: Request, res: Response, next: NextFunction): Promise<void> {
+  if (RATE_LIMIT_EXEMPT_PATHS.some((pattern) => pattern.test(req.path))) {
+    return next();
+  }
+
   if (!(await isRedisAvailable())) {
     globalRateLimiterFallback(req, res, next);
     return;
   }
 
-  const tier = getTierFromRequest(req);
+  let tier: string;
+  let keySuffix: string;
+  try {
+    const resolved = await resolveTier(req);
+    tier = resolved.tier;
+    keySuffix = resolved.key;
+  } catch {
+    // Degrade gracefully: never block traffic because tiering failed.
+    return next();
+  }
+
   const maxRequests = TIER_LIMITS[tier] || TIER_LIMITS.user;
   const windowSeconds = 15 * 60;
-  const userId = (req as AuthRequest).userId || 'anon';
-  const key = `ratelimit:${tier}:${ipKeyGenerator(req.ip ?? '')}:${userId}`;
+  const key = `ratelimit:${keySuffix}`;
 
   try {
     const current = await redisIncr(key);

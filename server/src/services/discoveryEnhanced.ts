@@ -3,6 +3,7 @@ import type { PipelineStage } from 'mongoose';
 import { Skill, User, SavedSearch, LearnerRequest } from '../models';
 import { HttpError } from '../utils/errors';
 import { haversineKm } from '../utils/geo';
+import { createNotification } from './notification';
 
 const EARTH_RADIUS_KM = 6378.1;
 
@@ -170,8 +171,7 @@ export async function respondToLearnerRequest(requestId: string, teacherId: stri
   request.responsesCount += 1;
   await request.save();
 
-  const { Notification } = await import('../models');
-  await Notification.create({
+  await createNotification({
     userId: request.authorId,
     type: 'request_received',
     referenceId: request._id,

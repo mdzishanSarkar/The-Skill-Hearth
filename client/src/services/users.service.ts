@@ -20,6 +20,11 @@ export async function completeOnboarding(input: OnboardingInput): Promise<User> 
   return (data.data as { user: User }).user;
 }
 
+export async function skipOnboarding(): Promise<User> {
+  const { data } = await api.post('/users/me/onboarding/skip');
+  return (data.data as { user: User }).user;
+}
+
 export async function uploadAvatar(file: File): Promise<User> {
   const form = new FormData();
   form.append('avatar', file);

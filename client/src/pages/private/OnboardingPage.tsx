@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { completeOnboarding, uploadAvatar } from '../../services/users.service';
+import { completeOnboarding, skipOnboarding, uploadAvatar } from '../../services/users.service';
 import { getCategories } from '../../services/skills';
 import { getApiError } from '../../types/api.types';
 import type { Category } from '../../types/skill.types';
@@ -164,27 +164,8 @@ export default function OnboardingPage() {
     );
   }
 
-  function canGoNext(): boolean {
-    if (step === 0) return teach.length >= 1;
-    if (step === 1) return learn.length >= 1;
-    if (step === 2) return city.trim().length > 0;
-    return true;
-  }
-
   function handleNext() {
     setError('');
-    if (step === 0 && teach.length < 1) {
-      setError('Pick at least one skill you can teach');
-      return;
-    }
-    if (step === 1 && learn.length < 1) {
-      setError('Pick at least one skill you want to learn');
-      return;
-    }
-    if (step === 2 && !city.trim()) {
-      setError('Enter your city to find skills nearby');
-      return;
-    }
     setStep((prev) => Math.min(prev + 1, STEPS.length - 1));
   }
 
@@ -262,6 +243,19 @@ export default function OnboardingPage() {
     }
   }
 
+  async function handleSkip() {
+    setError('');
+    setSubmitting(true);
+    try {
+      const user = await skipOnboarding();
+      setUser(user);
+      navigate('/dashboard', { replace: true });
+    } catch (err) {
+      setError(getApiError(err));
+      setSubmitting(false);
+    }
+  }
+
   const stepLabel = `${STEPS[step]} (${step + 1}/${STEPS.length})`;
 
   return (
@@ -271,6 +265,17 @@ export default function OnboardingPage() {
         <p className="mt-1 text-sm text-gray-600">
           Start with what you can teach and learn — the rest follows.
         </p>
+      </div>
+
+      <div className="mt-4 flex justify-end">
+        <button
+          type="button"
+          onClick={handleSkip}
+          disabled={submitting}
+          className="text-sm font-medium text-gray-500 underline-offset-2 hover:text-indigo-600 hover:underline"
+        >
+          Skip for now
+        </button>
       </div>
 
       <ol className="mt-8 flex items-center gap-2">
@@ -296,7 +301,7 @@ export default function OnboardingPage() {
         {step === 0 && (
           <>
             <p className="mt-1 text-sm text-gray-600">
-              What could you teach a neighbor? Pick {MAX_SKILLS} or fewer.
+              What could you teach a neighbor? Pick up to {MAX_SKILLS} — or skip ahead, you can add these later.
             </p>
             <div className="mt-3 flex items-center justify-between gap-4">
               <label className="text-sm font-medium text-gray-700">Your experience</label>
@@ -317,7 +322,7 @@ export default function OnboardingPage() {
         {step === 1 && (
           <>
             <p className="mt-1 text-sm text-gray-600">
-              What would you love to learn? Pick {MAX_SKILLS} or fewer.
+              What would you love to learn? Pick up to {MAX_SKILLS} — or skip ahead, you can add these later.
             </p>
             <div className="mt-4">{renderSkillPicker(learn, setLearn, '')}</div>
           </>
@@ -342,10 +347,9 @@ export default function OnboardingPage() {
                 <Input
                   id="onboarding-city"
                   label="City"
-                  required
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  placeholder="e.g. London"
+                  placeholder="e.g. London (optional)"
                 />
                 <Input
                   id="onboarding-neighborhood"
@@ -445,7 +449,7 @@ export default function OnboardingPage() {
             Back
           </Button>
           {step < STEPS.length - 1 ? (
-            <Button type="button" onClick={handleNext} disabled={!canGoNext()}>
+            <Button type="button" onClick={handleNext}>
               Continue
             </Button>
           ) : (

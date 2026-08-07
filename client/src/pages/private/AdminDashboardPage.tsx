@@ -22,14 +22,12 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  if (status === 'loading') return <Spinner />;
-  if (!me || (me.role !== 'admin' && me.role !== 'moderator')) {
-    return <Navigate to="/dashboard" replace />;
-  }
+  const isModerator = me && (me.role === 'admin' || me.role === 'moderator');
 
   useEffect(() => {
+    if (!isModerator) return;
     loadStats();
-  }, []);
+  }, [isModerator]);
 
   async function loadStats() {
     try {
@@ -40,6 +38,11 @@ export default function AdminDashboardPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  if (status === 'loading') return <Spinner />;
+  if (!isModerator) {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (

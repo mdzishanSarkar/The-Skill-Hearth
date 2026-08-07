@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { endorseSkill, removeEndorsement, checkEndorsed, getUserEndorsements } from '../../services/endorsement.service';
+import { endorseSkill, removeEndorsement, checkEndorsed } from '../../services/endorsement.service';
 import { getApiError } from '../../types/api.types';
 import Button from '../ui/Button';
 

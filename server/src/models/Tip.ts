@@ -72,7 +72,6 @@ const tipSchema = new Schema<ITip>(
 tipSchema.index({ payerId: 1, createdAt: -1 });
 tipSchema.index({ payeeId: 1, createdAt: -1 });
 tipSchema.index({ connectionId: 1 });
-tipSchema.index({ stripePaymentIntentId: 1 }, { sparse: true });
 
 const Tip = mongoose.model<ITip>('Tip', tipSchema);
 export default Tip;

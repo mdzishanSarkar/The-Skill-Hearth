@@ -41,7 +41,5 @@ const twoFactorSecretSchema = new Schema<ITwoFactorSecret>(
   }
 );
 
-twoFactorSecretSchema.index({ userId: 1 });
-
 const TwoFactorSecret = mongoose.model<ITwoFactorSecret>('TwoFactorSecret', twoFactorSecretSchema);
 export default TwoFactorSecret;

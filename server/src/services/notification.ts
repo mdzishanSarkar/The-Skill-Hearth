@@ -2,8 +2,9 @@ import { Types } from 'mongoose';
 import { Notification } from '../models';
 import type { NotificationType } from '../models';
 import { HttpError } from '../utils/errors';
+import { getIO } from '../config/socket';
 
-function toObjectId(value: string): Types.ObjectId {
+function toObjectId(value: string | Types.ObjectId): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid id');
   }
@@ -11,21 +12,29 @@ function toObjectId(value: string): Types.ObjectId {
 }
 
 export async function createNotification(input: {
-  userId: string;
+  userId: string | Types.ObjectId;
   type: NotificationType;
   message: string;
-  referenceId?: string;
+  referenceId?: string | Types.ObjectId;
   referenceModel?: string;
 }) {
-  return Notification.create({
+  const notification = await Notification.create({
     userId: toObjectId(input.userId),
     type: input.type,
     message: input.message.slice(0, 300),
-    referenceId: input.referenceId && Types.ObjectId.isValid(input.referenceId)
+    referenceId: input.referenceId !== undefined && Types.ObjectId.isValid(input.referenceId)
       ? new Types.ObjectId(input.referenceId)
       : undefined,
     referenceModel: input.referenceModel,
   });
+
+  try {
+    getIO().to(`user_${String(input.userId)}`).emit('notification:new', {});
+  } catch {
+    // Socket.IO not initialized (e.g. during tests or job processing)
+  }
+
+  return notification;
 }
 
 export async function getNotifications(userId: string, page = 1, limit = 20) {

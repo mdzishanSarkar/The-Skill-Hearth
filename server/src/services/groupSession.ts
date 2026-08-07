@@ -1,8 +1,9 @@
 import { Types } from 'mongoose';
-import { GroupSession, Skill, User, Notification, Message } from '../models';
+import { GroupSession, Skill, User, Message } from '../models';
 import type { GroupSessionStatus } from '../models';
 import { HttpError } from '../utils/errors';
 import { moderateText, shouldFlagForReview, getFlagReason } from './contentModeration';
+import { createNotification } from './notification';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -209,7 +210,7 @@ export async function joinSession(sessionId: string, userId: string) {
   }
   await session.save();
 
-  await Notification.create({
+  await createNotification({
     userId: session.teacherId,
     type: 'system_warning',
     referenceId: session._id,
@@ -263,7 +264,7 @@ export async function completeSession(sessionId: string, userId: string) {
 
   const allParticipants = [String(session.teacherId), ...session.participants.map(String)];
   for (const uid of allParticipants) {
-    await Notification.create({
+    await createNotification({
       userId: new Types.ObjectId(uid),
       type: 'system_warning',
       referenceId: session._id,
@@ -296,7 +297,7 @@ export async function cancelSession(sessionId: string, userId: string, reason?: 
 
   const allParticipants = session.participants.map(String);
   for (const uid of allParticipants) {
-    await Notification.create({
+    await createNotification({
       userId: new Types.ObjectId(uid),
       type: 'system_warning',
       referenceId: session._id,

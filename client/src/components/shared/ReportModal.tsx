@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import type { ReportReason, ReportTargetType } from '../../types/report.types';
-import { REPORT_REASON_LABELS, REPORT_REASONS } from '../../types/report.types';
+import { REPORT_REASONS } from '../../types/report.types';
 import { getApiError } from '../../types/api.types';
 
 interface ReportModalProps {
@@ -68,17 +68,17 @@ export default function ReportModal({
         <div className="mt-2 flex flex-col gap-2">
           {REPORT_REASONS[targetType].map((item) => (
             <label
-              key={item}
+              key={item.value}
               className="flex cursor-pointer items-center gap-2.5 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-800 hover:bg-gray-50"
             >
               <input
                 type="radio"
                 name={`report-reason-${targetType}`}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500"
-                checked={reason === item}
-                onChange={() => setReason(item)}
+                checked={reason === item.value}
+                onChange={() => setReason(item.value)}
               />
-              {REPORT_REASON_LABELS[item]}
+              {item.label}
             </label>
           ))}
         </div>

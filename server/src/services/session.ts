@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
-import { Connection, SessionNote, Notification, Message } from '../models';
+import { Connection, SessionNote, Message } from '../models';
 import { HttpError } from '../utils/errors';
+import { createNotification } from './notification';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -52,7 +53,7 @@ export async function proposeSchedule(
       ? String(connection.teacherId)
       : String(connection.requesterId);
 
-  await Notification.create({
+  await createNotification({
     userId: new Types.ObjectId(otherUserId),
     type: 'request_received',
     referenceId: connection._id,
@@ -159,7 +160,7 @@ export async function reportNoShow(connectionId: string, userId: string, reason?
       ? String(connection.teacherId)
       : String(connection.requesterId);
 
-  await Notification.create({
+  await createNotification({
     userId: new Types.ObjectId(otherUserId),
     type: 'system_warning',
     referenceId: connection._id,
