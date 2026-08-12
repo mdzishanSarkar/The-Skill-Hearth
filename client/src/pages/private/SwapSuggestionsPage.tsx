@@ -5,6 +5,9 @@ import type { SwapSuggestion } from '../../types/social.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiRefreshCw } from 'react-icons/fi';
 
 export default function SwapSuggestionsPage() {
   const [suggestions, setSuggestions] = useState<SwapSuggestion[]>([]);
@@ -52,35 +55,36 @@ export default function SwapSuggestionsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Skill Swap Suggestions</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Users who want to learn what you teach, and can teach what you want to learn.
-      </p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiRefreshCw />}
+        title="Skill Swap Suggestions"
+        subtitle="Users who want to learn what you teach, and can teach what you want to learn."
+      />
 
       {suggestions.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center">
-          <p className="text-sm text-gray-500">No swap suggestions available right now.</p>
-          <p className="mt-1 text-xs text-gray-400">
-            Add more skills to your profile to increase your chances of finding matches.
-          </p>
-        </div>
+        <EmptyState
+          className="mt-8"
+          icon={<FiRefreshCw />}
+          title="No swap suggestions right now"
+          description="Add more skills to your profile to increase your chances of finding matches."
+        />
       ) : (
         <div className="mt-6 space-y-4">
           {suggestions.map((s) => (
             <div
               key={s.otherUser._id}
-              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{s.otherUser.displayName}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{s.otherUser.displayName}</p>
                   <div className="mt-2 space-y-1">
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-medium">They teach:</span>{' '}
                       {s.otherTeachesSkill.skillName}
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-medium">You teach:</span>{' '}
                       {s.userTeachesSkill.skillName}
                     </p>

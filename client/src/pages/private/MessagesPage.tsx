@@ -7,6 +7,8 @@ import { useAuth } from '../../hooks/useAuth';
 import ChatList from '../../components/chat/ChatList';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
+import PageHeader from '../../components/ui/PageHeader';
+import { FiMessageCircle } from 'react-icons/fi';
 
 export default function MessagesPage() {
   const { user: me } = useAuth();
@@ -33,7 +35,7 @@ export default function MessagesPage() {
   if (error) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <p className="text-sm text-red-600">{error}</p>
+        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
         <Button variant="secondary" size="sm" className="mt-4" onClick={() => window.location.reload()}>
           Retry
         </Button>
@@ -42,20 +44,24 @@ export default function MessagesPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Messages</h1>
-        <div className="flex gap-3">
-          <Link to="/inbox" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-            Inbox
-          </Link>
-          <Link to="/outbox" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-            Outbox
-          </Link>
-        </div>
-      </div>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiMessageCircle />}
+        title="Messages"
+        subtitle="Chats with your session partners."
+        actions={
+          <div className="flex gap-3">
+            <Link to="/inbox" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+              Inbox
+            </Link>
+            <Link to="/outbox" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+              Outbox
+            </Link>
+          </div>
+        }
+      />
 
-      <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm">
+      <div className="card mt-6 overflow-hidden">
         <ChatList connections={connections} currentUserId={me?._id || ''} />
       </div>
     </div>

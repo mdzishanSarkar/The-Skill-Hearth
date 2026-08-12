@@ -6,6 +6,9 @@ import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiLayers } from 'react-icons/fi';
 
 export default function BundlesPage() {
   const [bundles, setBundles] = useState<SkillBundle[]>([]);
@@ -53,45 +56,49 @@ export default function BundlesPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Skill Bundles</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Curated learning paths — bundles of related skills to help you learn systematically.
-      </p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiLayers />}
+        title="Skill Bundles"
+        subtitle="Curated learning paths — bundles of related skills to help you learn systematically."
+      />
 
       {bundles.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center">
-          <p className="text-sm text-gray-500">No bundles yet.</p>
-        </div>
+        <EmptyState
+          className="mt-8"
+          icon={<FiLayers />}
+          title="No bundles yet"
+          description="Curated learning bundles will appear here once the community creates them."
+        />
       ) : (
         <div className="mt-6 space-y-4">
           {bundles.map((bundle) => (
             <div
               key={bundle._id}
-              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm"
             >
               <div className="flex items-start justify-between">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-900">{bundle.name}</h3>
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{bundle.name}</h3>
                     {bundle.isOfficial && (
                       <Badge color="indigo">Official</Badge>
                     )}
                   </div>
                   {bundle.description && (
-                    <p className="mt-1 text-xs text-gray-600">{bundle.description}</p>
+                    <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">{bundle.description}</p>
                   )}
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {bundle.skillIds.map((skill) => (
                       <span
                         key={skill._id}
-                        className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700"
+                        className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-300"
                       >
                         {skill.skillName}
                       </span>
                     ))}
                   </div>
-                  <p className="mt-2 text-xs text-gray-400">
+                  <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
                     by {bundle.createdBy.displayName}
                   </p>
                 </div>
@@ -114,7 +121,7 @@ export default function BundlesPage() {
           <Button variant="secondary" disabled={page <= 1} onClick={() => setPage(page - 1)}>
             Prev
           </Button>
-          <span className="py-2 text-sm text-gray-600">Page {page} of {totalPages}</span>
+          <span className="py-2 text-sm text-gray-600 dark:text-gray-400">Page {page} of {totalPages}</span>
           <Button variant="secondary" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>
             Next
           </Button>

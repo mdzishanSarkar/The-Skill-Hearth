@@ -123,7 +123,7 @@ export default function ChatWindow({ connection }: ChatWindowProps) {
     <div className="flex flex-1 flex-col overflow-hidden">
       <div className="flex-1 overflow-y-auto p-4">
         {messages.length === 0 && (
-          <p className="mt-8 text-center text-sm text-gray-400">
+          <p className="mt-8 text-center text-sm text-gray-400 dark:text-gray-500">
             No messages yet. Say hello!
           </p>
         )}

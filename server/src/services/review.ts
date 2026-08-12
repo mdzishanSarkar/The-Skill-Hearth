@@ -2,6 +2,8 @@ import { Types } from 'mongoose';
 import { Review, Connection, User, Skill } from '../models';
 import type { ReviewTag } from '../models';
 import { HttpError } from '../utils/errors';
+import { awardXP } from './gamification';
+import { createActivityEvent } from './activityFeed';
 
 const VALID_TAGS: ReviewTag[] = [
   'Patient teacher',
@@ -80,6 +82,22 @@ export async function submitReview(reviewerId: string, connectionId: string, inp
   });
 
   await recalculateUserRating(new Types.ObjectId(revieweeId));
+
+  try {
+    await awardXP(reviewerId, 'leave_review');
+    await createActivityEvent({
+      actorId: revieweeId,
+      eventType: 'review_received',
+      subjectType: 'review',
+      subjectId: review._id,
+      title: `Received a ${rating}-star review ⭐`,
+      subtitle: 'Word travels at the hearth',
+      emoji: rating >= 4 ? '🌟' : '⭐',
+      visibility: 'public',
+    });
+  } catch {
+    // best-effort
+  }
 
   return review.toJSON() as unknown as Record<string, unknown>;
 }

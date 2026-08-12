@@ -55,7 +55,7 @@ export default function ChatRoomPage() {
 
   if (loading) {
     return (
-      <div className="flex h-[calc(100vh-57px)] items-center justify-center">
+      <div className="flex h-[calc(100dvh-64px)] items-center justify-center">
         <Spinner size="lg" />
       </div>
     );
@@ -63,9 +63,9 @@ export default function ChatRoomPage() {
 
   if (error || !connection) {
     return (
-      <div className="flex h-[calc(100vh-57px)] flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-xl font-semibold text-gray-900">Chat unavailable</h1>
-        <p className="mt-2 text-sm text-gray-600">{error || 'Connection not found.'}</p>
+      <div className="flex h-[calc(100dvh-64px)] flex-col items-center justify-center px-4 text-center">
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Chat unavailable</h1>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{error || 'Connection not found.'}</p>
         <Link to="/messages" className="mt-6">
           <Button variant="secondary">Back to messages</Button>
         </Link>
@@ -81,10 +81,10 @@ export default function ChatRoomPage() {
   const skill = typeof connection.skillId === 'object' ? connection.skillId : null;
 
   return (
-    <div className="flex h-[calc(100vh-57px)]">
+    <div className="flex h-[calc(100dvh-64px)]">
       <div className="flex flex-1 flex-col">
-        <div className="flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-3">
-          <Link to="/messages" className="text-sm text-indigo-600 hover:text-indigo-500">
+        <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-3">
+          <Link to="/messages" className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">
             &larr;
           </Link>
           <Avatar
@@ -93,11 +93,11 @@ export default function ChatRoomPage() {
             size="sm"
           />
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-gray-900 truncate">
+            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
               {other?.displayName || 'Unknown'}
             </p>
             {skill && (
-              <p className="text-xs text-gray-500 truncate">{skill.skillName}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{skill.skillName}</p>
             )}
           </div>
           <form onSubmit={handleSearch} className="flex gap-1">
@@ -106,7 +106,7 @@ export default function ChatRoomPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search messages..."
-              className="w-32 rounded-md border border-gray-300 px-2 py-1 text-xs focus:border-indigo-500 focus:outline-none lg:w-48"
+              className="w-32 rounded-md border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none lg:w-48"
             />
             <Button type="submit" variant="secondary" size="sm" loading={searching}>
               Search
@@ -121,14 +121,14 @@ export default function ChatRoomPage() {
           </Button>
           <Link
             to={`/connection/${connection._id}`}
-            className="text-xs text-indigo-600 hover:text-indigo-500"
+            className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
           >
             Details
           </Link>
         </div>
 
         {searchResults.length > 0 && (
-          <div className="border-b border-gray-200 bg-yellow-50 p-3">
+          <div className="border-b border-gray-200 dark:border-gray-700 bg-yellow-50 p-3">
             <p className="text-xs font-medium text-yellow-800">
               {searchResults.length} result{searchResults.length === 1 ? '' : 's'} for "{searchQuery}"
             </p>
@@ -153,7 +153,7 @@ export default function ChatRoomPage() {
       </div>
 
       {showSidebar && (
-        <div className="w-80 shrink-0 border-l border-gray-200 bg-gray-50 p-4 overflow-y-auto">
+        <div className="w-80 shrink-0 border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4 overflow-y-auto">
           <SessionNotes connectionId={connection._id} />
           <div className="mt-4">
             <SchedulePicker connectionId={connection._id} />

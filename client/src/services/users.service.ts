@@ -38,3 +38,11 @@ export async function getUserById(id: string): Promise<User> {
   const { data } = await api.get(`/users/${id}`);
   return (data.data as { user: User }).user;
 }
+
+export async function reverseGeocode(
+  lat: number,
+  lng: number
+): Promise<{ city: string; neighborhood: string }> {
+  const { data } = await api.get('/users/location/reverse', { params: { lat, lng } });
+  return data.data as { city: string; neighborhood: string };
+}

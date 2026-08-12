@@ -11,6 +11,9 @@ import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiCompass, FiPlus } from 'react-icons/fi';
 
 export default function LearnerBoardPage() {
   const { user } = useAuth();
@@ -93,20 +96,22 @@ export default function LearnerBoardPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Looking for a Teacher</h1>
-        <Button size="sm" onClick={() => setShowForm(!showForm)}>
-          {showForm ? 'Cancel' : 'Post a request'}
-        </Button>
-      </div>
-      <p className="mt-1 text-sm text-gray-500">
-        Learners post what they want to learn. Teachers browse and offer to help.
-      </p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiCompass />}
+        title="Looking for a Teacher"
+        subtitle="Learners post what they want to learn. Teachers browse and offer to help."
+        actions={
+          <Button size="sm" onClick={() => setShowForm(!showForm)}>
+            <FiPlus className="h-4 w-4" />
+            {showForm ? 'Cancel' : 'Post a request'}
+          </Button>
+        }
+      />
 
       {showForm && (
-        <form onSubmit={handleCreate} className="mt-6 rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
-          <h3 className="text-sm font-semibold text-gray-900">What do you want to learn?</h3>
+        <form onSubmit={handleCreate} className="mt-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">What do you want to learn?</h3>
           <div className="mt-4 space-y-3">
             <Input
               id="skill-name"
@@ -123,22 +128,22 @@ export default function LearnerBoardPage() {
               placeholder="e.g., Food & Cooking"
             />
             <div>
-              <label className="block text-sm font-medium text-gray-700">Description</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value.slice(0, 1000))}
                 rows={3}
                 maxLength={1000}
-                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+                className="mt-1 w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
                 placeholder="Tell teachers what you're looking for..."
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Format</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Format</label>
               <select
                 value={format}
                 onChange={(e) => setFormat(e.target.value as 'in-person' | 'online' | 'either')}
-                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+                className="mt-1 w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
               >
                 <option value="either">Either</option>
                 <option value="in-person">In-person</option>
@@ -153,24 +158,27 @@ export default function LearnerBoardPage() {
       )}
 
       {requests.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center">
-          <p className="text-sm text-gray-500">No open requests yet. Be the first to post one!</p>
-        </div>
+        <EmptyState
+          className="mt-8"
+          icon={<FiCompass />}
+          title="No open requests yet"
+          description="Be the first to post what you want to learn!"
+        />
       ) : (
         <div className="mt-6 space-y-4">
           {requests.map((req) => (
             <div
               key={req._id}
-              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm"
             >
               <div className="flex items-start justify-between">
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-sm font-semibold text-gray-900">{req.skillName}</h3>
-                  <p className="text-xs text-gray-500">{req.categoryName} · {req.format}</p>
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{req.skillName}</h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{req.categoryName} · {req.format}</p>
                   {req.description && (
-                    <p className="mt-2 text-sm text-gray-700 line-clamp-2">{req.description}</p>
+                    <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">{req.description}</p>
                   )}
-                  <p className="mt-2 text-xs text-gray-400">
+                  <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
                     by {req.authorId.displayName} · {new Date(req.createdAt).toLocaleDateString()}
                     {req.responsesCount > 0 && ` · ${req.responsesCount} response${req.responsesCount === 1 ? '' : 's'}`}
                   </p>
@@ -195,7 +203,7 @@ export default function LearnerBoardPage() {
           <Button variant="secondary" disabled={page <= 1} onClick={() => setPage(page - 1)}>
             Prev
           </Button>
-          <span className="py-2 text-sm text-gray-600">Page {page} of {totalPages}</span>
+          <span className="py-2 text-sm text-gray-600 dark:text-gray-400">Page {page} of {totalPages}</span>
           <Button variant="secondary" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>
             Next
           </Button>

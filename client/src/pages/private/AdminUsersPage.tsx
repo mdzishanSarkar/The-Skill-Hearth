@@ -9,14 +9,16 @@ import Avatar from '../../components/ui/Avatar';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Spinner from '../../components/ui/Spinner';
+import PageHeader from '../../components/ui/PageHeader';
+import { FiUsers } from 'react-icons/fi';
 
 const ROLES = ['user', 'moderator', 'admin'] as const;
 const STATUSES = ['active', 'suspended', 'banned'] as const;
 
 const statusBadge: Record<string, string> = {
-  active: 'bg-green-100 text-green-800',
-  suspended: 'bg-amber-100 text-amber-800',
-  banned: 'bg-red-100 text-red-800',
+  active: 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300',
+  suspended: 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300',
+  banned: 'bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-300',
 };
 
 export default function AdminUsersPage() {
@@ -109,11 +111,12 @@ export default function AdminUsersPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">User management</h1>
-        <p className="mt-1 text-sm text-gray-600">{total} registered users</p>
-      </div>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiUsers />}
+        title="User management"
+        subtitle={`${total} registered users`}
+      />
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <div className="w-64">
@@ -130,7 +133,7 @@ export default function AdminUsersPage() {
             setRoleFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:border-indigo-500 focus:outline-none"
+          className="rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
         >
           <option value="">All roles</option>
           {ROLES.map((role) => (
@@ -145,7 +148,7 @@ export default function AdminUsersPage() {
             setStatusFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:border-indigo-500 focus:outline-none"
+          className="rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
         >
           <option value="">All statuses</option>
           {STATUSES.map((item) => (
@@ -157,19 +160,19 @@ export default function AdminUsersPage() {
       </div>
 
       {error && (
-        <div className="mt-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
+        <div className="mt-4 rounded-md bg-red-50 dark:bg-red-950/40 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>
       )}
 
-      <div className="mt-6 overflow-x-auto rounded-lg border border-gray-200 bg-white">
+      <div className="mt-6 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         {loading ? (
           <div className="flex justify-center py-16">
             <Spinner size="lg" />
           </div>
         ) : users.length === 0 ? (
-          <p className="py-16 text-center text-sm text-gray-500">No users found.</p>
+          <p className="py-16 text-center text-sm text-gray-500 dark:text-gray-400">No users found.</p>
         ) : (
-          <table className="min-w-full divide-y divide-gray-200 text-sm">
-            <thead className="bg-gray-50 text-left text-xs font-medium uppercase text-gray-500">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+            <thead className="bg-gray-50 dark:bg-gray-900 text-left text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
               <tr>
                 <th className="px-4 py-3">User</th>
                 <th className="px-4 py-3">Role</th>
@@ -178,15 +181,15 @@ export default function AdminUsersPage() {
                 <th className="px-4 py-3">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {users.map((u) => (
-                <tr key={u._id} className="hover:bg-gray-50">
+                <tr key={u._id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <Avatar src={u.avatar || undefined} name={u.displayName} size="sm" />
                       <div className="min-w-0">
-                        <p className="font-medium text-gray-900">{u.displayName}</p>
-                        <p className="truncate text-xs text-gray-500">{u.email}</p>
+                        <p className="font-medium text-gray-900 dark:text-gray-100">{u.displayName}</p>
+                        <p className="truncate text-xs text-gray-500 dark:text-gray-400">{u.email}</p>
                       </div>
                     </div>
                   </td>
@@ -195,7 +198,7 @@ export default function AdminUsersPage() {
                       value={u.role}
                       disabled={busyId === u._id}
                       onChange={(e) => changeRole(u._id, e.target.value)}
-                      className="rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-700 focus:border-indigo-500 focus:outline-none disabled:opacity-50"
+                      className="rounded-md border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none disabled:opacity-50"
                     >
                       {ROLES.map((role) => (
                         <option key={role} value={role}>
@@ -211,7 +214,7 @@ export default function AdminUsersPage() {
                       {u.status}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-gray-600 dark:text-gray-400">
                     {u.isEmailVerified ? 'Yes' : 'No'}
                   </td>
                   <td className="px-4 py-3">
@@ -257,7 +260,7 @@ export default function AdminUsersPage() {
 
       {totalPages > 1 && (
         <div className="mt-4 flex items-center justify-between">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             Page {page} of {totalPages}
           </p>
           <div className="flex gap-2">

@@ -12,16 +12,19 @@ import type {
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import PageHeader from '../../components/ui/PageHeader';
+import { FiMapPin } from 'react-icons/fi';
 import SkillCard from '../../components/shared/SkillCard';
 import SkillListRow from '../../components/shared/SkillListRow';
 import Pagination from '../../components/shared/Pagination';
+import SmartMatchPanel from '../../components/discovery/SmartMatchPanel';
 
 const PAGE_SIZE = 20;
 
 const DISTANCE_OPTIONS = [5, 10, 25, 50, 100] as const;
 
 const selectClass =
-  'rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
 export default function NearbySkillsPage() {
   const { user } = useAuth();
@@ -95,14 +98,17 @@ export default function NearbySkillsPage() {
     debouncedQ || categoryId || format || availability || distance !== '' || sort !== 'newest';
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="flex flex-col gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Nearby skills</h1>
-          <p className="mt-1 text-sm text-gray-600">
-            Find people nearby who can teach what you want to learn.
-          </p>
-        </div>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiMapPin />}
+        title="Nearby skills"
+        subtitle="Find people nearby who can teach what you want to learn."
+      />
+      <div className="mt-4">
+        <SmartMatchPanel />
+      </div>
+
+      <div className="mt-6 flex flex-col gap-4">
 
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="flex-1">
@@ -146,7 +152,7 @@ export default function NearbySkillsPage() {
             <option value="most-reviewed">Most reviewed</option>
             <option value="closest">Closest</option>
           </select>
-          <label className="flex items-center gap-2 text-sm text-gray-700">
+          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <input
               type="checkbox"
               checked={availability}
@@ -155,14 +161,14 @@ export default function NearbySkillsPage() {
             />
             Available now
           </label>
-          <div className="flex gap-1 rounded-lg bg-gray-100 p-1">
+          <div className="flex gap-1 rounded-lg bg-gray-100 dark:bg-gray-800 p-1">
             <button
               type="button"
               onClick={() => setView('grid')}
               className={
                 view === 'grid'
-                  ? 'rounded-md bg-white px-3 py-1.5 text-sm font-medium text-indigo-600 shadow-sm'
-                  : 'rounded-md px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900'
+                  ? 'rounded-md bg-white dark:bg-gray-900 px-3 py-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400 shadow-sm'
+                  : 'rounded-md px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50'
               }
             >
               Grid
@@ -172,8 +178,8 @@ export default function NearbySkillsPage() {
               onClick={() => setView('list')}
               className={
                 view === 'list'
-                  ? 'rounded-md bg-white px-3 py-1.5 text-sm font-medium text-indigo-600 shadow-sm'
-                  : 'rounded-md px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900'
+                  ? 'rounded-md bg-white dark:bg-gray-900 px-3 py-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400 shadow-sm'
+                  : 'rounded-md px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50'
               }
             >
               List
@@ -203,12 +209,12 @@ export default function NearbySkillsPage() {
           <Spinner size="lg" />
         </div>
       ) : !result || result.skills.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-10 text-center">
-          <p className="text-gray-600">No skills match your search. Try clearing some filters.</p>
+        <div className="mt-8 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-10 text-center">
+          <p className="text-gray-600 dark:text-gray-400">No skills match your search. Try clearing some filters.</p>
         </div>
       ) : (
         <>
-          <p className="mt-6 text-sm text-gray-500">
+          <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
             {result.total} skill{result.total === 1 ? '' : 's'} found
           </p>
           {view === 'grid' ? (

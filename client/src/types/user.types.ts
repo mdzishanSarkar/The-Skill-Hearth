@@ -1,5 +1,6 @@
 export interface UserLocation {
   city: string;
+  zipCode: string;
   neighborhood: string;
   type: 'Point';
   coordinates: [number, number];
@@ -18,9 +19,33 @@ export interface UserStats {
   reviewCount: number;
 }
 
+export interface UserGamification {
+  xp: number;
+  level: number;
+  badges: string[];
+  streakFreezeAvailable: number;
+  referralCode: string;
+}
+
+export type MapMode = 'auto' | 'day' | 'night';
+
+export interface UserMapPreferences {
+  defaultMode: MapMode;
+  defaultView: 'map' | 'list';
+  clusterMarkers: boolean;
+}
+
+export interface UserQuietHours {
+  enabled: boolean;
+  startTime: string;
+  endTime: string;
+  timezone: string;
+}
+
 export interface User {
   _id: string;
   email: string;
+  username?: string;
   displayName: string;
   bio: string;
   avatar: string;
@@ -35,25 +60,37 @@ export interface User {
   hasCompletedOnboarding: boolean;
   isIdVerified: boolean;
   isShadowBanned?: boolean;
+  gamification?: UserGamification;
+  friendIds?: string[];
+  closeFriendIds?: string[];
+  feedVisibility?: 'public' | 'friends' | 'close_friends' | 'private';
+  mapPreferences?: UserMapPreferences;
+  quietHours?: UserQuietHours;
   lastActive: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export interface UpdateProfileInput {
+  username?: string;
   displayName?: string;
   bio?: string;
   avatar?: string;
   location?: Partial<
-    Pick<UserLocation, 'city' | 'neighborhood' | 'coordinates' | 'radiusPreference'>
+    Pick<UserLocation, 'city' | 'zipCode' | 'neighborhood' | 'coordinates' | 'radiusPreference'>
   >;
   showOnMap?: boolean;
   availability?: AvailabilitySlot[];
+  mapPreferences?: Partial<
+    Pick<UserMapPreferences, 'defaultMode' | 'defaultView' | 'clusterMarkers'>
+  >;
+  quietHours?: Partial<Pick<UserQuietHours, 'enabled' | 'startTime' | 'endTime' | 'timezone'>>;
 }
 
 export interface RegisterInput {
   email: string;
   password: string;
+  username: string;
   displayName: string;
   bio?: string;
   adminCode?: string;
@@ -70,6 +107,7 @@ export interface OnboardingInput {
   learnSkills: OnboardingSkillSelection[];
   location: {
     city: string;
+    zipCode: string;
     neighborhood?: string;
     coordinates: [number, number];
     radiusPreference: number;

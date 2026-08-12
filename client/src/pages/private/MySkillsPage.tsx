@@ -5,6 +5,9 @@ import { getApiError } from '../../types/api.types';
 import type { SkillInput, SkillType, SkillWithTeacher } from '../../types/skill.types';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiAward } from 'react-icons/fi';
 import SkillCard from '../../components/shared/SkillCard';
 import SkillFormModal from '../../components/shared/SkillFormModal';
 
@@ -69,18 +72,15 @@ export default function MySkillsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">My skills</h1>
-          <p className="mt-1 text-sm text-gray-600">
-            Share what you can teach and what you want to learn.
-          </p>
-        </div>
-        <Button onClick={() => { setEditing(null); setFormOpen(true); }}>Add skill</Button>
-      </div>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiAward />}
+        title="My skills"
+        subtitle="Share what you can teach and what you want to learn."
+        actions={<Button onClick={() => { setEditing(null); setFormOpen(true); }}>Add skill</Button>}
+      />
 
-      <div className="mt-6 flex gap-1 rounded-lg bg-gray-100 p-1">
+      <div className="mt-6 flex gap-1 rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
         {(['teach', 'learn'] as const).map((type) => (
           <button
             key={type}
@@ -88,8 +88,8 @@ export default function MySkillsPage() {
             onClick={() => setTab(type)}
             className={
               tab === type
-                ? 'flex-1 rounded-md bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm'
-                : 'flex-1 rounded-md px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900'
+                ? 'flex-1 rounded-md bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 shadow-sm'
+                : 'flex-1 rounded-md px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50'
             }
           >
             {type === 'teach' ? 'I can teach' : 'I want to learn'}
@@ -102,20 +102,21 @@ export default function MySkillsPage() {
           <Spinner size="lg" />
         </div>
       ) : skills.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-10 text-center">
-          <p className="text-gray-600">
-            {tab === 'teach'
+        <EmptyState
+          className="mt-8"
+          icon={<FiAward />}
+          title={tab === 'teach' ? 'No teaching skills yet' : 'No learning goals yet'}
+          description={
+            tab === 'teach'
               ? 'You have not listed any skills you can teach yet.'
-              : 'You have not added any skills you want to learn yet.'}
-          </p>
-          <Button
-            className="mt-4"
-            variant="secondary"
-            onClick={() => { setEditing(null); setFormOpen(true); }}
-          >
-            Add your first skill
-          </Button>
-        </div>
+              : 'You have not added any skills you want to learn yet.'
+          }
+          action={
+            <Button variant="secondary" onClick={() => { setEditing(null); setFormOpen(true); }}>
+              Add your first skill
+            </Button>
+          }
+        />
       ) : (
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((skill) => (

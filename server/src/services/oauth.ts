@@ -22,6 +22,35 @@ interface OAuthUserInfo {
   avatar: string;
 }
 
+function slugifyUsername(value: string): string {
+  let base = value
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9._]/g, '')
+    .replace(/\.{2,}/g, '.')
+    .replace(/^[._]+|[._]+$/g, '')
+    .slice(0, 20);
+  if (!/^[a-z]/.test(base)) {
+    base = `u${base}`.slice(0, 20);
+  }
+  return base;
+}
+
+async function generateUniqueUsername(base: string): Promise<string> {
+  const slug = slugifyUsername(base || '') || 'member';
+  const candidate = slug.length < 3 ? `${slug}${'0'.repeat(3 - slug.length)}` : slug;
+  const exists = await User.findOne({ username: candidate });
+  if (!exists) return candidate;
+  for (let i = 1; i < 1000; i += 1) {
+    const suffix = String(i);
+    const next = `${candidate.slice(0, 20 - suffix.length)}.${suffix}`;
+    const taken = await User.findOne({ username: next });
+    if (!taken) return next;
+  }
+  return `${candidate.slice(0, 12)}.${Date.now().toString().slice(-8)}`;
+}
+
 export function getGoogleAuthUrl(): string {
   const params = new URLSearchParams({
     client_id: GOOGLE_CLIENT_ID,
@@ -111,9 +140,11 @@ async function handleOAuthLogin(
 
     if (!user) {
       const displayName = userInfo.displayName || userInfo.email.split('@')[0];
+      const username = await generateUniqueUsername(displayName);
       user = await User.create({
         email: userInfo.email,
         passwordHash: require('crypto').randomBytes(32).toString('hex'),
+        username,
         displayName,
         avatar: userInfo.avatar,
         isEmailVerified: true,

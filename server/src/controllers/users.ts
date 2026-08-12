@@ -1,10 +1,47 @@
 import { Request, Response } from 'express';
+import axios from 'axios';
 import { asyncHandler } from '../utils/errors';
 import * as userService from '../services/user';
 import { AuthRequest } from '../middleware/auth';
+import { getImpact as getImpactData } from '../services/impact';
 import { calculateProfileCompleteness } from '../utils/profileCompleteness';
 import { exportUserData, deleteUserAccount } from '../utils/gdpr';
 import { User } from '../models';
+
+const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse';
+
+export const reverseGeocode = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const lat = Number(req.query.lat);
+  const lng = Number(req.query.lng);
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+    res.status(400).json({
+      success: false,
+      error: { code: 'INVALID_COORDINATES', message: 'Invalid coordinates' },
+    });
+    return;
+  }
+  try {
+    const response = await axios.get(NOMINATIM_URL, {
+      params: { format: 'jsonv2', lat, lon: lng, zoom: 14, addressdetails: 1 },
+      timeout: 8000,
+      headers: { 'User-Agent': 'TheSkillHearth/1.0 (skill-hearth app; localhost)' },
+    });
+    const address = response.data?.address || {};
+    const city =
+      address.city || address.town || address.village || address.municipality || address.county || '';
+    const neighborhood =
+      address.neighbourhood || address.suburb || address.quarter || address.hamlet || '';
+    res.json({ success: true, data: { city, neighborhood } });
+  } catch {
+    res.status(502).json({
+      success: false,
+      error: {
+        code: 'GEOCODING_UNAVAILABLE',
+        message: 'Could not resolve your location — type your city instead',
+      },
+    });
+  }
+});
 
 export const getMe = asyncHandler(async (req: AuthRequest, res: Response) => {
   const user = await userService.getProfile(req.userId!);
@@ -40,7 +77,7 @@ export const completeOnboarding = asyncHandler(async (req: AuthRequest, res: Res
 });
 
 export const skipOnboarding = asyncHandler(async (req: AuthRequest, res: Response) => {
-  const user = await userService.skipOnboarding(req.userId!);
+  const user = await userService.skipOnboarding(req.userId!, req.body || {});
   res.json({ success: true, data: { user } });
 });
 
@@ -65,4 +102,9 @@ export const requestAccountDeletion = asyncHandler(async (req: AuthRequest, res:
   await deleteUserAccount(req.userId!);
   res.clearCookie('refreshToken', { path: '/api/auth' });
   res.json({ success: true, data: { message: 'Account deleted successfully' } });
+});
+
+export const getImpact = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const impact = await getImpactData(req.userId!);
+  res.json({ success: true, data: { impact } });
 });

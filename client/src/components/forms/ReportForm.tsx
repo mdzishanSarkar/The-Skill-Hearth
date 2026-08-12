@@ -53,17 +53,17 @@ export default function ReportForm({ open, onClose, targetType, targetId, target
     <Modal open={open} onClose={handleClose} title={`Report ${targetType}`}>
       <form onSubmit={handleSubmit} className="space-y-4">
         {targetName && (
-          <p className="text-sm text-gray-600">
-            Reporting: <span className="font-medium text-gray-900">{targetName}</span>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Reporting: <span className="font-medium text-gray-900 dark:text-gray-100">{targetName}</span>
           </p>
         )}
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Reason</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Reason</label>
           <select
             value={reason}
             onChange={(e) => setReason(e.target.value as ReportReason)}
-            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             {reasons.map((r) => (
               <option key={r.value} value={r.value}>
@@ -74,8 +74,8 @@ export default function ReportForm({ open, onClose, targetType, targetId, target
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Additional details <span className="text-gray-400">(optional)</span>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Additional details <span className="text-gray-400 dark:text-gray-500">(optional)</span>
           </label>
           <textarea
             value={description}
@@ -83,12 +83,12 @@ export default function ReportForm({ open, onClose, targetType, targetId, target
             rows={3}
             maxLength={500}
             placeholder="Provide any additional context..."
-            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
-          <p className="mt-1 text-xs text-gray-400">{description.length}/500</p>
+          <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{description.length}/500</p>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
 
         <div className="flex justify-end gap-2">
           <Button type="button" variant="secondary" onClick={handleClose}>

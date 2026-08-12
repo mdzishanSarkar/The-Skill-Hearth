@@ -71,8 +71,8 @@ export default function SkillDetailPage() {
   if (error || !skill) {
     return (
       <div className="mx-auto max-w-md px-4 py-16 text-center">
-        <h1 className="text-xl font-semibold text-gray-900">Skill not found</h1>
-        <p className="mt-2 text-sm text-gray-600">{error || 'This skill does not exist.'}</p>
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Skill not found</h1>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{error || 'This skill does not exist.'}</p>
         <Link to="/skills" className="mt-6 inline-block">
           <Button variant="secondary">Browse skills</Button>
         </Link>
@@ -105,8 +105,8 @@ export default function SkillDetailPage() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+    <div className="page-shell animate-fade-in py-8">
+      <div className="card overflow-hidden">
         <div className={`relative flex h-36 items-center justify-center bg-linear-to-br ${getCategoryVisual(current.categoryName).gradient}`}>
           <span className="text-6xl drop-shadow-sm">{getSkillEmoji(current.categoryName, current.skillName)}</span>
         </div>
@@ -118,7 +118,7 @@ export default function SkillDetailPage() {
             <Badge color={getCategoryVisual(current.categoryName).badge}>{current.categoryName}</Badge>
             {!current.isActive && <Badge color="gray">Paused</Badge>}
           </div>
-          <h1 className="mt-3 text-2xl font-bold text-gray-900">{current.skillName}</h1>
+          <h1 className="mt-3 text-2xl font-bold text-gray-900 dark:text-gray-100">{current.skillName}</h1>
           <div className="mt-2 flex flex-wrap gap-1.5">
             <Badge color={getCategoryVisual(current.categoryName).badge}>
               {PROFICIENCY_LABELS[current.proficiencyLevel]}
@@ -126,7 +126,7 @@ export default function SkillDetailPage() {
             <Badge color="gray">{FORMAT_LABELS[current.format]}</Badge>
             <Badge color="gray">{LENGTH_LABELS[current.sessionLength]}</Badge>
           </div>
-          {current.description && <p className="mt-4 text-gray-700">{current.description}</p>}
+          {current.description && <p className="mt-4 text-gray-700 dark:text-gray-300">{current.description}</p>}
 
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-5">
             {isOwner ? (
@@ -159,6 +159,7 @@ export default function SkillDetailPage() {
                     teacherId={current.userId}
                     skillId={current._id}
                     skillName={current.skillName}
+                    categoryId={current.categoryId}
                     onSuccess={() => {
                       setShowRequestForm(false);
                       toast.success('Request sent! Check your outbox for updates.');
@@ -173,33 +174,33 @@ export default function SkillDetailPage() {
       </div>
 
       {!isOwner && skill.teacher && (
-        <div className="mt-6 rounded-lg border border-gray-200 p-6">
-          <h2 className="text-sm font-semibold text-gray-900">About the teacher</h2>
+        <div className="mt-6 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">About the teacher</h2>
           <div className="mt-3 flex items-center gap-4">
             <Avatar src={skill.teacher.avatar || undefined} name={skill.teacher.displayName} size="lg" />
             <div className="min-w-0 flex-1">
               <Link
                 to={`/profile/${skill.teacher._id}`}
-                className="text-lg font-semibold text-gray-900 hover:text-indigo-600"
+                className="text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600"
               >
                 {skill.teacher.displayName}
               </Link>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {skill.teacher.stats.reviewCount > 0
                   ? `${skill.teacher.stats.averageRating.toFixed(1)} rating · ${skill.teacher.stats.reviewCount} reviews`
                   : 'No reviews yet'}
               </p>
-              {skill.teacher.bio && <p className="mt-2 text-sm text-gray-600">{skill.teacher.bio}</p>}
+              {skill.teacher.bio && <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{skill.teacher.bio}</p>}
             </div>
           </div>
           {skill.teacher.availability.length > 0 && (
             <div className="mt-4 border-t border-gray-100 pt-4">
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Availability</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Availability</h3>
               <ul className="mt-2 flex flex-wrap gap-1.5">
                 {skill.teacher.availability.map((slot, index) => (
                   <li
                     key={`${slot.day}-${index}`}
-                    className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700"
+                    className="rounded-full bg-green-50 dark:bg-green-950/40 px-2.5 py-1 text-xs font-medium text-green-700 dark:text-green-300"
                   >
                     <span className="capitalize">{slot.day}</span>: {slot.startTime}–{slot.endTime}
                   </li>
@@ -211,12 +212,12 @@ export default function SkillDetailPage() {
       )}
 
       <div className="mt-6">
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
           Reviews for this skill
-          {reviews.length > 0 && <span className="ml-2 text-sm font-normal text-gray-500">({reviews.length})</span>}
+          {reviews.length > 0 && <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">({reviews.length})</span>}
         </h2>
         {reviews.length === 0 ? (
-          <p className="mt-3 rounded-lg border border-dashed border-gray-300 p-6 text-center text-sm text-gray-500">
+          <p className="mt-3 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-6 text-center text-sm text-gray-500 dark:text-gray-400">
             No reviews for this skill yet.
           </p>
         ) : (

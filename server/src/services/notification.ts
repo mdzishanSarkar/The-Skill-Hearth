@@ -1,8 +1,16 @@
 import { Types } from 'mongoose';
-import { Notification } from '../models';
+import { Notification, User } from '../models';
 import type { NotificationType } from '../models';
 import { HttpError } from '../utils/errors';
 import { getIO } from '../config/socket';
+import { isInQuietHours } from './user';
+
+const URGENT_TYPES = new Set<NotificationType>([
+  'new_message',
+  'request_received',
+  'request_accepted',
+  'request_rejected',
+]);
 
 function toObjectId(value: string | Types.ObjectId): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -29,7 +37,14 @@ export async function createNotification(input: {
   });
 
   try {
-    getIO().to(`user_${String(input.userId)}`).emit('notification:new', {});
+    let quiet = false;
+    if (!URGENT_TYPES.has(input.type)) {
+      const recipient = await User.findById(input.userId).select('quietHours').lean();
+      quiet = isInQuietHours(recipient?.quietHours ?? { enabled: false, startTime: '', endTime: '', timezone: '' });
+    }
+    if (!quiet) {
+      getIO().to(`user_${String(input.userId)}`).emit('notification:new', {});
+    }
   } catch {
     // Socket.IO not initialized (e.g. during tests or job processing)
   }

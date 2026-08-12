@@ -70,19 +70,19 @@ export default function TwoFactorSetup({ status, onStatusChange }: TwoFactorSetu
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-5">
-      <h3 className="text-sm font-semibold text-gray-900">Two-Factor Authentication</h3>
-      <p className="mt-1 text-xs text-gray-500">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Two-Factor Authentication</h3>
+      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
         Add an extra layer of security to your account using an authenticator app.
       </p>
 
       {status.enabled && (
         <div className="mt-3 flex items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
+          <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/40 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">
             Enabled
           </span>
           {status.lastUsedAt && (
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-400 dark:text-gray-500">
               Last used {new Date(status.lastUsedAt).toLocaleDateString()}
             </span>
           )}
@@ -98,7 +98,7 @@ export default function TwoFactorSetup({ status, onStatusChange }: TwoFactorSetu
             onChange={(e) => setToken(e.target.value)}
             placeholder="6-digit code"
           />
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           <Button variant="danger" size="sm" loading={loading} onClick={handleDisable}>
             Disable 2FA
           </Button>
@@ -116,20 +116,20 @@ export default function TwoFactorSetup({ status, onStatusChange }: TwoFactorSetu
       {setupData && (
         <div className="mt-4 space-y-4">
           <div>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-gray-700 dark:text-gray-300">
               Scan this QR code with your authenticator app:
             </p>
             <img
               src={setupData.qrCodeDataUrl}
               alt="QR Code for 2FA setup"
-              className="mt-2 h-48 w-48 rounded-lg border border-gray-200"
+              className="mt-2 h-48 w-48 rounded-lg border border-gray-200 dark:border-gray-700"
             />
           </div>
           <div>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-gray-700 dark:text-gray-300">
               Or enter this secret manually:
             </p>
-            <code className="mt-1 block rounded bg-gray-100 p-2 text-xs text-gray-800 break-all">
+            <code className="mt-1 block rounded bg-gray-100 dark:bg-gray-800 p-2 text-xs text-gray-800 dark:text-gray-200 break-all">
               {setupData.secret}
             </code>
           </div>
@@ -141,7 +141,7 @@ export default function TwoFactorSetup({ status, onStatusChange }: TwoFactorSetu
               onChange={(e) => setToken(e.target.value)}
               placeholder="6-digit code"
             />
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
             <div className="mt-3 flex gap-2">
               <Button size="sm" loading={loading} onClick={handleVerify}>
                 Verify & Enable

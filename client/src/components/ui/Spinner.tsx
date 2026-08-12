@@ -15,7 +15,7 @@ export default function Spinner({ size = 'md', className }: SpinnerProps) {
   return (
     <span
       className={clsx(
-        'inline-block animate-spin rounded-full border-2 border-gray-300 border-t-indigo-600',
+        'inline-block animate-spin rounded-full border-2 border-gray-300 border-t-indigo-600 dark:border-gray-700 dark:border-t-indigo-400',
         sizes[size],
         className
       )}

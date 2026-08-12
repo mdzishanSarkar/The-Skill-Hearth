@@ -1,4 +1,5 @@
 export type MapSkillType = 'teach' | 'learn';
+export type MapFilterType = 'both' | MapSkillType;
 
 export interface MapPin {
   id: string;
@@ -24,7 +25,7 @@ export interface MapDiscoveryParams {
   lng?: number;
   radiusKm?: number;
   categoryIds?: string[];
-  type?: MapSkillType;
+  type?: MapFilterType;
   availability?: boolean;
   limit?: number;
 }

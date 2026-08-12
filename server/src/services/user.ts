@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Types } from 'mongoose';
 import { Category, Skill, User } from '../models';
-import type { IAvailabilitySlot, ILocation } from '../models';
+import type { IAvailabilitySlot, ILocation, IUserMapPreferences, IUserQuietHours } from '../models';
 import { HttpError } from '../utils/errors';
 import { sanitizeUser } from './auth';
 import { UPLOADS_DIR, saveAvatarFile } from '../utils/upload';
@@ -18,12 +18,48 @@ export async function getProfile(userId: string) {
 }
 
 export interface UpdateProfileInput {
+  username?: string;
   displayName?: string;
   bio?: string;
   avatar?: string;
-  location?: Partial<Pick<ILocation, 'city' | 'neighborhood' | 'coordinates' | 'radiusPreference'>>;
+  location?: Partial<
+    Pick<ILocation, 'city' | 'zipCode' | 'neighborhood' | 'coordinates' | 'radiusPreference'>
+  >;
   showOnMap?: boolean;
   availability?: IAvailabilitySlot[];
+  mapPreferences?: Partial<Pick<IUserMapPreferences, 'defaultMode' | 'defaultView' | 'clusterMarkers'>>;
+  quietHours?: Partial<Pick<IUserQuietHours, 'enabled' | 'startTime' | 'endTime' | 'timezone'>>;
+}
+
+const VALID_MAP_MODES = ['auto', 'day', 'night'] as const;
+const VALID_MAP_VIEWS = ['map', 'list'] as const;
+
+const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
+const USERNAME_PATTERN = /^[a-z][a-z0-9][a-z0-9._]{1,18}$/;
+
+function isTime(value: string): boolean {
+  return TIME_PATTERN.test(value);
+}
+
+export function isInQuietHours(user: Pick<IUserQuietHours, 'enabled' | 'startTime' | 'endTime' | 'timezone'>, now = new Date()): boolean {
+  if (!user || !user.enabled) return false;
+  const { startTime, endTime } = user;
+  if (!isTime(startTime) || !isTime(endTime)) return false;
+
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const currentMinutes = hours * 60 + minutes;
+
+  const parse = (value: string): number => {
+    const [h, m] = value.split(':').map(Number);
+    return h * 60 + m;
+  };
+
+  const start = parse(startTime);
+  const end = parse(endTime);
+
+  if (start === end) return false;
+  return start < end ? currentMinutes >= start && currentMinutes < end : currentMinutes >= start || currentMinutes < end;
 }
 
 export async function updateProfile(userId: string, input: UpdateProfileInput) {
@@ -32,14 +68,26 @@ export async function updateProfile(userId: string, input: UpdateProfileInput) {
     throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
   }
 
+  if (input.username !== undefined) {
+    const username = input.username.trim();
+    if (!USERNAME_PATTERN.test(username)) {
+      throw new HttpError(
+        400,
+        'VALIDATION_ERROR',
+        'Username must start with a lowercase letter, be 3-20 characters, and use only letters, numbers, dots and underscores'
+      );
+    }
+    const usernameClash = await User.findOne({ username, _id: { $ne: user._id } });
+    if (usernameClash) {
+      throw new HttpError(409, 'USERNAME_TAKEN', 'That username is already taken');
+    }
+    user.username = username;
+  }
+
   if (input.displayName !== undefined) {
     const displayName = input.displayName.trim();
     if (displayName.length < 2 || displayName.length > 50) {
       throw new HttpError(400, 'VALIDATION_ERROR', 'Display name must be between 2 and 50 characters');
-    }
-    const clash = await User.findOne({ displayName, _id: { $ne: user._id } });
-    if (clash) {
-      throw new HttpError(409, 'NAME_TAKEN', 'That display name is already taken');
     }
     user.displayName = displayName;
   }
@@ -57,6 +105,7 @@ export async function updateProfile(userId: string, input: UpdateProfileInput) {
 
   if (input.location !== undefined) {
     if (input.location.city !== undefined) user.location.city = input.location.city;
+    if (input.location.zipCode !== undefined) user.location.zipCode = input.location.zipCode;
     if (input.location.neighborhood !== undefined) user.location.neighborhood = input.location.neighborhood;
     if (input.location.coordinates !== undefined) {
       if (!isValidCoordinatePair(input.location.coordinates)) {
@@ -78,6 +127,45 @@ export async function updateProfile(userId: string, input: UpdateProfileInput) {
 
   if (input.availability !== undefined) {
     user.availability = input.availability;
+  }
+
+  if (input.mapPreferences !== undefined) {
+    const { defaultMode, defaultView, clusterMarkers } = input.mapPreferences;
+    if (defaultMode !== undefined) {
+      if (!(VALID_MAP_MODES as readonly string[]).includes(defaultMode)) {
+        throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid map default mode');
+      }
+      user.mapPreferences.defaultMode = defaultMode;
+    }
+    if (defaultView !== undefined) {
+      if (!(VALID_MAP_VIEWS as readonly string[]).includes(defaultView)) {
+        throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid map default view');
+      }
+      user.mapPreferences.defaultView = defaultView;
+    }
+    if (clusterMarkers !== undefined) {
+      user.mapPreferences.clusterMarkers = Boolean(clusterMarkers);
+    }
+  }
+
+  if (input.quietHours !== undefined) {
+    const { enabled, startTime, endTime, timezone } = input.quietHours;
+    if (enabled !== undefined) user.quietHours.enabled = Boolean(enabled);
+    if (startTime !== undefined) {
+      if (!isTime(startTime)) {
+        throw new HttpError(400, 'VALIDATION_ERROR', 'Quiet hours start time must use HH:MM (24-hour) format');
+      }
+      user.quietHours.startTime = startTime;
+    }
+    if (endTime !== undefined) {
+      if (!isTime(endTime)) {
+        throw new HttpError(400, 'VALIDATION_ERROR', 'Quiet hours end time must use HH:MM (24-hour) format');
+      }
+      user.quietHours.endTime = endTime;
+    }
+    if (timezone !== undefined) {
+      user.quietHours.timezone = String(timezone).trim().slice(0, 64);
+    }
   }
 
   await user.save();
@@ -132,6 +220,7 @@ export interface OnboardingInput {
   learnSkills: OnboardingSkillSelection[];
   location: {
     city: string;
+    zipCode: string;
     neighborhood?: string;
     coordinates: [number, number];
     radiusPreference: number;
@@ -168,7 +257,7 @@ function validateSelections(
   }
 }
 
-export async function skipOnboarding(userId: string) {
+export async function skipOnboarding(userId: string, input: { location?: { city?: string; zipCode?: string } } = {}) {
   const user = await User.findById(userId);
   if (!user) {
     throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
@@ -176,6 +265,18 @@ export async function skipOnboarding(userId: string) {
   if (user.hasCompletedOnboarding) {
     throw new HttpError(400, 'ONBOARDING_ALREADY_COMPLETED', 'You have already completed onboarding');
   }
+
+  const city = typeof input?.location?.city === 'string' ? input.location.city.trim() : '';
+  const zipCode = typeof input?.location?.zipCode === 'string' ? input.location.zipCode.trim() : '';
+  if (!city) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'City is required to complete onboarding');
+  }
+  if (!zipCode) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'Zip / postal code is required to complete onboarding');
+  }
+
+  user.location.city = city;
+  user.location.zipCode = zipCode;
   user.hasCompletedOnboarding = true;
   await user.save();
   return sanitizeUser(user);
@@ -197,11 +298,19 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
 
   const location = (input?.location ?? {}) as {
     city?: string;
+    zipCode?: string;
     neighborhood?: string;
     coordinates?: [number, number];
     radiusPreference?: number;
   };
   const city = typeof location.city === 'string' ? location.city.trim() : '';
+  if (!city) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'City is required to complete onboarding');
+  }
+  const zipCode = typeof location.zipCode === 'string' ? location.zipCode.trim() : '';
+  if (!zipCode) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'Zip / postal code is required to complete onboarding');
+  }
   if (location.coordinates !== undefined && !isValidCoordinatePair(location.coordinates)) {
     throw new HttpError(400, 'INVALID_COORDINATES', 'Invalid coordinates');
   }
@@ -276,6 +385,7 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
       isDeleted: false,
       location: {
         city,
+        zipCode,
         neighborhood,
         coordinates: snapped,
         radiusPreference: radius,
@@ -284,6 +394,7 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
   }
 
   user.location.city = city;
+  user.location.zipCode = zipCode;
   user.location.neighborhood = neighborhood;
   user.location.coordinates = snapped;
   user.location.radiusPreference = radius;
@@ -300,6 +411,7 @@ export async function completeOnboarding(userId: string, input: OnboardingInput)
     {
       $set: {
         'location.city': city,
+        'location.zipCode': zipCode,
         'location.neighborhood': neighborhood,
         'location.coordinates': snapped,
         'location.radiusPreference': radius,

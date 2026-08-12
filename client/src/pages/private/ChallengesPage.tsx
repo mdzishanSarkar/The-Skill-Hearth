@@ -7,6 +7,9 @@ import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiFlag } from 'react-icons/fi';
 
 export default function ChallengesPage() {
   const [data, setData] = useState<ChallengeListResult | null>(null);
@@ -56,41 +59,45 @@ export default function ChallengesPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Challenges</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Skill challenges to motivate teaching and learning — earn badges for completing goals.
-      </p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiFlag />}
+        title="Challenges"
+        subtitle="Skill challenges to motivate teaching and learning — earn badges for completing goals."
+      />
 
       {data && data.challenges.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center">
-          <p className="text-sm text-gray-500">No challenges yet.</p>
-        </div>
+        <EmptyState
+          className="mt-8"
+          icon={<FiFlag />}
+          title="No challenges yet"
+          description="Challenges will appear here once the community creates them."
+        />
       ) : (
         <div className="mt-6 space-y-4">
           {data?.challenges.map((challenge) => (
             <div
               key={challenge._id}
-              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm"
             >
               <div className="flex items-start justify-between">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-900">{challenge.title}</h3>
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{challenge.title}</h3>
                     {statusBadge(challenge.status)}
                     <Badge color="purple">{challenge.challengeType}</Badge>
                   </div>
                   {challenge.description && (
-                    <p className="mt-1 line-clamp-2 text-xs text-gray-600">{challenge.description}</p>
+                    <p className="mt-1 line-clamp-2 text-xs text-gray-600 dark:text-gray-400">{challenge.description}</p>
                   )}
-                  <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500">
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
                     <span>{challenge.skillCategory}</span>
                     <span>·</span>
                     <span>Goal: {challenge.goalDescription}</span>
                     <span>·</span>
                     <span>{challenge.participants.length} participant{challenge.participants.length === 1 ? '' : 's'}</span>
                   </div>
-                  <div className="mt-1 text-xs text-gray-400">
+                  <div className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                     {new Date(challenge.startDate).toLocaleDateString()} — {new Date(challenge.endDate).toLocaleDateString()}
                     {' · by '}{challenge.creatorId.displayName}
                   </div>
@@ -99,7 +106,7 @@ export default function ChallengesPage() {
                   <span className="text-lg">{challenge.badgeIcon}</span>
                   <Link
                     to={`/challenges/${challenge._id}`}
-                    className="text-xs font-medium text-indigo-600 hover:text-indigo-500"
+                    className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
                   >
                     Details
                   </Link>
@@ -125,7 +132,7 @@ export default function ChallengesPage() {
           <Button variant="secondary" disabled={page <= 1} onClick={() => setPage(page - 1)}>
             Prev
           </Button>
-          <span className="py-2 text-sm text-gray-600">Page {page} of {data.totalPages}</span>
+          <span className="py-2 text-sm text-gray-600 dark:text-gray-400">Page {page} of {data.totalPages}</span>
           <Button variant="secondary" disabled={page >= data.totalPages} onClick={() => setPage(page + 1)}>
             Next
           </Button>

@@ -7,7 +7,7 @@ export default function NotificationBell() {
   return (
     <Link
       to="/notifications"
-      className="relative text-sm font-medium text-gray-600 hover:text-indigo-600"
+      className="relative text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400"
       aria-label="Notifications"
     >
       <svg

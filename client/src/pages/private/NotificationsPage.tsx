@@ -6,6 +6,9 @@ import type { AppNotification } from '../../types/notification.types';
 import { NOTIFICATION_ICONS } from '../../types/notification.types';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiBell } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 export default function NotificationsPage() {
@@ -77,7 +80,7 @@ export default function NotificationsPage() {
   if (error) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <p className="text-sm text-red-600">{error}</p>
+        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
         <Button variant="secondary" size="sm" className="mt-4" onClick={load}>
           Retry
         </Button>
@@ -86,27 +89,36 @@ export default function NotificationsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">
-          Notifications
-          {unreadCount > 0 && (
-            <span className="ml-2 text-sm font-normal text-gray-500">
-              ({unreadCount} unread)
-            </span>
-          )}
-        </h1>
-        {unreadCount > 0 && (
-          <Button variant="ghost" size="sm" onClick={handleMarkAllRead}>
-            Mark all as read
-          </Button>
-        )}
-      </div>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiBell />}
+        title={
+          <>
+            Notifications
+            {unreadCount > 0 && (
+              <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                ({unreadCount} unread)
+              </span>
+            )}
+          </>
+        }
+        subtitle="Stay up to date."
+        actions={
+          unreadCount > 0 ? (
+            <Button variant="ghost" size="sm" onClick={handleMarkAllRead}>
+              Mark all as read
+            </Button>
+          ) : undefined
+        }
+      />
 
       {notifications.length === 0 ? (
-        <p className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center text-sm text-gray-500">
-          No notifications yet.
-        </p>
+        <EmptyState
+          className="mt-8"
+          icon={<FiBell />}
+          title="No notifications yet"
+          description="When something happens, it'll show up here."
+        />
       ) : (
         <div className="mt-6 flex flex-col gap-2">
           {notifications.map((n) => {
@@ -115,16 +127,16 @@ export default function NotificationsPage() {
               <div
                 className={`flex items-start gap-3 rounded-lg border p-4 transition-colors ${
                   n.isRead
-                    ? 'border-gray-100 bg-white'
-                    : 'border-indigo-100 bg-indigo-50/50'
+                    ? 'border-gray-100 bg-white dark:bg-gray-900'
+                    : 'border-indigo-100 bg-indigo-50 dark:bg-indigo-950/40/50'
                 }`}
               >
                 <span className="text-xl">{NOTIFICATION_ICONS[n.type] || '🔔'}</span>
                 <div className="min-w-0 flex-1">
-                  <p className={`text-sm ${n.isRead ? 'text-gray-600' : 'font-medium text-gray-900'}`}>
+                  <p className={`text-sm ${n.isRead ? 'text-gray-600 dark:text-gray-400' : 'font-medium text-gray-900 dark:text-gray-100'}`}>
                     {n.message}
                   </p>
-                  <p className="mt-1 text-xs text-gray-400">
+                  <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                     {new Date(n.createdAt).toLocaleDateString()}
                   </p>
                 </div>
@@ -134,7 +146,7 @@ export default function NotificationsPage() {
                       e.stopPropagation();
                       handleMarkRead(n._id);
                     }}
-                    className="shrink-0 text-xs text-indigo-600 hover:text-indigo-500"
+                    className="shrink-0 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
                   >
                     Mark read
                   </button>
@@ -163,7 +175,7 @@ export default function NotificationsPage() {
           >
             Previous
           </Button>
-          <span className="self-center text-sm text-gray-500">
+          <span className="self-center text-sm text-gray-500 dark:text-gray-400">
             Page {page} of {totalPages}
           </span>
           <Button

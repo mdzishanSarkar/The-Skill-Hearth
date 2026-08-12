@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { completeOnboarding, skipOnboarding, uploadAvatar } from '../../services/users.service';
+import { completeOnboarding, uploadAvatar, reverseGeocode } from '../../services/users.service';
 import { getCategories } from '../../services/skills';
 import { getApiError } from '../../types/api.types';
 import type { Category } from '../../types/skill.types';
@@ -21,7 +21,7 @@ const RADIUS_OPTIONS = [1, 3, 5, 10, 20];
 const STEPS = ['Skills you teach', 'Skills you want to learn', 'Your neighborhood', 'Your photo'];
 
 const inputClass =
-  'w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
 export default function OnboardingPage() {
   const { user, status, setUser } = useAuth();
@@ -38,6 +38,7 @@ export default function OnboardingPage() {
   >('beginner');
 
   const [city, setCity] = useState('');
+  const [zipCode, setZipCode] = useState('');
   const [neighborhood, setNeighborhood] = useState('');
   const [radius, setRadius] = useState(5);
   const [coordinates, setCoordinates] = useState<[number, number] | null>(null);
@@ -122,8 +123,8 @@ export default function OnboardingPage() {
         {categories.map((category) => {
           const visual = getCategoryVisual(category.name);
           return (
-            <div key={category._id} className="rounded-lg border border-gray-200 p-4">
-              <p className="text-sm font-semibold text-gray-900">
+            <div key={category._id} className="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+              <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                 <span className="mr-1.5">{visual.emoji}</span>
                 {category.name}
               </p>
@@ -147,7 +148,7 @@ export default function OnboardingPage() {
                       className={
                         selected
                           ? 'inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white'
-                          : 'inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-600'
+                          : 'inline-flex items-center gap-1.5 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:border-indigo-400 hover:text-indigo-600'
                       }
                     >
                       <span>{getSkillEmoji(category.name, skill.name)}</span>
@@ -159,13 +160,23 @@ export default function OnboardingPage() {
             </div>
           );
         })}
-        <p className="text-sm text-gray-400">{emptyMessage}</p>
+        <p className="text-sm text-gray-400 dark:text-gray-500">{emptyMessage}</p>
       </div>
     );
   }
 
   function handleNext() {
     setError('');
+    if (step === 2) {
+      if (!city.trim()) {
+        setError('City is required — please enter your city.');
+        return;
+      }
+      if (!zipCode.trim()) {
+        setError('Zip / postal code is required — please enter it.');
+        return;
+      }
+    }
     setStep((prev) => Math.min(prev + 1, STEPS.length - 1));
   }
 
@@ -174,7 +185,7 @@ export default function OnboardingPage() {
     setStep((prev) => Math.max(prev - 1, 0));
   }
 
-  function handleUseMyLocation() {
+  async function handleUseMyLocation() {
     if (!navigator.geolocation) {
       setLocationNote('Location is not available in this browser — just type your city.');
       return;
@@ -182,10 +193,21 @@ export default function OnboardingPage() {
     setLocating(true);
     setLocationNote('');
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setCoordinates([position.coords.longitude, position.coords.latitude]);
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        setCoordinates([lng, lat]);
         setLocating(false);
-        setLocationNote('Location set — it will be shown only as an approximate neighborhood.');
+        try {
+          const place = await reverseGeocode(lat, lng);
+          if (place.city) setCity(place.city);
+          if (place.neighborhood) setNeighborhood(place.neighborhood);
+          setLocationNote(
+            `Found ${place.city || 'your area'}${place.neighborhood ? ` — ${place.neighborhood}` : ''}. Confirm below, or tap "Update my location" to try again.`
+          );
+        } catch {
+          setLocationNote('Location set — we could not read the city name, so please type it below.');
+        }
       },
       () => {
         setLocating(false);
@@ -220,6 +242,7 @@ export default function OnboardingPage() {
       learnSkills: learn,
       location: {
         city: city.trim(),
+        zipCode: zipCode.trim(),
         neighborhood: neighborhood.trim() || undefined,
         coordinates: coordinates ?? [0, 0],
         radiusPreference: radius,
@@ -243,26 +266,18 @@ export default function OnboardingPage() {
     }
   }
 
-  async function handleSkip() {
+  async function handleSkipToLocation() {
     setError('');
-    setSubmitting(true);
-    try {
-      const user = await skipOnboarding();
-      setUser(user);
-      navigate('/dashboard', { replace: true });
-    } catch (err) {
-      setError(getApiError(err));
-      setSubmitting(false);
-    }
+    setStep(2);
   }
 
   const stepLabel = `${STEPS[step]} (${step + 1}/${STEPS.length})`;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="page-shell animate-fade-in py-10">
       <div className="text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Let's set you up</h1>
-        <p className="mt-1 text-sm text-gray-600">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Let's set you up</h1>
+        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
           Start with what you can teach and learn — the rest follows.
         </p>
       </div>
@@ -270,11 +285,11 @@ export default function OnboardingPage() {
       <div className="mt-4 flex justify-end">
         <button
           type="button"
-          onClick={handleSkip}
+          onClick={handleSkipToLocation}
           disabled={submitting}
-          className="text-sm font-medium text-gray-500 underline-offset-2 hover:text-indigo-600 hover:underline"
+          className="text-sm font-medium text-gray-500 dark:text-gray-400 underline-offset-2 hover:text-indigo-600 hover:underline"
         >
-          Skip for now
+          Skip skills — set my location
         </button>
       </div>
 
@@ -285,26 +300,26 @@ export default function OnboardingPage() {
               className={
                 index <= step
                   ? 'h-1.5 rounded-full bg-indigo-600'
-                  : 'h-1.5 rounded-full bg-gray-200'
+                  : 'h-1.5 rounded-full bg-gray-200 dark:bg-gray-700'
               }
             />
-            <span className="hidden text-[11px] font-medium text-gray-500 sm:block">
+            <span className="hidden text-[11px] font-medium text-gray-500 dark:text-gray-400 sm:block">
               {label}
             </span>
           </li>
         ))}
       </ol>
 
-      <div className="mt-8 rounded-lg border border-gray-200 p-6">
-        <p className="text-sm font-semibold text-gray-900">{stepLabel}</p>
+      <div className="mt-8 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+        <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{stepLabel}</p>
 
         {step === 0 && (
           <>
-            <p className="mt-1 text-sm text-gray-600">
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
               What could you teach a neighbor? Pick up to {MAX_SKILLS} — or skip ahead, you can add these later.
             </p>
             <div className="mt-3 flex items-center justify-between gap-4">
-              <label className="text-sm font-medium text-gray-700">Your experience</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Your experience</label>
               <select
                 value={experienceLevel}
                 onChange={(e) => setExperienceLevel(e.target.value as typeof experienceLevel)}
@@ -316,30 +331,49 @@ export default function OnboardingPage() {
               </select>
             </div>
             <div className="mt-4">{renderSkillPicker(teach, setTeach, '')}</div>
+            <div className="mt-4 flex justify-end">
+              <button
+                type="button"
+                onClick={handleSkipToLocation}
+                className="text-sm font-medium text-gray-500 dark:text-gray-400 underline-offset-2 hover:text-indigo-600 hover:underline"
+              >
+                Skip — I don't teach anything yet
+              </button>
+            </div>
           </>
         )}
 
         {step === 1 && (
           <>
-            <p className="mt-1 text-sm text-gray-600">
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
               What would you love to learn? Pick up to {MAX_SKILLS} — or skip ahead, you can add these later.
             </p>
             <div className="mt-4">{renderSkillPicker(learn, setLearn, '')}</div>
+            <div className="mt-4 flex justify-end">
+              <button
+                type="button"
+                onClick={handleSkipToLocation}
+                className="text-sm font-medium text-gray-500 dark:text-gray-400 underline-offset-2 hover:text-indigo-600 hover:underline"
+              >
+                Skip — nothing to learn right now
+              </button>
+            </div>
           </>
         )}
 
         {step === 2 && (
           <>
-            <p className="mt-1 text-sm text-gray-600">
-              We only ever show an approximate neighborhood — never your exact spot.
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+              We only ever show an approximate neighborhood — never your exact spot. City and zip code
+              are required.
             </p>
             <div className="mt-4 space-y-4">
               <Button type="button" variant="secondary" onClick={handleUseMyLocation} loading={locating}>
                 {coordinates ? 'Update my location' : 'Use my location'}
               </Button>
-              {locationNote && <p className="text-xs text-gray-500">{locationNote}</p>}
+              {locationNote && <p className="text-xs text-gray-500 dark:text-gray-400">{locationNote}</p>}
               {coordinates && (
-                <p className="text-xs font-medium text-green-700">
+                <p className="text-xs font-medium text-green-700 dark:text-green-300">
                   Location captured — approximated for privacy.
                 </p>
               )}
@@ -347,10 +381,21 @@ export default function OnboardingPage() {
                 <Input
                   id="onboarding-city"
                   label="City"
+                  required
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  placeholder="e.g. London (optional)"
+                  placeholder="e.g. London"
                 />
+                <Input
+                  id="onboarding-zip"
+                  label="Zip / Postal code"
+                  required
+                  value={zipCode}
+                  onChange={(e) => setZipCode(e.target.value)}
+                  placeholder="e.g. EC1A 1BB"
+                />
+              </div>
+              <div>
                 <Input
                   id="onboarding-neighborhood"
                   label="Neighborhood"
@@ -360,7 +405,7 @@ export default function OnboardingPage() {
                 />
               </div>
               <div>
-                <label htmlFor="onboarding-radius" className="mb-1 block text-sm font-medium text-gray-700">
+                <label htmlFor="onboarding-radius" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Discovery radius
                 </label>
                 <select
@@ -382,7 +427,7 @@ export default function OnboardingPage() {
 
         {step === 3 && (
           <>
-            <p className="mt-1 text-sm text-gray-600">Almost done — add a face to the name (optional).</p>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Almost done — add a face to the name (optional).</p>
             <div className="mt-4 flex items-center gap-5">
               {previewUrl ? (
                 <img
@@ -411,10 +456,10 @@ export default function OnboardingPage() {
                 )}
               </div>
             </div>
-            <p className="mt-2 text-xs text-gray-500">JPEG, PNG, WebP or GIF up to 2MB.</p>
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">JPEG, PNG, WebP or GIF up to 2MB.</p>
 
             <div className="mt-5">
-              <label htmlFor="onboarding-bio" className="mb-1 block text-sm font-medium text-gray-700">
+              <label htmlFor="onboarding-bio" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Tell your neighbors a little about yourself
               </label>
               <textarea
@@ -426,23 +471,25 @@ export default function OnboardingPage() {
                 placeholder="What's your story with these skills? (optional)"
                 className={inputClass}
               />
-              <p className="mt-1 text-right text-xs text-gray-400">{bio.length}/280</p>
+              <p className="mt-1 text-right text-xs text-gray-400 dark:text-gray-500">{bio.length}/280</p>
             </div>
 
-            <div className="mt-5 rounded-md bg-gray-50 p-4 text-sm text-gray-700">
-              <p className="font-semibold text-gray-900">Ready to go</p>
+            <div className="mt-5 rounded-md bg-gray-50 dark:bg-gray-900 p-4 text-sm text-gray-700 dark:text-gray-300">
+              <p className="font-semibold text-gray-900 dark:text-gray-100">Ready to go</p>
               <p className="mt-1">
                 Teaching <span className="font-medium">{selectedSkillCounts.teach}</span> skill
                 {selectedSkillCounts.teach === 1 ? '' : 's'} · Learning{' '}
                 <span className="font-medium">{selectedSkillCounts.learn}</span> skill
                 {selectedSkillCounts.learn === 1 ? '' : 's'} ·{' '}
-                {city.trim() ? `${city.trim()}${neighborhood.trim() ? `, ${neighborhood.trim()}` : ''}` : 'No location'}
+                {city.trim()
+                  ? `${city.trim()}${zipCode.trim() ? ` (${zipCode.trim()})` : ''}${neighborhood.trim() ? `, ${neighborhood.trim()}` : ''}`
+                  : 'No location'}
               </p>
             </div>
           </>
         )}
 
-        {error && <div className="mt-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+        {error && <div className="mt-4 rounded-md bg-red-50 dark:bg-red-950/40 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>}
 
         <div className="mt-6 flex items-center justify-between">
           <Button type="button" variant="ghost" onClick={handleBack} disabled={step === 0}>

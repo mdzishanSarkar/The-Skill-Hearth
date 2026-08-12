@@ -8,6 +8,9 @@ import LinkedAccounts from '../../components/social/LinkedAccounts';
 import TwoFactorSetup from '../../components/social/TwoFactorSetup';
 import type { TwoFactorStatus } from '../../types/social.types';
 import { getTwoFactorStatus } from '../../services/social.service';
+import QuietHoursSettings from '../../components/settings/QuietHoursSettings';
+import PageHeader from '../../components/ui/PageHeader';
+import { FiSettings } from 'react-icons/fi';
 import { useEffect } from 'react';
 
 export default function AccountSettingsPage() {
@@ -55,18 +58,23 @@ export default function AccountSettingsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Account Settings</h1>
-      <p className="mt-1 text-sm text-gray-500">Manage your account security and data.</p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiSettings />}
+        title="Account Settings"
+        subtitle="Manage your account security and data."
+      />
 
       <div className="mt-8 space-y-6">
         <LinkedAccounts />
 
         <TwoFactorSetup status={twoFAStatus} onStatusChange={setTwoFAStatus} />
 
-        <div className="rounded-lg border border-gray-200 bg-white p-5">
-          <h3 className="text-sm font-semibold text-gray-900">Export Your Data</h3>
-          <p className="mt-1 text-xs text-gray-500">
+        <QuietHoursSettings />
+
+        <div className="card p-5">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Export Your Data</h3>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
             Download a copy of all your data including skills, connections, messages, and reviews.
           </p>
           <Button
@@ -80,9 +88,9 @@ export default function AccountSettingsPage() {
           </Button>
         </div>
 
-        <div className="rounded-lg border border-red-200 bg-red-50 p-5">
+        <div className="rounded-lg border border-red-200 bg-red-50 p-5 dark:bg-red-950/40">
           <h3 className="text-sm font-semibold text-red-900">Danger Zone</h3>
-          <p className="mt-1 text-xs text-red-700">
+          <p className="mt-1 text-xs text-red-700 dark:text-red-400">
             Permanently delete your account and all associated data. This action cannot be undone.
           </p>
           <Button

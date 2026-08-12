@@ -119,37 +119,37 @@ export default function ReviewForm({ connection, existingReview, onSuccess }: Re
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-      <h3 className="text-sm font-semibold text-gray-900">
+    <form onSubmit={handleSubmit} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm">
+      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
         {existingReview ? 'Edit your review' : 'Leave a review'}
       </h3>
       {other && (
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
           Reviewing {other.displayName || 'the other participant'}
           {skill ? ` for ${skill.skillName}` : ''}
         </p>
       )}
 
       <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700">Rating</label>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Rating</label>
         <StarsInput value={rating} onChange={setRating} />
       </div>
 
       <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700">Written review</label>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Written review</label>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value.slice(0, 500))}
           rows={3}
           maxLength={500}
           placeholder="Share your experience..."
-          className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="mt-1 w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
         />
-        <p className="mt-1 text-xs text-gray-400">{content.length}/500</p>
+        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{content.length}/500</p>
       </div>
 
       <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700">Tags</label>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Tags</label>
         <div className="mt-2 flex flex-wrap gap-1.5">
           {AVAILABLE_TAGS.map((tag) => (
             <button
@@ -159,7 +159,7 @@ export default function ReviewForm({ connection, existingReview, onSuccess }: Re
               className={
                 selectedTags.includes(tag)
                   ? 'rounded-full bg-indigo-600 px-2.5 py-1 text-xs font-medium text-white'
-                  : 'rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600 hover:bg-gray-200'
+                  : 'rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
               }
             >
               {tag}
@@ -169,7 +169,7 @@ export default function ReviewForm({ connection, existingReview, onSuccess }: Re
       </div>
 
       <div className="mt-4">
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
           <input
             type="checkbox"
             checked={wouldRecommend}
@@ -180,7 +180,7 @@ export default function ReviewForm({ connection, existingReview, onSuccess }: Re
         </label>
       </div>
 
-      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-3 text-sm text-red-600 dark:text-red-400">{error}</p>}
 
       <div className="mt-4">
         <Button type="submit" loading={loading} disabled={rating < 1}>

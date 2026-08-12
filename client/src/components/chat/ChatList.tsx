@@ -10,12 +10,12 @@ interface ChatListProps {
 export default function ChatList({ connections, currentUserId }: ChatListProps) {
   if (connections.length === 0) {
     return (
-      <p className="p-4 text-center text-sm text-gray-500">No active conversations.</p>
+      <p className="p-4 text-center text-sm text-gray-500 dark:text-gray-400">No active conversations.</p>
     );
   }
 
   return (
-    <div className="divide-y divide-gray-100">
+    <div className="divide-y divide-gray-100 dark:divide-gray-800">
       {connections.map((conn) => {
         const other =
           (typeof conn.requesterId === 'object' && conn.requesterId._id !== currentUserId
@@ -29,7 +29,7 @@ export default function ChatList({ connections, currentUserId }: ChatListProps) 
           <Link
             key={conn._id}
             to={`/chat/${conn._id}`}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <Avatar
               src={other?.avatar || undefined}
@@ -37,14 +37,14 @@ export default function ChatList({ connections, currentUserId }: ChatListProps) 
               size="sm"
             />
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-gray-900 truncate">
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                 {other?.displayName || 'Unknown'}
               </p>
-              <p className="text-xs text-gray-500 truncate">
+              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                 {skill?.skillName || 'Chat'}
               </p>
             </div>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-400 dark:text-gray-500">
               {new Date(conn.updatedAt).toLocaleDateString()}
             </span>
           </Link>

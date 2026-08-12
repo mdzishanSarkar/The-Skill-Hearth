@@ -70,8 +70,15 @@ export function buildPinPopup(pin: MapPin, isAuthenticated: boolean): string {
         <span>${formatLabel}</span>
         <span>${sessionLengthLabel}</span>
       </div>
-      <a class="skill-map-popup__cta" href="/skills/${escapeHtml(pin.id)}" data-skill-id="${escapeHtml(pin.id)}">View skill details</a>
-      <a class="skill-map-popup__cta--secondary" href="/profile/${escapeHtml(pin.userId)}">View profile</a>
+      <div class="skill-map-popup__actions">
+        <a class="skill-map-popup__cta" href="/skills/${escapeHtml(pin.id)}" data-skill-id="${escapeHtml(pin.id)}">
+          View skill details
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+          </svg>
+        </a>
+        <a class="skill-map-popup__cta--secondary" href="/profile/${escapeHtml(pin.userId)}">View profile</a>
+      </div>
     </div>
   `;
 }

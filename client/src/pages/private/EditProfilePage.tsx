@@ -9,6 +9,8 @@ import { resolveMediaUrl } from '../../utils/media';
 import Avatar from '../../components/ui/Avatar';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import PageHeader from '../../components/ui/PageHeader';
+import { FiUser, FiAtSign } from 'react-icons/fi';
 import AvailabilityCalendar from '../../components/social/AvailabilityCalendar';
 
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
@@ -29,9 +31,11 @@ export default function EditProfilePage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [displayName, setDisplayName] = useState(user?.displayName || '');
+  const [username, setUsername] = useState(user?.username || '');
   const [bio, setBio] = useState(user?.bio || '');
   const [showOnMap, setShowOnMap] = useState(user?.showOnMap ?? true);
   const [city, setCity] = useState(user?.location.city || '');
+  const [zipCode, setZipCode] = useState(user?.location.zipCode || '');
   const [neighborhood, setNeighborhood] = useState(user?.location.neighborhood || '');
   const [radius, setRadius] = useState<number>(user?.location.radiusPreference ?? 5);
   const [availability, setAvailability] = useState<AvailabilitySlot[]>(user?.availability ?? []);
@@ -80,13 +84,18 @@ export default function EditProfilePage() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     setError('');
+    if (username.trim().length > 0 && !/^[a-z][a-z0-9][a-z0-9._]{1,18}$/.test(username.trim())) {
+      setError('Username must start with a lowercase letter, be 3-20 characters, and use only letters, numbers, dots and underscores');
+      return;
+    }
     setSaving(true);
     try {
       const saved = await updateMe({
+        username: username.trim(),
         displayName,
         bio,
         showOnMap,
-        location: { city, neighborhood, radiusPreference: radius },
+        location: { city, zipCode, neighborhood, radiusPreference: radius },
         availability,
       });
       setUser(saved);
@@ -101,12 +110,15 @@ export default function EditProfilePage() {
   const shownAvatar = previewUrl || user.avatar || '';
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="text-2xl font-bold text-gray-900">Edit profile</h1>
-      <p className="mt-1 text-sm text-gray-600">Update the details shown on your profile.</p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiUser />}
+        title="Edit profile"
+        subtitle="Update the details shown on your profile."
+      />
 
-      <div className="mt-8 rounded-lg border border-gray-200 p-5">
-        <h2 className="text-sm font-semibold text-gray-900">Profile photo</h2>
+      <div className="card mt-6 p-5">
+        <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Profile photo</h2>
         <div className="mt-4 flex items-center gap-5">
           {shownAvatar ? (
             <img
@@ -140,7 +152,7 @@ export default function EditProfilePage() {
             )}
           </div>
         </div>
-        <p className="mt-3 text-xs text-gray-500">
+        <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
           JPEG, PNG, WebP or GIF up to 2MB.
         </p>
       </div>
@@ -157,7 +169,22 @@ export default function EditProfilePage() {
         />
 
         <div>
-          <label htmlFor="edit-bio" className="mb-1 block text-sm font-medium text-gray-700">
+          <Input
+            id="edit-username"
+            label="Username"
+            type="text"
+            autoCapitalize="none"
+            icon={<FiAtSign className="h-4 w-4" />}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <p className="mt-1.5 text-xs text-gray-400 dark:text-gray-500">
+            Your unique handle. Starts with a lowercase letter, 3-20 characters — letters, numbers, dots and underscores. Must be unique.
+          </p>
+        </div>
+
+        <div>
+          <label htmlFor="edit-bio" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Bio
           </label>
           <textarea
@@ -167,9 +194,9 @@ export default function EditProfilePage() {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             placeholder="Tell people what you love to learn and share…"
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
-          <p className="mt-1 text-right text-xs text-gray-400">{bio.length}/280</p>
+          <p className="mt-1 text-right text-xs text-gray-400 dark:text-gray-500">{bio.length}/280</p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -180,22 +207,29 @@ export default function EditProfilePage() {
             onChange={(e) => setCity(e.target.value)}
           />
           <Input
+            id="edit-zip"
+            label="Zip / Postal code"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
+          />
+          <Input
             id="edit-neighborhood"
             label="Neighborhood"
             value={neighborhood}
             onChange={(e) => setNeighborhood(e.target.value)}
+            className="sm:col-span-2"
           />
         </div>
 
         <div>
-          <label htmlFor="edit-radius" className="mb-1 block text-sm font-medium text-gray-700">
+          <label htmlFor="edit-radius" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             Discovery radius
           </label>
           <select
             id="edit-radius"
             value={radius}
             onChange={(e) => setRadius(Number(e.target.value))}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             {RADIUS_OPTIONS.map((option) => (
               <option key={option} value={option}>
@@ -207,7 +241,7 @@ export default function EditProfilePage() {
 
         <div>
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Availability</label>
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Availability</label>
             <Button
               type="button"
               variant="secondary"
@@ -222,13 +256,13 @@ export default function EditProfilePage() {
               Add slot
             </Button>
           </div>
-          <p className="mt-1 text-xs text-gray-500">When are you usually available for sessions?</p>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">When are you usually available for sessions?</p>
           {availability.length > 0 ? (
             <ul className="mt-3 space-y-2">
               {availability.map((slot, index) => (
                 <li
                   key={index}
-                  className="flex flex-wrap items-center gap-2 rounded-md border border-gray-200 p-2"
+                  className="flex flex-wrap items-center gap-2 rounded-md border border-gray-200 dark:border-gray-700 p-2"
                 >
                   <select
                     value={slot.day}
@@ -237,7 +271,7 @@ export default function EditProfilePage() {
                       next[index] = { ...slot, day: e.target.value };
                       setAvailability(next);
                     }}
-                    className="rounded-md border border-gray-300 px-2 py-1 text-sm text-gray-700 focus:border-indigo-500 focus:outline-none"
+                    className="rounded-md border border-gray-300 dark:border-gray-700 px-2 py-1 text-sm text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
                   >
                     {DAYS.map((day) => (
                       <option key={day} value={day}>
@@ -253,9 +287,9 @@ export default function EditProfilePage() {
                       next[index] = { ...slot, startTime: e.target.value };
                       setAvailability(next);
                     }}
-                    className="rounded-md border border-gray-300 px-2 py-1 text-sm text-gray-700 focus:border-indigo-500 focus:outline-none"
+                    className="rounded-md border border-gray-300 dark:border-gray-700 px-2 py-1 text-sm text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
                   />
-                  <span className="text-sm text-gray-500">–</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">–</span>
                   <input
                     type="time"
                     value={slot.endTime}
@@ -264,13 +298,13 @@ export default function EditProfilePage() {
                       next[index] = { ...slot, endTime: e.target.value };
                       setAvailability(next);
                     }}
-                    className="rounded-md border border-gray-300 px-2 py-1 text-sm text-gray-700 focus:border-indigo-500 focus:outline-none"
+                    className="rounded-md border border-gray-300 dark:border-gray-700 px-2 py-1 text-sm text-gray-700 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
                   />
                   <button
                     type="button"
                     aria-label={`Remove ${slot.day} slot`}
                     onClick={() => setAvailability((prev) => prev.filter((_, i) => i !== index))}
-                    className="ml-auto rounded-md px-2 py-1 text-sm text-red-600 hover:bg-red-50"
+                    className="ml-auto rounded-md px-2 py-1 text-sm text-red-600 dark:text-red-400 hover:bg-red-50"
                   >
                     Remove
                   </button>
@@ -278,24 +312,24 @@ export default function EditProfilePage() {
               ))}
             </ul>
           ) : (
-            <p className="mt-2 text-sm text-gray-400">No availability set yet.</p>
+            <p className="mt-2 text-sm text-gray-400 dark:text-gray-500">No availability set yet.</p>
           )}
         </div>
 
         <AvailabilityCalendar />
 
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
           <input
             type="checkbox"
             checked={showOnMap}
             onChange={(e) => setShowOnMap(e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-gray-300 dark:border-gray-700 text-indigo-600 dark:text-indigo-400 focus:ring-indigo-500"
           />
           Show me on the skill map
         </label>
 
         {error && (
-          <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
+          <div className="rounded-md bg-red-50 dark:bg-red-950/40 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>
         )}
 
         <div className="flex items-center gap-3 pt-2">

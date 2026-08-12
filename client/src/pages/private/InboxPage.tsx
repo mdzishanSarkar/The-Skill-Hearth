@@ -7,6 +7,9 @@ import Avatar from '../../components/ui/Avatar';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiInbox } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 const STATUS_COLORS: Record<string, string> = {
@@ -68,7 +71,7 @@ export default function InboxPage() {
   if (error) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <p className="text-sm text-red-600">{error}</p>
+        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
         <Button variant="secondary" size="sm" className="mt-4" onClick={load}>
           Retry
         </Button>
@@ -77,18 +80,21 @@ export default function InboxPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Incoming Requests</h1>
-        <Link to="/outbox" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-          View outbox
-        </Link>
-      </div>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiInbox />}
+        title="Incoming Requests"
+        subtitle="Session requests you've received."
+        actions={<Link to="/outbox" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">View outbox</Link>}
+      />
 
       {connections.length === 0 ? (
-        <p className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center text-sm text-gray-500">
-          No incoming requests yet.
-        </p>
+        <EmptyState
+          className="mt-8"
+          icon={<FiInbox />}
+          title="No incoming requests"
+          description="When someone requests a session with you, it will show up here."
+        />
       ) : (
         <div className="mt-6 flex flex-col gap-4">
           {connections.map((conn) => {
@@ -98,7 +104,7 @@ export default function InboxPage() {
             return (
               <div
                 key={conn._id}
-                className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+                className="card p-4"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
@@ -107,14 +113,14 @@ export default function InboxPage() {
                       name={requester?.displayName || 'User'}
                       size="sm"
                     />
-                    <div>
+                    <div className="min-w-0">
                       <Link
                         to={`/profile/${requester?._id || ''}`}
-                        className="text-sm font-semibold text-gray-900 hover:text-indigo-600"
+                        className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600"
                       >
                         {requester?.displayName || 'Unknown'}
                       </Link>
-                      <p className="text-xs text-gray-500">
+                      <p className="truncate text-xs text-gray-500 dark:text-gray-400">
                         {skill?.skillName || 'Skill'} {skill?.categoryName ? `(${skill.categoryName})` : ''}
                       </p>
                     </div>
@@ -124,13 +130,13 @@ export default function InboxPage() {
                   </Badge>
                 </div>
 
-                <p className="mt-3 text-sm text-gray-600">{conn.message}</p>
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">{conn.message}</p>
+                <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                   Format: {conn.proposedFormat} · {new Date(conn.createdAt).toLocaleDateString()}
                 </p>
 
                 {conn.responseMessage && (
-                  <p className="mt-2 rounded-md bg-gray-50 p-2 text-xs text-gray-600">
+                  <p className="mt-2 rounded-md bg-gray-50 dark:bg-gray-900 p-2 text-xs text-gray-600 dark:text-gray-400">
                     Response: {conn.responseMessage}
                   </p>
                 )}
@@ -178,7 +184,7 @@ export default function InboxPage() {
           >
             Previous
           </Button>
-          <span className="self-center text-sm text-gray-500">
+          <span className="self-center text-sm text-gray-500 dark:text-gray-400">
             Page {page} of {totalPages}
           </span>
           <Button

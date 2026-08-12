@@ -21,8 +21,8 @@ function clearRefreshCookie(res: Response): void {
 }
 
 export const register = asyncHandler(async (req: Request, res: Response) => {
-  const { email, password, displayName, bio, adminCode } = req.body || {};
-  const data = await authService.register({ email, password, displayName, bio, adminCode });
+  const { email, password, username, displayName, bio, adminCode } = req.body || {};
+  const data = await authService.register({ email, password, username, displayName, bio, adminCode });
   res.status(201).json({ success: true, data });
 });
 

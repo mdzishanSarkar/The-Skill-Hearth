@@ -6,6 +6,9 @@ import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiCompass } from 'react-icons/fi';
 
 export default function MentorshipsPage() {
   const [mentorships, setMentorships] = useState<Mentorship[]>([]);
@@ -62,11 +65,12 @@ export default function MentorshipsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Mentorships</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Long-term learning relationships with goals and check-ins.
-      </p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiCompass />}
+        title="Mentorships"
+        subtitle="Long-term learning relationships with goals and check-ins."
+      />
 
       <div className="mt-4 flex gap-2">
         <Button
@@ -86,35 +90,38 @@ export default function MentorshipsPage() {
       </div>
 
       {mentorships.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center">
-          <p className="text-sm text-gray-500">No mentorships yet.</p>
-        </div>
+        <EmptyState
+          className="mt-8"
+          icon={<FiCompass />}
+          title="No mentorships yet"
+          description="Mentorship relationships will appear here once you find a match."
+        />
       ) : (
         <div className="mt-6 space-y-4">
           {mentorships.map((m) => (
-            <div key={m._id} className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+            <div key={m._id} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm">
               <div className="flex items-start justify-between">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-gray-900">
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                       {tab === 'as-mentor' ? m.menteeId.displayName : m.mentorId.displayName}
                     </h3>
                     {statusBadge(m.status)}
                   </div>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                     {m.skillId.skillName} · {m.durationMonths} months · {m.meetingFrequency}
                   </p>
                   {m.goals.length > 0 && (
                     <div className="mt-2 space-y-1">
                       {m.goals.map((g, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
+                        <div key={i} className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
                           <span>{g.completed ? '✅' : '⬜'}</span>
                           <span>{g.title}</span>
                         </div>
                       ))}
                     </div>
                   )}
-                  <p className="mt-1 text-xs text-gray-400">
+                  <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                     {m.checkIns.length} check-in{m.checkIns.length === 1 ? '' : 's'}
                   </p>
                 </div>

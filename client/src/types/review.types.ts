@@ -53,4 +53,9 @@ export interface Review {
     avatar: string;
     stats: UserStats;
   } | null;
+  skill?: {
+    _id: string;
+    skillName: string;
+    categoryName: string;
+  } | null;
 }

@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema, Types } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IAvailabilitySlot {
@@ -9,6 +9,7 @@ export interface IAvailabilitySlot {
 
 export interface ILocation {
   city: string;
+  zipCode: string;
   neighborhood: string;
   type: 'Point';
   coordinates: [number, number];
@@ -21,9 +22,33 @@ export interface IUserStats {
   reviewCount: number;
 }
 
+export interface IUserGamification {
+  xp: number;
+  level: number;
+  badges: string[];
+  streakFreezeAvailable: number;
+  referralCode: string;
+  referredBy?: Types.ObjectId;
+  lastXPAction?: Date;
+}
+
+export interface IUserMapPreferences {
+  defaultMode: 'auto' | 'day' | 'night';
+  defaultView: 'map' | 'list';
+  clusterMarkers: boolean;
+}
+
+export interface IUserQuietHours {
+  enabled: boolean;
+  startTime: string;
+  endTime: string;
+  timezone: string;
+}
+
 export interface IUser extends Document {
   email: string;
   passwordHash: string;
+  username?: string;
   displayName: string;
   bio: string;
   avatar: string;
@@ -35,6 +60,12 @@ export interface IUser extends Document {
   showOnMap: boolean;
   availability: IAvailabilitySlot[];
   stats: IUserStats;
+  gamification: IUserGamification;
+  friendIds: Types.ObjectId[];
+  closeFriendIds: Types.ObjectId[];
+  feedVisibility: 'public' | 'friends' | 'close_friends' | 'private';
+  mapPreferences: IUserMapPreferences;
+  quietHours: IUserQuietHours;
   isEmailVerified: boolean;
   hasCompletedOnboarding: boolean;
   isIdVerified: boolean;
@@ -76,10 +107,15 @@ const userSchema = new Schema<IUser>(
     displayName: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       minlength: 2,
       maxlength: 50,
+    },
+    username: {
+      type: String,
+      lowercase: true,
+      trim: true,
+      match: [/^[a-z][a-z0-9][a-z0-9._]{1,18}$/, 'Username must start with a lowercase letter, be 3-20 characters, and use only letters, numbers, dots and underscores'],
     },
     bio: {
       type: String,
@@ -110,6 +146,7 @@ const userSchema = new Schema<IUser>(
     },
     location: {
       city: { type: String, default: '' },
+      zipCode: { type: String, default: '' },
       neighborhood: { type: String, default: '' },
       type: { type: String, enum: ['Point'], default: 'Point' },
       coordinates: {
@@ -134,6 +171,41 @@ const userSchema = new Schema<IUser>(
       sessionsCompleted: { type: Number, default: 0 },
       averageRating: { type: Number, default: 0 },
       reviewCount: { type: Number, default: 0 },
+    },
+    gamification: {
+      xp: { type: Number, default: 0 },
+      level: { type: Number, default: 1 },
+      badges: { type: [String], default: [] },
+      streakFreezeAvailable: { type: Number, default: 1 },
+      referralCode: { type: String, default: '' },
+      referredBy: { type: Schema.Types.ObjectId, ref: 'User', default: undefined },
+      lastXPAction: { type: Date, default: undefined },
+    },
+    friendIds: {
+      type: [Schema.Types.ObjectId],
+      ref: 'User',
+      default: [],
+    },
+    closeFriendIds: {
+      type: [Schema.Types.ObjectId],
+      ref: 'User',
+      default: [],
+    },
+    feedVisibility: {
+      type: String,
+      enum: ['public', 'friends', 'close_friends', 'private'],
+      default: 'friends',
+    },
+    mapPreferences: {
+      defaultMode: { type: String, enum: ['auto', 'day', 'night'], default: 'auto' },
+      defaultView: { type: String, enum: ['map', 'list'], default: 'map' },
+      clusterMarkers: { type: Boolean, default: true },
+    },
+    quietHours: {
+      enabled: { type: Boolean, default: false },
+      startTime: { type: String, default: '22:00' },
+      endTime: { type: String, default: '07:00' },
+      timezone: { type: String, default: '' },
     },
     isEmailVerified: {
       type: Boolean,
@@ -188,6 +260,7 @@ userSchema.index({ 'location.coordinates': '2dsphere' });
 userSchema.index({ role: 1, status: 1 });
 userSchema.index({ lastActive: -1 });
 userSchema.index({ status: 1, 'stats.averageRating': -1 });
+userSchema.index({ username: 1 }, { unique: true, sparse: true });
 
 userSchema.pre('save', async function () {
   if (!this.isModified('passwordHash')) return;

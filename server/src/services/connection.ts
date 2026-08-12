@@ -3,6 +3,10 @@ import { Connection, Skill, User } from '../models';
 import type { ConnectionStatus } from '../models';
 import { HttpError } from '../utils/errors';
 import { createNotification } from './notification';
+import { awardXP, awardBadge } from './gamification';
+import { recordStreakActivity } from './streak';
+import { createActivityEvent } from './activityFeed';
+import { markFriendshipMetViaSkillSession } from './friendship';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -195,6 +199,48 @@ export async function markCompleted(connectionId: string, userId: string) {
       referenceModel: 'Connection',
       message: 'How was your session? Leave a review!',
     });
+  }
+
+  const teacherId = String(connection.teacherId);
+  const requesterId = String(connection.requesterId);
+  const skill = await Skill.findById(connection.skillId).select('skillName type').lean();
+
+  const skillName = skill?.skillName ?? 'a skill';
+
+  try {
+    await createActivityEvent({
+      actorId: teacherId,
+      eventType: 'session_taught',
+      subjectType: 'connection',
+      subjectId: connection._id,
+      title: `Taught ${skillName} in a session 🎓`,
+      subtitle: 'Knowledge shared at the hearth',
+      emoji: '🎓',
+      visibility: 'friends',
+    });
+    await createActivityEvent({
+      actorId: requesterId,
+      eventType: 'session_learned',
+      subjectType: 'connection',
+      subjectId: connection._id,
+      title: `Learned ${skillName} in a session 📚`,
+      subtitle: 'New skills brewing',
+      emoji: '📚',
+      visibility: 'friends',
+    });
+  } catch {
+    // best-effort
+  }
+
+  try {
+    await awardXP(teacherId, 'session_completed_teaching');
+    await awardXP(requesterId, 'session_completed_learning');
+    await recordStreakActivity(teacherId, 'teaching');
+    await recordStreakActivity(requesterId, 'learning');
+    await awardBadge(teacherId, 'first_session');
+    await markFriendshipMetViaSkillSession(requesterId, teacherId);
+  } catch {
+    // best-effort
   }
 
   return connection.toJSON();

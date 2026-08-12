@@ -29,19 +29,19 @@ export default function IntegrationsPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Integrations</h1>
-      <p className="mt-1 text-sm text-gray-500">
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Integrations</h1>
+      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
         Connect external tools, manage API access, and set up bots.
       </p>
 
-      <div className="mt-4 flex gap-2 border-b border-gray-200">
+      <div className="mt-4 flex gap-2 border-b border-gray-200 dark:border-gray-700">
         {(['webhooks', 'api-keys', 'calendars', 'bots'] as Tab[]).map((t) => (
           <button
             key={t}
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               tab === t
-                ? 'border-indigo-600 text-indigo-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
+                : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
             }`}
             onClick={() => setTab(t)}
           >
@@ -96,17 +96,17 @@ function WebhooksPanel() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <p className="text-sm text-gray-600">Webhooks push events to your server in real-time.</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Webhooks push events to your server in real-time.</p>
         <Button size="sm" onClick={() => setShowForm(!showForm)}>
           {showForm ? 'Cancel' : '+ New Webhook'}
         </Button>
       </div>
 
       {showForm && (
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-3">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4 space-y-3">
           <Input label="Endpoint URL" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://your-server.com/webhook" />
           <div>
-            <label className="block text-xs font-medium text-gray-700 mb-1">Events</label>
+            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Events</label>
             <div className="flex flex-wrap gap-2">
               {WEBHOOK_EVENTS.map((ev) => (
                 <label key={ev} className="flex items-center gap-1 text-xs">
@@ -125,17 +125,17 @@ function WebhooksPanel() {
       )}
 
       {webhooks.length === 0 ? (
-        <p className="text-sm text-gray-500 text-center py-8">No webhooks configured.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-8">No webhooks configured.</p>
       ) : (
         <div className="space-y-3">
           {webhooks.map((wh) => (
-            <div key={wh._id} className="rounded-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+            <div key={wh._id} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-900">{wh.url}</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{wh.url}</p>
                 <div className="flex gap-1 mt-1 flex-wrap">
                   {wh.events.map((ev) => <Badge key={ev} color="indigo">{ev}</Badge>)}
                 </div>
-                <p className="text-xs text-gray-400 mt-1">Fails: {wh.failCount} · {wh.status}</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Fails: {wh.failCount} · {wh.status}</p>
               </div>
               <div className="flex gap-2">
                 <Button variant="secondary" size="sm" onClick={() => handleToggle(wh._id)}>
@@ -184,29 +184,29 @@ function ApiKeysPanel() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <p className="text-sm text-gray-600">Manage read-only API keys for partner integrations.</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Manage read-only API keys for partner integrations.</p>
         <Button size="sm" onClick={() => setShowForm(!showForm)}>
           {showForm ? 'Cancel' : '+ New Key'}
         </Button>
       </div>
 
       {showForm && (
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-3">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4 space-y-3">
           <Input label="Key Name" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Library Kiosk" />
           <Button size="sm" onClick={handleCreate}>Create Key</Button>
         </div>
       )}
 
       {keys.length === 0 ? (
-        <p className="text-sm text-gray-500 text-center py-8">No API keys yet.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-8">No API keys yet.</p>
       ) : (
         <div className="space-y-3">
           {keys.map((k) => (
-            <div key={k._id} className="rounded-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+            <div key={k._id} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-900">{k.name}</p>
-                <p className="text-xs text-gray-500 font-mono mt-1">{k.key.slice(0, 20)}...</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{k.name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-mono mt-1">{k.key.slice(0, 20)}...</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                   {k.requestCount}/{k.rateLimit} requests · {k.status}
                 </p>
               </div>
@@ -247,16 +247,16 @@ function CalendarsPanel() {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-gray-600">Sync your skill sessions with external calendars.</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">Sync your skill sessions with external calendars.</p>
       {integrations.length === 0 ? (
-        <p className="text-sm text-gray-500 text-center py-8">No calendars connected yet. Use the API to connect.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-8">No calendars connected yet. Use the API to connect.</p>
       ) : (
         <div className="space-y-3">
           {integrations.map((c) => (
-            <div key={c._id} className="rounded-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+            <div key={c._id} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-900 capitalize">{c.provider} Calendar</p>
-                <p className="text-xs text-gray-500 mt-1">{c.calendarName} · {c.events.length} events synced</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100 capitalize">{c.provider} Calendar</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{c.calendarName} · {c.events.length} events synced</p>
                 <Badge color={c.syncStatus === 'active' ? 'green' : 'red'}>{c.syncStatus}</Badge>
               </div>
               <Button variant="secondary" size="sm" onClick={() => handleDisconnect(c.provider)}>Disconnect</Button>
@@ -286,21 +286,21 @@ function BotsPanel() {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-gray-600">Manage Slack and Discord bot installations.</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">Manage Slack and Discord bot installations.</p>
       {bots.length === 0 ? (
-        <p className="text-sm text-gray-500 text-center py-8">No bots installed yet.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-8">No bots installed yet.</p>
       ) : (
         <div className="space-y-3">
           {bots.map((b) => (
-            <div key={b._id} className="rounded-lg border border-gray-200 bg-white p-4 flex items-center justify-between">
+            <div key={b._id} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-gray-900">{b.name}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{b.name}</p>
                   <Badge color={b.platform === 'slack' ? 'purple' : 'blue'}>{b.platform}</Badge>
                 </div>
-                {b.teamName && <p className="text-xs text-gray-500 mt-1">{b.teamName}</p>}
-                {b.channelName && <p className="text-xs text-gray-400">#{b.channelName}</p>}
-                <p className="text-xs text-gray-400 mt-1">{b.commandCount} commands used</p>
+                {b.teamName && <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{b.teamName}</p>}
+                {b.channelName && <p className="text-xs text-gray-400 dark:text-gray-500">#{b.channelName}</p>}
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">{b.commandCount} commands used</p>
               </div>
               <div className="flex gap-2">
                 <Badge color={b.status === 'active' ? 'green' : 'red'}>{b.status}</Badge>

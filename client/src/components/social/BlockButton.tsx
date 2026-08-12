@@ -58,8 +58,8 @@ export default function BlockButton({ targetUserId }: BlockButtonProps) {
         onClick={() => setShowConfirm(!showConfirm)}
         className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
           isBlocked
-            ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            : 'text-gray-500 hover:bg-gray-100 hover:text-red-600'
+            ? 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-red-600'
         }`}
       >
         {isBlocked ? (
@@ -76,8 +76,8 @@ export default function BlockButton({ targetUserId }: BlockButtonProps) {
       </button>
 
       {showConfirm && (
-        <div className="absolute right-0 top-full z-10 mt-1 w-64 rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
-          <p className="text-sm text-gray-700 mb-2">
+        <div className="absolute right-0 top-full z-10 mt-1 w-64 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 shadow-lg">
+          <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
             {isBlocked
               ? `Unblock this user? They will be able to see your profile and send you requests.`
               : `Block this user? They won't be able to view your profile or send you requests.`}
@@ -85,7 +85,7 @@ export default function BlockButton({ targetUserId }: BlockButtonProps) {
           <div className="flex justify-end gap-2">
             <button
               onClick={() => setShowConfirm(false)}
-              className="rounded px-3 py-1 text-sm text-gray-600 hover:bg-gray-100"
+              className="rounded px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               Cancel
             </button>

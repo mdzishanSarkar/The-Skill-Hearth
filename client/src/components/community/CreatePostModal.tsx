@@ -3,6 +3,7 @@ import { createPost } from '../../services/community.service';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import Modal from '../ui/Modal';
+import Button from '../ui/Button';
 
 interface CreatePostModalProps {
   isOpen: boolean;
@@ -56,55 +57,51 @@ export default function CreatePostModal({
     <Modal open={isOpen} onClose={onClose} title="Create a Post">
       <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">What's on your mind?</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">What's on your mind?</label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
               rows={4}
               maxLength={1000}
               placeholder="Looking for a bread-baking buddy in your neighborhood..."
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500"
             />
-            <p className="mt-1 text-xs text-gray-500">{content.length}/1000</p>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{content.length}/1000</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">City *</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">City *</label>
               <input
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 required
                 placeholder="London"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Neighborhood</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Neighborhood</label>
               <input
                 type="text"
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
                 placeholder="Shoreditch"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500"
               />
             </div>
           </div>
-          <div className="flex justify-end gap-3 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
-            >
+          <div className="flex flex-wrap justify-end gap-3 pt-2">
+            <Button type="button" variant="secondary" onClick={onClose}>
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               type="submit"
-              disabled={isSubmitting || !content.trim() || !city.trim()}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              disabled={!content.trim() || !city.trim()}
+              loading={isSubmitting}
             >
               {isSubmitting ? 'Posting...' : 'Post'}
-            </button>
+            </Button>
           </div>
         </form>
     </Modal>

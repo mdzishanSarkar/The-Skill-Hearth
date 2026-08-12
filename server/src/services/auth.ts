@@ -15,6 +15,7 @@ import {
 import { generateToken, hashToken } from '../utils/token';
 import { sendVerificationEmail, sendPasswordResetEmail } from '../utils/email';
 import { HttpError } from '../utils/errors';
+import { ensureGamification, awardXP } from './gamification';
 import { blacklistToken, ACCESS_TOKEN_TTL_SECONDS, REFRESH_TOKEN_TTL_SECONDS } from '../utils/blacklist';
 import {
   clearLoginFailures,
@@ -29,6 +30,22 @@ const REFRESH_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const PASSWORD_MIN = 8;
 const PASSWORD_MAX = 72;
+const USERNAME_REGEX = /^[a-z][a-z0-9][a-z0-9._]{1,18}$/;
+
+export const PASSWORD_POLICY_MESSAGE =
+  'Password must be at least 8 characters and include a lowercase letter, an uppercase letter, a number and a special character';
+
+export function isPasswordPolicyCompliant(password: string): boolean {
+  return (
+    typeof password === 'string' &&
+    password.length >= PASSWORD_MIN &&
+    password.length <= PASSWORD_MAX &&
+    /[a-z]/.test(password) &&
+    /[A-Z]/.test(password) &&
+    /\d/.test(password) &&
+    /[^A-Za-z0-9]/.test(password)
+  );
+}
 
 export function sanitizeUser(user: IUser): Record<string, unknown> {
   const json = user.toJSON() as Record<string, unknown>;
@@ -40,6 +57,7 @@ export function sanitizeUser(user: IUser): Record<string, unknown> {
 export interface RegisterInput {
   email: string;
   password: string;
+  username: string;
   displayName: string;
   bio?: string;
   adminCode?: string;
@@ -47,16 +65,20 @@ export interface RegisterInput {
 
 export async function register(input: RegisterInput) {
   const email = input.email.toLowerCase().trim();
+  const username = input.username?.trim() || '';
   const displayName = input.displayName.trim();
 
   if (!EMAIL_REGEX.test(email)) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid email format');
   }
-  if (input.password.length < PASSWORD_MIN || input.password.length > PASSWORD_MAX) {
+  if (!isPasswordPolicyCompliant(input.password)) {
+    throw new HttpError(400, 'VALIDATION_ERROR', PASSWORD_POLICY_MESSAGE);
+  }
+  if (!USERNAME_REGEX.test(username)) {
     throw new HttpError(
       400,
       'VALIDATION_ERROR',
-      `Password must be between ${PASSWORD_MIN} and ${PASSWORD_MAX} characters`
+      'Username must start with a lowercase letter, be 3-20 characters, and use only letters, numbers, dots and underscores'
     );
   }
   if (displayName.length < 2 || displayName.length > 50) {
@@ -76,14 +98,15 @@ export async function register(input: RegisterInput) {
     throw new HttpError(409, 'EMAIL_TAKEN', 'An account with this email already exists');
   }
 
-  const nameTaken = await User.findOne({ displayName });
-  if (nameTaken) {
-    throw new HttpError(409, 'NAME_TAKEN', 'That display name is already taken');
+  const usernameTaken = await User.findOne({ username });
+  if (usernameTaken) {
+    throw new HttpError(409, 'USERNAME_TAKEN', 'That username is already taken');
   }
 
   const user = await User.create({
     email,
     passwordHash: input.password,
+    username,
     displayName,
     bio: input.bio?.trim() || '',
     role,
@@ -98,6 +121,13 @@ export async function register(input: RegisterInput) {
   });
 
   await sendVerificationEmail(user.email, token);
+
+  try {
+    await ensureGamification(user._id);
+    await awardXP(user._id, 'register');
+  } catch {
+    // best-effort
+  }
 
   return { user: sanitizeUser(user) };
 }
@@ -313,12 +343,8 @@ export async function resetPassword(token: string, newPassword: string) {
   if (!token) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Reset token is required');
   }
-  if (!newPassword || newPassword.length < PASSWORD_MIN || newPassword.length > PASSWORD_MAX) {
-    throw new HttpError(
-      400,
-      'VALIDATION_ERROR',
-      `Password must be between ${PASSWORD_MIN} and ${PASSWORD_MAX} characters`
-    );
+  if (!isPasswordPolicyCompliant(newPassword)) {
+    throw new HttpError(400, 'VALIDATION_ERROR', PASSWORD_POLICY_MESSAGE);
   }
 
   const record = await PasswordResetToken.findOne({

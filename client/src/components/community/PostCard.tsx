@@ -62,7 +62,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
   const author = post.authorId;
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 shadow-sm">
       <div className="flex gap-3">
         <div className="flex flex-col items-center gap-1">
           <button
@@ -72,13 +72,13 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             aria-pressed={userVote === 'up'}
             className={`rounded p-1 transition-colors ${
               userVote === 'up'
-                ? 'text-emerald-600 bg-emerald-50'
-                : 'text-gray-400 hover:text-emerald-600 hover:bg-emerald-50'
+                ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40'
+                : 'text-gray-400 dark:text-gray-500 hover:text-emerald-600 hover:bg-emerald-50'
             } disabled:opacity-50`}
           >
             <FiArrowUp className="h-5 w-5" />
           </button>
-          <span className={`text-sm font-semibold ${voteScore > 0 ? 'text-emerald-600' : voteScore < 0 ? 'text-red-600' : 'text-gray-600'}`}>
+          <span className={`text-sm font-semibold ${voteScore > 0 ? 'text-emerald-600 dark:text-emerald-400' : voteScore < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400'}`}>
             {voteScore}
           </span>
           <button
@@ -88,8 +88,8 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             aria-pressed={userVote === 'down'}
             className={`rounded p-1 transition-colors ${
               userVote === 'down'
-                ? 'text-red-600 bg-red-50'
-                : 'text-gray-400 hover:text-red-600 hover:bg-red-50'
+                ? 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40'
+                : 'text-gray-400 dark:text-gray-500 hover:text-red-600 hover:bg-red-50'
             } disabled:opacity-50`}
           >
             <FiArrowDown className="h-5 w-5" />
@@ -101,7 +101,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             {author && (
               <Link
                 to={`/profile/${author._id}`}
-                className="flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-indigo-600"
+                className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100 hover:text-indigo-600"
               >
                 {author.avatar ? (
                   <img
@@ -110,23 +110,23 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
                     className="h-6 w-6 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="h-6 w-6 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-medium text-indigo-600">
+                  <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-xs font-medium text-indigo-600 dark:text-indigo-400">
                     {author.displayName[0]}
                   </div>
                 )}
                 {author.displayName}
               </Link>
             )}
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
               {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
             </span>
           </div>
 
-          <p className="text-gray-700 whitespace-pre-wrap">{post.content}</p>
+          <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{post.content}</p>
 
-          <div className="mt-3 flex items-center gap-3 text-sm text-gray-500">
+          <div className="mt-3 flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
             {post.neighborhood && (
-              <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">
+              <span className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">
                 {post.neighborhood}
               </span>
             )}
@@ -134,7 +134,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             {user && !isAuthor && (
               <button
                 onClick={handleReport}
-                className="flex items-center gap-1 text-gray-400 hover:text-orange-500 transition-colors"
+                className="flex items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-orange-500 transition-colors"
               >
                 <FiFlag className="h-3.5 w-3.5" />
                 <span className="text-xs">Report</span>
@@ -143,7 +143,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             {isAuthor && (
               <button
                 onClick={handleDelete}
-                className="flex items-center gap-1 text-gray-400 hover:text-red-500 transition-colors"
+                className="flex items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-red-500 transition-colors"
               >
                 <FiTrash2 className="h-3.5 w-3.5" />
                 <span className="text-xs">Delete</span>

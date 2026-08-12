@@ -7,11 +7,17 @@
   cursor: pointer;
 }
 
-.map-fit-button {
+.map-controls {
   position: absolute;
   right: 12px;
   bottom: 100px;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.map-control-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,12 +29,13 @@
   color: #374151;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.map-fit-button:hover {
-  background: #eef2ff;
-  color: #4f46e5;
+.map-control-button:hover {
+  background: #eff6ff;
+  color: #2563eb;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .leaflet-container img,
@@ -55,13 +62,13 @@
   line-height: 1;
   border-radius: 10px;
   background: #ffffff;
-  border: 2.5px solid #4f46e5;
+  border: 2.5px solid #2563eb;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
   box-sizing: border-box;
 }
 
 .skill-map-pin__bubble--learn {
-  border-color: #f59e0b;
+  border-color: #ea580c;
 }
 
 .skill-map-pin__bubble::after {
@@ -72,14 +79,14 @@
   width: 10px;
   height: 10px;
   background: #ffffff;
-  border-right: 2.5px solid #4f46e5;
-  border-bottom: 2.5px solid #4f46e5;
+  border-right: 2.5px solid #2563eb;
+  border-bottom: 2.5px solid #2563eb;
   transform: translateX(-50%) rotate(45deg);
 }
 
 .skill-map-pin__bubble--learn::after {
-  border-right-color: #f59e0b;
-  border-bottom-color: #f59e0b;
+  border-right-color: #ea580c;
+  border-bottom-color: #ea580c;
 }
 
 .skill-map-pin__bubble span {
@@ -98,57 +105,68 @@
 }
 
 .skill-map-popup__type--teach {
-  background: #eef2ff;
-  color: #4f46e5;
+  background: #dbeafe;
+  color: #1d4ed8;
 }
 
 .skill-map-popup__type--learn {
-  background: #fffbeb;
-  color: #b45309;
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.skill-map-popup__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
 }
 
 .skill-map-popup__cta--secondary {
-  display: block;
-  margin-top: 6px;
-  text-align: center;
-  padding: 5px 12px;
-  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
   border: 1px solid #e5e7eb;
+  border-radius: 8px;
   background: #ffffff;
   color: #4b5563;
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .skill-map-popup__cta--secondary:hover {
   background: #f9fafb;
+  border-color: #d1d5db;
 }
 
 .marker-cluster-small {
-  background-color: rgba(79, 70, 229, 0.28);
+  background-color: rgba(37, 99, 235, 0.28);
 }
 
 .marker-cluster-small div {
-  background-color: rgba(79, 70, 229, 0.72);
+  background-color: rgba(37, 99, 235, 0.72);
   color: #ffffff;
 }
 
 .marker-cluster-medium {
-  background-color: rgba(79, 70, 229, 0.35);
+  background-color: rgba(37, 99, 235, 0.35);
 }
 
 .marker-cluster-medium div {
-  background-color: rgba(79, 70, 229, 0.8);
+  background-color: rgba(37, 99, 235, 0.8);
   color: #ffffff;
 }
 
 .marker-cluster-large {
-  background-color: rgba(124, 58, 237, 0.45);
+  background-color: rgba(29, 78, 216, 0.45);
 }
 
 .marker-cluster-large div {
-  background-color: rgba(124, 58, 237, 0.9);
+  background-color: rgba(29, 78, 216, 0.9);
   color: #ffffff;
 }
 
@@ -181,8 +199,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: #4f46e5;
-  background: #e0e7ff;
+  color: #1d4ed8;
+  background: #dbeafe;
 }
 
 .skill-map-popup__identity {
@@ -229,18 +247,256 @@
 }
 
 .skill-map-popup__cta {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-  padding: 7px 12px;
-  border-radius: 6px;
-  background: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #2563eb;
   color: #ffffff;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.35);
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .skill-map-popup__cta:hover {
-  background: #4338ca;
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.skill-map-popup__cta svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.skill-map-popup__cta:hover svg {
+  transform: translateX(2px);
+}
+
+.map--night .leaflet-control-zoom a {
+  background: #1f2937;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.map--night .leaflet-control-zoom a:hover {
+  background: #374151;
+  color: #ffffff;
+}
+
+.map--night .leaflet-control-attribution {
+  background: rgba(17, 24, 39, 0.85);
+  color: #9ca3af;
+}
+
+.map--night .leaflet-control-attribution a {
+  color: #c7d2fe;
+}
+
+.map--night .map-control-button {
+  background: #1f2937;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+}
+
+.map--night .map-control-button:hover {
+  background: #374151;
+  color: #ffffff;
+}
+
+.map--night .skill-map-pin__bubble {
+  background: #f9fafb;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.map--night .skill-map-pin__bubble--learn {
+  border-color: #f97316;
+}
+
+.map--night .skill-map-pin__bubble::after {
+  background: #f9fafb;
+  border-right-color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+.map--night .skill-map-pin__bubble--learn::after {
+  border-right-color: #f97316;
+  border-bottom-color: #f97316;
+}
+
+.map--night .leaflet-popup-content-wrapper {
+  background: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #4b5563;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+}
+
+.map--night .leaflet-popup-tip {
+  background: #1f2937;
+  border: 1px solid #4b5563;
+}
+
+.map--night .leaflet-popup-close-button {
+  color: #9ca3af;
+}
+
+.map--night .leaflet-popup-close-button:hover {
+  color: #ffffff;
+}
+
+.map--night .skill-map-popup__name {
+  color: #f9fafb;
+}
+
+.map--night .skill-map-popup__rating {
+  color: #d1d5db;
+}
+
+.map--night .skill-map-popup__skill {
+  color: #f3f4f6;
+}
+
+.map--night .skill-map-popup__category {
+  color: #9ca3af;
+}
+
+.map--night .skill-map-popup__meta {
+  color: #d1d5db;
+}
+
+.map--night .skill-map-popup__avatar {
+  background: #374151;
+}
+
+.map--night .skill-map-popup__avatar--fallback {
+  color: #c7d2fe;
+  background: #3730a3;
+}
+
+.map--night .skill-map-popup__cta--secondary {
+  border-color: #4b5563;
+  background: #1f2937;
+  color: #d1d5db;
+}
+
+.map--night .skill-map-popup__cta--secondary:hover {
+  background: #374151;
+}
+
+.map--night .marker-cluster-small {
+  background-color: rgba(59, 130, 246, 0.45);
+}
+
+.map--night .marker-cluster-small div {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.map--night .marker-cluster-medium {
+  background-color: rgba(59, 130, 246, 0.55);
+}
+
+.map--night .marker-cluster-medium div {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.map--night .marker-cluster-large {
+  background-color: rgba(37, 99, 235, 0.55);
+}
+
+.map--night .marker-cluster-large div {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Keep the popup readable when the app is in dark theme, regardless of map mode */
+.dark .leaflet-popup-content-wrapper {
+  background: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #4b5563;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+}
+
+.dark .leaflet-popup-tip {
+  background: #1f2937;
+  border: 1px solid #4b5563;
+}
+
+.dark .leaflet-popup-close-button {
+  color: #9ca3af;
+}
+
+.dark .leaflet-popup-close-button:hover {
+  color: #ffffff;
+}
+
+.dark .skill-map-popup__name {
+  color: #f9fafb;
+}
+
+.dark .skill-map-popup__rating {
+  color: #d1d5db;
+}
+
+.dark .skill-map-popup__skill {
+  color: #f3f4f6;
+}
+
+.dark .skill-map-popup__category {
+  color: #9ca3af;
+}
+
+.dark .skill-map-popup__meta {
+  color: #d1d5db;
+}
+
+.dark .skill-map-popup__avatar {
+  background: #374151;
+}
+
+.dark .skill-map-popup__avatar--fallback {
+  color: #c7d2fe;
+  background: #3730a3;
+}
+
+.dark .skill-map-popup__cta--secondary {
+  border-color: #4b5563;
+  background: #1f2937;
+  color: #d1d5db;
+}
+
+.dark .skill-map-popup__cta--secondary:hover {
+  background: #374151;
+}
+
+@media (max-width: 640px) {
+  .map-controls {
+    right: 12px;
+    bottom: 60px;
+  }
+
+  .map-control-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .leaflet-control-zoom a {
+    width: 38px;
+    height: 38px;
+    line-height: 36px;
+  }
+
+  .skill-map-popup {
+    min-width: 0;
+    max-width: calc(100vw - 48px);
+  }
 }

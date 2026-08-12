@@ -27,9 +27,9 @@ export default function SmartMatchPanel() {
   if (matches.length === 0) return null;
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-      <h3 className="text-sm font-semibold text-gray-900">Recommended for you</h3>
-      <p className="mt-1 text-xs text-gray-500">
+    <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm">
+      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Recommended for you</h3>
+      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
         People near you who teach what you want to learn
       </p>
       <div className="mt-4 space-y-3">
@@ -37,14 +37,14 @@ export default function SmartMatchPanel() {
           <Link
             key={`${m.userId}-${m.skillId}`}
             to={`/skills/${m.skillId}`}
-            className="flex items-center justify-between rounded-lg border border-gray-100 p-3 hover:border-indigo-200 hover:bg-indigo-50/40"
+            className="flex items-center justify-between rounded-lg border border-gray-100 p-3 hover:border-indigo-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/40/40"
           >
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-gray-900 truncate">{m.skillName}</p>
-              <p className="text-xs text-gray-500">
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{m.skillName}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
                 by {m.displayName} · {m.categoryName}
               </p>
-              <div className="mt-1 flex items-center gap-2 text-xs text-gray-400">
+              <div className="mt-1 flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
                 {m.distanceKm < 999 && <span>{m.distanceKm} km</span>}
                 {m.rating > 0 && (
                   <span className="flex items-center gap-0.5">
@@ -56,7 +56,7 @@ export default function SmartMatchPanel() {
                 )}
               </div>
             </div>
-            <span className="shrink-0 rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-800">
+            <span className="shrink-0 rounded-full bg-indigo-100 dark:bg-indigo-900/40 px-2 py-0.5 text-xs font-medium text-indigo-800 dark:text-indigo-300">
               {Math.round(m.matchScore * 100)}% match
             </span>
           </Link>

@@ -1,10 +1,12 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider } from '../context/AuthProvider';
 import { SocketProvider } from '../context/SocketProvider';
+import { ThemeProvider } from '../context/ThemeProvider';
 import { useAuth } from '../hooks/useAuth';
 import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import ThemeToaster from '../components/ui/ThemeToaster';
 import ProtectedRoute from '../components/shared/ProtectedRoute';
 import RouteTitle from '../components/shared/RouteTitle';
 import LandingPage from '../pages/public/LandingPage';
@@ -26,6 +28,9 @@ import NearbySkillsPage from '../pages/private/NearbySkillsPage';
 import SkillDetailPage from '../pages/private/SkillDetailPage';
 import AccountSettingsPage from '../pages/private/AccountSettingsPage';
 import SwapSuggestionsPage from '../pages/private/SwapSuggestionsPage';
+import SwapsPage from '../pages/private/SwapsPage';
+import ReviewsPage from '../pages/private/ReviewsPage';
+import SavedSearchesPage from '../pages/private/SavedSearchesPage';
 import SkillSuggestionsPage from '../pages/private/SkillSuggestionsPage';
 import BundlesPage from '../pages/private/BundlesPage';
 import LearnerBoardPage from '../pages/private/LearnerBoardPage';
@@ -38,6 +43,11 @@ import MentorshipsPage from '../pages/private/MentorshipsPage';
 import ShowcasePage from '../pages/private/ShowcasePage';
 import IntegrationsPage from '../pages/private/IntegrationsPage';
 import UpgradePage from '../pages/private/UpgradePage';
+import FeedPage from '../pages/private/FeedPage';
+import FriendsPage from '../pages/private/FriendsPage';
+import GamificationPage from '../pages/private/GamificationPage';
+import FriendDmsPage from '../pages/private/FriendDmsPage';
+import FriendDmPage from '../pages/private/FriendDmPage';
 
 const MapDiscoveryPage = lazy(() => import('../pages/private/MapDiscoveryPage'));
 const InboxPage = lazy(() => import('../pages/private/InboxPage'));
@@ -46,13 +56,16 @@ const ConnectionDetailPage = lazy(() => import('../pages/private/ConnectionDetai
 const MessagesPage = lazy(() => import('../pages/private/MessagesPage'));
 const ChatRoomPage = lazy(() => import('../pages/private/ChatRoomPage'));
 const NotificationsPage = lazy(() => import('../pages/private/NotificationsPage'));
+const JournalPage = lazy(() => import('../pages/private/JournalPage'));
+const JournalEntryPage = lazy(() => import('../pages/private/JournalEntryPage'));
+const ImpactPage = lazy(() => import('../pages/private/ImpactPage'));
 
 function NotFound() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
-      <h1 className="text-3xl font-bold text-gray-900">Page not found</h1>
-      <p className="mt-2 text-gray-600">The page you're looking for doesn't exist.</p>
-      <Link to="/" className="mt-6 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Page not found</h1>
+      <p className="mt-2 text-gray-600 dark:text-gray-400">The page you're looking for doesn't exist.</p>
+      <Link to="/" className="mt-6 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">
         Back to home
       </Link>
     </div>
@@ -65,12 +78,20 @@ function NavigateToDashboard() {
 
 function AppContent() {
   const { isAuthenticated } = useAuth();
+  const { pathname } = useLocation();
+  const showFooter = !(
+    /^\/map(\/|$)/.test(pathname) ||
+    /^\/chat\//.test(pathname) ||
+    /^\/dm\//.test(pathname) ||
+    /^\/messages(\/|$)/.test(pathname)
+  );
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <RouteTitle />
-      <Routes>
+      <main className="flex-1">
+        <RouteTitle />
+        <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={isAuthenticated ? <NavigateToDashboard /> : <LoginPage />} />
         <Route path="/register" element={isAuthenticated ? <NavigateToDashboard /> : <RegisterPage />} />
@@ -86,8 +107,8 @@ function AppContent() {
           element={
             <Suspense
               fallback={
-                <div className="flex h-[calc(100vh-57px)] items-center justify-center bg-gray-50">
-                  <span className="text-sm text-gray-500">Loading map…</span>
+                <div className="flex h-[calc(100dvh-64px)] items-center justify-center bg-gray-50 dark:bg-gray-900">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">Loading map…</span>
                 </div>
               }
             >
@@ -148,6 +169,30 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <SwapSuggestionsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/swaps"
+          element={
+            <ProtectedRoute>
+              <SwapsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reviews"
+          element={
+            <ProtectedRoute>
+              <ReviewsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/saved-searches"
+          element={
+            <ProtectedRoute>
+              <SavedSearchesPage />
             </ProtectedRoute>
           }
         />
@@ -248,6 +293,46 @@ function AppContent() {
           element={<UpgradePage />}
         />
         <Route
+          path="/feed"
+          element={
+            <ProtectedRoute>
+              <FeedPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/friends"
+          element={
+            <ProtectedRoute>
+              <FriendsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/gamification"
+          element={
+            <ProtectedRoute>
+              <GamificationPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dm"
+          element={
+            <ProtectedRoute>
+              <FriendDmsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dm/:userId"
+          element={
+            <ProtectedRoute>
+              <FriendDmPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/users"
           element={
             <ProtectedRoute>
@@ -275,7 +360,7 @@ function AppContent() {
           path="/inbox"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500">Loading…</span></div>}>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
                 <InboxPage />
               </Suspense>
             </ProtectedRoute>
@@ -285,7 +370,7 @@ function AppContent() {
           path="/outbox"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500">Loading…</span></div>}>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
                 <OutboxPage />
               </Suspense>
             </ProtectedRoute>
@@ -295,7 +380,7 @@ function AppContent() {
           path="/connection/:id"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500">Loading…</span></div>}>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
                 <ConnectionDetailPage />
               </Suspense>
             </ProtectedRoute>
@@ -305,7 +390,7 @@ function AppContent() {
           path="/messages"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500">Loading…</span></div>}>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
                 <MessagesPage />
               </Suspense>
             </ProtectedRoute>
@@ -315,7 +400,7 @@ function AppContent() {
           path="/chat/:id"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500">Loading…</span></div>}>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
                 <ChatRoomPage />
               </Suspense>
             </ProtectedRoute>
@@ -325,27 +410,61 @@ function AppContent() {
           path="/notifications"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500">Loading…</span></div>}>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
                 <NotificationsPage />
               </Suspense>
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/journal"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
+                <JournalPage />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/journal/:id"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
+                <JournalEntryPage />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/impact"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
+                <ImpactPage />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
+        </Routes>
+      </main>
+      {showFooter && <Footer />}
+    </div>
   );
 }
 
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <SocketProvider>
-          <AppContent />
-          <Toaster position="top-right" />
-        </SocketProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <SocketProvider>
+            <AppContent />
+            <ThemeToaster />
+          </SocketProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

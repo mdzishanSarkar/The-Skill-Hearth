@@ -9,9 +9,9 @@ interface GroupSessionCardProps {
 
 const STATUS_STYLES: Record<string, string> = {
   open: 'bg-emerald-100 text-emerald-700',
-  full: 'bg-amber-100 text-amber-700',
-  completed: 'bg-gray-100 text-gray-500',
-  cancelled: 'bg-red-100 text-red-600',
+  full: 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300',
+  completed: 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400',
+  cancelled: 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400',
 };
 
 const FORMAT_ICONS: Record<string, typeof FiMapPin> = {
@@ -27,43 +27,43 @@ export default function GroupSessionCard({ session }: GroupSessionCardProps) {
   const FormatIcon = FORMAT_ICONS[session.format] || FiUsers;
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
           <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${STATUS_STYLES[session.status] || STATUS_STYLES.open}`}>
             {session.status}
           </span>
           {session.sessionType === 'workshop' && (
-            <span className="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-700">
+            <span className="inline-flex items-center rounded-full bg-purple-100 dark:bg-purple-900/40 px-2.5 py-0.5 text-xs font-medium text-purple-700 dark:text-purple-300">
               Workshop
             </span>
           )}
         </div>
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-gray-500 dark:text-gray-400">
           {formatDistanceToNow(new Date(session.createdAt), { addSuffix: true })}
         </span>
       </div>
 
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
         <Link to={`/group-sessions/${session._id}`} className="hover:text-indigo-600">
           {session.title}
         </Link>
       </h3>
 
-      <p className="text-sm text-gray-600 mb-3 line-clamp-2">{session.description}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">{session.description}</p>
 
-      <div className="flex flex-wrap gap-2 text-sm text-gray-500 mb-3">
+      <div className="flex flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
         {skill && (
-          <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1">
+          <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 dark:bg-gray-800 px-2 py-1">
             {skill.categoryName} / {skill.skillName}
           </span>
         )}
-        <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1">
+        <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 dark:bg-gray-800 px-2 py-1">
           <FormatIcon className="h-3.5 w-3.5" />
           {session.format}
         </span>
         {session.scheduledAt && (
-          <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1">
+          <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 dark:bg-gray-800 px-2 py-1">
             <FiCalendar className="h-3.5 w-3.5" />
             {new Date(session.scheduledAt).toLocaleDateString()}
           </span>
@@ -77,22 +77,22 @@ export default function GroupSessionCard({ session }: GroupSessionCardProps) {
               {teacher.avatar ? (
                 <img src={teacher.avatar} alt={teacher.displayName} className="h-6 w-6 rounded-full object-cover" />
               ) : (
-                <div className="h-6 w-6 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-medium text-indigo-600">
+                <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-xs font-medium text-indigo-600 dark:text-indigo-400">
                   {teacher.displayName[0]}
                 </div>
               )}
-              <span className="text-sm font-medium text-gray-700">{teacher.displayName}</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{teacher.displayName}</span>
             </Link>
           )}
         </div>
 
         <div className="flex items-center gap-3 text-sm">
-          <span className="text-gray-500">
+          <span className="text-gray-500 dark:text-gray-400">
             <FiUsers className="inline h-3.5 w-3.5 mr-1" />
             {session.participants.length}/{session.maxParticipants}
           </span>
           {session.status === 'open' && spotsLeft > 0 && (
-            <span className="text-emerald-600 font-medium">
+            <span className="text-emerald-600 dark:text-emerald-400 font-medium">
               {spotsLeft} spot{spotsLeft !== 1 ? 's' : ''} left
             </span>
           )}
@@ -112,14 +112,14 @@ export default function GroupSessionCard({ session }: GroupSessionCardProps) {
             ) : (
               <div
                 key={p._id}
-                className="h-7 w-7 rounded-full border-2 border-white bg-indigo-100 flex items-center justify-center text-xs font-medium text-indigo-600"
+                className="h-7 w-7 rounded-full border-2 border-white bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-xs font-medium text-indigo-600 dark:text-indigo-400"
               >
                 {p.displayName[0]}
               </div>
             )
           )}
           {session.participants.length > 5 && (
-            <div className="h-7 w-7 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-500">
+            <div className="h-7 w-7 rounded-full border-2 border-white bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xs font-medium text-gray-500 dark:text-gray-400">
               +{session.participants.length - 5}
             </div>
           )}

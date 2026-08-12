@@ -6,6 +6,9 @@ import type { CourseListResult } from '../../types/course.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
+import PageHeader from '../../components/ui/PageHeader';
+import EmptyState from '../../components/ui/EmptyState';
+import { FiBookOpen } from 'react-icons/fi';
 
 export default function CoursesPage() {
   const [data, setData] = useState<CourseListResult | null>(null);
@@ -50,41 +53,45 @@ export default function CoursesPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Courses</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Structured multi-session courses from community teachers.
-      </p>
+    <div className="page-shell animate-fade-in py-8">
+      <PageHeader
+        icon={<FiBookOpen />}
+        title="Courses"
+        subtitle="Structured multi-session courses from community teachers."
+      />
 
       {data && data.courses.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-gray-300 p-8 text-center">
-          <p className="text-sm text-gray-500">No courses yet.</p>
-        </div>
+        <EmptyState
+          className="mt-8"
+          icon={<FiBookOpen />}
+          title="No courses yet"
+          description="Structured courses will appear here once teachers publish them."
+        />
       ) : (
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {data?.courses.map((course) => (
             <div
               key={course._id}
-              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+              className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm"
             >
-              <h3 className="text-sm font-semibold text-gray-900">{course.title}</h3>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{course.title}</h3>
               {course.description && (
-                <p className="mt-1 line-clamp-2 text-xs text-gray-600">{course.description}</p>
+                <p className="mt-1 line-clamp-2 text-xs text-gray-600 dark:text-gray-400">{course.description}</p>
               )}
-              <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500">
+              <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
                 <span>{course.sessions.length} sessions</span>
                 <span>·</span>
                 <span>{course.skillId.categoryName}</span>
                 <span>·</span>
                 <span>{course.enrollmentCount}/{course.maxEnrollments} enrolled</span>
               </div>
-              <p className="mt-2 text-xs text-gray-400">
+              <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
                 by {course.teacherId.displayName}
               </p>
               <div className="mt-3 flex gap-2">
                 <Link
                   to={`/courses/${course._id}`}
-                  className="text-xs font-medium text-indigo-600 hover:text-indigo-500"
+                  className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
                 >
                   View details
                 </Link>
@@ -109,7 +116,7 @@ export default function CoursesPage() {
           <Button variant="secondary" disabled={page <= 1} onClick={() => setPage(page - 1)}>
             Prev
           </Button>
-          <span className="py-2 text-sm text-gray-600">Page {page} of {data.totalPages}</span>
+          <span className="py-2 text-sm text-gray-600 dark:text-gray-400">Page {page} of {data.totalPages}</span>
           <Button variant="secondary" disabled={page >= data.totalPages} onClick={() => setPage(page + 1)}>
             Next
           </Button>

@@ -61,7 +61,7 @@ export default function Modal({ open, onClose, title, children, maxWidth = 'max-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-gray-900/50"
+        className="absolute inset-0 bg-gray-900/50 dark:bg-gray-950/70"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -71,14 +71,14 @@ export default function Modal({ open, onClose, title, children, maxWidth = 'max-
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
-        className={clsx('relative z-10 w-full rounded-lg bg-white p-6 shadow-xl outline-none', maxWidth)}
+        className={clsx('relative z-10 w-full rounded-lg bg-white p-6 shadow-xl outline-none dark:bg-gray-900 dark:ring-1 dark:ring-gray-800', maxWidth)}
       >
         <div className="mb-4 flex items-center justify-between">
-          <h2 id={titleId} className="text-lg font-semibold text-gray-900">{title}</h2>
+          <h2 id={titleId} className="text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h2>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            className="rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300"
             aria-label="Close"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

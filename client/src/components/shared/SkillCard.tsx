@@ -18,9 +18,9 @@ interface SkillCardProps {
 }
 
 function Rating({ averageRating, reviewCount }: { averageRating: number; reviewCount: number }) {
-  if (reviewCount === 0) return <span className="text-xs text-gray-400">No reviews yet</span>;
+  if (reviewCount === 0) return <span className="text-xs text-gray-400 dark:text-gray-500">No reviews yet</span>;
   return (
-    <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+    <span className="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
       <span className="inline-flex" aria-hidden="true">
         {[1, 2, 3, 4, 5].map((value) => (
           <svg
@@ -48,17 +48,17 @@ export default function SkillCard({ skill, isOwner = false, onEdit, onToggle, on
   const detailLink = isOwner ? undefined : `/skills/${skill._id}`;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
+    <article className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md">
       <div className={`relative flex h-28 items-center justify-center bg-linear-to-br ${visual.gradient}`}>
         {detailLink ? (
           <Link to={detailLink} className="absolute inset-0" aria-label={skill.skillName} />
         ) : null}
         <span className="text-5xl drop-shadow-sm transition-transform group-hover:scale-110">{emoji}</span>
         <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
-          <Badge className="bg-white/95 text-gray-800">
+          <Badge className="bg-white dark:bg-gray-900/95 text-gray-800 dark:text-gray-200">
             {skill.type === 'teach' ? 'I can teach' : 'I want to learn'}
           </Badge>
-          {!skill.isActive && <Badge className="bg-white/95 text-gray-800">Paused</Badge>}
+          {!skill.isActive && <Badge className="bg-white dark:bg-gray-900/95 text-gray-800 dark:text-gray-200">Paused</Badge>}
         </div>
         {skill.distanceKm !== undefined && (
           <span className="absolute right-3 top-3 rounded-full bg-black/30 px-2 py-0.5 text-xs font-medium text-white">
@@ -68,7 +68,7 @@ export default function SkillCard({ skill, isOwner = false, onEdit, onToggle, on
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="truncate font-semibold text-gray-900">
+        <h3 className="truncate font-semibold text-gray-900 dark:text-gray-100">
           {detailLink ? (
             <Link to={detailLink} className="hover:text-indigo-600">
               {skill.skillName}
@@ -80,7 +80,7 @@ export default function SkillCard({ skill, isOwner = false, onEdit, onToggle, on
         <p className={`mt-0.5 text-xs font-medium ${visual.text}`}>{skill.categoryName}</p>
 
         {skill.description && (
-          <p className="mt-2 line-clamp-2 text-sm text-gray-600">{skill.description}</p>
+          <p className="mt-2 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">{skill.description}</p>
         )}
 
         <div className="mt-3 flex flex-wrap gap-1.5">
@@ -98,19 +98,19 @@ export default function SkillCard({ skill, isOwner = false, onEdit, onToggle, on
         <div className="mt-4 border-t border-gray-100 pt-3">
           {isOwner ? (
             (onEdit || onToggle || onDelete) && (
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-1">
                 {onEdit && (
-                  <button type="button" onClick={() => onEdit(skill)} className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                  <button type="button" onClick={() => onEdit(skill)} className="inline-flex min-h-9 items-center rounded-md px-2 py-1 text-sm font-medium text-indigo-600 hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-950/40">
                     Edit
                   </button>
                 )}
                 {onToggle && (
-                  <button type="button" onClick={() => onToggle(skill)} className="text-sm font-medium text-gray-600 hover:text-gray-500">
+                  <button type="button" onClick={() => onToggle(skill)} className="inline-flex min-h-9 items-center rounded-md px-2 py-1 text-sm font-medium text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800">
                     {skill.isActive ? 'Pause' : 'Activate'}
                   </button>
                 )}
                 {onDelete && (
-                  <button type="button" onClick={() => onDelete(skill)} className="text-sm font-medium text-red-600 hover:text-red-500">
+                  <button type="button" onClick={() => onDelete(skill)} className="inline-flex min-h-9 items-center rounded-md px-2 py-1 text-sm font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40">
                     Delete
                   </button>
                 )}
@@ -122,16 +122,16 @@ export default function SkillCard({ skill, isOwner = false, onEdit, onToggle, on
               <div className="min-w-0 flex-1">
                 <Link
                   to={`/profile/${skill.teacher._id}`}
-                  className="block truncate text-sm font-medium text-gray-800 hover:text-indigo-600"
+                  className="block truncate text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-indigo-600"
                 >
                   {skill.teacher.displayName}
                 </Link>
                 {skill.teacher.location.city && (
-                  <p className="truncate text-xs text-gray-400">{skill.teacher.location.city}</p>
+                  <p className="truncate text-xs text-gray-400 dark:text-gray-500">{skill.teacher.location.city}</p>
                 )}
               </div>
               {hasAvailability && (
-                <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600">
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-500" aria-hidden="true" />
                   Available
                 </span>

@@ -4,6 +4,8 @@ import { Category, Skill, Review, User } from '../models';
 import { SKILL_TAXONOMY } from '../data/skillTaxonomy';
 import { HttpError } from '../utils/errors';
 import { haversineKm } from '../utils/geo';
+import { awardXP, awardBadge } from './gamification';
+import { createActivityEvent } from './activityFeed';
 
 export type SkillType = 'teach' | 'learn';
 export type ProficiencyLevel = 'beginner' | 'intermediate' | 'advanced';
@@ -138,11 +140,30 @@ export async function createSkill(userId: string, input: SkillInput) {
     isDeleted: false,
     location: {
       city: user.location.city,
+      zipCode: user.location.zipCode,
       neighborhood: user.location.neighborhood,
       coordinates: user.location.coordinates,
       radiusPreference: user.location.radiusPreference,
     },
   });
+
+  const isFirstSkill = (await Skill.countDocuments({ userId, isDeleted: false })) === 1;
+  try {
+    await awardXP(userId, isFirstSkill ? 'add_first_skill' : 'add_skill');
+    if (isFirstSkill) await awardBadge(userId, 'first_spark');
+    await createActivityEvent({
+      actorId: userId,
+      eventType: 'skill_added',
+      subjectType: 'skill',
+      subjectId: skill._id,
+      title: `${isFirstSkill ? 'Added first skill' : 'Added skill'}: ${trimmedName} ${type === 'teach' ? '🧑‍🏫' : '🎯'}`,
+      subtitle: `${category.name}`,
+      emoji: type === 'teach' ? '🧑‍🏫' : '🎯',
+      visibility: 'public',
+    });
+  } catch {
+    // best-effort
+  }
 
   return getSkillById(String(skill._id));
 }

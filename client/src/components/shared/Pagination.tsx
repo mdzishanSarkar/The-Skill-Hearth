@@ -24,18 +24,18 @@ export default function Pagination({ page, totalPages, onPageChange }: Paginatio
   const pages = pageList(page, totalPages);
 
   return (
-    <nav className="flex items-center justify-center gap-1" aria-label="Pagination">
+    <nav className="flex flex-wrap items-center justify-center gap-1" aria-label="Pagination">
       <button
         type="button"
         onClick={() => onPageChange(page - 1)}
         disabled={page <= 1}
-        className="rounded-md px-2.5 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-300"
+        className="rounded-md px-2.5 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-300 dark:text-gray-400 dark:hover:bg-gray-800 dark:disabled:text-gray-600"
       >
         Previous
       </button>
       {pages.map((item, index) =>
         item === '...' ? (
-          <span key={`gap-${index}`} className="px-1 text-sm text-gray-400">
+          <span key={`gap-${index}`} className="px-1 text-sm text-gray-400 dark:text-gray-500">
             …
           </span>
         ) : (
@@ -46,7 +46,7 @@ export default function Pagination({ page, totalPages, onPageChange }: Paginatio
             className={
               item === page
                 ? 'rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium text-white'
-                : 'rounded-md px-3 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100'
+                : 'rounded-md px-3 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800'
             }
           >
             {item}
@@ -57,7 +57,7 @@ export default function Pagination({ page, totalPages, onPageChange }: Paginatio
         type="button"
         onClick={() => onPageChange(page + 1)}
         disabled={page >= totalPages}
-        className="rounded-md px-2.5 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-300"
+        className="rounded-md px-2.5 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-300 dark:text-gray-400 dark:hover:bg-gray-800 dark:disabled:text-gray-600"
       >
         Next
       </button>

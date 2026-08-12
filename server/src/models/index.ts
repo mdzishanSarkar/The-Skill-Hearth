@@ -1,5 +1,5 @@
 export { default as User } from './User';
-export type { IUser, IAvailabilitySlot, ILocation, IUserStats } from './User';
+export type { IUser, IAvailabilitySlot, ILocation, IUserStats, IUserGamification, IUserMapPreferences, IUserQuietHours } from './User';
 
 export { default as Skill } from './Skill';
 export type { ISkill, ISkillMedia, ISkillLocation } from './Skill';
@@ -105,3 +105,28 @@ export type { ICalendarIntegration, ICalendarEvent, CalendarProvider, CalendarSy
 
 export { default as BotInstallation } from './BotInstallation';
 export type { IBotInstallation, BotPlatform, BotStatus } from './BotInstallation';
+
+export { default as Friendship } from './Friendship';
+export type { IFriendship, FriendshipStatus, FriendTier, FriendshipMetVia } from './Friendship';
+
+export { default as ActivityEvent } from './ActivityEvent';
+export type {
+  IActivityEvent,
+  IActivityReaction,
+  IActivityPreview,
+  ActivityEventType,
+  ActivityVisibility,
+  ActivitySubjectType,
+} from './ActivityEvent';
+
+export { default as Streak } from './Streak';
+export type { IStreak, StreakType } from './Streak';
+
+export { default as DirectMessage } from './DirectMessage';
+export type { IDirectMessage } from './DirectMessage';
+
+export { default as SkillJournal } from './SkillJournal';
+export type { ISkillJournal } from './SkillJournal';
+
+export { default as RequestTemplate } from './RequestTemplate';
+export type { IRequestTemplate } from './RequestTemplate';

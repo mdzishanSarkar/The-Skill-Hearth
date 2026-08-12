@@ -119,28 +119,28 @@ export default function ReviewFormModal({
       maxWidth="max-w-lg"
     >
       <div className="flex flex-col gap-5">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           Share your experience with the session &quot;{connectionTitle}&quot;.
         </p>
 
         <div>
-          <p className="mb-2 text-sm font-medium text-gray-700">
-            Rating <span className="text-red-500">*</span>
+          <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            Rating <span className="text-red-500 dark:text-red-400">*</span>
           </p>
           <div className="flex items-center gap-1" role="radiogroup" aria-label="Star rating">
             {[1, 2, 3, 4, 5].map((value) => (
               <StarButton key={value} value={value} active={value <= rating} onClick={() => setRating(value)} />
             ))}
-            {rating > 0 && <span className="ml-2 text-sm text-gray-500">{rating} / 5</span>}
+            {rating > 0 && <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">{rating} / 5</span>}
           </div>
         </div>
 
         <div>
           <div className="mb-2 flex items-center justify-between">
-            <label htmlFor="review-content" className="text-sm font-medium text-gray-700">
-              Your review <span className="font-normal text-gray-400">(optional)</span>
+            <label htmlFor="review-content" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Your review <span className="font-normal text-gray-400 dark:text-gray-500">(optional)</span>
             </label>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-400 dark:text-gray-500">
               {content.length}/{MAX_REVIEW_LENGTH}
             </span>
           </div>
@@ -151,13 +151,13 @@ export default function ReviewFormModal({
             rows={4}
             maxLength={MAX_REVIEW_LENGTH}
             placeholder="What went well? What was the experience like?"
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
         </div>
 
         <div>
-          <p className="mb-2 text-sm font-medium text-gray-700">
-            Tags <span className="font-normal text-gray-400">(up to {MAX_REVIEW_TAGS})</span>
+          <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            Tags <span className="font-normal text-gray-400 dark:text-gray-500">(up to {MAX_REVIEW_TAGS})</span>
           </p>
           <div className="flex flex-wrap gap-2">
             {REVIEW_TAG_OPTIONS.map((tag) => {
@@ -172,8 +172,8 @@ export default function ReviewFormModal({
                   className={clsx(
                     'rounded-full border px-3 py-1 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40',
                     selected
-                      ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                      : 'border-gray-300 text-gray-600 hover:border-indigo-300 hover:bg-indigo-50/40'
+                      ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300'
+                      : 'border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40/40'
                   )}
                 >
                   {tag}
@@ -184,7 +184,7 @@ export default function ReviewFormModal({
         </div>
 
         <div>
-          <p className="mb-2 text-sm font-medium text-gray-700">Would you recommend them?</p>
+          <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Would you recommend them?</p>
           <div className="flex gap-2">
             {([true, false] as const).map((value) => (
               <button
@@ -195,9 +195,9 @@ export default function ReviewFormModal({
                   'rounded-md border px-4 py-1.5 text-sm font-medium transition-colors',
                   wouldRecommend === value
                     ? value
-                      ? 'border-green-500 bg-green-50 text-green-700'
-                      : 'border-red-500 bg-red-50 text-red-700'
-                    : 'border-gray-300 text-gray-600 hover:bg-gray-50'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300'
+                      : 'border-red-500 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-400'
+                    : 'border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
                 )}
               >
                 {value ? 'Yes' : 'No'}
@@ -206,7 +206,7 @@ export default function ReviewFormModal({
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
 
         <div className="flex justify-end gap-2 border-t border-gray-100 pt-4">
           <Button variant="secondary" onClick={onClose}>

@@ -17,12 +17,12 @@ export default function ProfileCompletenessBar() {
     'bg-red-500';
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 shadow-sm">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium text-gray-900">Profile completeness</h3>
-        <span className="text-sm font-semibold text-gray-700">{data.score}%</span>
+        <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">Profile completeness</h3>
+        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{data.score}%</span>
       </div>
-      <div className="mt-2 h-2 overflow-hidden rounded-full bg-gray-100">
+      <div className="mt-2 h-2 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-800">
         <div
           className={`h-full rounded-full transition-all ${color}`}
           style={{ width: `${data.score}%` }}
@@ -31,8 +31,8 @@ export default function ProfileCompletenessBar() {
       {data.suggestions.length > 0 && (
         <ul className="mt-3 space-y-1">
           {data.suggestions.slice(0, 3).map((suggestion, i) => (
-            <li key={i} className="flex items-start gap-1.5 text-xs text-gray-600">
-              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <li key={i} className="flex items-start gap-1.5 text-xs text-gray-600 dark:text-gray-400">
+              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
               </svg>
               {suggestion}

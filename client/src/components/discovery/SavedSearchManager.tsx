@@ -79,9 +79,9 @@ export default function SavedSearchManager() {
   if (loading) return <Spinner size="sm" />;
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-5">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-gray-900">Saved Searches</h3>
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Saved Searches</h3>
         <Button variant="secondary" size="sm" onClick={() => setShowForm(!showForm)}>
           {showForm ? 'Cancel' : 'Save current search'}
         </Button>
@@ -94,9 +94,9 @@ export default function SavedSearchManager() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Search name"
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-1.5 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
           />
-          <label className="flex items-center gap-2 text-sm text-gray-700">
+          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <input
               type="checkbox"
               checked={alertEnabled}
@@ -112,15 +112,15 @@ export default function SavedSearchManager() {
       )}
 
       {searches.length === 0 && !showForm ? (
-        <p className="mt-4 text-xs text-gray-400">No saved searches.</p>
+        <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">No saved searches.</p>
       ) : (
         <ul className="mt-4 space-y-2">
           {searches.map((s) => (
-            <li key={s._id} className="flex items-center justify-between rounded-md bg-gray-50 px-3 py-2">
+            <li key={s._id} className="flex items-center justify-between rounded-md bg-gray-50 dark:bg-gray-900 px-3 py-2">
               <div>
-                <span className="text-sm font-medium text-gray-900">{s.name}</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{s.name}</span>
                 {s.alertEnabled && (
-                  <span className="ml-2 inline-flex items-center rounded-full bg-green-100 px-1.5 py-0.5 text-xs text-green-700">
+                  <span className="ml-2 inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/40 px-1.5 py-0.5 text-xs text-green-700 dark:text-green-300">
                     Alerts on
                   </span>
                 )}
@@ -129,14 +129,14 @@ export default function SavedSearchManager() {
                 <button
                   type="button"
                   onClick={() => handleToggleAlert(s._id, s.alertEnabled)}
-                  className="text-xs text-indigo-600 hover:text-indigo-800"
+                  className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800"
                 >
                   {s.alertEnabled ? 'Disable alerts' : 'Enable alerts'}
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDelete(s._id)}
-                  className="text-xs text-red-500 hover:text-red-700"
+                  className="text-xs text-red-500 dark:text-red-400 hover:text-red-700"
                 >
                   Delete
                 </button>

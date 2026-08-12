@@ -25,15 +25,15 @@ function Stars({ rating }: { rating: number }) {
 
 export default function ReviewCard({ review }: ReviewCardProps) {
   return (
-    <div className="rounded-lg border border-gray-200 p-4">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <Avatar src={review.reviewer?.avatar || undefined} name={review.reviewer?.displayName || 'Anonymous'} size="sm" />
           <div>
-            <p className="text-sm font-medium text-gray-900">
+            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
               {review.reviewer?.displayName || 'Anonymous'}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               {new Date(review.createdAt).toLocaleDateString(undefined, {
                 year: 'numeric',
                 month: 'short',
@@ -45,7 +45,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
         <Stars rating={review.rating} />
       </div>
 
-      {review.content && <p className="mt-3 text-sm text-gray-700">{review.content}</p>}
+      {review.content && <p className="mt-3 text-sm text-gray-700 dark:text-gray-300">{review.content}</p>}
 
       {review.tags.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
@@ -58,7 +58,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       )}
 
       {review.wouldRecommend && (
-        <p className="mt-3 text-xs font-medium text-green-600">Would recommend</p>
+        <p className="mt-3 text-xs font-medium text-green-600 dark:text-green-400">Would recommend</p>
       )}
     </div>
   );

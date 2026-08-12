@@ -36,6 +36,12 @@ import webhookRoutes from "./routes/webhooks";
 import apiPublicRoutes from "./routes/apiPublic";
 import calendarRoutes from "./routes/calendars";
 import botRoutes from "./routes/bots";
+import friendRoutes from "./routes/friends";
+import feedRoutes from "./routes/feed";
+import gamificationRoutes from "./routes/gamification";
+import dmRoutes from "./routes/dms";
+import journalRoutes from "./routes/journal";
+import requestTemplateRoutes from "./routes/requestTemplates";
 import { tieredRateLimiter } from "./middleware/rateLimit";
 import { UPLOADS_DIR } from "./utils/upload";
 
@@ -98,6 +104,12 @@ app.use("/api/webhooks", webhookRoutes);
 app.use("/api/integrations", apiPublicRoutes);
 app.use("/api/calendars", calendarRoutes);
 app.use("/api/bots", botRoutes);
+app.use("/api/friends", friendRoutes);
+app.use("/api/feed", feedRoutes);
+app.use("/api/gamification", gamificationRoutes);
+app.use("/api/dms", dmRoutes);
+app.use("/api/journal", journalRoutes);
+app.use("/api/request-templates", requestTemplateRoutes);
 
 // Global error handler
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {

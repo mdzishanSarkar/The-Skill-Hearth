@@ -7,6 +7,7 @@ export interface ISkillMedia {
 
 export interface ISkillLocation {
   city: string;
+  zipCode: string;
   neighborhood: string;
   type: 'Point';
   coordinates: [number, number];
@@ -50,6 +51,7 @@ const skillMediaSchema = new Schema<ISkillMedia>(
 const skillLocationSchema = new Schema<ISkillLocation>(
   {
     city: { type: String, default: '' },
+    zipCode: { type: String, default: '' },
     neighborhood: { type: String, default: '' },
     type: { type: String, enum: ['Point'], default: 'Point' },
     coordinates: {

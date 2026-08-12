@@ -27,7 +27,7 @@ export default function MessageInput({ onSend, disabled }: MessageInputProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-end gap-2 border-t border-gray-200 bg-white p-3">
+    <form onSubmit={handleSubmit} className="flex items-end gap-2 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3">
       <textarea
         ref={inputRef}
         value={value}
@@ -36,7 +36,7 @@ export default function MessageInput({ onSend, disabled }: MessageInputProps) {
         rows={1}
         placeholder="Type a message..."
         disabled={disabled}
-        className="flex-1 resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:bg-gray-50"
+        className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:bg-gray-50"
         style={{ maxHeight: '120px' }}
       />
       <Button type="submit" size="sm" disabled={!value.trim() || disabled}>

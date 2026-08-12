@@ -64,8 +64,8 @@ export default function SchedulePicker({ connectionId }: SchedulePickerProps) {
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4">
-      <h4 className="text-sm font-semibold text-gray-900">Schedule Session</h4>
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+      <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Schedule Session</h4>
 
       <div className="mt-3 flex gap-2">
         <input
@@ -73,13 +73,13 @@ export default function SchedulePicker({ connectionId }: SchedulePickerProps) {
           value={date}
           onChange={(e) => setDate(e.target.value)}
           min={new Date().toISOString().split('T')[0]}
-          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
+          className="rounded-md border border-gray-300 dark:border-gray-700 px-3 py-1.5 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
         />
         <input
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
-          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
+          className="rounded-md border border-gray-300 dark:border-gray-700 px-3 py-1.5 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
         />
         <Button size="sm" loading={proposing} onClick={handlePropose}>
           Propose
@@ -100,7 +100,7 @@ export default function SchedulePicker({ connectionId }: SchedulePickerProps) {
           <button
             type="button"
             onClick={() => setShowNoShow(true)}
-            className="text-xs text-red-500 hover:text-red-700"
+            className="text-xs text-red-500 dark:text-red-400 hover:text-red-700"
           >
             Report no-show
           </button>
@@ -111,7 +111,7 @@ export default function SchedulePicker({ connectionId }: SchedulePickerProps) {
               value={noShowReason}
               onChange={(e) => setNoShowReason(e.target.value)}
               placeholder="Reason (optional)"
-              className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-1.5 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none"
             />
             <div className="flex gap-2">
               <Button variant="danger" size="sm" onClick={handleNoShow}>

@@ -45,7 +45,7 @@ export default function EndorsementButton({ endorseeId, skillId, connectionId, o
       size="sm"
       loading={loading}
       onClick={handleToggle}
-      className={endorsed ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : ''}
+      className={endorsed ? 'border-indigo-300 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300' : ''}
     >
       {endorsed ? 'Endorsed' : 'Endorse'}
     </Button>

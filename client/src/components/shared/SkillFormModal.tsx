@@ -23,7 +23,7 @@ interface SkillFormModalProps {
 }
 
 const inputClass =
-  'w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'w-full rounded-md border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
 export default function SkillFormModal({ open, onClose, skill, onSubmit }: SkillFormModalProps) {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -91,10 +91,10 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
     <Modal open={open} onClose={onClose} title={skill ? 'Edit skill' : 'Add a skill'}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <span className="mb-1 block text-sm font-medium text-gray-700">This skill is</span>
+          <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">This skill is</span>
           <div className="flex gap-3">
             {(['teach', 'learn'] as const).map((option) => (
-              <label key={option} className="flex cursor-pointer items-center gap-2 text-sm text-gray-700">
+              <label key={option} className="flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
                 <input
                   type="radio"
                   name="skillType"
@@ -109,7 +109,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Category</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Category</label>
           <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className={inputClass}>
             <option value="">Select a category</option>
             {categories.map((category) => (
@@ -121,7 +121,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Skill name</label>
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Skill name</label>
           <Input
             list="skill-suggestions"
             value={skillName}
@@ -139,7 +139,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
             {type === 'teach' ? 'My story with this skill' : 'What you would like to learn'}
           </label>
           <textarea
@@ -150,12 +150,12 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
             className={inputClass}
             placeholder={type === 'teach' ? 'Max 500 characters' : 'Optional — max 500 characters'}
           />
-          <p className="mt-1 text-right text-xs text-gray-400">{description.length}/500</p>
+          <p className="mt-1 text-right text-xs text-gray-400 dark:text-gray-500">{description.length}/500</p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Experience</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Experience</label>
             <select
               value={proficiencyLevel}
               onChange={(e) => setProficiencyLevel(e.target.value as ProficiencyLevel)}
@@ -167,7 +167,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Format</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Format</label>
             <select
               value={format}
               onChange={(e) => setFormat(e.target.value as SessionFormat)}
@@ -179,7 +179,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Session length</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Session length</label>
             <select
               value={sessionLength}
               onChange={(e) => setSessionLength(e.target.value as SessionLength)}
@@ -192,7 +192,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
 
         <div className="flex justify-end gap-3 pt-2">
           <Button type="button" variant="secondary" onClick={onClose}>
