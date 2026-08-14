@@ -37,7 +37,7 @@ export default function SmartMatchPanel() {
           <Link
             key={`${m.userId}-${m.skillId}`}
             to={`/skills/${m.skillId}`}
-            className="flex items-center justify-between rounded-lg border border-gray-100 p-3 hover:border-indigo-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/40/40"
+            className="flex items-center justify-between rounded-lg border border-gray-100 dark:border-gray-700 p-3 hover:border-indigo-200 dark:hover:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/40"
           >
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{m.skillName}</p>

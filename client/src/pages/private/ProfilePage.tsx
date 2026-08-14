@@ -247,7 +247,7 @@ function SkillListBlock({
             <li key={skill._id}>
               <Link
                 to={`/skills/${skill._id}`}
-                className="flex items-center gap-2 rounded-md border border-gray-200 dark:border-gray-700 px-3 py-2 hover:border-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40/40"
+                className="flex items-center gap-2 rounded-md border border-gray-200 dark:border-gray-700 px-3 py-2 hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/40"
               >
                 <span className="text-lg" aria-hidden="true">
                   {getSkillEmoji(skill.categoryName, skill.skillName)}
