@@ -29,6 +29,7 @@ export interface UpdateProfileInput {
   availability?: IAvailabilitySlot[];
   mapPreferences?: Partial<Pick<IUserMapPreferences, 'defaultMode' | 'defaultView' | 'clusterMarkers'>>;
   quietHours?: Partial<Pick<IUserQuietHours, 'enabled' | 'startTime' | 'endTime' | 'timezone'>>;
+  weeklyDigest?: boolean;
 }
 
 const VALID_MAP_MODES = ['auto', 'day', 'night'] as const;
@@ -166,6 +167,10 @@ export async function updateProfile(userId: string, input: UpdateProfileInput) {
     if (timezone !== undefined) {
       user.quietHours.timezone = String(timezone).trim().slice(0, 64);
     }
+  }
+
+  if (input.weeklyDigest !== undefined) {
+    user.weeklyDigest = Boolean(input.weeklyDigest);
   }
 
   await user.save();

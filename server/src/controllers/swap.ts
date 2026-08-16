@@ -2,6 +2,7 @@ import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import * as swapService from '../services/swap';
 import { asyncHandler } from '../utils/errors';
+import { signalSwapDeclined } from '../services/radarSignals';
 
 export const getSuggestions = asyncHandler(async (req: AuthRequest, res: Response) => {
   const suggestions = await swapService.findSwapSuggestions(req.userId!);
@@ -25,6 +26,7 @@ export const acceptSwap = asyncHandler(async (req: AuthRequest, res: Response) =
 
 export const declineSwap = asyncHandler(async (req: AuthRequest, res: Response) => {
   const swap = await swapService.declineSwap(String(req.params.id), req.userId!);
+  signalSwapDeclined(req.userId, swap);
   res.json({ success: true, data: { swap } });
 });
 

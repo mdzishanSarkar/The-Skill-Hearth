@@ -4,6 +4,22 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import helmet from "helmet";
 
+const buildAllowedOrigins = () => {
+  const configured = (process.env.CLIENT_URL ?? process.env.CLIENT_URLS ?? "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  const defaults = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+  ];
+
+  return [...new Set([...configured, ...defaults])];
+};
+
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/users";
 import adminRoutes from "./routes/admin";
@@ -21,9 +37,13 @@ import suggestionRoutes from "./routes/suggestions";
 import bundleRoutes from "./routes/bundles";
 import blockOutDateRoutes from "./routes/blockOutDates";
 import discoveryEnhancedRoutes from "./routes/discoveryEnhanced";
+import searchRoutes from "./routes/search";
 import messageEnhancedRoutes from "./routes/messageEnhanced";
 import sessionRoutes from "./routes/sessions";
 import savedSearchRoutes from "./routes/savedSearches";
+import skillRadarRoutes from "./routes/skillRadar";
+import swapReadyMatchesRoutes from "./routes/swapReadyMatches";
+import skillDemandRoutes from "./routes/skillDemand";
 import communityRoutes from "./routes/community";
 import groupSessionRoutes from "./routes/groupSessions";
 import blockRoutes from "./routes/block";
@@ -42,7 +62,6 @@ import gamificationRoutes from "./routes/gamification";
 import dmRoutes from "./routes/dms";
 import journalRoutes from "./routes/journal";
 import requestTemplateRoutes from "./routes/requestTemplates";
-import { tieredRateLimiter } from "./middleware/rateLimit";
 import { UPLOADS_DIR } from "./utils/upload";
 
 dotenv.config();
@@ -56,12 +75,26 @@ app.use(
 );
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: (origin, callback) => {
+      const allowedOrigins = buildAllowedOrigins();
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      const isLocalDevOrigin = /^http:\/\/(localhost|127\.0\.0\.1|\[::1\]):\d+$/.test(origin);
+      if (isLocalDevOrigin) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
 
-app.use(tieredRateLimiter);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -77,6 +110,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/skills", skillRoutes);
 app.use("/api/discovery", discoveryRoutes);
+app.use("/api/search", searchRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/connections", connectionRoutes);
@@ -92,6 +126,9 @@ app.use("/api/discover", discoveryEnhancedRoutes);
 app.use("/api/chat", messageEnhancedRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/saved-searches", savedSearchRoutes);
+app.use("/api/skill-radar", skillRadarRoutes);
+app.use("/api/swap-ready-matches", swapReadyMatchesRoutes);
+app.use("/api/skill-demand", skillDemandRoutes);
 app.use("/api/community", communityRoutes);
 app.use("/api/group-sessions", groupSessionRoutes);
 app.use("/api/blocks", blockRoutes);

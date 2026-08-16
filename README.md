@@ -37,3 +37,6 @@ shared/    Future monorepo shared types
 - `npm run dev --prefix server` — server only (tsx watch on :5000)
 - `npm run build --prefix client` — typecheck + Vite build
 - `npm run build --prefix server` — tsc build to `server/dist`
+
+
+# V1

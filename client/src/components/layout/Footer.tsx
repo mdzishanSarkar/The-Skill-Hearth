@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiTwitter, FiFacebook, FiInstagram, FiLinkedin } from 'react-icons/fi';
 
@@ -8,8 +7,8 @@ const LINK_COLUMNS = [
     links: [
       { label: 'Skill map', to: '/map' },
       { label: 'Browse skills', to: '/skills' },
+      { label: 'My Radar', to: '/radar' },
       { label: 'Neighborhoods', to: '/community' },
-      { label: 'Skill swaps', to: '/swap-suggestions' },
     ],
   },
   {
@@ -18,7 +17,7 @@ const LINK_COLUMNS = [
       { label: 'Dashboard', to: '/dashboard' },
       { label: 'Your profile', to: '/profile' },
       { label: 'My skills', to: '/my-skills' },
-      { label: 'Saved searches', to: '/saved-searches' },
+      { label: 'Ask the Hearth', to: '/ask' },
     ],
   },
   {
@@ -27,19 +26,22 @@ const LINK_COLUMNS = [
       { label: 'Courses', to: '/courses' },
       { label: 'Challenges', to: '/challenges' },
       { label: 'Showcase', to: '/showcase' },
-      { label: 'Upgrade to Pro', to: '/upgrade' },
     ],
   },
 ];
 
 const SOCIALS = [
-  { label: 'Twitter', icon: <FiTwitter className="h-4 w-4" />, href: '' },
+  { label: 'Twitter', icon: <FiTwitter className="h-4 w-4" />, href: 'https://x.com/mdzishanSarkar' },
   {
     label: 'Facebook',
     icon: <FiFacebook className="h-4 w-4" />,
     href: 'https://www.facebook.com/zishansarkar01/',
   },
-  { label: 'Instagram', icon: <FiInstagram className="h-4 w-4" />, href: '' },
+  {
+    label: 'Instagram',
+    icon: <FiInstagram className="h-4 w-4" />,
+    href: 'https://www.instagram.com/zis_hansarkar',
+  },
   {
     label: 'LinkedIn',
     icon: <FiLinkedin className="h-4 w-4" />,
@@ -49,23 +51,11 @@ const SOCIALS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [contactFlash, setContactFlash] = useState(false);
-
-  function handleContactClick(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    setContactFlash(true);
-    document.getElementById('site-footer')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    window.setTimeout(() => setContactFlash(false), 1800);
-  }
 
   return (
     <footer
       id="site-footer"
-      className={
-        contactFlash
-          ? 'border-t border-indigo-200 bg-indigo-50 transition-colors duration-300 dark:border-indigo-800 dark:bg-indigo-950/40'
-          : 'border-t border-gray-200 bg-gray-50 transition-colors duration-300 dark:border-gray-800 dark:bg-gray-950'
-      }
+      className="border-t border-gray-200 bg-gray-50 transition-colors duration-300 dark:border-gray-800 dark:bg-gray-950"
     >
       <div className="page-shell py-12">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
@@ -132,21 +122,6 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-gray-200 pt-6 text-sm text-gray-400 dark:border-gray-800 dark:text-gray-500 sm:flex-row">
           <p>© {year} The Skill Hearth. All rights reserved.</p>
-          <div className="flex gap-5">
-            <Link to="/" className="transition hover:text-indigo-600 dark:hover:text-indigo-400">
-              Privacy
-            </Link>
-            <Link to="/" className="transition hover:text-indigo-600 dark:hover:text-indigo-400">
-              Terms
-            </Link>
-            <button
-              type="button"
-              onClick={handleContactClick}
-              className="transition hover:text-indigo-600 dark:hover:text-indigo-400"
-            >
-              Contact
-            </button>
-          </div>
         </div>
       </div>
     </footer>

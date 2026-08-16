@@ -7,6 +7,7 @@ import { getImpact as getImpactData } from '../services/impact';
 import { calculateProfileCompleteness } from '../utils/profileCompleteness';
 import { exportUserData, deleteUserAccount } from '../utils/gdpr';
 import { User } from '../models';
+import { signalProfileView } from '../services/radarSignals';
 
 const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse';
 
@@ -31,7 +32,8 @@ export const reverseGeocode = asyncHandler(async (req: AuthRequest, res: Respons
       address.city || address.town || address.village || address.municipality || address.county || '';
     const neighborhood =
       address.neighbourhood || address.suburb || address.quarter || address.hamlet || '';
-    res.json({ success: true, data: { city, neighborhood } });
+    const zipCode = address.postcode || '';
+    res.json({ success: true, data: { city, neighborhood, zipCode } });
   } catch {
     res.status(502).json({
       success: false,
@@ -55,6 +57,7 @@ export const updateMe = asyncHandler(async (req: AuthRequest, res: Response) => 
 
 export const getUser = asyncHandler(async (req: Request, res: Response) => {
   const user = await userService.getPublicProfile(String(req.params.id));
+  signalProfileView((req as unknown as { userId?: string }).userId);
   res.json({ success: true, data: { user } });
 });
 

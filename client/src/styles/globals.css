@@ -102,6 +102,20 @@
   ::selection {
     @apply bg-indigo-500/25 text-indigo-900 dark:text-indigo-100;
   }
+
+  /* Smooth color transition while switching themes (class applied transiently) */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      fill 0.3s ease,
+      stroke 0.3s ease,
+      box-shadow 0.3s ease !important;
+  }
 }
 
 @utility page-shell {
@@ -127,8 +141,9 @@
 }
 
 @utility glass {
-  @apply border-b border-gray-200/70 bg-white/75 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/70;
+  @apply relative z-50 border-b border-gray-200/70 bg-white/85 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/80;
   box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.7), 0 6px 20px -12px rgb(17 24 39 / 0.14);
+  isolation: isolate;
   @variant dark {
     box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.04), 0 6px 20px -12px rgb(0 0 0 / 0.5);
   }

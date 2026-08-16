@@ -31,3 +31,16 @@ export const deleteSavedSearch = asyncHandler(async (req: AuthRequest, res: Resp
   const result = await savedSearchService.deleteSavedSearch(paramId(req.params.id), String(req.userId));
   res.json({ success: true, data: result });
 });
+
+export const getSearchMatches = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { page, limit } = req.query;
+  const result = await savedSearchService.getSearchMatches(
+    paramId(req.params.id),
+    String(req.userId),
+    {
+      page: page ? Number(page) : undefined,
+      limit: limit ? Number(limit) : undefined,
+    },
+  );
+  res.json({ success: true, data: result });
+});

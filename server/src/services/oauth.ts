@@ -125,10 +125,20 @@ async function handleOAuthLogin(
 ): Promise<{ user: Record<string, unknown>; accessToken: string; refreshToken: string; isNewUser: boolean }> {
   let isNewUser = false;
 
+  userInfo.email = userInfo.email.toLowerCase().trim();
+
   let oauthRecord = await OAuthProvider.findOne({
     provider,
     providerUserId: userInfo.providerUserId,
   });
+
+  if (oauthRecord) {
+    const linkedUser = await User.findById(oauthRecord.userId).select('_id').lean();
+    if (!linkedUser) {
+      await OAuthProvider.deleteOne({ _id: oauthRecord._id });
+      oauthRecord = null;
+    }
+  }
 
   if (oauthRecord) {
     oauthRecord.email = userInfo.email;
@@ -153,14 +163,27 @@ async function handleOAuthLogin(
       isNewUser = true;
     }
 
-    oauthRecord = await OAuthProvider.create({
+    oauthRecord = await OAuthProvider.findOne({
       userId: user._id,
       provider,
-      providerUserId: userInfo.providerUserId,
-      email: userInfo.email,
-      displayName: userInfo.displayName,
-      avatar: userInfo.avatar,
     });
+
+    if (oauthRecord) {
+      oauthRecord.providerUserId = userInfo.providerUserId;
+      oauthRecord.email = userInfo.email;
+      oauthRecord.displayName = userInfo.displayName;
+      oauthRecord.avatar = userInfo.avatar;
+      await oauthRecord.save();
+    } else {
+      oauthRecord = await OAuthProvider.create({
+        userId: user._id,
+        provider,
+        providerUserId: userInfo.providerUserId,
+        email: userInfo.email,
+        displayName: userInfo.displayName,
+        avatar: userInfo.avatar,
+      });
+    }
   }
 
   const user = await User.findById(oauthRecord.userId);

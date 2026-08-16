@@ -66,6 +66,7 @@ export interface User {
   feedVisibility?: 'public' | 'friends' | 'close_friends' | 'private';
   mapPreferences?: UserMapPreferences;
   quietHours?: UserQuietHours;
+  weeklyDigest?: boolean;
   lastActive: string;
   createdAt: string;
   updatedAt: string;
@@ -85,6 +86,7 @@ export interface UpdateProfileInput {
     Pick<UserMapPreferences, 'defaultMode' | 'defaultView' | 'clusterMarkers'>
   >;
   quietHours?: Partial<Pick<UserQuietHours, 'enabled' | 'startTime' | 'endTime' | 'timezone'>>;
+  weeklyDigest?: boolean;
 }
 
 export interface RegisterInput {

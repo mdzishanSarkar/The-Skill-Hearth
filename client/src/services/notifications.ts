@@ -19,3 +19,8 @@ export async function getUnreadNotificationCount(): Promise<number> {
   const { data } = await api.get('/notifications/unread');
   return data.data.count;
 }
+
+export async function getUnreadRadarCount(): Promise<number> {
+  const { data } = await api.get('/notifications/unread-radar');
+  return data.data.count;
+}

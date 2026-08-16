@@ -14,6 +14,7 @@ export interface ISavedSearch extends Document {
   name: string;
   filters: ISavedSearchFilter;
   alertEnabled: boolean;
+  matchedSkillIds: Types.ObjectId[];
   lastAlertSentAt?: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -43,6 +44,11 @@ const savedSearchSchema = new Schema<ISavedSearch>(
     alertEnabled: {
       type: Boolean,
       default: false,
+    },
+    matchedSkillIds: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Skill',
+      default: [],
     },
     lastAlertSentAt: {
       type: Date,

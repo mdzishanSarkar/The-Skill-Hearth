@@ -1,8 +1,13 @@
 import axios, { type AxiosRequestConfig } from 'axios';
-import { getAccessToken, setAccessToken } from './tokenStore';
+import {
+  getAccessToken,
+  setAccessToken,
+  getStoredRefreshToken,
+  setStoredRefreshToken,
+} from './tokenStore';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api'),
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 });
@@ -50,9 +55,13 @@ api.interceptors.response.use(
 
       isRefreshing = true;
       try {
-        const { data } = await api.post('/auth/refresh');
+        const { data } = await api.post('/auth/refresh', {
+          refreshToken: getStoredRefreshToken() ?? undefined,
+        });
         const token = data?.data?.accessToken as string;
+        const refreshToken = data?.data?.refreshToken as string | undefined;
         setAccessToken(token);
+        if (refreshToken) setStoredRefreshToken(refreshToken);
         refreshQueue.forEach((resolve) => resolve(token));
         refreshQueue = [];
         if (original.headers) {

@@ -22,7 +22,9 @@ export const googleCallback = asyncHandler(async (req: AuthRequest, res: Respons
 
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
   const isNewUser = result.isNewUser ? '1' : '0';
-  res.redirect(`${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`);
+  res.redirect(
+    `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}#refreshToken=${encodeURIComponent(result.refreshToken)}`
+  );
 });
 
 export const getAppleAuthUrl = asyncHandler(async (req: AuthRequest, res: Response) => {
@@ -44,7 +46,9 @@ export const appleCallback = asyncHandler(async (req: AuthRequest, res: Response
   setRefreshCookie(res, result.refreshToken);
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
   const isNewUser = result.isNewUser ? '1' : '0';
-  res.redirect(`${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`);
+  res.redirect(
+    `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}#refreshToken=${encodeURIComponent(result.refreshToken)}`
+  );
 });
 
 export const getLinkedProviders = asyncHandler(async (req: AuthRequest, res: Response) => {

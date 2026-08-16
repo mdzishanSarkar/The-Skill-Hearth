@@ -8,7 +8,7 @@ export interface MessageReaction {
 export interface ChatMessage {
   _id: string;
   connectionId: string;
-  senderId: string;
+  senderId: string | { _id: string; displayName: string; avatar?: string };
   senderName?: string;
   senderAvatar?: string;
   content: string;

@@ -246,6 +246,7 @@
   color: #4b5563;
 }
 
+.leaflet-popup-content .skill-map-popup__cta,
 .skill-map-popup__cta {
   display: flex;
   align-items: center;
@@ -254,25 +255,32 @@
   padding: 10px 12px;
   border: 1px solid transparent;
   border-radius: 8px;
-  background-color: #2563eb;
-  color: #ffffff;
+  background-color: #2563eb !important;
+  color: #ffffff !important;
   font-size: 13px;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: none !important;
   box-shadow: 0 1px 3px rgba(37, 99, 235, 0.35);
   transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.leaflet-popup-content .skill-map-popup__cta:hover,
 .skill-map-popup__cta:hover {
-  background-color: #1d4ed8;
+  background-color: #1d4ed8 !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.leaflet-popup-content .skill-map-popup__cta:visited,
+.skill-map-popup__cta:visited {
+  color: #ffffff !important;
 }
 
 .skill-map-popup__cta svg {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+  stroke: currentColor;
   transition: transform 0.15s ease;
 }
 

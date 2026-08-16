@@ -38,6 +38,7 @@ export default function SwapsPage() {
   const [swaps, setSwaps] = useState<Swap[]>([]);
   const [filter, setFilter] = useState<StatusFilter>('all');
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [actionId, setActionId] = useState('');
 
   useEffect(() => {
@@ -52,6 +53,19 @@ export default function SwapsPage() {
       toast.error(getApiError(err));
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleRefresh() {
+    setRefreshing(true);
+    try {
+      const data = await listSwaps();
+      setSwaps(data);
+      toast.success('Swaps refreshed');
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setRefreshing(false);
     }
   }
 
@@ -94,7 +108,8 @@ export default function SwapsPage() {
   return (
     <div className="page-shell animate-fade-in py-8">
       <PageHeader
-        icon={<FiRefreshCw />}
+        icon={<FiRefreshCw className={refreshing ? 'animate-spin' : undefined} />}
+        onIconClick={handleRefresh}
         title="Skill Swaps"
         subtitle="Your skill swap agreements — accept pending swaps to start learning."
       />

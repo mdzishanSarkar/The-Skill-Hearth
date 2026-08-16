@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { setAccessToken } from '../../services/tokenStore';
+import { setAccessToken, setStoredRefreshToken } from '../../services/tokenStore';
+import * as authService from '../../services/auth.service';
+import { getMe } from '../../services/users.service';
 import Spinner from '../../components/ui/Spinner';
 
 export default function OAuthCallbackPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { setUser } = useAuth();
+  const { setUser, setStatus } = useAuth();
   const [error, setError] = useState('');
 
   useEffect(() => {
     const token = searchParams.get('token');
     const newUser = searchParams.get('newUser');
+    const refreshToken = new URLSearchParams(window.location.hash.slice(1)).get('refreshToken');
 
     if (!token) {
       setError('No authentication token received');
@@ -20,22 +23,39 @@ export default function OAuthCallbackPage() {
     }
 
     setAccessToken(token);
+    if (refreshToken) setStoredRefreshToken(refreshToken);
 
-    import('../../services/auth.service').then((authService) => {
-      authService.refreshSession()
-        .then((result) => {
-          setUser(result.user);
-          if (newUser === '1') {
-            navigate('/onboarding', { replace: true });
-          } else {
-            navigate('/dashboard', { replace: true });
-          }
-        })
-        .catch(() => {
-          setError('Failed to complete authentication');
-        });
-    });
-  }, [searchParams, navigate, setUser]);
+    let cancelled = false;
+
+    async function complete() {
+      try {
+        let user = null;
+        try {
+          const result = await authService.refreshSession();
+          user = result.user;
+        } catch {
+          user = await getMe();
+        }
+        if (cancelled) return;
+        setUser(user);
+        setStatus('authenticated');
+        if (newUser === '1') {
+          navigate('/onboarding', { replace: true });
+        } else {
+          navigate('/dashboard', { replace: true });
+        }
+      } catch {
+        if (cancelled) return;
+        setError('Failed to complete authentication');
+      }
+    }
+
+    complete();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams, navigate, setUser, setStatus]);
 
   if (error) {
     return (

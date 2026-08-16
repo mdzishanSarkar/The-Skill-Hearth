@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export type LocationStatus = 'idle' | 'asking' | 'found' | 'denied';
 
@@ -79,12 +79,18 @@ export function useGeolocation(opts: UseGeolocationOptions = {}): UseGeolocation
     setStatus('denied');
   }, []);
 
-  // Auto-request on first render if no stored coords
-  if (autoRequest && !askedOnceRef.current && !storedCoordinates && status === 'idle') {
+  useEffect(() => {
+    if (!autoRequest || askedOnceRef.current || storedCoordinates || status !== 'idle') {
+      return;
+    }
+
     askedOnceRef.current = true;
-    // Defer the request so it doesn't block render
-    setTimeout(() => requestGeolocation(), 0);
-  }
+    const timeoutId = window.setTimeout(() => {
+      requestGeolocation();
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [autoRequest, requestGeolocation, status, storedCoordinates]);
 
   return {
     status,

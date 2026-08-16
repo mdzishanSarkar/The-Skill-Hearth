@@ -69,9 +69,7 @@ export default function MapFilters({
             onClick={() => onTypeChange('both')}
             className={
               type === 'both'
-                ? night
-                  ? 'flex-1 rounded-md bg-gray-100 dark:bg-gray-800 px-2 py-1.5 text-xs font-medium text-gray-900 dark:text-gray-100 shadow-sm'
-                  : 'flex-1 rounded-md bg-gray-800 px-2 py-1.5 text-xs font-medium text-white shadow-sm'
+                ? 'flex-1 rounded-md bg-green-600 px-2 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-green-700'
                 : idleButtonClass
             }
           >

@@ -8,6 +8,7 @@ export interface NavItem {
   to: string;
   icon?: ReactNode;
   end?: boolean;
+  badge?: number;
 }
 
 interface NavDropdownProps {
@@ -78,7 +79,12 @@ export default function NavDropdown({ label, items, icon }: NavDropdownProps) {
               }
             >
               {item.icon && <span className="text-base text-gray-400 dark:text-gray-500">{item.icon}</span>}
-              {item.label}
+              <span className="flex-1 truncate">{item.label}</span>
+              {typeof item.badge === 'number' && item.badge > 0 && (
+                <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300">
+                  {item.badge > 99 ? '99+' : item.badge}
+                </span>
+              )}
             </NavLink>
           ))}
         </div>

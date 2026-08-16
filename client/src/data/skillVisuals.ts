@@ -10,31 +10,49 @@ export const CATEGORY_VISUALS: Record<string, CategoryVisual> = {
     emoji: '🍳',
     gradient: 'from-orange-400 to-red-400',
     badge: 'orange',
-    text: 'text-orange-600',
+    text: 'text-orange-600 dark:text-orange-400',
   },
   'Home & Garden': {
     emoji: '🌱',
     gradient: 'from-green-400 to-emerald-500',
     badge: 'green',
-    text: 'text-green-600',
+    text: 'text-green-600 dark:text-green-400',
   },
   'Textile & Craft': {
     emoji: '🧵',
     gradient: 'from-purple-400 to-fuchsia-500',
     badge: 'purple',
-    text: 'text-purple-600',
+    text: 'text-purple-600 dark:text-purple-400',
   },
   'Digital Literacy': {
     emoji: '💻',
     gradient: 'from-blue-400 to-indigo-500',
     badge: 'blue',
-    text: 'text-blue-600',
+    text: 'text-blue-600 dark:text-blue-400',
   },
   'Languages & Communication': {
     emoji: '💬',
     gradient: 'from-teal-400 to-cyan-500',
     badge: 'teal',
-    text: 'text-teal-600',
+    text: 'text-teal-600 dark:text-teal-400',
+  },
+  'Photography & Visual Arts': {
+    emoji: '📷',
+    gradient: 'from-amber-400 to-orange-500',
+    badge: 'amber',
+    text: 'text-amber-600 dark:text-amber-400',
+  },
+  'Technology & Web': {
+    emoji: '🖥️',
+    gradient: 'from-slate-500 to-gray-700',
+    badge: 'gray',
+    text: 'text-gray-600 dark:text-gray-400',
+  },
+  'Music & Performing Arts': {
+    emoji: '🎸',
+    gradient: 'from-pink-400 to-rose-500',
+    badge: 'red',
+    text: 'text-pink-600 dark:text-pink-400',
   },
 };
 
@@ -42,7 +60,7 @@ const FALLBACK_VISUAL: CategoryVisual = {
   emoji: '📚',
   gradient: 'from-gray-400 to-gray-600',
   badge: 'gray',
-  text: 'text-gray-600',
+  text: 'text-gray-600 dark:text-gray-400',
 };
 
 const SKILL_EMOJI: Record<string, string> = {
@@ -76,6 +94,18 @@ const SKILL_EMOJI: Record<string, string> = {
   'conversationallanguagepractice': '🗣️',
   'writing & reading': '✍️',
   'writing&reading': '✍️',
+  'photography': '📷',
+  'photo editing': '🎨',
+  'photoediting': '🎨',
+  'javascript': '💻',
+  'javascript / web development': '💻',
+  'javascript/webdevelopment': '💻',
+  'web development': '🌐',
+  'webdevelopment': '🌐',
+  'intro to programming': '🧑‍💻',
+  'intotoprogramming': '🧑‍💻',
+  'guitar': '🎸',
+  'singing': '🎤',
 };
 
 export function getCategoryVisual(categoryName: string): CategoryVisual {

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FiAward,
@@ -14,13 +13,12 @@ import {
   FiUser,
 } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
-import { getSubscriptionStatus } from '../../services/billing.service';
-import type { SubscriptionStatus } from '../../types/billing.types';
 import Button from '../../components/ui/Button';
 import StatCard from '../../components/ui/StatCard';
 import PageHeader from '../../components/ui/PageHeader';
-import ProBadge from '../../components/shared/ProBadge';
 import ProfileCompletenessBar from '../../components/social/ProfileCompletenessBar';
+import SwapReadyMatchesSection from '../../components/dashboard/SwapReadyMatchesSection';
+import DemandWidget from '../../components/dashboard/DemandWidget';
 
 const QUICK_ACTIONS = [
   { label: 'Browse skills', to: '/skills', icon: <FiGrid />, tone: 'from-sky-500 to-blue-600', text: 'Find something new to learn' },
@@ -35,11 +33,6 @@ const QUICK_ACTIONS = [
 
 export default function DashboardPage() {
   const { user } = useAuth();
-  const [subscription, setSubscription] = useState<SubscriptionStatus | null>(null);
-
-  useEffect(() => {
-    getSubscriptionStatus().then(setSubscription).catch(() => {});
-  }, []);
 
   if (!user) return null;
 
@@ -56,7 +49,6 @@ export default function DashboardPage() {
         title={
           <span className="flex items-center gap-2">
             {user.displayName}
-            {subscription?.isPro && <ProBadge size="sm" />}
           </span>
         }
         subtitle={
@@ -134,29 +126,6 @@ export default function DashboardPage() {
             Today at a glance
           </h2>
           <div className="mt-4 space-y-4 text-sm">
-            {subscription?.isPro ? (
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-4">
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Pro member</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Active until {subscription.expiresAt ? new Date(subscription.expiresAt).toLocaleDateString() : 'renewal'}
-                  </p>
-                </div>
-                <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-900/50 dark:text-amber-300">
-                  Pro ✦
-                </span>
-              </div>
-            ) : (
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 p-4">
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-gray-100">Upgrade to Pro</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Unlock advanced features & support the Hearth.</p>
-                </div>
-                <Link to="/upgrade">
-                  <Button variant="ghost" size="sm">Upgrade</Button>
-                </Link>
-              </div>
-            )}
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-gray-50 p-4 dark:bg-gray-800/60">
               <div>
                 <p className="font-medium text-gray-900 dark:text-gray-100">Keep your logging streak alive</p>
@@ -189,6 +158,9 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      <SwapReadyMatchesSection />
+      <DemandWidget />
     </div>
   );
 }

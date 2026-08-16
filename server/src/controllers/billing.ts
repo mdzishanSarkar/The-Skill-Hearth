@@ -1,59 +1,7 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import * as billingService from '../services/billing';
 import { asyncHandler } from '../utils/errors';
-import { WEBHOOK_SECRET, getStripe } from '../config/stripe';
-
-export const createCheckoutSession = asyncHandler(async (req: AuthRequest, res: Response) => {
-  const { plan } = req.body || {};
-  if (!plan || !['monthly', 'annual'].includes(plan)) {
-    res.status(422).json({
-      success: false,
-      error: { code: 'VALIDATION_ERROR', message: 'plan must be "monthly" or "annual"' },
-    });
-    return;
-  }
-  const successUrl = req.body.successUrl || `${process.env.CLIENT_URL}/upgrade?success=true`;
-  const cancelUrl = req.body.cancelUrl || `${process.env.CLIENT_URL}/upgrade`;
-  const result = await billingService.createCheckoutSession(req.userId!, plan, successUrl, cancelUrl);
-  res.json({ success: true, data: result });
-});
-
-export const createPortalSession = asyncHandler(async (req: AuthRequest, res: Response) => {
-  const returnUrl = req.body.returnUrl || `${process.env.CLIENT_URL}/settings`;
-  const result = await billingService.createCustomerPortalSession(req.userId!, returnUrl);
-  res.json({ success: true, data: result });
-});
-
-export const stripeWebhook = asyncHandler(async (req: Request, res: Response) => {
-  if (!WEBHOOK_SECRET) {
-    res.status(503).json({ success: false, error: { code: 'WEBHOOK_DISABLED', message: 'Stripe webhook not configured' } });
-    return;
-  }
-
-  const sig = req.headers['stripe-signature'];
-  if (!sig) {
-    res.status(400).json({ success: false, error: { code: 'MISSING_SIGNATURE', message: 'Missing stripe-signature header' } });
-    return;
-  }
-
-  let event;
-  try {
-    const stripe = getStripe();
-    event = stripe.webhooks.constructEvent(req.body, sig, WEBHOOK_SECRET);
-  } catch (err) {
-    res.status(400).json({ success: false, error: { code: 'INVALID_SIGNATURE', message: 'Invalid webhook signature' } });
-    return;
-  }
-
-  await billingService.handleStripeWebhook(event);
-  res.json({ received: true });
-});
-
-export const getSubscriptionStatus = asyncHandler(async (req: AuthRequest, res: Response) => {
-  const status = await billingService.getSubscriptionStatus(req.userId!);
-  res.json({ success: true, data: status });
-});
 
 export const createTip = asyncHandler(async (req: AuthRequest, res: Response) => {
   const { payeeId, connectionId, amount } = req.body || {};

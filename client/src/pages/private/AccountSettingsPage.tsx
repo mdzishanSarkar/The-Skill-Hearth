@@ -6,9 +6,10 @@ import { getApiError } from '../../types/api.types';
 import Button from '../../components/ui/Button';
 import LinkedAccounts from '../../components/social/LinkedAccounts';
 import TwoFactorSetup from '../../components/social/TwoFactorSetup';
+import QuietHoursSettings from '../../components/settings/QuietHoursSettings';
+import WeeklyDigestSettings from '../../components/settings/WeeklyDigestSettings';
 import type { TwoFactorStatus } from '../../types/social.types';
 import { getTwoFactorStatus } from '../../services/social.service';
-import QuietHoursSettings from '../../components/settings/QuietHoursSettings';
 import PageHeader from '../../components/ui/PageHeader';
 import { FiSettings } from 'react-icons/fi';
 import { useEffect } from 'react';
@@ -71,6 +72,8 @@ export default function AccountSettingsPage() {
         <TwoFactorSetup status={twoFAStatus} onStatusChange={setTwoFAStatus} />
 
         <QuietHoursSettings />
+
+        <WeeklyDigestSettings />
 
         <div className="card p-5">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Export Your Data</h3>

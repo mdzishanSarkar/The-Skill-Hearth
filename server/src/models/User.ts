@@ -66,14 +66,12 @@ export interface IUser extends Document {
   feedVisibility: 'public' | 'friends' | 'close_friends' | 'private';
   mapPreferences: IUserMapPreferences;
   quietHours: IUserQuietHours;
+  weeklyDigest: boolean;
   isEmailVerified: boolean;
   hasCompletedOnboarding: boolean;
   isIdVerified: boolean;
   isShadowBanned: boolean;
-  isPro: boolean;
-  proExpiresAt?: Date;
   stripeCustomerId?: string;
-  stripeSubscriptionId?: string;
   lastActive: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -207,6 +205,10 @@ const userSchema = new Schema<IUser>(
       endTime: { type: String, default: '07:00' },
       timezone: { type: String, default: '' },
     },
+    weeklyDigest: {
+      type: Boolean,
+      default: true,
+    },
     isEmailVerified: {
       type: Boolean,
       default: false,
@@ -223,19 +225,7 @@ const userSchema = new Schema<IUser>(
       type: Boolean,
       default: false,
     },
-    isPro: {
-      type: Boolean,
-      default: false,
-    },
-    proExpiresAt: {
-      type: Date,
-      default: undefined,
-    },
     stripeCustomerId: {
-      type: String,
-      sparse: true,
-    },
-    stripeSubscriptionId: {
       type: String,
       sparse: true,
     },

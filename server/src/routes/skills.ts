@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { authenticate } from '../middleware/auth';
+import { authenticate, optionalAuth } from '../middleware/auth';
 import {
   listCategories,
   createSkill,
@@ -13,6 +13,7 @@ import {
   addSkillMedia,
   removeSkillMedia,
 } from '../controllers/skills';
+import { getMapDiscoveries } from '../controllers/discovery';
 import { handleUpload } from '../utils/upload';
 
 const router = Router();
@@ -23,6 +24,7 @@ router.post('/', authenticate, createSkill);
 router.get('/mine', authenticate, listMySkills);
 
 router.get('/', listSkills);
+router.get('/geo', optionalAuth, getMapDiscoveries);
 router.get('/:id', getSkill);
 router.get('/:id/reviews', listSkillReviews);
 router.put('/:id', authenticate, updateSkill);

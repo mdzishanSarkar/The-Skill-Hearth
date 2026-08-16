@@ -2,6 +2,7 @@ import { Types } from 'mongoose';
 import type { PipelineStage } from 'mongoose';
 import { Skill } from '../models';
 import { haversineKm } from '../utils/geo';
+import { getBlockedIds } from './block.service';
 
 export type MapSkillType = 'teach' | 'learn';
 
@@ -13,6 +14,7 @@ export interface MapDiscoveryFilters {
   type?: MapSkillType;
   availability?: boolean;
   limit?: number;
+  viewerId?: string;
 }
 
 export interface MapPinTeacher {
@@ -66,8 +68,14 @@ export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]
   pipeline.push(
     { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'teacher' } },
     { $unwind: { path: '$teacher', preserveNullAndEmptyArrays: false } },
-    { $match: { 'teacher.status': 'active', 'teacher.showOnMap': true } }
+    { $match: { 'teacher.status': 'active', 'teacher.showOnMap': true, 'teacher.isShadowBanned': { $ne: true } } }
   );
+  if (filters.viewerId) {
+    const blocked = (await getBlockedIds(filters.viewerId)).map((id) => new Types.ObjectId(id));
+    if (blocked.length) {
+      pipeline.push({ $match: { 'teacher._id': { $nin: blocked } } });
+    }
+  }
   if (filters.availability) {
     pipeline.push({ $match: { 'teacher.availability.0': { $exists: true } } });
   }

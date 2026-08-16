@@ -5,6 +5,8 @@ import { AuthRequest } from '../middleware/auth';
 import { Skill } from '../models';
 import { HttpError } from '../utils/errors';
 import { uploadSkillImage } from '../utils/upload';
+import { signalSearch, signalCategoryBrowse, signalSkillView } from '../services/radarSignals';
+import { onSkillCreated } from '../events/skillCreated.handler';
 
 export const listCategories = asyncHandler(async (_req: Request, res: Response) => {
   const categories = await skillService.listCategories();
@@ -13,6 +15,7 @@ export const listCategories = asyncHandler(async (_req: Request, res: Response) 
 
 export const createSkill = asyncHandler(async (req: AuthRequest, res: Response) => {
   const skill = await skillService.createSkill(req.userId!, req.body || {});
+  void onSkillCreated(skill);
   res.status(201).json({ success: true, data: { skill } });
 });
 
@@ -27,6 +30,7 @@ export const listMySkills = asyncHandler(async (req: AuthRequest, res: Response)
 
 export const getSkill = asyncHandler(async (req: Request, res: Response) => {
   const skill = await skillService.getSkillById(String(req.params.id));
+  signalSkillView((req as unknown as { userId?: string }).userId, skill);
   res.json({ success: true, data: { skill } });
 });
 
@@ -67,6 +71,11 @@ export const listSkills = asyncHandler(async (req: Request, res: Response) => {
     radiusKm: req.query.radiusKm !== undefined ? Number(req.query.radiusKm) : undefined,
     userId: typeof req.query.userId === 'string' ? req.query.userId : undefined,
   });
+  const uid = (req as unknown as { userId?: string }).userId;
+  const q = typeof req.query.q === 'string' ? req.query.q : undefined;
+  const categoryId = typeof req.query.categoryId === 'string' ? req.query.categoryId : undefined;
+  signalSearch(uid, q);
+  signalCategoryBrowse(uid, categoryId);
   res.json({ success: true, data });
 });
 

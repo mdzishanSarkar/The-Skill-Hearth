@@ -12,6 +12,7 @@ import { FiRefreshCw } from 'react-icons/fi';
 export default function SwapSuggestionsPage() {
   const [suggestions, setSuggestions] = useState<SwapSuggestion[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [creatingId, setCreatingId] = useState('');
 
   useEffect(() => {
@@ -26,6 +27,19 @@ export default function SwapSuggestionsPage() {
       toast.error(getApiError(err));
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleRefresh() {
+    setRefreshing(true);
+    try {
+      const data = await getSwapSuggestions();
+      setSuggestions(data);
+      toast.success('Suggestions refreshed');
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setRefreshing(false);
     }
   }
 
@@ -57,7 +71,8 @@ export default function SwapSuggestionsPage() {
   return (
     <div className="page-shell animate-fade-in py-8">
       <PageHeader
-        icon={<FiRefreshCw />}
+        icon={<FiRefreshCw className={refreshing ? 'animate-spin' : undefined} />}
+        onIconClick={handleRefresh}
         title="Skill Swap Suggestions"
         subtitle="Users who want to learn what you teach, and can teach what you want to learn."
       />

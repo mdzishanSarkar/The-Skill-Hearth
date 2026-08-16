@@ -12,7 +12,7 @@ interface SkillListRowProps {
 export default function SkillListRow({ skill }: SkillListRowProps) {
   const visual = getCategoryVisual(skill.categoryName);
   const hasAvailability = Boolean(skill.teacher?.availability?.length);
-  const hasReviews = (skill.teacher?.stats.reviewCount ?? 0) > 0;
+  const hasReviews = (skill.teacher?.stats?.reviewCount ?? 0) > 0;
 
   return (
     <article className="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md">
@@ -63,7 +63,7 @@ export default function SkillListRow({ skill }: SkillListRowProps) {
                 )}
                 {hasReviews && (
                   <span className="text-xs text-gray-400 dark:text-gray-500">
-                    ⭐ {skill.teacher.stats.averageRating.toFixed(1)}
+                    ⭐ {(skill.teacher.stats.averageRating ?? 0).toFixed(1)}
                   </span>
                 )}
               </div>

@@ -13,6 +13,17 @@ interface ChatWindowProps {
   connection: Connection;
 }
 
+function normalizeMessage(msg: ChatMessage): ChatMessage {
+  const senderObject = typeof msg.senderId === 'object' ? msg.senderId : null;
+  if (!senderObject) return msg;
+  return {
+    ...msg,
+    senderId: senderObject._id,
+    senderName: msg.senderName || senderObject.displayName,
+    senderAvatar: msg.senderAvatar || senderObject.avatar,
+  };
+}
+
 export default function ChatWindow({ connection }: ChatWindowProps) {
   const { user: me } = useAuth();
   const { socket } = useSocket();
@@ -26,7 +37,7 @@ export default function ChatWindow({ connection }: ChatWindowProps) {
     getMessages(connection._id)
       .then((result) => {
         if (!cancelled) {
-          setMessages(result.messages);
+          setMessages(result.messages.map(normalizeMessage));
           setLoading(false);
         }
       })
@@ -42,7 +53,7 @@ export default function ChatWindow({ connection }: ChatWindowProps) {
 
     const handleNewMessage = (msg: ChatMessage) => {
       if (msg.connectionId === connection._id) {
-        setMessages((prev) => [...prev, msg]);
+        setMessages((prev) => [...prev, normalizeMessage(msg)]);
         if (msg.senderId !== me?._id) {
           socket.emit('message:read', { connectionId: connection._id });
         }

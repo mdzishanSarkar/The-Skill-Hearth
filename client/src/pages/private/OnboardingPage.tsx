@@ -201,6 +201,7 @@ export default function OnboardingPage() {
         try {
           const place = await reverseGeocode(lat, lng);
           if (place.city) setCity(place.city);
+          if (place.zipCode) setZipCode(place.zipCode);
           if (place.neighborhood) setNeighborhood(place.neighborhood);
           setLocationNote(
             `Found ${place.city || 'your area'}${place.neighborhood ? ` — ${place.neighborhood}` : ''}. Confirm below, or tap "Update my location" to try again.`

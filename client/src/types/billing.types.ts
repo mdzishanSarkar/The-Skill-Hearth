@@ -1,19 +1,3 @@
-export interface SubscriptionStatus {
-  isPro: boolean;
-  plan: 'monthly' | 'annual' | null;
-  expiresAt: string | null;
-  cancelAtPeriodEnd: boolean;
-}
-
-export interface CheckoutSession {
-  sessionId: string;
-  url: string;
-}
-
-export interface PortalSession {
-  url: string;
-}
-
 export interface Tip {
   _id: string;
   payerId: string;
@@ -47,9 +31,4 @@ export interface ImpactReport {
     teaching: string[];
     learning: string[];
   };
-}
-
-export interface ProBadgeProps {
-  size?: 'sm' | 'md' | 'lg';
-  showLabel?: boolean;
 }

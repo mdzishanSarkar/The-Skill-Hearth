@@ -130,3 +130,22 @@ export type { ISkillJournal } from './SkillJournal';
 
 export { default as RequestTemplate } from './RequestTemplate';
 export type { IRequestTemplate } from './RequestTemplate';
+
+export { default as SkillRadar } from './SkillRadar';
+export type {
+  ISkillRadar,
+  ISkillRadarSignal,
+  ISkillRadarIntent,
+  IManualRadar,
+  IManualRadarFilter,
+  RadarSignalType,
+  RadarConfidence,
+  RadarIntentStatus,
+  RadarFormat,
+} from './SkillRadar';
+
+export { default as SwapReadyMatch } from './SwapReadyMatch';
+export type { ISwapReadyMatch, SwapReadyMatchStatus } from './SwapReadyMatch';
+
+export { default as SkillDemandSnapshot } from './SkillDemandSnapshot';
+export type { ISkillDemandSnapshot, IDemandSkill, IDemandRegion } from './SkillDemandSnapshot';

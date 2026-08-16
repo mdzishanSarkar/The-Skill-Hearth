@@ -35,6 +35,7 @@ export interface ListSkillsFilters {
   lng?: number;
   radiusKm?: number;
   userId?: string;
+  excludeUserIds?: string[];
 }
 
 const VALID_TYPES: SkillType[] = ['teach', 'learn'];
@@ -337,6 +338,15 @@ export async function listSkills(filters: ListSkillsFilters) {
   if (filters.userId && Types.ObjectId.isValid(filters.userId)) {
     baseMatch.userId = new Types.ObjectId(filters.userId);
   }
+  if (filters.excludeUserIds?.length) {
+    const exclude = filters.excludeUserIds.filter((id) => Types.ObjectId.isValid(id)).map((id) => new Types.ObjectId(id));
+    if (exclude.length) {
+      const existing = baseMatch.userId;
+      baseMatch.userId = existing
+        ? { $nin: exclude, ...(typeof existing === 'object' ? existing : { $eq: existing }) }
+        : { $nin: exclude };
+    }
+  }
 
   const q = (filters.q || '').trim().replace(/["\\]/g, ' ');
   if (q) baseMatch.$text = { $search: q };
@@ -359,6 +369,21 @@ export async function listSkills(filters: ListSkillsFilters) {
     delete geoQuery.$text;
     const lng = filters.lng!;
     const lat = filters.lat!;
+
+    // $geoNear must be the first stage, and $text can only run as a leading $match.
+    // Resolve text matches first, then restrict the geo query to those ids.
+    if (baseMatch.$text) {
+      const candidates = await Skill.aggregate<{ _id: unknown }>([
+        { $match: baseMatch },
+        { $project: { _id: 1 } },
+        { $limit: 1000 },
+      ]);
+      const ids = candidates.map((c) => c._id);
+      if (ids.length === 0) {
+        return { skills: [], total: 0, page, limit, totalPages: 1 };
+      }
+      geoQuery._id = { $in: ids };
+    }
 
     const pipeline: PipelineStage[] = [
       {

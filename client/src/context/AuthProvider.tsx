@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AuthContext } from './auth-context';
 import type { AuthStatus } from './auth-context';
 import * as authService from '../services/auth.service';
@@ -12,9 +13,14 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [status, setStatus] = useState<AuthStatus>('loading');
+  const location = useLocation();
 
   useEffect(() => {
     let cancelled = false;
+
+    if (location.pathname === '/auth/callback') {
+      return;
+    }
 
     async function restoreSession() {
       try {
@@ -41,7 +47,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       cancelled = true;
       window.removeEventListener('auth:unauthorized', onUnauthorized);
     };
-  }, []);
+  }, [location.pathname]);
 
   const login = async (email: string, password: string): Promise<User> => {
     const result = await authService.login(email, password);
@@ -67,6 +73,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       login,
       logout,
       setUser,
+      setStatus,
     }),
     [user, status]
   );

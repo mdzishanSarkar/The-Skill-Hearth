@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { FiUser, FiSettings, FiLogOut, FiZap, FiChevronDown } from 'react-icons/fi';
+import { FiUser, FiSettings, FiLogOut, FiChevronDown } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
 import Avatar from './Avatar';
 
@@ -35,7 +35,6 @@ export default function UserMenu() {
     { label: 'My profile', to: '/profile', icon: <FiUser /> },
     { label: 'Edit profile', to: '/edit-profile', icon: <FiUser /> },
     { label: 'Account settings', to: '/account-settings', icon: <FiSettings /> },
-    { label: 'Upgrade to Pro', to: '/upgrade', icon: <FiZap /> },
   ];
 
   return (

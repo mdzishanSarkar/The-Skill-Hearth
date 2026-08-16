@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { getCategories, listSkills } from '../../services/skills';
 import { getApiError } from '../../types/api.types';
@@ -36,10 +36,11 @@ export default function NearbySkillsPage() {
   const [availability, setAvailability] = useState(false);
   const [sort, setSort] = useState<SkillSort>('newest');
   const [view, setView] = useState<'grid' | 'list'>('grid');
-  const [distance, setDistance] = useState<number | ''>('');
+  const [distance, setDistance] = useState<number | ''>(0);
   const [page, setPage] = useState(1);
   const [result, setResult] = useState<SkillListResult | null>(null);
   const [loading, setLoading] = useState(true);
+  const requestSeq = useRef(0);
 
   const coords = user?.location.coordinates;
   const hasCoords = Boolean(coords && (coords[0] !== 0 || coords[1] !== 0));
@@ -60,6 +61,7 @@ export default function NearbySkillsPage() {
   }, [debouncedQ, categoryId, format, availability, sort, distance]);
 
   const load = useCallback(async () => {
+    const seq = ++requestSeq.current;
     setLoading(true);
     try {
       const locationCoords = user?.location.coordinates;
@@ -81,12 +83,14 @@ export default function NearbySkillsPage() {
         sort,
         ...(hasGeo && locationCoords ? { lat: locationCoords[1], lng: locationCoords[0], radiusKm } : {}),
       });
+      if (seq !== requestSeq.current) return;
       setResult(resultData);
     } catch (err) {
+      if (seq !== requestSeq.current) return;
       setResult(null);
       console.error(getApiError(err));
     } finally {
-      setLoading(false);
+      if (seq === requestSeq.current) setLoading(false);
     }
   }, [page, debouncedQ, categoryId, format, availability, sort, distance, user]);
 
@@ -95,7 +99,7 @@ export default function NearbySkillsPage() {
   }, [load]);
 
   const hasFilters =
-    debouncedQ || categoryId || format || availability || distance !== '' || sort !== 'newest';
+    debouncedQ || categoryId || format || availability || distance !== 0 || sort !== 'newest';
 
   return (
     <div className="page-shell animate-fade-in py-8">
@@ -140,12 +144,12 @@ export default function NearbySkillsPage() {
             title={hasCoords ? 'Filter by distance' : 'Set your location to filter by distance'}
           >
             <option value="">Nearby (my radius)</option>
+            <option value="0">Any distance</option>
             {DISTANCE_OPTIONS.map((km) => (
               <option key={km} value={km}>
                 Within {km} km
               </option>
             ))}
-            <option value="0">Any distance</option>
           </select>
           <select value={sort} onChange={(e) => setSort(e.target.value as SkillSort)} className={selectClass}>
             <option value="newest">Newest</option>
@@ -194,7 +198,7 @@ export default function NearbySkillsPage() {
                 setCategoryId('');
                 setFormat('');
                 setAvailability(false);
-                setDistance('');
+                setDistance(0);
                 setSort('newest');
               }}
             >

@@ -8,7 +8,10 @@ export type NotificationType =
   | 'account_suspended'
   | 'account_banned'
   | 'skill_removed'
-  | 'review_received';
+  | 'review_received'
+  | 'saved_search_match'
+  | 'radar_match'
+  | 'weekly_digest';
 
 export interface AppNotification {
   _id: string;
@@ -42,4 +45,7 @@ export const NOTIFICATION_ICONS: Record<NotificationType, string> = {
   account_banned: '🚫',
   skill_removed: '🗑️',
   review_received: '🌟',
+  saved_search_match: '🔖',
+  radar_match: '🎯',
+  weekly_digest: '📧',
 };

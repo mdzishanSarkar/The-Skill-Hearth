@@ -17,7 +17,10 @@ export type NotificationType =
   | 'group_session_cancelled'
   | 'friend_request'
   | 'friend_request_accepted'
-  | 'friend_joined';
+  | 'friend_joined'
+  | 'saved_search_match'
+  | 'radar_match'
+  | 'weekly_digest';
 
 export interface INotification extends Document {
   userId: Types.ObjectId;
@@ -57,6 +60,9 @@ const notificationSchema = new Schema<INotification>(
         'friend_request',
         'friend_request_accepted',
         'friend_joined',
+        'saved_search_match',
+        'radar_match',
+        'weekly_digest',
       ],
       required: true,
     },
@@ -65,7 +71,7 @@ const notificationSchema = new Schema<INotification>(
     },
     referenceModel: {
       type: String,
-      enum: ['Connection', 'Message', 'Review', 'Skill', 'Report', 'GroupSession', 'Friendship', 'ActivityEvent'],
+      enum: ['Connection', 'Message', 'Review', 'Skill', 'Report', 'GroupSession', 'Friendship', 'ActivityEvent', 'SavedSearch', 'SkillRadar'],
     },
     message: {
       type: String,

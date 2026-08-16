@@ -7,7 +7,8 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed:map-skills": "tsx src/scripts/seedMapSkills.ts"
+    "seed:map-skills": "tsx src/scripts/seedMapSkills.ts",
+    "seed:all": "tsx src/scripts/seedAll.ts"
   },
   "keywords": [],
   "author": "",

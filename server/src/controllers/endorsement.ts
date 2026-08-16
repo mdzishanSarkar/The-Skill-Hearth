@@ -2,6 +2,7 @@ import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import * as endorsementService from '../services/endorsement';
 import { asyncHandler } from '../utils/errors';
+import { signalEndorsementGiven } from '../services/radarSignals';
 
 export const endorse = asyncHandler(async (req: AuthRequest, res: Response) => {
   const { endorseeId, skillId, connectionId } = req.body;
@@ -10,6 +11,7 @@ export const endorse = asyncHandler(async (req: AuthRequest, res: Response) => {
     return;
   }
   const endorsement = await endorsementService.endorseSkill(req.userId!, endorseeId, skillId, connectionId);
+  signalEndorsementGiven(req.userId, String(skillId));
   res.status(201).json({ success: true, data: { endorsement } });
 });
 

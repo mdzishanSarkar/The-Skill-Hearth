@@ -28,3 +28,8 @@ export const getUnreadCount = asyncHandler(async (req: AuthRequest, res: Respons
   const count = await notificationService.getUnreadCount(String(req.userId));
   res.json({ success: true, data: { count } });
 });
+
+export const getUnreadRadarCount = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const count = await notificationService.getUnreadCount(String(req.userId), ['radar_match', 'weekly_digest']);
+  res.json({ success: true, data: { count } });
+});

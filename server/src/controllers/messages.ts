@@ -4,6 +4,7 @@ import type { AuthRequest } from '../middleware/auth';
 import * as messageService from '../services/message';
 import * as reportService from '../services/report';
 import type { ReportReason } from '../models/Report';
+import { signalMessageSent } from '../services/radarSignals';
 
 function paramId(value: unknown): string {
   return Array.isArray(value) ? value[0] : String(value);
@@ -19,6 +20,7 @@ export const sendMessage = asyncHandler(async (req: AuthRequest, res: Response) 
     String(req.userId),
     String(content),
   );
+  signalMessageSent(String(req.userId));
   res.status(201).json({ success: true, data: result });
 });
 

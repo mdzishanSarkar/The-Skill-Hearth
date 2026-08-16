@@ -75,4 +75,37 @@ export const SKILL_TAXONOMY: TaxonomyCategory[] = [
       { name: 'Writing & Reading', slug: 'writing-reading', description: 'Everyday writing, reading, and clarity.' },
     ],
   },
+  {
+    name: 'Photography & Visual Arts',
+    slug: 'photography-visual',
+    icon: 'camera',
+    description: 'Photography, editing, and visual creativity.',
+    displayOrder: 6,
+    skills: [
+      { name: 'Photography', slug: 'photography', description: 'Composition, light, and shooting with confidence.' },
+      { name: 'Photo Editing', slug: 'photo-editing', description: 'Retouching, color, and organizing your shots.' },
+    ],
+  },
+  {
+    name: 'Technology & Web',
+    slug: 'technology-web',
+    icon: 'code',
+    description: 'Coding and web development fundamentals.',
+    displayOrder: 7,
+    skills: [
+      { name: 'JavaScript / Web Development', slug: 'javascript-web', description: 'From variables to interactive web pages.' },
+      { name: 'Intro to Programming', slug: 'intro-programming', description: 'First steps in thinking like a developer.' },
+    ],
+  },
+  {
+    name: 'Music & Performing Arts',
+    slug: 'music-arts',
+    icon: 'music',
+    description: 'Instruments, vocals, and performance skills.',
+    displayOrder: 8,
+    skills: [
+      { name: 'Guitar', slug: 'guitar', description: 'Chords, strumming, and your first songs.' },
+      { name: 'Singing', slug: 'singing', description: 'Breath control and finding your range.' },
+    ],
+  },
 ];

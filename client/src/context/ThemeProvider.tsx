@@ -40,7 +40,13 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
     const root = document.documentElement;
+    root.classList.add('theme-transition');
     root.classList.toggle('dark', resolvedTheme === 'dark');
+    const timer = setTimeout(() => root.classList.remove('theme-transition'), 320);
+    return () => {
+      clearTimeout(timer);
+      root.classList.remove('theme-transition');
+    };
   }, [resolvedTheme]);
 
   const setPreference = useCallback((next: ThemePreference) => {

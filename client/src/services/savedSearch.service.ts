@@ -1,5 +1,6 @@
 import api from './api';
 import type { SavedSearchItem } from '../types/discovery.types';
+import type { SkillListResult } from '../types/skill.types';
 
 export async function saveSearch(
   name: string,
@@ -13,6 +14,14 @@ export async function saveSearch(
 export async function listSavedSearches(): Promise<SavedSearchItem[]> {
   const { data } = await api.get('/saved-searches');
   return (data.data as { searches: SavedSearchItem[] }).searches;
+}
+
+export async function getSearchMatches(
+  searchId: string,
+  opts?: { page?: number; limit?: number },
+): Promise<SkillListResult> {
+  const { data } = await api.get(`/saved-searches/${searchId}/matches`, { params: opts });
+  return data.data as SkillListResult;
 }
 
 export async function updateSavedSearch(

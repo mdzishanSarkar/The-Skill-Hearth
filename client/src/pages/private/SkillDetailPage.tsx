@@ -186,14 +186,14 @@ export default function SkillDetailPage() {
                 {skill.teacher.displayName}
               </Link>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {skill.teacher.stats.reviewCount > 0
-                  ? `${skill.teacher.stats.averageRating.toFixed(1)} rating · ${skill.teacher.stats.reviewCount} reviews`
+                {(skill.teacher.stats?.reviewCount ?? 0) > 0
+                  ? `${(skill.teacher.stats?.averageRating ?? 0).toFixed(1)} rating · ${skill.teacher.stats?.reviewCount ?? 0} reviews`
                   : 'No reviews yet'}
               </p>
               {skill.teacher.bio && <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{skill.teacher.bio}</p>}
             </div>
           </div>
-          {skill.teacher.availability.length > 0 && (
+          {skill.teacher.availability?.length > 0 && (
             <div className="mt-4 border-t border-gray-100 pt-4">
               <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Availability</h3>
               <ul className="mt-2 flex flex-wrap gap-1.5">

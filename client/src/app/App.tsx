@@ -31,6 +31,10 @@ import SwapSuggestionsPage from '../pages/private/SwapSuggestionsPage';
 import SwapsPage from '../pages/private/SwapsPage';
 import ReviewsPage from '../pages/private/ReviewsPage';
 import SavedSearchesPage from '../pages/private/SavedSearchesPage';
+import SkillRadarPage from '../components/SkillRadar/SkillRadarPage';
+import SwapReadyMatchesPage from '../pages/private/SwapReadyMatchesPage';
+import DemandHeatmapPage from '../pages/private/DemandHeatmapPage';
+import AskTheHearthPage from '../pages/private/AskTheHearthPage';
 import SkillSuggestionsPage from '../pages/private/SkillSuggestionsPage';
 import BundlesPage from '../pages/private/BundlesPage';
 import LearnerBoardPage from '../pages/private/LearnerBoardPage';
@@ -41,8 +45,9 @@ import CoursesPage from '../pages/private/CoursesPage';
 import ChallengesPage from '../pages/private/ChallengesPage';
 import MentorshipsPage from '../pages/private/MentorshipsPage';
 import ShowcasePage from '../pages/private/ShowcasePage';
+import ShowcaseNewPage from '../pages/private/ShowcaseNewPage';
+import ShowcaseDetailPage from '../pages/private/ShowcaseDetailPage';
 import IntegrationsPage from '../pages/private/IntegrationsPage';
-import UpgradePage from '../pages/private/UpgradePage';
 import FeedPage from '../pages/private/FeedPage';
 import FriendsPage from '../pages/private/FriendsPage';
 import GamificationPage from '../pages/private/GamificationPage';
@@ -89,7 +94,7 @@ function AppContent() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <RouteTitle />
         <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -197,6 +202,38 @@ function AppContent() {
           }
         />
         <Route
+          path="/radar"
+          element={
+            <ProtectedRoute>
+              <SkillRadarPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/swap-ready-matches"
+          element={
+            <ProtectedRoute>
+              <SwapReadyMatchesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/demand"
+          element={
+            <ProtectedRoute>
+              <DemandHeatmapPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ask"
+          element={
+            <ProtectedRoute>
+              <AskTheHearthPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/skill-suggestions"
           element={
             <ProtectedRoute>
@@ -281,16 +318,28 @@ function AppContent() {
           }
         />
         <Route
+          path="/showcase/new"
+          element={
+            <ProtectedRoute>
+              <ShowcaseNewPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/showcase/:id"
+          element={
+            <ProtectedRoute>
+              <ShowcaseDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/integrations"
           element={
             <ProtectedRoute>
               <IntegrationsPage />
             </ProtectedRoute>
           }
-        />
-        <Route
-          path="/upgrade"
-          element={<UpgradePage />}
         />
         <Route
           path="/feed"

@@ -95,9 +95,11 @@ export async function markAllAsRead(userId: string) {
   return { success: true };
 }
 
-export async function getUnreadCount(userId: string) {
-  return Notification.countDocuments({
+export async function getUnreadCount(userId: string, types?: string[]) {
+  const match: Record<string, unknown> = {
     userId: new Types.ObjectId(userId),
     isRead: false,
-  });
+  };
+  if (types?.length) match.type = { $in: types };
+  return Notification.countDocuments(match);
 }

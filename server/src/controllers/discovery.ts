@@ -14,6 +14,7 @@ export const getMapDiscoveries = asyncHandler(async (req: Request, res: Response
         ? req.query.categoryId.split(',')
         : undefined,
     limit: req.query.limit !== undefined ? Number(req.query.limit) : undefined,
+    viewerId: (req as unknown as { userId?: string }).userId,
   });
   res.json({ success: true, data: { pins, count: pins.length } });
 });

@@ -42,7 +42,7 @@ export async function getUserById(id: string): Promise<User> {
 export async function reverseGeocode(
   lat: number,
   lng: number
-): Promise<{ city: string; neighborhood: string }> {
+): Promise<{ city: string; neighborhood: string; zipCode: string }> {
   const { data } = await api.get('/users/location/reverse', { params: { lat, lng } });
-  return data.data as { city: string; neighborhood: string };
+  return data.data as { city: string; neighborhood: string; zipCode: string };
 }
