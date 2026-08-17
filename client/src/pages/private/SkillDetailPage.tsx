@@ -18,6 +18,7 @@ import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
 import ReviewCard from '../../components/shared/ReviewCard';
 import ConnectionRequestForm from '../../components/forms/ConnectionRequestForm';
+import MentorshipRequestForm from '../../components/forms/MentorshipRequestForm';
 import ReportForm from '../../components/forms/ReportForm';
 import { getCategoryVisual, getSkillEmoji } from '../../data/skillVisuals';
 
@@ -29,6 +30,7 @@ export default function SkillDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showRequestForm, setShowRequestForm] = useState(false);
+  const [showMentorshipForm, setShowMentorshipForm] = useState(false);
   const [showReport, setShowReport] = useState(false);
 
   useEffect(() => {
@@ -148,6 +150,11 @@ export default function SkillDetailPage() {
                     <Button onClick={() => setShowRequestForm(true)}>
                       Request a Session
                     </Button>
+                    {me && current.type === 'teach' && (
+                      <Button variant="secondary" onClick={() => setShowMentorshipForm(true)}>
+                        Request Mentorship
+                      </Button>
+                    )}
                     {me && (
                       <Button variant="secondary" size="sm" onClick={() => setShowReport(true)}>
                         Report skill
@@ -236,6 +243,18 @@ export default function SkillDetailPage() {
           targetType="skill"
           targetId={current._id}
           targetName={current.skillName}
+        />
+      )}
+
+      {!isOwner && me && current.type === 'teach' && (
+        <MentorshipRequestForm
+          open={showMentorshipForm}
+          onClose={() => setShowMentorshipForm(false)}
+          mentorId={current.userId}
+          mentorName={current.teacher?.displayName}
+          skillId={current._id}
+          skillName={current.skillName}
+          onSuccess={() => setShowMentorshipForm(false)}
         />
       )}
     </div>

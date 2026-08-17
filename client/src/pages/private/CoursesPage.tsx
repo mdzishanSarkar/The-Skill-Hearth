@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { listCourses, enrollInCourse } from '../../services/course.service';
 import type { CourseListResult } from '../../types/course.types';
 import { getApiError } from '../../types/api.types';
+import { showError, showSuccess } from '../../utils/toast';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import PageHeader from '../../components/ui/PageHeader';
@@ -25,7 +25,7 @@ export default function CoursesPage() {
       const result = await listCourses({ page, limit: 12 });
       setData(result);
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setLoading(false);
     }
@@ -35,10 +35,10 @@ export default function CoursesPage() {
     setEnrollingId(courseId);
     try {
       await enrollInCourse(courseId);
-      toast.success('Enrolled successfully!');
+      showSuccess('Enrolled successfully!');
       loadCourses();
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setEnrollingId('');
     }

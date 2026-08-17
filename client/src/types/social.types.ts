@@ -50,7 +50,7 @@ export interface SkillBundle {
   description: string;
   skillIds: Array<{ _id: string; skillName: string; categoryName: string; description?: string }>;
   isOfficial: boolean;
-  createdBy: { _id: string; displayName: string };
+  createdBy: { _id: string; displayName: string; avatar?: string };
   votes: number;
   coverImage: string;
   createdAt: string;

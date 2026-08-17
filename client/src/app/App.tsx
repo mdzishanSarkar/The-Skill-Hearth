@@ -4,9 +4,11 @@ import { AuthProvider } from '../context/AuthProvider';
 import { SocketProvider } from '../context/SocketProvider';
 import { ThemeProvider } from '../context/ThemeProvider';
 import { useAuth } from '../hooks/useAuth';
+import { useInboxNotifications } from '../hooks/useInboxNotifications';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import ThemeToaster from '../components/ui/ThemeToaster';
+import InboxNotificationBadge from '../components/inbox/InboxNotificationBadge';
 import ProtectedRoute from '../components/shared/ProtectedRoute';
 import RouteTitle from '../components/shared/RouteTitle';
 import LandingPage from '../pages/public/LandingPage';
@@ -37,13 +39,17 @@ import DemandHeatmapPage from '../pages/private/DemandHeatmapPage';
 import AskTheHearthPage from '../pages/private/AskTheHearthPage';
 import SkillSuggestionsPage from '../pages/private/SkillSuggestionsPage';
 import BundlesPage from '../pages/private/BundlesPage';
+import BundleDetailPage from '../pages/private/BundleDetailPage';
 import LearnerBoardPage from '../pages/private/LearnerBoardPage';
 import NeighborhoodPageView from '../pages/private/NeighborhoodPageView';
 import CommunityBoardPage from '../pages/private/CommunityBoardPage';
 import GroupSessionsPage from '../pages/private/GroupSessionsPage';
 import CoursesPage from '../pages/private/CoursesPage';
+import CourseDetailPage from '../pages/private/CourseDetailPage';
 import ChallengesPage from '../pages/private/ChallengesPage';
+import ChallengeDetailPage from '../pages/private/ChallengeDetailPage';
 import MentorshipsPage from '../pages/private/MentorshipsPage';
+import LearnerRequestDetailPage from '../pages/private/LearnerRequestDetailPage';
 import ShowcasePage from '../pages/private/ShowcasePage';
 import ShowcaseNewPage from '../pages/private/ShowcaseNewPage';
 import ShowcaseDetailPage from '../pages/private/ShowcaseDetailPage';
@@ -55,8 +61,6 @@ import FriendDmsPage from '../pages/private/FriendDmsPage';
 import FriendDmPage from '../pages/private/FriendDmPage';
 
 const MapDiscoveryPage = lazy(() => import('../pages/private/MapDiscoveryPage'));
-const InboxPage = lazy(() => import('../pages/private/InboxPage'));
-const OutboxPage = lazy(() => import('../pages/private/OutboxPage'));
 const ConnectionDetailPage = lazy(() => import('../pages/private/ConnectionDetailPage'));
 const MessagesPage = lazy(() => import('../pages/private/MessagesPage'));
 const ChatRoomPage = lazy(() => import('../pages/private/ChatRoomPage'));
@@ -84,6 +88,10 @@ function NavigateToDashboard() {
 function AppContent() {
   const { isAuthenticated } = useAuth();
   const { pathname } = useLocation();
+
+  // Listen for real-time inbox notifications
+  useInboxNotifications({ showToast: true });
+
   const showFooter = !(
     /^\/map(\/|$)/.test(pathname) ||
     /^\/chat\//.test(pathname) ||
@@ -250,10 +258,26 @@ function AppContent() {
           }
         />
         <Route
+          path="/bundles/:id"
+          element={
+            <ProtectedRoute>
+              <BundleDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/learner-board"
           element={
             <ProtectedRoute>
               <LearnerBoardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/learner-board/:id"
+          element={
+            <ProtectedRoute>
+              <LearnerRequestDetailPage />
             </ProtectedRoute>
           }
         />
@@ -294,10 +318,26 @@ function AppContent() {
           }
         />
         <Route
+          path="/courses/:id"
+          element={
+            <ProtectedRoute>
+              <CourseDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/challenges"
           element={
             <ProtectedRoute>
               <ChallengesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/challenges/:id"
+          element={
+            <ProtectedRoute>
+              <ChallengeDetailPage />
             </ProtectedRoute>
           }
         />
@@ -405,26 +445,8 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/inbox"
-          element={
-            <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
-                <InboxPage />
-              </Suspense>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/outbox"
-          element={
-            <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
-                <OutboxPage />
-              </Suspense>
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/inbox" element={<Navigate to="/messages" replace />} />
+        <Route path="/outbox" element={<Navigate to="/messages" replace />} />
         <Route
           path="/connection/:id"
           element={
@@ -511,6 +533,7 @@ export default function App() {
           <SocketProvider>
             <AppContent />
             <ThemeToaster />
+            <InboxNotificationBadge />
           </SocketProvider>
         </AuthProvider>
       </ThemeProvider>

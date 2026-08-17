@@ -25,7 +25,7 @@ const QUICK_ACTIONS = [
   { label: 'Skill map', to: '/map', icon: <FiMap />, tone: 'from-emerald-500 to-teal-600', text: 'See who’s nearby' },
   { label: 'My skills', to: '/my-skills', icon: <FiAward />, tone: 'from-indigo-500 to-violet-600', text: 'Manage what you teach' },
   { label: 'Community feed', to: '/feed', icon: <FiHome />, tone: 'from-amber-500 to-orange-600', text: 'See what’s happening' },
-  { label: 'Inbox', to: '/inbox', icon: <FiUsers />, tone: 'from-rose-500 to-pink-600', text: 'Session requests' },
+  { label: 'Messages', to: '/messages', icon: <FiUsers />, tone: 'from-rose-500 to-pink-600', text: 'Chats, requests & replies' },
   { label: 'My journey', to: '/gamification', icon: <FiTrendingUp />, tone: 'from-violet-500 to-fuchsia-600', text: 'XP, levels & streaks' },
   { label: 'Journal', to: '/journal', icon: <FiBookOpen />, tone: 'from-amber-500 to-yellow-600', text: 'Reflect on sessions' },
   { label: 'My impact', to: '/impact', icon: <FiBarChart2 />, tone: 'from-emerald-500 to-green-600', text: 'See the good you’ve done' },

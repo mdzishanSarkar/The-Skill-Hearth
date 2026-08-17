@@ -2,6 +2,7 @@ import { Response } from 'express';
 import { asyncHandler, HttpError } from '../utils/errors';
 import type { AuthRequest } from '../middleware/auth';
 import * as messageService from '../services/message';
+import * as inboxService from '../services/message.service';
 import * as reportService from '../services/report';
 import type { ReportReason } from '../models/Report';
 import { signalMessageSent } from '../services/radarSignals';
@@ -56,4 +57,29 @@ export const reportMessage = asyncHandler(async (req: AuthRequest, res: Response
     description: description ? String(description) : undefined,
   });
   res.status(201).json({ success: true, data });
+});
+
+export const getConversations = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const page = Number(req.query.page ?? 1);
+  const limit = Number(req.query.limit ?? 20);
+  const filter = String(req.query.filter ?? 'all') as 'all' | 'unread' | 'archived' | 'pinned';
+  const result = await inboxService.getConversations({
+    userId: String(req.userId),
+    page: Number.isFinite(page) ? page : 1,
+    limit: Number.isFinite(limit) ? limit : 20,
+    filter,
+  });
+  res.json({ success: true, data: result });
+});
+
+export const setConversationPreference = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const connectionId = paramId(req.params.connectionId);
+  const { action, muteDuration } = req.body || {};
+  const result = await inboxService.setPreference({
+    userId: String(req.userId),
+    connectionId,
+    action: String(action) as 'pin' | 'unpin' | 'mute' | 'unmute' | 'archive' | 'unarchive',
+    muteDuration: Number(muteDuration),
+  });
+  res.json({ success: true, data: result });
 });

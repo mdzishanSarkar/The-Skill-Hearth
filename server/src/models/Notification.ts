@@ -71,7 +71,7 @@ const notificationSchema = new Schema<INotification>(
     },
     referenceModel: {
       type: String,
-      enum: ['Connection', 'Message', 'Review', 'Skill', 'Report', 'GroupSession', 'Friendship', 'ActivityEvent', 'SavedSearch', 'SkillRadar'],
+      enum: ['User', 'Connection', 'Message', 'Review', 'Skill', 'Report', 'GroupSession', 'Friendship', 'ActivityEvent', 'SavedSearch', 'SkillRadar', 'Course', 'LearnerRequest', 'Challenge', 'Mentorship', 'SkillBundle', 'SkillSuggestion'],
     },
     message: {
       type: String,

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import { useAuth } from '../../hooks/useAuth';
 import {
   listLearnerRequests,
@@ -14,6 +13,7 @@ import Input from '../../components/ui/Input';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
 import { FiCompass, FiPlus } from 'react-icons/fi';
+import { showError, showSuccess } from '../../utils/toast';
 
 export default function LearnerBoardPage() {
   const { user } = useAuth();
@@ -39,7 +39,7 @@ export default function LearnerBoardPage() {
       setRequests(data.requests);
       setTotalPages(data.totalPages);
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setLoading(false);
     }
@@ -48,7 +48,7 @@ export default function LearnerBoardPage() {
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
     if (!skillName.trim() || !categoryName.trim() || !user?.location.city) {
-      toast.error('Skill name and category are required');
+      showError('Skill name and category are required');
       return;
     }
     setSubmitting(true);
@@ -61,14 +61,14 @@ export default function LearnerBoardPage() {
         neighborhood: user.location.neighborhood,
         format,
       });
-      toast.success('Request posted!');
+      showSuccess('Request posted!');
       setSkillName('');
       setCategoryName('');
       setDescription('');
       setShowForm(false);
       loadRequests();
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setSubmitting(false);
     }
@@ -78,10 +78,10 @@ export default function LearnerBoardPage() {
     setRespondingId(requestId);
     try {
       await respondToLearnerRequest(requestId);
-      toast.success('Response sent!');
+      showSuccess('Response sent!');
       loadRequests();
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setRespondingId('');
     }

@@ -143,8 +143,8 @@ export default function ConnectionDetailPage() {
       <div className="mx-auto max-w-md px-4 py-16 text-center">
         <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Connection not found</h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{error || 'This connection does not exist.'}</p>
-        <Link to="/inbox" className="mt-6 inline-block">
-          <Button variant="secondary">Back to inbox</Button>
+        <Link to="/messages" className="mt-6 inline-block">
+          <Button variant="secondary">Back to messages</Button>
         </Link>
       </div>
     );

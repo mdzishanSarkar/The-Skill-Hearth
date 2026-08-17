@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { listBundles, voteOnBundle } from '../../services/bundle.service';
 import type { SkillBundle } from '../../types/social.types';
 import { getApiError } from '../../types/api.types';
@@ -8,7 +8,9 @@ import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
-import { FiLayers } from 'react-icons/fi';
+import CreateBundleForm from '../../components/forms/CreateBundleForm';
+import { FiLayers, FiPlus, FiTarget } from 'react-icons/fi';
+import { showError } from '../../utils/toast';
 
 export default function BundlesPage() {
   const [bundles, setBundles] = useState<SkillBundle[]>([]);
@@ -16,6 +18,7 @@ export default function BundlesPage() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [votingId, setVotingId] = useState('');
+  const [showCreate, setShowCreate] = useState(false);
 
   useEffect(() => {
     loadBundles();
@@ -27,7 +30,7 @@ export default function BundlesPage() {
       setBundles(data.bundles);
       setTotalPages(data.totalPages);
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setLoading(false);
     }
@@ -41,7 +44,7 @@ export default function BundlesPage() {
         prev.map((b) => (b._id === bundleId ? { ...b, votes: result.votes } : b))
       );
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setVotingId('');
     }
@@ -61,7 +64,30 @@ export default function BundlesPage() {
         icon={<FiLayers />}
         title="Skill Bundles"
         subtitle="Curated learning paths — bundles of related skills to help you learn systematically."
+        actions={
+          <Button size="sm" onClick={() => setShowCreate(true)}>
+            <FiPlus className="h-4 w-4" />
+            Create bundle
+          </Button>
+        }
       />
+
+      <div className="mt-6 rounded-lg border border-indigo-200 bg-indigo-50 p-5 dark:border-indigo-900 dark:bg-indigo-950/30">
+        <h2 className="flex items-center gap-2 text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+          <FiTarget className="h-4 w-4" />
+          Why bundles?
+        </h2>
+        <p className="mt-2 text-sm text-indigo-900/90 dark:text-indigo-200/90">
+          Learning one skill in isolation rarely sticks. Bundles group related skills into a learning path — so a
+          learner can build a practical, connected set of abilities. Anyone can create a bundle from their own teach
+          skills, and the community votes the best paths to the top.
+        </p>
+        <ol className="mt-3 space-y-1.5 text-sm text-indigo-900/90 dark:text-indigo-200/90">
+          <li><span className="font-medium">1. Create</span> — group 2–10 of your teach skills into a named path.</li>
+          <li><span className="font-medium">2. Browse</span> — discover community-built paths, sorted by votes.</li>
+          <li><span className="font-medium">3. Vote</span> — upvote bundles you'd recommend to a neighbor.</li>
+        </ol>
+      </div>
 
       {bundles.length === 0 ? (
         <EmptyState
@@ -69,6 +95,11 @@ export default function BundlesPage() {
           icon={<FiLayers />}
           title="No bundles yet"
           description="Curated learning bundles will appear here once the community creates them."
+          action={
+            <Button variant="secondary" size="sm" onClick={() => setShowCreate(true)}>
+              Create the first bundle
+            </Button>
+          }
         />
       ) : (
         <div className="mt-6 space-y-4">
@@ -102,14 +133,22 @@ export default function BundlesPage() {
                     by {bundle.createdBy.displayName}
                   </p>
                 </div>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  loading={votingId === bundle._id}
-                  onClick={() => handleVote(bundle._id)}
-                >
-                  {bundle.votes} vote{bundle.votes === 1 ? '' : 's'}
-                </Button>
+                <div className="ml-4 flex flex-col items-end gap-2">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    loading={votingId === bundle._id}
+                    onClick={() => handleVote(bundle._id)}
+                  >
+                    {bundle.votes} vote{bundle.votes === 1 ? '' : 's'}
+                  </Button>
+                  <Link
+                    to={`/bundles/${bundle._id}`}
+                    className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
+                  >
+                    View details
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -127,6 +166,15 @@ export default function BundlesPage() {
           </Button>
         </div>
       )}
+
+      <CreateBundleForm
+        open={showCreate}
+        onClose={() => setShowCreate(false)}
+        onCreated={() => {
+          setPage(1);
+          loadBundles();
+        }}
+      />
     </div>
   );
 }

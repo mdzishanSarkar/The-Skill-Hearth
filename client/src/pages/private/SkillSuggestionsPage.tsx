@@ -1,16 +1,40 @@
 import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import { submitSuggestion, voteOnSuggestion, listPendingSuggestions } from '../../services/suggestion.service';
+import { submitSuggestion, voteOnSuggestion, listPendingSuggestions, approveSuggestion, rejectSuggestion } from '../../services/suggestion.service';
 import type { SkillSuggestion } from '../../types/social.types';
 import { getApiError } from '../../types/api.types';
+import { useAuth } from '../../hooks/useAuth';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import Badge from '../../components/ui/Badge';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
-import { FiPlus, FiThumbsUp } from 'react-icons/fi';
+import { FiPlus, FiThumbsUp, FiTarget } from 'react-icons/fi';
+import { showError, showSuccess } from '../../utils/toast';
+
+const isStaff = (role?: string) => role === 'admin' || role === 'moderator';
+
+const REVIEW_STEPS = [
+  {
+    title: 'Suggest',
+    body: 'Anyone can propose a new skill with a category and a short rationale.',
+  },
+  {
+    title: 'Vote',
+    body: 'The community upvotes the suggestions they would actually use. High votes surface popular ideas.',
+  },
+  {
+    title: 'Review',
+    body: 'Admins and moderators review the highest-voted suggestions and approve or reject them with a note.',
+  },
+  {
+    title: 'Add',
+    body: 'Approved skills become part of the shared skill taxonomy that everyone can teach and learn.',
+  },
+];
 
 export default function SkillSuggestionsPage() {
+  const { user } = useAuth();
   const [suggestions, setSuggestions] = useState<SkillSuggestion[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -19,6 +43,7 @@ export default function SkillSuggestionsPage() {
   const [description, setDescription] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [votingId, setVotingId] = useState('');
+  const [actionId, setActionId] = useState('');
 
   useEffect(() => {
     loadSuggestions();
@@ -29,7 +54,7 @@ export default function SkillSuggestionsPage() {
       const data = await listPendingSuggestions();
       setSuggestions(data.suggestions);
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setLoading(false);
     }
@@ -38,20 +63,20 @@ export default function SkillSuggestionsPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!skillName.trim() || !categoryName.trim()) {
-      toast.error('Skill name and category are required');
+      showError('Skill name and category are required');
       return;
     }
     setSubmitting(true);
     try {
       await submitSuggestion(skillName, categoryName, description);
-      toast.success('Suggestion submitted!');
+      showSuccess('Suggestion submitted!');
       setSkillName('');
       setCategoryName('');
       setDescription('');
       setShowForm(false);
       loadSuggestions();
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setSubmitting(false);
     }
@@ -65,9 +90,27 @@ export default function SkillSuggestionsPage() {
         prev.map((s) => (s._id === suggestionId ? { ...s, votes: result.votes } : s))
       );
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setVotingId('');
+    }
+  }
+
+  async function handleReview(suggestionId: string, action: 'approve' | 'reject') {
+    setActionId(suggestionId);
+    try {
+      if (action === 'approve') {
+        await approveSuggestion(suggestionId);
+        showSuccess('Suggestion approved');
+      } else {
+        await rejectSuggestion(suggestionId);
+        showSuccess('Suggestion rejected');
+      }
+      setSuggestions((prev) => prev.filter((s) => s._id !== suggestionId));
+    } catch (err) {
+      showError(getApiError(err));
+    } finally {
+      setActionId('');
     }
   }
 
@@ -92,6 +135,31 @@ export default function SkillSuggestionsPage() {
           </Button>
         }
       />
+
+      <div className="mt-6 rounded-lg border border-indigo-200 bg-indigo-50 p-5 dark:border-indigo-900 dark:bg-indigo-950/30">
+        <h2 className="flex items-center gap-2 text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+          <FiTarget className="h-4 w-4" />
+          How suggestions become skills
+        </h2>
+        <ol className="mt-3 space-y-2">
+          {REVIEW_STEPS.map((step, i) => (
+            <li key={i} className="flex gap-3 text-sm text-indigo-900/90 dark:text-indigo-200/90">
+              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-semibold text-white">
+                {i + 1}
+              </span>
+              <span>
+                <span className="font-medium">{step.title}.</span> {step.body}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      {isStaff(user?.role) && (
+        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+          You are a moderator/admin — approve or reject pending suggestions below.
+        </div>
+      )}
 
       {showForm && (
         <form onSubmit={handleSubmit} className="mt-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm">
@@ -143,24 +211,48 @@ export default function SkillSuggestionsPage() {
               key={s._id}
               className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 shadow-sm"
             >
-              <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{s.skillName}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  {s.categoryName}
-                  {s.description && ` — ${s.description}`}
-                </p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{s.skillName}</p>
+                  <Badge color="blue">{s.categoryName}</Badge>
+                </div>
+                {s.description && (
+                  <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">{s.description}</p>
+                )}
                 <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                   by {s.userId.displayName}
                 </p>
               </div>
-              <Button
-                variant="secondary"
-                size="sm"
-                loading={votingId === s._id}
-                onClick={() => handleVote(s._id)}
-              >
-                {s.votes} vote{s.votes === 1 ? '' : 's'}
-              </Button>
+              <div className="ml-4 flex flex-col items-end gap-2">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  loading={votingId === s._id}
+                  onClick={() => handleVote(s._id)}
+                >
+                  {s.votes} vote{s.votes === 1 ? '' : 's'}
+                </Button>
+                {isStaff(user?.role) && (
+                  <div className="flex gap-2">
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      loading={actionId === s._id}
+                      onClick={() => handleReview(s._id, 'approve')}
+                    >
+                      Approve
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      loading={actionId === s._id}
+                      onClick={() => handleReview(s._id, 'reject')}
+                    >
+                      Reject
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>

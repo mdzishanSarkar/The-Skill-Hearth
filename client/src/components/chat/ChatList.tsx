@@ -10,12 +10,14 @@ interface ChatListProps {
 export default function ChatList({ connections, currentUserId }: ChatListProps) {
   if (connections.length === 0) {
     return (
-      <p className="p-4 text-center text-sm text-gray-500 dark:text-gray-400">No active conversations.</p>
+      <div className="p-6 text-center text-sm text-gray-500 dark:text-gray-400">
+        No active conversations.
+      </div>
     );
   }
 
   return (
-    <div className="divide-y divide-gray-100 dark:divide-gray-800">
+    <div className="space-y-2 p-2">
       {connections.map((conn) => {
         const other =
           (typeof conn.requesterId === 'object' && conn.requesterId._id !== currentUserId
@@ -24,29 +26,45 @@ export default function ChatList({ connections, currentUserId }: ChatListProps) 
               ? conn.teacherId
               : null);
         const skill = typeof conn.skillId === 'object' ? conn.skillId : null;
+        const lastSeen = conn.updatedAt ? new Date(conn.updatedAt) : new Date();
+        const isToday = lastSeen.toDateString() === new Date().toDateString();
 
         return (
           <Link
             key={conn._id}
             to={`/chat/${conn._id}`}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            className="group flex items-center gap-3 rounded-2xl border border-transparent bg-white/80 p-3 transition-all duration-200 hover:border-indigo-100 hover:bg-indigo-50/70 hover:shadow-sm dark:bg-slate-900/60 dark:hover:border-slate-700 dark:hover:bg-slate-800/80"
           >
-            <Avatar
-              src={other?.avatar || undefined}
-              name={other?.displayName || 'User'}
-              size="sm"
-            />
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
-                {other?.displayName || 'Unknown'}
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                {skill?.skillName || 'Chat'}
-              </p>
+            <div className="relative shrink-0">
+              <Avatar
+                src={other?.avatar || undefined}
+                name={other?.displayName || 'User'}
+                size="sm"
+              />
+              <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-900" />
             </div>
-            <span className="text-xs text-gray-400 dark:text-gray-500">
-              {new Date(conn.updatedAt).toLocaleDateString()}
-            </span>
+
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center justify-between gap-3">
+                <p className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100">
+                  {other?.displayName || 'Unknown'}
+                </p>
+                <span className="shrink-0 text-[11px] text-slate-400 dark:text-slate-500">
+                  {isToday
+                    ? lastSeen.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+                    : lastSeen.toLocaleDateString([], { month: 'short', day: 'numeric' })}
+                </span>
+              </div>
+
+              <div className="mt-1 flex items-center justify-between gap-2">
+                <p className="truncate text-xs text-slate-500 dark:text-slate-400">
+                  {skill?.skillName || 'Chat'}
+                </p>
+                <span className="inline-flex min-w-5 items-center justify-center rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-semibold text-white">
+                  2
+                </span>
+              </div>
+            </div>
           </Link>
         );
       })}

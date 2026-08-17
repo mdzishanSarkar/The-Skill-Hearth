@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { createSession } from '../../services/groupSession.service';
 import toast from 'react-hot-toast';
+import { format as formatDate } from 'date-fns';
+import { FiCalendar } from 'react-icons/fi';
 import Modal from '../ui/Modal';
 
 interface CreateGroupSessionModalProps {
@@ -32,6 +34,10 @@ export default function CreateGroupSessionModal({
     e.preventDefault();
     if (!skillId || !title.trim()) {
       toast.error('Skill and title are required');
+      return;
+    }
+    if (scheduledAt && new Date(scheduledAt).getTime() <= Date.now()) {
+      toast.error('Please choose a future date and time');
       return;
     }
     setIsSubmitting(true);
@@ -171,13 +177,33 @@ export default function CreateGroupSessionModal({
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Scheduled Date/Time (optional)</label>
-            <input
-              type="datetime-local"
-              value={scheduledAt}
-              onChange={(e) => setScheduledAt(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500"
-            />
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Scheduled Date/Time <span className="text-xs text-gray-500">(optional)</span>
+            </label>
+            <div className="relative space-y-2">
+              <div className="relative">
+                <FiCalendar className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
+                <input
+                  type="datetime-local"
+                  value={scheduledAt}
+                  onChange={(e) => setScheduledAt(e.target.value)}
+                  min={new Date().toISOString().slice(0, 16)}
+                  aria-label="Scheduled date and time"
+                  className="w-full rounded-lg border border-gray-300 dark:border-gray-700 py-2 pl-9 pr-3 text-sm focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                />
+              </div>
+              {scheduledAt && new Date(scheduledAt).getTime() > Date.now() && (
+                <div className="flex items-center gap-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 p-2 text-xs font-medium text-indigo-700 dark:text-indigo-300">
+                  <FiCalendar className="h-3.5 w-3.5 shrink-0" />
+                  {formatDate(new Date(scheduledAt), 'dd/MM/yyyy HH:mm')}
+                </div>
+              )}
+              {scheduledAt && new Date(scheduledAt).getTime() <= Date.now() && (
+                <div className="rounded-lg bg-red-50 dark:bg-red-950/40 p-2 text-xs font-medium text-red-700 dark:text-red-300">
+                  Past dates are not allowed — please pick a future time.
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="flex justify-end gap-3 pt-2">

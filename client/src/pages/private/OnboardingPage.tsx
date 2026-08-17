@@ -44,6 +44,7 @@ export default function OnboardingPage() {
   const [coordinates, setCoordinates] = useState<[number, number] | null>(null);
   const [locating, setLocating] = useState(false);
   const [locationNote, setLocationNote] = useState('');
+  const [locationNoteTone, setLocationNoteTone] = useState<'info' | 'success' | 'warning'>('info');
 
   const [bio, setBio] = useState('');
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -187,11 +188,13 @@ export default function OnboardingPage() {
 
   async function handleUseMyLocation() {
     if (!navigator.geolocation) {
-      setLocationNote('Location is not available in this browser — just type your city.');
+      setLocationNoteTone('warning');
+      setLocationNote('Please enable location access in your browser settings to use this feature.');
       return;
     }
     setLocating(true);
     setLocationNote('');
+    setLocationNoteTone('info');
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const lat = position.coords.latitude;
@@ -203,16 +206,30 @@ export default function OnboardingPage() {
           if (place.city) setCity(place.city);
           if (place.zipCode) setZipCode(place.zipCode);
           if (place.neighborhood) setNeighborhood(place.neighborhood);
+          setLocationNoteTone('success');
           setLocationNote(
             `Found ${place.city || 'your area'}${place.neighborhood ? ` — ${place.neighborhood}` : ''}. Confirm below, or tap "Update my location" to try again.`
           );
         } catch {
+          setLocationNoteTone('info');
           setLocationNote('Location set — we could not read the city name, so please type it below.');
         }
       },
-      () => {
+      (error) => {
         setLocating(false);
-        setLocationNote('We could not get your location — just type your city instead.');
+        if (error.code === error.PERMISSION_DENIED) {
+          setLocationNoteTone('warning');
+          setLocationNote('Please enable location access in your browser settings to use this feature.');
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          setLocationNoteTone('warning');
+          setLocationNote('Your location is currently unavailable. Please check your connection or type your city below.');
+        } else if (error.code === error.TIMEOUT) {
+          setLocationNoteTone('warning');
+          setLocationNote('Location request timed out. Please try again or type your city below.');
+        } else {
+          setLocationNoteTone('warning');
+          setLocationNote('We could not get your location — please type your city below.');
+        }
       }
     );
   }
@@ -372,7 +389,23 @@ export default function OnboardingPage() {
               <Button type="button" variant="secondary" onClick={handleUseMyLocation} loading={locating}>
                 {coordinates ? 'Update my location' : 'Use my location'}
               </Button>
-              {locationNote && <p className="text-xs text-gray-500 dark:text-gray-400">{locationNote}</p>}
+              {locationNote && (
+                <div
+                  role="alert"
+                  className={
+                    locationNoteTone === 'warning'
+                      ? 'rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200'
+                      : locationNoteTone === 'success'
+                        ? 'rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800 dark:border-green-900 dark:bg-green-950/40 dark:text-green-200'
+                        : 'rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300'
+                  }
+                >
+                  {locationNoteTone === 'warning' && (
+                    <span className="mr-1.5 font-semibold">⚠️</span>
+                  )}
+                  {locationNote}
+                </div>
+              )}
               {coordinates && (
                 <p className="text-xs font-medium text-green-700 dark:text-green-300">
                   Location captured — approximated for privacy.

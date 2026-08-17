@@ -2,6 +2,7 @@ import type { Server } from 'http';
 import { Server as SocketServer, type Socket } from 'socket.io';
 import { socketAuth } from '../middleware/socketAuth';
 import { setupChatSockets } from '../sockets/chat.socket';
+import { setupInboxSockets } from '../sockets/inbox.socket';
 import { setupPresenceSockets, handleUserConnected, handleUserDisconnected } from '../sockets/presence.socket';
 import type { SocketUser } from '../types/socket.types';
 
@@ -33,6 +34,7 @@ export function initializeSocket(httpServer: Server): SocketServer {
     socket.join(`user_${user.userId}`);
 
     setupChatSockets(io, socket, user);
+    setupInboxSockets(io, socket, user);
     setupPresenceSockets(io, socket, user);
     handleUserConnected(io, socket, user).catch(() => {
       // best-effort presence

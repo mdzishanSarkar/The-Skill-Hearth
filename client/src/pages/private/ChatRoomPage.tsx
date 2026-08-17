@@ -81,60 +81,69 @@ export default function ChatRoomPage() {
   const skill = typeof connection.skillId === 'object' ? connection.skillId : null;
 
   return (
-    <div className="flex h-[calc(100dvh-64px)]">
+    <div className="flex h-[calc(100dvh-64px)] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950">
       <div className="flex flex-1 flex-col">
-        <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-3">
-          <Link to="/messages" className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">
-            &larr;
+        <div className="flex items-center gap-3 border-b border-slate-200 bg-gradient-to-r from-emerald-500/10 via-white to-violet-500/10 px-4 py-3 dark:border-slate-800 dark:from-emerald-500/10 dark:via-slate-950 dark:to-violet-500/10">
+          <Link to="/messages" className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold text-slate-600 transition hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+            ←
           </Link>
-          <Avatar
-            src={other?.avatar || undefined}
-            name={other?.displayName || 'User'}
-            size="sm"
-          />
+
+          <div className="relative">
+            <Avatar
+              src={other?.avatar || undefined}
+              name={other?.displayName || 'User'}
+              size="sm"
+            />
+            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-950" />
+          </div>
+
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
+            <p className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100">
               {other?.displayName || 'Unknown'}
             </p>
             {skill && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{skill.skillName}</p>
+              <p className="truncate text-[11px] text-slate-500 dark:text-slate-400">{skill.skillName}</p>
             )}
           </div>
-          <form onSubmit={handleSearch} className="flex gap-1">
+
+          <form onSubmit={handleSearch} className="hidden items-center gap-2 md:flex">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search messages..."
-              className="w-32 rounded-md border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none lg:w-48"
+              className="w-36 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-700 placeholder:text-slate-400 focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:placeholder:text-slate-500 lg:w-48"
             />
             <Button type="submit" variant="secondary" size="sm" loading={searching}>
               Search
             </Button>
           </form>
+
           <Button
             variant="secondary"
             size="sm"
             onClick={() => setShowSidebar(!showSidebar)}
+            className="rounded-full"
           >
             {showSidebar ? 'Hide' : 'Session tools'}
           </Button>
+
           <Link
             to={`/connection/${connection._id}`}
-            className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
+            className="text-xs font-medium text-violet-600 transition hover:text-violet-500 dark:text-violet-400 dark:hover:text-violet-300"
           >
             Details
           </Link>
         </div>
 
         {searchResults.length > 0 && (
-          <div className="border-b border-gray-200 dark:border-gray-700 bg-yellow-50 p-3">
-            <p className="text-xs font-medium text-yellow-800">
+          <div className="border-b border-amber-200 bg-amber-50 p-3 dark:border-amber-900 dark:bg-amber-950/30">
+            <p className="text-xs font-medium text-amber-800 dark:text-amber-200">
               {searchResults.length} result{searchResults.length === 1 ? '' : 's'} for "{searchQuery}"
             </p>
             <div className="mt-2 max-h-40 space-y-1 overflow-y-auto">
               {searchResults.map((msg) => (
-                <p key={msg._id} className="truncate text-xs text-yellow-700">
+                <p key={msg._id} className="truncate text-xs text-amber-700 dark:text-amber-300">
                   {msg.content}
                 </p>
               ))}
@@ -142,7 +151,7 @@ export default function ChatRoomPage() {
             <button
               type="button"
               onClick={() => { setSearchResults([]); setSearchQuery(''); }}
-              className="mt-1 text-xs text-yellow-600 hover:text-yellow-800"
+              className="mt-1 text-xs text-amber-700 hover:text-amber-900 dark:text-amber-300 dark:hover:text-amber-100"
             >
               Clear results
             </button>
@@ -153,10 +162,12 @@ export default function ChatRoomPage() {
       </div>
 
       {showSidebar && (
-        <div className="w-80 shrink-0 border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4 overflow-y-auto">
-          <SessionNotes connectionId={connection._id} />
-          <div className="mt-4">
-            <SchedulePicker connectionId={connection._id} />
+        <div className="w-80 shrink-0 border-l border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900/70">
+          <div className="space-y-4 overflow-y-auto">
+            <SessionNotes connectionId={connection._id} />
+            <div className="mt-4">
+              <SchedulePicker connectionId={connection._id} />
+            </div>
           </div>
         </div>
       )}

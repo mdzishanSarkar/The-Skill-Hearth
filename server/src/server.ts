@@ -5,6 +5,7 @@ import app from "./app";
 import { connectDatabase, disconnectDatabase } from "./models/db";
 import { seedCategories } from "./services/skill";
 import { initializeSocket } from "./config/socket";
+import { setupInboxNotificationHandlers } from "./services/inbox-notification.service";
 import { startAllJobs, scheduleRecurringJobs } from "./jobs";
 import { runMigrationIfNeeded } from "./migrations/savedSearchToRadar.migration";
 
@@ -13,6 +14,7 @@ dotenv.config();
 const startServer = (port: number) => {
  const httpServer = http.createServer(app);
  initializeSocket(httpServer);
+ setupInboxNotificationHandlers();
 
  const serverInstance = httpServer.listen(port, async () => {
    await connectDatabase();

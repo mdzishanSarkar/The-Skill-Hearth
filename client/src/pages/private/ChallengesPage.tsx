@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { listChallenges, joinChallenge } from '../../services/challenge.service';
 import type { ChallengeListResult } from '../../types/challenge.types';
 import { getApiError } from '../../types/api.types';
@@ -10,6 +9,7 @@ import Badge from '../../components/ui/Badge';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
 import { FiFlag } from 'react-icons/fi';
+import { showError, showSuccess } from '../../utils/toast';
 
 export default function ChallengesPage() {
   const [data, setData] = useState<ChallengeListResult | null>(null);
@@ -26,7 +26,7 @@ export default function ChallengesPage() {
       const result = await listChallenges({ page, limit: 12 });
       setData(result);
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setLoading(false);
     }
@@ -36,10 +36,10 @@ export default function ChallengesPage() {
     setJoiningId(challengeId);
     try {
       await joinChallenge(challengeId);
-      toast.success('Joined the challenge!');
+      showSuccess('Joined the challenge!');
       loadChallenges();
     } catch (err) {
-      toast.error(getApiError(err));
+      showError(getApiError(err));
     } finally {
       setJoiningId('');
     }
