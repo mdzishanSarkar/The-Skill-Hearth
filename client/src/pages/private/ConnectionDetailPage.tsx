@@ -252,7 +252,7 @@ export default function ConnectionDetailPage() {
 
           {connection.status === 'accepted' && (
             <>
-              <Link to={`/chat/${connection._id}`}>
+              <Link to={`/messages?conversationId=${encodeURIComponent(connection._id)}&type=skill`}>
                 <Button>Open chat</Button>
               </Link>
               <Button variant="secondary" loading={actionLoading} onClick={handleComplete}>

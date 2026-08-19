@@ -15,6 +15,7 @@ const ALLOWED_MIME = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gi
 
 export const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
 const MAX_SKILL_IMAGE_BYTES = 5 * 1024 * 1024;
+export const MAX_CHAT_IMAGE_BYTES = 12 * 1024 * 1024;
 
 const avatarUpload = multer({
   storage: multer.memoryStorage(),
@@ -30,6 +31,17 @@ const avatarUpload = multer({
 const skillImageUpload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: MAX_SKILL_IMAGE_BYTES, files: 1 },
+  fileFilter: (_req, file, cb) => {
+    if (ALLOWED_MIME.has(file.mimetype)) {
+      return cb(null, true);
+    }
+    cb(new HttpError(400, 'INVALID_FILE_TYPE', 'Only JPEG, PNG, WebP, or GIF images are allowed'));
+  },
+});
+
+const chatImageUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: MAX_CHAT_IMAGE_BYTES, files: 1 },
   fileFilter: (_req, file, cb) => {
     if (ALLOWED_MIME.has(file.mimetype)) {
       return cb(null, true);
@@ -105,6 +117,50 @@ export async function uploadSkillImage(
           return;
         }
         resolve({ url: result.secure_url, publicId: result.public_id });
+      }
+    );
+    stream.end(buffer);
+  });
+}
+
+export interface ChatImageUploadResult {
+  url: string;
+  thumbnailUrl: string;
+  publicId: string;
+  width: number;
+  height: number;
+}
+
+export async function uploadChatImage(
+  buffer: Buffer,
+  mimetype: string,
+): Promise<ChatImageUploadResult | null> {
+  if (!isCloudinaryConfigured()) return null;
+
+  return new Promise((resolve) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: 'skill-hearth/chat',
+        // Strip EXIF (location metadata is never persisted), re-encode to WebP
+        transformation: [{ width: 1200, crop: 'limit', fetch_format: 'webp', quality: 'auto' }],
+        eager: [
+          { transformation: [{ width: 300, crop: 'limit', fetch_format: 'webp', quality: 'auto' }] },
+        ],
+        eager_async: false,
+      },
+      (error, result) => {
+        if (error || !result) {
+          resolve(null);
+          return;
+        }
+        const eager = (result.eager ?? []) as Array<{ secure_url?: string }>;
+        resolve({
+          url: result.secure_url,
+          thumbnailUrl: eager[0]?.secure_url ?? result.secure_url,
+          publicId: result.public_id,
+          width: result.width ?? 0,
+          height: result.height ?? 0,
+        });
       }
     );
     stream.end(buffer);

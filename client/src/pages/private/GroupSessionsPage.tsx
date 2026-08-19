@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FiPlus, FiFilter, FiUsers } from 'react-icons/fi';
+import { FiPlus, FiFilter, FiUsers, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { listSessions } from '../../services/groupSession.service';
+import { listMySkills } from '../../services/skills';
 import { useAuth } from '../../hooks/useAuth';
 import GroupSessionCard from '../../components/community/GroupSessionCard';
 import CreateGroupSessionModal from '../../components/community/CreateGroupSessionModal';
@@ -8,7 +9,10 @@ import Spinner from '../../components/ui/Spinner';
 import PageHeader from '../../components/ui/PageHeader';
 import Button from '../../components/ui/Button';
 import EmptyState from '../../components/ui/EmptyState';
+import { showError } from '../../utils/toast';
+import { getApiError } from '../../types/api.types';
 import type { GroupSession } from '../../types/groupSession.types';
+import type { SkillWithTeacher } from '../../types/skill.types';
 
 export default function GroupSessionsPage() {
   const { user } = useAuth();
@@ -19,38 +23,57 @@ export default function GroupSessionsPage() {
   const [statusFilter, setStatusFilter] = useState('open');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [loading, setLoading] = useState(true);
+  const [version, setVersion] = useState(0);
   const [showCreate, setShowCreate] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [mySkills, setMySkills] = useState<SkillWithTeacher[]>([]);
 
-  const city = user?.location?.city || 'london';
-
-  async function fetchSessions() {
-    setLoading(true);
-    try {
-      const result = await listSessions({
-        city,
-        category: categoryFilter || undefined,
-        status: statusFilter || undefined,
-        sort,
-        page,
-      });
-      setSessions(result.sessions);
-      setTotalPages(result.totalPages);
-    } catch (err) {
-      console.error('Failed to load sessions', err);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const city = user?.location?.city || 'dhaka';
 
   useEffect(() => {
-    fetchSessions();
-  }, [city, categoryFilter, statusFilter, sort, page]);
+    if (user) {
+      listMySkills({ type: 'teach', limit: 50 })
+        .then((result) => setMySkills(result.skills))
+        .catch(() => setMySkills([]));
+    }
+  }, [user]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    listSessions({
+      city,
+      category: categoryFilter || undefined,
+      status: statusFilter || undefined,
+      sort,
+      page,
+    })
+      .then((result) => {
+        if (cancelled) return;
+        setSessions(result.sessions);
+        setTotalPages(result.totalPages);
+      })
+      .catch((err) => {
+        if (!cancelled) showError(getApiError(err));
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [city, categoryFilter, statusFilter, sort, page, version]);
 
   function handleSessionCreated() {
     setPage(1);
-    fetchSessions();
+    setVersion((v) => v + 1);
   }
+
+  const goToPage = (next: number) => {
+    if (next < 1 || next > totalPages || next === page) return;
+    setPage(next);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const categories = [
     'Food & Cooking',
@@ -130,7 +153,7 @@ export default function GroupSessionsPage() {
         </div>
       )}
 
-      {loading ? (
+      {loading && sessions.length === 0 ? (
         <div className="flex justify-center py-12">
           <Spinner />
         </div>
@@ -148,40 +171,48 @@ export default function GroupSessionsPage() {
           }
         />
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {sessions.map((session) => (
-            <GroupSessionCard key={session._id} session={session} />
-          ))}
-        </div>
+        <>
+          {loading && (
+            <div className="mb-4 flex items-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50/60 px-4 py-2.5 text-xs font-medium text-indigo-600 dark:border-indigo-900/60 dark:bg-indigo-950/30 dark:text-indigo-300">
+              <Spinner size="sm" />
+              Loading page {page}…
+            </div>
+          )}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {sessions.map((session) => (
+              <GroupSessionCard key={session._id} session={session} />
+            ))}
+          </div>
+        </>
       )}
 
       {totalPages > 1 && (
-        <div className="mt-6 flex items-center justify-center gap-2">
+        <nav aria-label="Sessions pagination" className="mt-6 flex items-center justify-center gap-2">
           <button
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            onClick={() => goToPage(page - 1)}
             disabled={page === 1}
-            className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
+            className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
           >
-            Previous
+            <FiChevronLeft className="mr-1 h-4 w-4" /> Previous
           </button>
-          <span className="text-sm text-gray-600 dark:text-gray-400">
-            Page {page} of {totalPages}
+          <span className="text-sm tabular-nums text-gray-600 dark:text-gray-400">
+            Page <span className="font-semibold text-gray-900 dark:text-gray-100">{page}</span> of {totalPages}
           </span>
           <button
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            onClick={() => goToPage(page + 1)}
             disabled={page === totalPages}
-            className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
+            className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
           >
-            Next
+            Next <FiChevronRight className="ml-1 h-4 w-4" />
           </button>
-        </div>
+        </nav>
       )}
 
       <CreateGroupSessionModal
         isOpen={showCreate}
         onClose={() => setShowCreate(false)}
         onCreated={handleSessionCreated}
-        skills={[]}
+        skills={mySkills.map((s) => ({ _id: s._id, skillName: s.skillName, categoryName: s.categoryName }))}
       />
     </div>
   );

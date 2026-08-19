@@ -1,26 +1,52 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { FiAward, FiBarChart2, FiBookOpen, FiMapPin, FiStar, FiUsers } from 'react-icons/fi';
+import { FiAward, FiBarChart2, FiBookOpen, FiMapPin, FiRefreshCw, FiStar, FiUsers } from 'react-icons/fi';
 import { getMyImpact } from '../../services/impact.service';
 import type { ImpactData } from '../../types/impact.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import PageHeader from '../../components/ui/PageHeader';
 import StatCard from '../../components/ui/StatCard';
+import Button from '../../components/ui/Button';
+import EmptyState from '../../components/ui/EmptyState';
 
 export default function ImpactPage() {
   const [impact, setImpact] = useState<ImpactData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [failed, setFailed] = useState(false);
 
-  useEffect(() => {
-    getMyImpact()
-      .then(setImpact)
-      .catch((err) => toast.error(getApiError(err)))
-      .finally(() => setLoading(false));
+  const load = useCallback(async () => {
+    setLoading(true);
+    setFailed(false);
+    try {
+      setImpact(await getMyImpact());
+    } catch (err) {
+      toast.error(getApiError(err));
+      setFailed(true);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  if (loading) {
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  const refresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      setImpact(await getMyImpact());
+      setFailed(false);
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
+
+  if (loading && !impact) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <Spinner size="lg" />
@@ -31,7 +57,20 @@ export default function ImpactPage() {
   if (!impact) {
     return (
       <div className="page-shell py-8">
-        <p className="text-sm text-gray-500 dark:text-gray-400">Could not load your impact summary.</p>
+        <EmptyState
+          icon={<FiBarChart2 />}
+          title={failed ? 'Could not load your impact summary' : 'No impact data yet'}
+          description={
+            failed
+              ? 'Something went wrong while fetching your impact summary.'
+              : 'Complete sessions and teach skills to start building your impact.'
+          }
+          action={
+            <Button variant="secondary" onClick={failed ? load : refresh}>
+              <FiRefreshCw className="mr-1.5 h-4 w-4" /> Try again
+            </Button>
+          }
+        />
       </div>
     );
   }
@@ -40,8 +79,15 @@ export default function ImpactPage() {
     <div className="page-shell animate-fade-in py-8">
       <PageHeader
         icon={<FiBarChart2 />}
+        onIconClick={refresh}
         title="Your Impact"
         subtitle="A look at the good you've brought to your community through the Hearth."
+        actions={
+          <Button variant="secondary" size="sm" onClick={refresh} loading={refreshing}>
+            <FiRefreshCw className={`mr-1.5 h-3.5 w-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
+        }
       />
 
       <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">

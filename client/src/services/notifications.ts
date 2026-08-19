@@ -11,6 +11,11 @@ export async function markAsRead(notificationId: string): Promise<AppNotificatio
   return data.data;
 }
 
+export async function markAsUnread(notificationId: string): Promise<AppNotification> {
+  const { data } = await api.patch(`/notifications/${notificationId}/unread`);
+  return data.data;
+}
+
 export async function markAllAsRead(): Promise<void> {
   await api.patch('/notifications/read-all');
 }

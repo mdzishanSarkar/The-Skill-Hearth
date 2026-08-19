@@ -9,7 +9,7 @@ import Button from '../../components/ui/Button';
 import PageHeader from '../../components/ui/PageHeader';
 import StatCard from '../../components/ui/StatCard';
 import EmptyState from '../../components/ui/EmptyState';
-import { FiStar, FiUsers } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiRefreshCw, FiStar, FiUsers } from 'react-icons/fi';
 import ReviewCard from '../../components/shared/ReviewCard';
 
 const PAGE_SIZE = 5;
@@ -21,27 +21,51 @@ export default function ReviewsPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     if (!user) return;
+    let cancelled = false;
     setLoading(true);
     getUserReviews(user._id, page, PAGE_SIZE)
       .then((data) => {
+        if (cancelled) return;
         setReviews(data.reviews);
         setTotal(data.total);
         setTotalPages(data.totalPages);
       })
-      .catch((err) => toast.error(getApiError(err)))
-      .finally(() => setLoading(false));
+      .catch((err) => {
+        if (!cancelled) toast.error(getApiError(err));
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [user, page]);
 
-  if (loading) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Spinner size="lg" />
-      </div>
-    );
-  }
+  const refresh = async () => {
+    if (!user) return;
+    setRefreshing(true);
+    try {
+      const data = await getUserReviews(user._id, 1, PAGE_SIZE);
+      setPage(1);
+      setReviews(data.reviews);
+      setTotal(data.total);
+      setTotalPages(data.totalPages);
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
+  const goToPage = (next: number) => {
+    if (next < 1 || next > totalPages || next === page) return;
+    setPage(next);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const avg = user?.stats?.averageRating ?? 0;
 
@@ -49,8 +73,15 @@ export default function ReviewsPage() {
     <div className="page-shell animate-fade-in py-8">
       <PageHeader
         icon={<FiStar />}
+        onIconClick={refresh}
         title="My Reviews"
         subtitle="What the community says about your teaching."
+        actions={
+          <Button variant="secondary" size="sm" onClick={refresh} loading={refreshing}>
+            <FiRefreshCw className={`mr-1.5 h-3.5 w-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
+        }
       />
 
       <div className="mt-6 grid max-w-md grid-cols-2 gap-4">
@@ -58,7 +89,11 @@ export default function ReviewsPage() {
         <StatCard icon={<FiUsers />} label="Reviews" value={total} tone="indigo" />
       </div>
 
-      {reviews.length === 0 ? (
+      {loading && reviews.length === 0 ? (
+        <div className="flex min-h-[40vh] items-center justify-center">
+          <Spinner size="lg" />
+        </div>
+      ) : reviews.length === 0 ? (
         <EmptyState
           className="mt-8"
           icon={<FiStar />}
@@ -66,42 +101,50 @@ export default function ReviewsPage() {
           description="Complete sessions and you'll start collecting reviews."
         />
       ) : (
-        <div className="mt-6 space-y-4">
-          {reviews.map((review) => (
-            <div key={review._id}>
-              {review.skill && (
-                <p className="mb-1 text-xs font-medium text-indigo-600 dark:text-indigo-400">
-                  About: {review.skill.skillName}
-                </p>
-              )}
-              <ReviewCard review={review} />
+        <>
+          {loading && (
+            <div className="mt-4 flex items-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50/60 px-4 py-2.5 text-xs font-medium text-indigo-600 dark:border-indigo-900/60 dark:bg-indigo-950/30 dark:text-indigo-300">
+              <Spinner size="sm" />
+              Loading page {page}…
             </div>
-          ))}
-        </div>
+          )}
+          <div className="mt-6 space-y-4">
+            {reviews.map((review) => (
+              <div key={review._id}>
+                {review.skill && (
+                  <p className="mb-1 text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                    About: {review.skill.skillName}
+                  </p>
+                )}
+                <ReviewCard review={review} />
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
       {totalPages > 1 && (
-        <div className="mt-6 flex items-center justify-between">
+        <nav aria-label="Reviews pagination" className="mt-8 flex items-center justify-center gap-3">
           <Button
             variant="secondary"
             size="sm"
             disabled={page <= 1}
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            onClick={() => goToPage(page - 1)}
           >
-            Previous
+            <FiChevronLeft className="mr-1 h-4 w-4" /> Previous
           </Button>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            Page {page} of {totalPages}
+          <span className="text-sm tabular-nums text-gray-500 dark:text-gray-400">
+            Page <span className="font-semibold text-gray-900 dark:text-gray-100">{page}</span> of {totalPages}
           </span>
           <Button
             variant="secondary"
             size="sm"
             disabled={page >= totalPages}
-            onClick={() => setPage((p) => p + 1)}
+            onClick={() => goToPage(page + 1)}
           >
-            Next
+            Next <FiChevronRight className="ml-1 h-4 w-4" />
           </Button>
-        </div>
+        </nav>
       )}
     </div>
   );

@@ -59,9 +59,9 @@ export async function sendSystemMessage(
 
 export async function addReaction(messageId: string, userId: string, emoji: string) {
   const id = toObjectId(messageId);
-  const VALID_EMOJIS = ['👍', '❤️', '😄', '🙏'];
+  const VALID_EMOJIS = ['👍', '❤️', '😂', '😮', '😢', '🙏', '🔥'];
   if (!VALID_EMOJIS.includes(emoji)) {
-    throw new HttpError(400, 'INVALID_EMOJI', 'Invalid emoji. Allowed: 👍 ❤️ 😄 🙏');
+    throw new HttpError(400, 'INVALID_EMOJI', 'Invalid emoji. Allowed: 👍 ❤️ 😂 😮 😢 🙏 🔥');
   }
 
   const message = await Message.findById(id);

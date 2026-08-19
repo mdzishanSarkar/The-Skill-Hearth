@@ -4,7 +4,8 @@ import toast from 'react-hot-toast';
 
 export interface InboxNotificationEvent {
   senderId: string;
-  connectionId: string;
+  conversationId: string;
+  conversationType: 'skill' | 'friend';
   senderName: string;
   preview: string;
   timestamp: string;

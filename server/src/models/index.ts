@@ -12,13 +12,29 @@ export type { IConnection, ConnectionStatus } from './Connection';
 
 // Use Message.model.ts as the canonical Message model
 export { default as Message } from './Message.model';
-export type { IMessageDocument, IInboxReaction, MessageType, ReactionEmoji } from './Message.model';
+export type {
+  IMessageDocument,
+  IInboxReaction,
+  MessageType,
+  ReactionEmoji,
+  SystemMessageEvent,
+  ISkillCardData,
+  IReplyToPreview,
+} from './Message.model';
 
 export { default as Conversation } from './Conversation.model';
 export type { ConversationSummary } from './Conversation.model';
 
 export { default as UserInboxPreference } from './UserInboxPreference.model';
 export type { IUserInboxPreferenceDocument } from './UserInboxPreference.model';
+
+export { default as ConversationSettings } from './ConversationSettings.model';
+export type {
+  IConversationSettings,
+  ConversationType,
+  ConversationNotificationOverride,
+  ConversationTheme,
+} from './ConversationSettings.model';
 
 export { default as Review } from './Review';
 export type { IReview, ReviewTag } from './Review';

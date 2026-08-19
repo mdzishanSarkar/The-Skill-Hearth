@@ -5,6 +5,7 @@ import { Category, Skill, User } from '../models';
 import type { IAvailabilitySlot, ILocation, IUserMapPreferences, IUserQuietHours } from '../models';
 import { HttpError } from '../utils/errors';
 import { sanitizeUser } from './auth';
+import { geocodePlace } from './naturalSearch.service';
 import { UPLOADS_DIR, saveAvatarFile } from '../utils/upload';
 import { destroyCloudinaryImage } from '../config/cloudinary';
 import { isValidCoordinatePair, snapCoordinates } from '../utils/geo';
@@ -116,6 +117,16 @@ export async function updateProfile(userId: string, input: UpdateProfileInput) {
         input.location.coordinates[0],
         input.location.coordinates[1]
       );
+    } else if (input.location.city !== undefined || input.location.neighborhood !== undefined) {
+      // Location text changed without new coordinates: geocode the new place so the
+      // stored coordinates follow the user's updated location instead of staying stale.
+      const query = [user.location.neighborhood, user.location.city].filter(Boolean).join(', ');
+      if (query) {
+        const place = await geocodePlace(query);
+        if (place) {
+          user.location.coordinates = snapCoordinates(place.lng, place.lat);
+        }
+      }
     }
     if (input.location.radiusPreference !== undefined) {
       user.location.radiusPreference = input.location.radiusPreference;

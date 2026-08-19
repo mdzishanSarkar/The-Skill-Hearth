@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate, useLocation } from 'react
 import { AuthProvider } from '../context/AuthProvider';
 import { SocketProvider } from '../context/SocketProvider';
 import { ThemeProvider } from '../context/ThemeProvider';
+import { MessengerProvider } from '../components/messenger/MessengerProvider';
 import { useAuth } from '../hooks/useAuth';
 import { useInboxNotifications } from '../hooks/useInboxNotifications';
 import Navbar from '../components/layout/Navbar';
@@ -57,13 +58,10 @@ import IntegrationsPage from '../pages/private/IntegrationsPage';
 import FeedPage from '../pages/private/FeedPage';
 import FriendsPage from '../pages/private/FriendsPage';
 import GamificationPage from '../pages/private/GamificationPage';
-import FriendDmsPage from '../pages/private/FriendDmsPage';
-import FriendDmPage from '../pages/private/FriendDmPage';
 
 const MapDiscoveryPage = lazy(() => import('../pages/private/MapDiscoveryPage'));
 const ConnectionDetailPage = lazy(() => import('../pages/private/ConnectionDetailPage'));
 const MessagesPage = lazy(() => import('../pages/private/MessagesPage'));
-const ChatRoomPage = lazy(() => import('../pages/private/ChatRoomPage'));
 const NotificationsPage = lazy(() => import('../pages/private/NotificationsPage'));
 const JournalPage = lazy(() => import('../pages/private/JournalPage'));
 const JournalEntryPage = lazy(() => import('../pages/private/JournalEntryPage'));
@@ -405,22 +403,8 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/dm"
-          element={
-            <ProtectedRoute>
-              <FriendDmsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dm/:userId"
-          element={
-            <ProtectedRoute>
-              <FriendDmPage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/dm" element={<Navigate to="/messages" replace />} />
+        <Route path="/dm/:userId" element={<Navigate to="/messages" replace />} />
         <Route
           path="/admin/users"
           element={
@@ -471,9 +455,7 @@ function AppContent() {
           path="/chat/:id"
           element={
             <ProtectedRoute>
-              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
-                <ChatRoomPage />
-              </Suspense>
+              <Navigate to="/messages" replace />
             </ProtectedRoute>
           }
         />
@@ -531,9 +513,11 @@ export default function App() {
       <ThemeProvider>
         <AuthProvider>
           <SocketProvider>
-            <AppContent />
-            <ThemeToaster />
-            <InboxNotificationBadge />
+              <MessengerProvider>
+              <AppContent />
+              <ThemeToaster />
+              <InboxNotificationBadge />
+              </MessengerProvider>
           </SocketProvider>
         </AuthProvider>
       </ThemeProvider>

@@ -41,6 +41,12 @@ export default function MentorshipsPage() {
   const [respondingId, setRespondingId] = useState('');
   const [actionId, setActionId] = useState<string | null>(null);
 
+  function switchTab(next: 'as-mentor' | 'as-mentee') {
+    if (next === tab) return;
+    setTab(next);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   useEffect(() => {
     loadMentorships();
   }, [tab]);
@@ -120,14 +126,14 @@ export default function MentorshipsPage() {
         <Button
           variant={tab === 'as-mentor' ? 'primary' : 'secondary'}
           size="sm"
-          onClick={() => setTab('as-mentor')}
+          onClick={() => switchTab('as-mentor')}
         >
           As Mentor
         </Button>
         <Button
           variant={tab === 'as-mentee' ? 'primary' : 'secondary'}
           size="sm"
-          onClick={() => setTab('as-mentee')}
+          onClick={() => switchTab('as-mentee')}
         >
           As Mentee
         </Button>

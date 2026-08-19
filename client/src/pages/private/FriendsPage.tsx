@@ -206,7 +206,7 @@ export default function FriendsPage() {
                     >
                       {friend.isCloseFriend ? 'Unstar' : 'Star'}
                     </Button>
-                    <Link to={`/dm/${friend._id}`}>
+                    <Link to={`/messages?conversationId=${encodeURIComponent(friend._id)}&type=friend`}>
                       <Button variant="secondary" size="sm">Message</Button>
                     </Link>
                     <Button

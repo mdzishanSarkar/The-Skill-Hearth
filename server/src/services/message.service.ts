@@ -5,7 +5,7 @@ import { sanitizeText } from '../utils/sanitize';
 import { INBOX_ERRORS } from '../constants/errors';
 import { queueMessageNotification } from './inbox-notification.service';
 
-const ALLOWED_EMOJIS = ['👍', '❤️', '😄', '🙏'] as const;
+const ALLOWED_EMOJIS = ['👍', '❤️', '😂', '😮', '😢', '🙏', '🔥'] as const;
 
 function assertValidObjectId(value: unknown, label = 'id') {
   if (!value || !mongoose.Types.ObjectId.isValid(String(value))) {

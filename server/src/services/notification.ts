@@ -87,6 +87,17 @@ export async function markAsRead(notificationId: string, userId: string) {
   return notification.toJSON();
 }
 
+export async function markAsUnread(notificationId: string, userId: string) {
+  const id = toObjectId(notificationId);
+  const notification = await Notification.findOneAndUpdate(
+    { _id: id, userId: new Types.ObjectId(userId) },
+    { $set: { isRead: false } },
+    { new: true },
+  );
+  if (!notification) throw new HttpError(404, 'NOTIFICATION_NOT_FOUND', 'Notification not found');
+  return notification.toJSON();
+}
+
 export async function markAllAsRead(userId: string) {
   await Notification.updateMany(
     { userId: new Types.ObjectId(userId), isRead: false },

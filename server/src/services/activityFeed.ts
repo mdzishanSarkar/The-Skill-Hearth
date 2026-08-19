@@ -91,32 +91,7 @@ export async function getFeed(userId: string, page = 1, limit = 20) {
   ]);
 
   return {
-    events: events.map((e) => {
-      const actor = e.actorId as unknown as {
-        _id: Types.ObjectId;
-        displayName: string;
-        avatar: string;
-        gamification?: { level: number };
-      };
-      return {
-        _id: String(e._id),
-        eventType: e.eventType,
-        subjectType: e.subjectType,
-        subjectId: e.subjectId ? String(e.subjectId) : undefined,
-        actor: {
-          _id: String(actor?._id ?? ''),
-          displayName: actor?.displayName ?? 'Unknown',
-          avatar: actor?.avatar ?? '',
-          level: actor?.gamification?.level ?? 1,
-        },
-        preview: e.preview,
-        visibility: e.visibility,
-        reactions: e.reactions,
-        reactionCounts: countReactions(e.reactions),
-        myReaction: e.reactions.find((r) => String(r.userId) === userId)?.emoji ?? null,
-        createdAt: e.createdAt.toISOString(),
-      };
-    }),
+    events: events.map((e) => toFeedEvent(e, userId)),
     total,
     page,
     totalPages: Math.ceil(total / limit),
@@ -171,35 +146,58 @@ export async function getUserActivityEvents(userId: string, viewerId: string, pa
   ]);
 
   return {
-    events: events.map((e) => {
-      const actor = e.actorId as unknown as {
-        _id: Types.ObjectId;
-        displayName: string;
-        avatar: string;
-        gamification?: { level: number };
-      };
-      return {
-        _id: String(e._id),
-        eventType: e.eventType,
-        subjectType: e.subjectType,
-        subjectId: e.subjectId ? String(e.subjectId) : undefined,
-        actor: {
-          _id: String(actor?._id ?? ''),
-          displayName: actor?.displayName ?? 'Unknown',
-          avatar: actor?.avatar ?? '',
-          level: actor?.gamification?.level ?? 1,
-        },
-        preview: e.preview,
-        visibility: e.visibility,
-        reactions: e.reactions,
-        reactionCounts: countReactions(e.reactions),
-        myReaction: e.reactions.find((r) => String(r.userId) === viewerId)?.emoji ?? null,
-        createdAt: e.createdAt.toISOString(),
-      };
-    }),
+    events: events.map((e) => toFeedEvent(e, viewerId)),
     total,
     page,
     totalPages: Math.ceil(total / limit),
+  };
+}
+
+interface LeanFeedEvent {
+  _id: Types.ObjectId;
+  eventType: ActivityEventType;
+  subjectType: ActivitySubjectType;
+  subjectId?: Types.ObjectId | null;
+  actorId?: unknown;
+  preview: {
+    title: string;
+    subtitle?: string;
+    imageUrl?: string;
+    emoji?: string;
+  };
+  visibility: ActivityVisibility;
+  reactions: Array<{ userId: Types.ObjectId; emoji: string; createdAt: Date }>;
+  createdAt: Date;
+}
+
+function toFeedEvent(e: LeanFeedEvent, viewerId: string) {
+  const actor = e.actorId as
+    | {
+        _id?: Types.ObjectId;
+        displayName?: string;
+        avatar?: string;
+        gamification?: { level: number };
+      }
+    | null
+    | undefined;
+
+  return {
+    _id: String(e._id),
+    eventType: e.eventType,
+    subjectType: e.subjectType,
+    subjectId: e.subjectId ? String(e.subjectId) : undefined,
+    actor: {
+      _id: String(actor?._id ?? ''),
+      displayName: actor?.displayName ?? 'Unknown',
+      avatar: actor?.avatar ?? '',
+      level: actor?.gamification?.level ?? 1,
+    },
+    preview: e.preview,
+    visibility: e.visibility,
+    reactions: e.reactions,
+    reactionCounts: countReactions(e.reactions),
+    myReaction: e.reactions.find((r) => String(r.userId) === viewerId)?.emoji ?? null,
+    createdAt: e.createdAt.toISOString(),
   };
 }
 
@@ -225,7 +223,13 @@ export async function reactToEvent(eventId: string, userId: string, emoji: strin
   }
 
   await event.save();
-  return event.toJSON();
+
+  const fresh = await ActivityEvent.findById(id)
+    .populate('actorId', 'displayName avatar gamification.level')
+    .lean();
+  if (!fresh) throw new HttpError(404, 'EVENT_NOT_FOUND', 'Activity event not found');
+
+  return toFeedEvent(fresh as LeanFeedEvent, userId);
 }
 
 function countReactions(reactions: Array<{ emoji: string }>): Record<string, number> {

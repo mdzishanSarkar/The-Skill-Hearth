@@ -1,29 +1,75 @@
 import mongoose, { Document, Model, Schema, Types } from 'mongoose';
 import { sanitizeText } from '../utils/sanitize';
 
-export type MessageType = 'text' | 'system' | 'image';
-export type ReactionEmoji = '👍' | '❤️' | '😄' | '🙏';
+export type MessageType = 'text' | 'system' | 'image' | 'skill_card' | 'voice_note' | 'gif';
+export type ReactionEmoji = '👍' | '❤️' | '😂' | '😮' | '😢' | '🙏' | '🔥';
+export type SystemMessageEvent =
+  | 'connection_accepted'
+  | 'connection_completed'
+  | 'safe_meeting_reminder'
+  | 'review_prompt'
+  | 'friend_accepted'
+  | 'skill_swap_matched'
+  | 'session_scheduled';
 
 export interface IInboxReaction {
+  _id: Types.ObjectId;
   userId: Types.ObjectId;
   emoji: ReactionEmoji;
+  createdAt: Date;
+}
+
+export interface IReplyToPreview {
+  senderId: Types.ObjectId;
+  senderName: string;
+  contentPreview: string;
+}
+
+export interface ISkillCardData {
+  skillId: Types.ObjectId;
+  skillName: string;
+  teacherName: string;
+  teacherAvatarUrl: string;
+  requestStatus: 'pending' | 'accepted' | 'rejected';
 }
 
 export interface IMessageDocument extends Document {
   _id: Types.ObjectId;
-  connectionId: Types.ObjectId;
+  connectionId?: Types.ObjectId;
+  friendshipId?: Types.ObjectId;
   senderId: Types.ObjectId;
   content: string;
   type: MessageType;
   imageUrl?: string;
-  imagePublicId?: string;  // For backward compatibility with old Message.ts
+  imageThumbnailUrl?: string;
+  imagePublicId?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   readAt?: Date;
-  deliveredAt?: Date;  // For backward compatibility with old Message.ts
+  deliveredAt?: Date;
   deletedAt?: Date;
   deletedBy?: Types.ObjectId;
+  unsentAt?: Date;
   reactions: IInboxReaction[];
   isReported: boolean;
   reportCount: number;
+
+  editedAt?: Date;
+  editHistory?: Array<{ content: string; editedAt: Date }>;
+
+  skillCardData?: ISkillCardData;
+  voiceNoteUrl?: string;
+  voiceNoteDurationSeconds?: number;
+  voiceNoteWaveform?: number[];
+  gifUrl?: string;
+  gifWidth?: number;
+  gifHeight?: number;
+
+  replyToMessageId?: Types.ObjectId;
+  replyToPreview?: IReplyToPreview;
+
+  systemEvent?: SystemMessageEvent;
+
   createdAt: Date;
   updatedAt: Date;
   isDeleted: boolean;
@@ -38,26 +84,76 @@ export interface IMessageModel extends Model<IMessageDocument> {
 const reactionSchema = new Schema<IInboxReaction>(
   {
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    emoji: { type: String, enum: ['👍', '❤️', '😄', '🙏'], required: true },
+    emoji: { type: String, enum: ['👍', '❤️', '😂', '😮', '😢', '🙏', '🔥'], required: true },
+    createdAt: { type: Date, default: Date.now },
   },
   { _id: true }
 );
 
+const editHistoryEntrySchema = new Schema(
+  {
+    content: { type: String, required: true },
+    editedAt: { type: Date, required: true },
+  },
+  { _id: false }
+);
+
+const skillCardDataSchema = new Schema<ISkillCardData>(
+  {
+    skillId: { type: Schema.Types.ObjectId, ref: 'Skill', required: true },
+    skillName: { type: String, required: true, maxlength: 100 },
+    teacherName: { type: String, required: true, maxlength: 50 },
+    teacherAvatarUrl: { type: String, default: '' },
+    requestStatus: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' },
+  },
+  { _id: false }
+);
+
+const replyToPreviewSchema = new Schema<IReplyToPreview>(
+  {
+    senderId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    senderName: { type: String, required: true, maxlength: 50 },
+    contentPreview: { type: String, required: true, maxlength: 80 },
+  },
+  { _id: false }
+);
+
 const messageSchema = new Schema<IMessageDocument>(
   {
-    connectionId: { type: Schema.Types.ObjectId, ref: 'Connection', required: true, index: true },
+    connectionId: { type: Schema.Types.ObjectId, ref: 'Connection', index: true },
+    friendshipId: { type: Schema.Types.ObjectId, ref: 'Friendship', index: true },
     senderId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
-    content: { type: String, required: true, trim: true, maxlength: 1000 },
-    type: { type: String, enum: ['text', 'system', 'image'], default: 'text' },
+    content: { type: String, default: '', trim: true, maxlength: 2000 },
+    type: { type: String, enum: ['text', 'system', 'image', 'skill_card', 'voice_note', 'gif'], default: 'text' },
     imageUrl: { type: String },
-    imagePublicId: { type: String },  // For backward compatibility
+    imageThumbnailUrl: { type: String },
+    imagePublicId: { type: String },
+    imageWidth: { type: Number },
+    imageHeight: { type: Number },
     readAt: { type: Date },
-    deliveredAt: { type: Date },  // For backward compatibility
+    deliveredAt: { type: Date },
     deletedAt: { type: Date, sparse: true },
     deletedBy: { type: Schema.Types.ObjectId, ref: 'User' },
+    unsentAt: { type: Date, sparse: true },
     reactions: { type: [reactionSchema], default: [] },
     isReported: { type: Boolean, default: false },
     reportCount: { type: Number, default: 0 },
+
+    editedAt: { type: Date },
+    editHistory: { type: [editHistoryEntrySchema], default: [] },
+
+    skillCardData: { type: skillCardDataSchema },
+    voiceNoteUrl: { type: String },
+    voiceNoteDurationSeconds: { type: Number },
+    voiceNoteWaveform: { type: [Number], default: [] },
+    gifUrl: { type: String },
+    gifWidth: { type: Number },
+    gifHeight: { type: Number },
+
+    replyToMessageId: { type: Schema.Types.ObjectId, ref: 'Message' },
+    replyToPreview: { type: replyToPreviewSchema },
+
+    systemEvent: { type: String, enum: ['connection_accepted', 'connection_completed', 'safe_meeting_reminder', 'review_prompt', 'friend_accepted', 'skill_swap_matched', 'session_scheduled'] },
   },
   {
     timestamps: true,
@@ -73,6 +169,8 @@ messageSchema.virtual('isDeleted').get(function (this: IMessageDocument) {
 messageSchema.index({ connectionId: 1, createdAt: -1 });
 messageSchema.index({ connectionId: 1, readAt: 1 });
 messageSchema.index({ senderId: 1, createdAt: -1 });
+messageSchema.index({ friendshipId: 1, createdAt: -1 });
+messageSchema.index({ senderId: 1, type: 1, createdAt: -1 });
 messageSchema.index({ reportCount: 1 });
 
 messageSchema.pre('save', async function () {

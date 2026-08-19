@@ -94,7 +94,8 @@ async function processMessageNotification(job: Bull.Job<MessageNotificationJob>)
     try {
       getIO().to(`user_${recipientId}`).emit('inbox:message_received', {
         senderId,
-        connectionId,
+        conversationId: connectionId,
+        conversationType: 'skill',
         senderName: sender.displayName,
         preview: messagePreview,
         timestamp: new Date().toISOString(),

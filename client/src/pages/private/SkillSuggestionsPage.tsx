@@ -9,7 +9,7 @@ import Input from '../../components/ui/Input';
 import Badge from '../../components/ui/Badge';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
-import { FiPlus, FiThumbsUp, FiTarget } from 'react-icons/fi';
+import { FiPlus, FiThumbsUp, FiTarget, FiRefreshCw } from 'react-icons/fi';
 import { showError, showSuccess } from '../../utils/toast';
 
 const isStaff = (role?: string) => role === 'admin' || role === 'moderator';
@@ -44,21 +44,25 @@ export default function SkillSuggestionsPage() {
   const [submitting, setSubmitting] = useState(false);
   const [votingId, setVotingId] = useState('');
   const [actionId, setActionId] = useState('');
+  const [version, setVersion] = useState(0);
 
   useEffect(() => {
-    loadSuggestions();
-  }, []);
-
-  async function loadSuggestions() {
-    try {
-      const data = await listPendingSuggestions();
-      setSuggestions(data.suggestions);
-    } catch (err) {
-      showError(getApiError(err));
-    } finally {
-      setLoading(false);
-    }
-  }
+    let cancelled = false;
+    setLoading(true);
+    listPendingSuggestions()
+      .then((data) => {
+        if (!cancelled) setSuggestions(data.suggestions);
+      })
+      .catch((err) => {
+        if (!cancelled) showError(getApiError(err));
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [version]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -74,7 +78,7 @@ export default function SkillSuggestionsPage() {
       setCategoryName('');
       setDescription('');
       setShowForm(false);
-      loadSuggestions();
+      setVersion((v) => v + 1);
     } catch (err) {
       showError(getApiError(err));
     } finally {
@@ -129,10 +133,16 @@ export default function SkillSuggestionsPage() {
         title="Skill Suggestions"
         subtitle="Vote on community-suggested skills or propose new ones."
         actions={
-          <Button size="sm" onClick={() => setShowForm(!showForm)}>
-            <FiPlus className="h-4 w-4" />
-            {showForm ? 'Cancel' : 'Suggest a skill'}
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="secondary" size="sm" onClick={() => setVersion((v) => v + 1)}>
+              <FiRefreshCw className="mr-1.5 h-3.5 w-3.5" />
+              Refresh
+            </Button>
+            <Button size="sm" onClick={() => setShowForm(!showForm)}>
+              <FiPlus className="h-4 w-4" />
+              {showForm ? 'Cancel' : 'Suggest a skill'}
+            </Button>
+          </div>
         }
       />
 

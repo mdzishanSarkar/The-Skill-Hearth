@@ -32,7 +32,7 @@ export default function ChatList({ connections, currentUserId }: ChatListProps) 
         return (
           <Link
             key={conn._id}
-            to={`/chat/${conn._id}`}
+            to={`/messages?conversationId=${encodeURIComponent(conn._id)}&type=skill`}
             className="group flex items-center gap-3 rounded-2xl border border-transparent bg-white/80 p-3 transition-all duration-200 hover:border-indigo-100 hover:bg-indigo-50/70 hover:shadow-sm dark:bg-slate-900/60 dark:hover:border-slate-700 dark:hover:bg-slate-800/80"
           >
             <div className="relative shrink-0">

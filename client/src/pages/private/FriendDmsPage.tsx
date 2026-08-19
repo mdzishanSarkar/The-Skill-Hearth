@@ -85,7 +85,7 @@ export default function FriendDmsPage() {
             {conversations.map((conversation) => (
               <li key={conversation.otherUserId}>
                 <Link
-                  to={`/dm/${conversation.otherUserId}`}
+                  to={`/messages?conversationId=${encodeURIComponent(conversation.otherUserId)}&type=friend`}
                   className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   <span className="relative shrink-0">

@@ -30,7 +30,23 @@ export default function LearnerBoardPage() {
   const [respondingId, setRespondingId] = useState('');
 
   useEffect(() => {
-    loadRequests();
+    let cancelled = false;
+    setLoading(true);
+    listLearnerRequests(page)
+      .then((data) => {
+        if (cancelled) return;
+        setRequests(data.requests);
+        setTotalPages(data.totalPages);
+      })
+      .catch((err) => {
+        if (!cancelled) showError(getApiError(err));
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [page]);
 
   async function loadRequests() {
@@ -40,15 +56,17 @@ export default function LearnerBoardPage() {
       setTotalPages(data.totalPages);
     } catch (err) {
       showError(getApiError(err));
-    } finally {
-      setLoading(false);
     }
   }
 
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
-    if (!skillName.trim() || !categoryName.trim() || !user?.location.city) {
+    if (!skillName.trim() || !categoryName.trim()) {
       showError('Skill name and category are required');
+      return;
+    }
+    if (!user?.location?.city) {
+      showError('Set your city in your profile first so learners can find you.');
       return;
     }
     setSubmitting(true);
@@ -87,7 +105,13 @@ export default function LearnerBoardPage() {
     }
   }
 
-  if (loading) {
+  const goToPage = (next: number) => {
+    if (next < 1 || next > totalPages || next === page) return;
+    setPage(next);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (loading && requests.length === 0) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <Spinner size="lg" />
@@ -165,7 +189,14 @@ export default function LearnerBoardPage() {
           description="Be the first to post what you want to learn!"
         />
       ) : (
-        <div className="mt-6 space-y-4">
+        <>
+          {loading && (
+            <div className="mt-4 flex items-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50/60 px-4 py-2.5 text-xs font-medium text-indigo-600 dark:border-indigo-900/60 dark:bg-indigo-950/30 dark:text-indigo-300">
+              <Spinner size="sm" />
+              Loading page {page}…
+            </div>
+          )}
+          <div className="mt-6 space-y-4">
           {requests.map((req) => (
             <div
               key={req._id}
@@ -195,19 +226,22 @@ export default function LearnerBoardPage() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </>
       )}
 
       {totalPages > 1 && (
-        <div className="mt-6 flex justify-center gap-2">
-          <Button variant="secondary" disabled={page <= 1} onClick={() => setPage(page - 1)}>
+        <nav aria-label="Learner requests pagination" className="mt-6 flex items-center justify-center gap-3">
+          <Button variant="secondary" size="sm" disabled={page <= 1} onClick={() => goToPage(page - 1)}>
             Prev
           </Button>
-          <span className="py-2 text-sm text-gray-600 dark:text-gray-400">Page {page} of {totalPages}</span>
-          <Button variant="secondary" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>
+          <span className="text-sm tabular-nums text-gray-600 dark:text-gray-400">
+            Page <span className="font-semibold text-gray-900 dark:text-gray-100">{page}</span> of {totalPages}
+          </span>
+          <Button variant="secondary" size="sm" disabled={page >= totalPages} onClick={() => goToPage(page + 1)}>
             Next
           </Button>
-        </div>
+        </nav>
       )}
     </div>
   );

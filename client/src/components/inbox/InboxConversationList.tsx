@@ -40,13 +40,13 @@ export default function InboxConversationList({ conversations, onTogglePin, onTo
             className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition hover:border-indigo-200 hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:hover:border-indigo-700"
           >
             <div className="flex items-start gap-3">
-              <Link to={`/chat/${conversation.connectionId}`} className="shrink-0">
+              <Link to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`} className="shrink-0">
                 <Avatar src={other.avatar} name={other.displayName || 'User'} size="sm" />
               </Link>
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-3">
-                  <Link to={`/chat/${conversation.connectionId}`} className="min-w-0 flex-1 text-sm font-semibold text-gray-900 hover:text-indigo-600 dark:text-gray-100 dark:hover:text-indigo-400">
+                  <Link to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`} className="min-w-0 flex-1 text-sm font-semibold text-gray-900 hover:text-indigo-600 dark:text-gray-100 dark:hover:text-indigo-400">
                     <span className="truncate">{other.displayName || 'Unknown user'}</span>
                   </Link>
                   {conversation.unreadCount > 0 && (
@@ -81,7 +81,7 @@ export default function InboxConversationList({ conversations, onTogglePin, onTo
               <Button size="sm" variant="secondary" onClick={() => onToggleMute?.(conversation.connectionId)}>
                 {conversation.isMuted ? 'Unmute' : 'Mute'}
               </Button>
-              <Link to={`/chat/${conversation.connectionId}`} className="ml-auto">
+              <Link to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`} className="ml-auto">
                 <Button size="sm">Open</Button>
               </Link>
             </div>

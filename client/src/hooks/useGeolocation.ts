@@ -43,10 +43,16 @@ export function useGeolocation(opts: UseGeolocationOptions = {}): UseGeolocation
   const [placedAt, setPlacedAt] = useState(storedLabel);
   const [placedAtFull, setPlacedAtFull] = useState(storedLabel);
   const askedOnceRef = useRef(false);
+  const storedRef = useRef(storedCoordinates);
+  storedRef.current = storedCoordinates;
 
   const requestGeolocation = useCallback(() => {
     if (!('geolocation' in navigator)) {
-      setStatus('denied');
+      if (storedRef.current) {
+        setStatus('found');
+      } else {
+        setStatus('denied');
+      }
       return;
     }
     setStatus('asking');
@@ -59,7 +65,11 @@ export function useGeolocation(opts: UseGeolocationOptions = {}): UseGeolocation
         setStatus('found');
       },
       () => {
-        setStatus('denied');
+        if (storedRef.current) {
+          setStatus('found');
+        } else {
+          setStatus('denied');
+        }
       },
       GEOLOCATION_OPTIONS,
     );
@@ -91,6 +101,15 @@ export function useGeolocation(opts: UseGeolocationOptions = {}): UseGeolocation
 
     return () => window.clearTimeout(timeoutId);
   }, [autoRequest, requestGeolocation, status, storedCoordinates]);
+
+  // When the user's stored location changes (e.g. saved from the profile),
+  // reflect it immediately instead of keeping the previous coordinates.
+  useEffect(() => {
+    if (!storedCoordinates) return;
+    setCoordinates(storedCoordinates);
+    setPlacedAt(storedLabel);
+    setPlacedAtFull(storedLabel);
+  }, [storedCoordinates, storedLabel]);
 
   return {
     status,

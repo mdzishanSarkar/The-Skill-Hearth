@@ -191,6 +191,18 @@ export default function Navbar() {
           {isAuthenticated && user ? (
             <>
               <div className="hidden md:flex md:items-center md:gap-2">
+                <Link
+                  to="/messages"
+                  aria-label="Open Messenger"
+                  className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  <FiMessageSquare className="h-5 w-5" />
+                  {messageUnread > 0 && (
+                    <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--danger)] px-1 text-[9px] font-semibold text-white">
+                      {messageUnread > 9 ? '9+' : messageUnread}
+                    </span>
+                  )}
+                </Link>
                 <NotificationBell />
                 <UserMenu />
               </div>

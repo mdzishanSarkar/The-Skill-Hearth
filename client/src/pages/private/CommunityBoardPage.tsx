@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { FiPlus, FiRefreshCw, FiMessageSquare } from 'react-icons/fi';
+import { FiPlus, FiRefreshCw, FiMessageSquare, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { listPosts } from '../../services/community.service';
 import { useAuth } from '../../hooks/useAuth';
 import PostCard from '../../components/community/PostCard';
@@ -9,6 +9,8 @@ import Spinner from '../../components/ui/Spinner';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
 import Button from '../../components/ui/Button';
+import { showError } from '../../utils/toast';
+import { getApiError } from '../../types/api.types';
 import type { CommunityPost } from '../../types/community.types';
 
 export default function CommunityBoardPage() {
@@ -23,31 +25,35 @@ export default function CommunityBoardPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [sort, setSort] = useState<'new' | 'top'>('new');
   const [loading, setLoading] = useState(true);
+  const [version, setVersion] = useState(0);
   const [showCreate, setShowCreate] = useState(false);
 
-  const city = paramCity || user?.location?.city || 'london';
+  const city = paramCity || user?.location?.city || 'dhaka';
   const neighborhood = paramNeighborhood || user?.location?.neighborhood;
 
-  async function fetchPosts() {
-    setLoading(true);
-    try {
-      const result = await listPosts(city, neighborhood, sort, page);
-      setPosts(result.posts);
-      setTotalPages(result.totalPages);
-    } catch (err) {
-      console.error('Failed to load posts', err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   useEffect(() => {
-    fetchPosts();
-  }, [city, neighborhood, sort, page]);
+    let cancelled = false;
+    setLoading(true);
+    listPosts(city, neighborhood, sort, page)
+      .then((result) => {
+        if (cancelled) return;
+        setPosts(result.posts);
+        setTotalPages(result.totalPages);
+      })
+      .catch((err) => {
+        if (!cancelled) showError(getApiError(err));
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [city, neighborhood, sort, page, version]);
 
   function handlePostCreated() {
     setPage(1);
-    fetchPosts();
+    setVersion((v) => v + 1);
   }
 
   function handlePostDeleted(postId: string) {
@@ -59,6 +65,12 @@ export default function CommunityBoardPage() {
       prev.map((p) => (p._id === postId ? { ...p, voteScore, userVote } : p))
     );
   }
+
+  const goToPage = (next: number) => {
+    if (next < 1 || next > totalPages || next === page) return;
+    setPage(next);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="page-shell animate-fade-in py-8">
@@ -103,15 +115,16 @@ export default function CommunityBoardPage() {
         </button>
         <div className="flex-1" />
         <button
-          onClick={fetchPosts}
+          onClick={() => setVersion((v) => v + 1)}
           aria-label="Refresh posts"
+          title="Refresh posts"
           className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
         >
           <FiRefreshCw className="h-4 w-4" />
         </button>
       </div>
 
-      {loading ? (
+      {loading && posts.length === 0 ? (
         <div className="flex justify-center py-12">
           <Spinner />
         </div>
@@ -129,38 +142,46 @@ export default function CommunityBoardPage() {
           }
         />
       ) : (
-        <div className="space-y-4">
-          {posts.map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
-              onDelete={handlePostDeleted}
-              onVote={handleVote}
-            />
-          ))}
-        </div>
+        <>
+          {loading && (
+            <div className="mb-4 flex items-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50/60 px-4 py-2.5 text-xs font-medium text-indigo-600 dark:border-indigo-900/60 dark:bg-indigo-950/30 dark:text-indigo-300">
+              <Spinner size="sm" />
+              Loading page {page}…
+            </div>
+          )}
+          <div className="space-y-4">
+            {posts.map((post) => (
+              <PostCard
+                key={post._id}
+                post={post}
+                onDelete={handlePostDeleted}
+                onVote={handleVote}
+              />
+            ))}
+          </div>
+        </>
       )}
 
       {totalPages > 1 && (
-        <div className="mt-6 flex items-center justify-center gap-2">
+        <nav aria-label="Posts pagination" className="mt-6 flex items-center justify-center gap-2">
           <button
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            onClick={() => goToPage(page - 1)}
             disabled={page === 1}
-            className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
+            className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
           >
-            Previous
+            <FiChevronLeft className="mr-1 h-4 w-4" /> Previous
           </button>
-          <span className="text-sm text-gray-600 dark:text-gray-400">
-            Page {page} of {totalPages}
+          <span className="text-sm tabular-nums text-gray-600 dark:text-gray-400">
+            Page <span className="font-semibold text-gray-900 dark:text-gray-100">{page}</span> of {totalPages}
           </span>
           <button
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            onClick={() => goToPage(page + 1)}
             disabled={page === totalPages}
-            className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
+            className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50"
           >
-            Next
+            Next <FiChevronRight className="ml-1 h-4 w-4" />
           </button>
-        </div>
+        </nav>
       )}
 
       <CreatePostModal

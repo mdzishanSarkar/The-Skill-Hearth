@@ -19,6 +19,11 @@ export const markAsRead = asyncHandler(async (req: AuthRequest, res: Response) =
   res.json({ success: true, data: result });
 });
 
+export const markAsUnread = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const result = await notificationService.markAsUnread(paramId(req.params.id), String(req.userId));
+  res.json({ success: true, data: result });
+});
+
 export const markAllAsRead = asyncHandler(async (req: AuthRequest, res: Response) => {
   const result = await notificationService.markAllAsRead(String(req.userId));
   res.json({ success: true, data: result });

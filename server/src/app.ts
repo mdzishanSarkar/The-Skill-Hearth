@@ -62,6 +62,8 @@ import gamificationRoutes from "./routes/gamification";
 import dmRoutes from "./routes/dms";
 import journalRoutes from "./routes/journal";
 import requestTemplateRoutes from "./routes/requestTemplates";
+import conversationRoutes from "./routes/conversations";
+import messengerRoutes from "./routes/messenger";
 import { UPLOADS_DIR } from "./utils/upload";
 
 dotenv.config();
@@ -147,6 +149,8 @@ app.use("/api/gamification", gamificationRoutes);
 app.use("/api/dms", dmRoutes);
 app.use("/api/journal", journalRoutes);
 app.use("/api/request-templates", requestTemplateRoutes);
+app.use("/api/conversations", conversationRoutes);
+app.use("/api/messenger", messengerRoutes);
 
 // Global error handler
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {

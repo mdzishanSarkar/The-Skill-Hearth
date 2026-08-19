@@ -112,7 +112,7 @@ export default function MapDiscoveryPage() {
   const geo = useGeolocation({
     storedCoordinates: hasStoredCoords && user ? user.location.coordinates : null,
     storedLabel,
-    autoRequest: !hasStoredCoords,
+    autoRequest: !hasStoredCoords && Boolean(user),
   });
 
   useEffect(() => {
@@ -201,14 +201,21 @@ export default function MapDiscoveryPage() {
 
   return (
     <div className="relative h-[calc(100dvh-64px)] w-full overflow-hidden">
-      <MapView
-        pins={pins}
-        center={geo.coordinates ?? DEFAULT_CENTER}
-        isAuthenticated={isAuthenticated}
-        mode={mode}
-        clusterMarkers={clusterMarkers}
-        recenterSignal={recenterTick}
-      />
+      {geo.coordinates || !isAuthenticated ? (
+        <MapView
+          pins={pins}
+          center={geo.coordinates ?? DEFAULT_CENTER}
+          isAuthenticated={isAuthenticated}
+          mode={mode}
+          clusterMarkers={clusterMarkers}
+          recenterSignal={recenterTick}
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          className={`h-full w-full ${night ? 'bg-gray-950' : 'bg-slate-200 dark:bg-gray-950'}`}
+        />
+      )}
 
       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-stretch gap-3 p-3 sm:flex-row sm:items-start sm:p-4">
         <div className="pointer-events-auto flex flex-col gap-3 sm:min-w-0">
