@@ -4,6 +4,7 @@ import { FiTrash2 } from 'react-icons/fi';
 import { deleteManualRadar } from '../../services/skillRadar.service';
 import type { ManualRadar } from '../../types/radar.types';
 import { getApiError } from '../../types/api.types';
+import ConfirmDialog from '../ui/ConfirmDialog';
 
 function filterSummary(m: ManualRadar): string {
   const f = m.filters ?? {};
@@ -23,9 +24,10 @@ interface ManualRadarCardProps {
 
 export default function ManualRadarCard({ radar, onDeleted }: ManualRadarCardProps) {
   const [deleting, setDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   async function handleDelete() {
-    if (!window.confirm(`Delete "${radar.name}"?`)) return;
+    setShowDeleteConfirm(false);
     setDeleting(true);
     try {
       await deleteManualRadar(radar._id);
@@ -53,12 +55,23 @@ export default function ManualRadarCard({ radar, onDeleted }: ManualRadarCardPro
       </div>
       <button
         type="button"
-        onClick={handleDelete}
+        onClick={() => setShowDeleteConfirm(true)}
         disabled={deleting}
         className="flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs text-red-500 hover:bg-red-50 disabled:opacity-50 dark:text-red-400 dark:hover:bg-red-900/30"
       >
         <FiTrash2 /> Delete
       </button>
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title={`Delete "${radar.name}"?`}
+        message="This will permanently remove this custom radar and its settings."
+        confirmLabel="Delete radar"
+        variant="danger"
+        loading={deleting}
+        onConfirm={handleDelete}
+        onClose={() => setShowDeleteConfirm(false)}
+      />
     </div>
   );
 }

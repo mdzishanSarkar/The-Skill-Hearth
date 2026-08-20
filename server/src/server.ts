@@ -13,10 +13,10 @@ dotenv.config();
 
 const startServer = (port: number) => {
  const httpServer = http.createServer(app);
- initializeSocket(httpServer);
- setupInboxNotificationHandlers();
 
  const serverInstance = httpServer.listen(port, async () => {
+  initializeSocket(httpServer);
+  setupInboxNotificationHandlers();
    await connectDatabase();
     try {
       await seedCategories();

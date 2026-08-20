@@ -6,6 +6,7 @@ import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
 import { FiCompass, FiTarget } from 'react-icons/fi';
@@ -40,6 +41,7 @@ export default function MentorshipsPage() {
   const [tab, setTab] = useState<'as-mentor' | 'as-mentee'>('as-mentor');
   const [respondingId, setRespondingId] = useState('');
   const [actionId, setActionId] = useState<string | null>(null);
+  const [completeTarget, setCompleteTarget] = useState<string | null>(null);
 
   function switchTab(next: 'as-mentor' | 'as-mentee') {
     if (next === tab) return;
@@ -89,7 +91,7 @@ export default function MentorshipsPage() {
   }
 
   async function handleComplete(id: string) {
-    if (!window.confirm('Mark this mentorship as completed?')) return;
+    setCompleteTarget(null);
     setActionId(id);
     try {
       await completeMentorship(id);
@@ -238,7 +240,7 @@ export default function MentorshipsPage() {
                       variant="secondary"
                       size="sm"
                       loading={actionId === m._id}
-                      onClick={() => handleComplete(m._id)}
+                      onClick={() => setCompleteTarget(m._id)}
                     >
                       Complete
                     </Button>
@@ -249,6 +251,17 @@ export default function MentorshipsPage() {
           ))}
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!completeTarget}
+        title="Mark as completed?"
+        message="This will mark the mentorship as completed. You can track goals and check-ins afterward."
+        confirmLabel="Complete mentorship"
+        variant="info"
+        loading={!!actionId}
+        onConfirm={() => completeTarget && handleComplete(completeTarget)}
+        onClose={() => setCompleteTarget(null)}
+      />
     </div>
   );
 }

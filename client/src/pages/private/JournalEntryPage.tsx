@@ -6,6 +6,7 @@ import type { JournalEntry } from '../../types/journal.types';
 import { getApiError } from '../../types/api.types';
 import Spinner from '../../components/ui/Spinner';
 import Button from '../../components/ui/Button';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 import JournalEntryFormModal from '../../components/forms/JournalEntryFormModal';
 import { moodEmoji, formatDate } from '../../utils/journal';
 
@@ -16,6 +17,7 @@ export default function JournalEntryPage() {
   const [loading, setLoading] = useState(true);
   const [showEdit, setShowEdit] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const load = useCallback(async () => {
     if (!id) return;
@@ -35,7 +37,7 @@ export default function JournalEntryPage() {
 
   async function handleDelete() {
     if (!id) return;
-    if (!window.confirm('Delete this journal entry? This cannot be undone.')) return;
+    setShowDeleteConfirm(false);
     setDeleting(true);
     try {
       await deleteEntry(id);
@@ -112,7 +114,7 @@ export default function JournalEntryPage() {
           <Button variant="secondary" onClick={() => setShowEdit(true)}>
             Edit
           </Button>
-          <Button variant="danger" onClick={handleDelete} loading={deleting}>
+          <Button variant="danger" onClick={() => setShowDeleteConfirm(true)} loading={deleting}>
             Delete
           </Button>
         </div>
@@ -125,6 +127,17 @@ export default function JournalEntryPage() {
         initial={entry}
         fixedConnectionId={entry.connectionId}
         onSubmitted={load}
+      />
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title="Delete this journal entry?"
+        message="This cannot be undone. Your reflection will be permanently removed."
+        confirmLabel="Delete entry"
+        variant="danger"
+        loading={deleting}
+        onConfirm={handleDelete}
+        onClose={() => setShowDeleteConfirm(false)}
       />
     </div>
   );

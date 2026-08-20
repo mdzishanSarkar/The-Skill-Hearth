@@ -6,6 +6,7 @@ import {
   respondToRequest,
   cancelConnection,
   markCompleted,
+  withdrawRequest,
 } from '../../services/connections';
 import { getMyConnectionReview } from '../../services/reviews';
 import { listConnectionEntries } from '../../services/journal.service';
@@ -18,6 +19,7 @@ import Avatar from '../../components/ui/Avatar';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 import ReviewFormModal from '../../components/forms/ReviewFormModal';
 import EndorsementButton from '../../components/social/EndorsementButton';
 import JournalEntryFormModal from '../../components/forms/JournalEntryFormModal';
@@ -44,6 +46,7 @@ export default function ConnectionDetailPage() {
   const [existingReview, setExistingReview] = useState<Review | null>(null);
   const [journalEntries, setJournalEntries] = useState<JournalEntry[]>([]);
   const [showJournal, setShowJournal] = useState(false);
+  const [confirmAction, setConfirmAction] = useState<'cancel' | 'complete' | 'withdraw' | null>(null);
 
   useEffect(() => {
     if (connection?.status === 'completed') {
@@ -103,7 +106,8 @@ export default function ConnectionDetailPage() {
   }
 
   async function handleCancel() {
-    if (!connection || !window.confirm('Cancel this connection?')) return;
+    if (!connection) return;
+    setConfirmAction(null);
     setActionLoading(true);
     try {
       await cancelConnection(connection._id);
@@ -117,12 +121,28 @@ export default function ConnectionDetailPage() {
   }
 
   async function handleComplete() {
-    if (!connection || !window.confirm('Mark this session as completed?')) return;
+    if (!connection) return;
+    setConfirmAction(null);
     setActionLoading(true);
     try {
       await markCompleted(connection._id);
       toast.success('Session marked as completed!');
       setConnection({ ...connection, status: 'completed' });
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setActionLoading(false);
+    }
+  }
+
+  async function handleWithdraw() {
+    if (!connection) return;
+    setConfirmAction(null);
+    setActionLoading(true);
+    try {
+      await withdrawRequest(connection._id);
+      toast.success('Request withdrawn');
+      setConnection({ ...connection, status: 'withdrawn' });
     } catch (err) {
       toast.error(getApiError(err));
     } finally {
@@ -233,18 +253,7 @@ export default function ConnectionDetailPage() {
             <Button
               variant="danger"
               loading={actionLoading}
-              onClick={() => {
-                if (!window.confirm('Withdraw this request?')) return;
-                setActionLoading(true);
-                import('../../services/connections')
-                  .then((m) => m.withdrawRequest(connection._id))
-                  .then(() => {
-                    toast.success('Request withdrawn');
-                    setConnection({ ...connection, status: 'withdrawn' });
-                  })
-                  .catch((err) => toast.error(getApiError(err)))
-                  .finally(() => setActionLoading(false));
-              }}
+              onClick={() => setConfirmAction('withdraw')}
             >
               Withdraw
             </Button>
@@ -255,10 +264,10 @@ export default function ConnectionDetailPage() {
               <Link to={`/messages?conversationId=${encodeURIComponent(connection._id)}&type=skill`}>
                 <Button>Open chat</Button>
               </Link>
-              <Button variant="secondary" loading={actionLoading} onClick={handleComplete}>
+              <Button variant="secondary" loading={actionLoading} onClick={() => setConfirmAction('complete')}>
                 Mark completed
               </Button>
-              <Button variant="danger" loading={actionLoading} onClick={handleCancel}>
+              <Button variant="danger" loading={actionLoading} onClick={() => setConfirmAction('cancel')}>
                 Cancel
               </Button>
             </>
@@ -350,6 +359,37 @@ export default function ConnectionDetailPage() {
             .then(setJournalEntries)
             .catch(() => {});
         }}
+      />
+
+      <ConfirmDialog
+        open={confirmAction === 'cancel'}
+        title="Cancel this connection?"
+        message="This will end the connection. You can always create a new one later."
+        confirmLabel="Yes, cancel"
+        variant="warning"
+        loading={actionLoading}
+        onConfirm={handleCancel}
+        onClose={() => setConfirmAction(null)}
+      />
+      <ConfirmDialog
+        open={confirmAction === 'complete'}
+        title="Mark as completed?"
+        message="Mark this session as completed? This will allow you to leave a review."
+        confirmLabel="Mark completed"
+        variant="info"
+        loading={actionLoading}
+        onConfirm={handleComplete}
+        onClose={() => setConfirmAction(null)}
+      />
+      <ConfirmDialog
+        open={confirmAction === 'withdraw'}
+        title="Withdraw this request?"
+        message="This will cancel your pending connection request."
+        confirmLabel="Withdraw request"
+        variant="warning"
+        loading={actionLoading}
+        onConfirm={handleWithdraw}
+        onClose={() => setConfirmAction(null)}
       />
     </div>
   );

@@ -15,7 +15,7 @@ export interface Challenge {
     _id: string;
     displayName: string;
     avatar: string;
-  };
+  } | null;
   title: string;
   description: string;
   skillCategory: string;

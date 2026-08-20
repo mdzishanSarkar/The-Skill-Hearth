@@ -5,6 +5,7 @@ import { getApiError } from '../../types/api.types';
 import type { SkillInput, SkillType, SkillWithTeacher } from '../../types/skill.types';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
 import { FiAward } from 'react-icons/fi';
@@ -19,6 +20,7 @@ export default function MySkillsPage() {
   const [loading, setLoading] = useState(true);
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState<SkillWithTeacher | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<SkillWithTeacher | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -60,11 +62,12 @@ export default function MySkillsPage() {
     }
   }
 
-  async function handleDelete(skill: SkillWithTeacher) {
-    if (!window.confirm(`Delete "${skill.skillName}"? This can be restored by an admin.`)) return;
+  async function handleDelete() {
+    if (!deleteTarget) return;
     try {
-      await deleteSkill(skill._id);
+      await deleteSkill(deleteTarget._id);
       toast.success('Skill deleted');
+      setDeleteTarget(null);
       await load();
     } catch (err) {
       toast.error(getApiError(err));
@@ -126,7 +129,7 @@ export default function MySkillsPage() {
               isOwner
               onEdit={(s) => { setEditing(s); setFormOpen(true); }}
               onToggle={handleToggle}
-              onDelete={handleDelete}
+              onDelete={(s) => setDeleteTarget(s)}
             />
           ))}
         </div>
@@ -137,6 +140,16 @@ export default function MySkillsPage() {
         onClose={() => { setFormOpen(false); setEditing(null); }}
         skill={editing}
         onSubmit={editing ? handleUpdate : handleCreate}
+      />
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        title={`Delete "${deleteTarget?.skillName ?? ''}"?`}
+        message="This can be restored by an admin."
+        confirmLabel="Delete skill"
+        variant="danger"
+        onConfirm={handleDelete}
+        onClose={() => setDeleteTarget(null)}
       />
     </div>
   );

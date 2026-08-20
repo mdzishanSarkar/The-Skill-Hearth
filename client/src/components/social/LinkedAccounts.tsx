@@ -5,10 +5,12 @@ import type { OAuthProviderInfo } from '../../types/social.types';
 import { getApiError } from '../../types/api.types';
 import Button from '../ui/Button';
 import Spinner from '../ui/Spinner';
+import ConfirmDialog from '../ui/ConfirmDialog';
 
 export default function LinkedAccounts() {
   const [providers, setProviders] = useState<OAuthProviderInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [unlinkTarget, setUnlinkTarget] = useState<'google' | 'apple' | null>(null);
 
   useEffect(() => {
     loadProviders();
@@ -43,11 +45,12 @@ export default function LinkedAccounts() {
     }
   }
 
-  async function handleUnlink(provider: 'google' | 'apple') {
-    if (!window.confirm(`Unlink ${provider}? You may lose access if it's your only login method.`)) return;
+  async function handleUnlink() {
+    if (!unlinkTarget) return;
     try {
-      await unlinkProvider(provider);
-      toast.success(`${provider} unlinked`);
+      await unlinkProvider(unlinkTarget);
+      toast.success(`${unlinkTarget} unlinked`);
+      setUnlinkTarget(null);
       loadProviders();
     } catch (err) {
       toast.error(getApiError(err));
@@ -86,7 +89,7 @@ export default function LinkedAccounts() {
             </div>
           </div>
           {hasGoogle ? (
-            <Button variant="secondary" size="sm" onClick={() => handleUnlink('google')}>
+            <Button variant="secondary" size="sm" onClick={() => setUnlinkTarget('google')}>
               Unlink
             </Button>
           ) : (
@@ -111,7 +114,7 @@ export default function LinkedAccounts() {
             </div>
           </div>
           {hasApple ? (
-            <Button variant="secondary" size="sm" onClick={() => handleUnlink('apple')}>
+            <Button variant="secondary" size="sm" onClick={() => setUnlinkTarget('apple')}>
               Unlink
             </Button>
           ) : (
@@ -121,6 +124,16 @@ export default function LinkedAccounts() {
           )}
         </div>
       </div>
+
+      <ConfirmDialog
+        open={!!unlinkTarget}
+        title={`Unlink ${unlinkTarget ?? ''}?`}
+        message={`You may lose access if it's your only login method.`}
+        confirmLabel="Unlink"
+        variant="warning"
+        onConfirm={handleUnlink}
+        onClose={() => setUnlinkTarget(null)}
+      />
     </div>
   );
 }

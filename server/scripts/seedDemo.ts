@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { Category, Skill, User } from '../src/models';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/skillshare-local';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/the-skill-hearth-local';
 const DEMO_PASSWORD = 'Demo1234!';
 
 interface DemoUserInput {

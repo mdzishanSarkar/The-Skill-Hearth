@@ -16,6 +16,7 @@ import Avatar from '../../components/ui/Avatar';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import Spinner from '../../components/ui/Spinner';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 import ReviewCard from '../../components/shared/ReviewCard';
 import ConnectionRequestForm from '../../components/forms/ConnectionRequestForm';
 import MentorshipRequestForm from '../../components/forms/MentorshipRequestForm';
@@ -32,6 +33,7 @@ export default function SkillDetailPage() {
   const [showRequestForm, setShowRequestForm] = useState(false);
   const [showMentorshipForm, setShowMentorshipForm] = useState(false);
   const [showReport, setShowReport] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -96,7 +98,7 @@ export default function SkillDetailPage() {
   }
 
   async function handleDelete() {
-    if (!window.confirm(`Delete "${current.skillName}"?`)) return;
+    setShowDeleteConfirm(false);
     try {
       await deleteSkill(current._id);
       toast.success('Skill deleted');
@@ -139,7 +141,7 @@ export default function SkillDetailPage() {
                 <Button variant="secondary" size="sm" onClick={handleToggle}>
                   {current.isActive ? 'Pause' : 'Activate'}
                 </Button>
-                <Button variant="danger" size="sm" onClick={handleDelete}>
+                <Button variant="danger" size="sm" onClick={() => setShowDeleteConfirm(true)}>
                   Delete
                 </Button>
               </div>
@@ -257,6 +259,16 @@ export default function SkillDetailPage() {
           onSuccess={() => setShowMentorshipForm(false)}
         />
       )}
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title={`Delete "${current.skillName}"?`}
+        message="This will permanently remove this skill from your profile."
+        confirmLabel="Delete skill"
+        variant="danger"
+        onConfirm={handleDelete}
+        onClose={() => setShowDeleteConfirm(false)}
+      />
     </div>
   );
 }

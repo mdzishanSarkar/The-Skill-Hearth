@@ -7,7 +7,7 @@ import { computeAndSaveSnapshot, getLatestSnapshot } from '../src/services/skill
 let user: any = null;
 
 test.before(async () => {
-  await mongoose.connect('mongodb://localhost:27017/skillshare-local');
+  await mongoose.connect('mongodb://localhost:27017/the-skill-hearth-local');
   await SkillDemandSnapshot.deleteMany({});
   user = await User.create({
     email: 'demand-test@test.local',

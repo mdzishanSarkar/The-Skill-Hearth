@@ -99,7 +99,9 @@ export function MessageBubble({
     return <SystemEventMessage message={message} />;
   }
 
-  const isMine = message.isMine;
+  const isMine = currentUserId !== null
+    ? String(message.senderId) === String(currentUserId)
+    : message.isMine;
   const canEdit =
     isMine && message.type === 'text' && !message.isDeleted &&
     Date.now() - new Date(message.createdAt).getTime() < 5 * 60 * 1000;

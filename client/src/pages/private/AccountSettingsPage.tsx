@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { exportAccountData, deleteAccount } from '../../services/social.service';
 import { getApiError } from '../../types/api.types';
 import Button from '../../components/ui/Button';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 import LinkedAccounts from '../../components/social/LinkedAccounts';
 import TwoFactorSetup from '../../components/social/TwoFactorSetup';
 import QuietHoursSettings from '../../components/settings/QuietHoursSettings';
@@ -19,6 +20,8 @@ export default function AccountSettingsPage() {
   const [twoFAStatus, setTwoFAStatus] = useState<TwoFactorStatus>({ enabled: false, lastUsedAt: null });
   const [exporting, setExporting] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showDeleteConfirm2, setShowDeleteConfirm2] = useState(false);
 
   useEffect(() => {
     getTwoFactorStatus().then(setTwoFAStatus).catch(() => {});
@@ -43,13 +46,11 @@ export default function AccountSettingsPage() {
   }
 
   async function handleDelete() {
-    if (!window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) return;
-    if (!window.confirm('This will permanently delete all your data. Are you absolutely sure?')) return;
-
     setDeleting(true);
     try {
       await deleteAccount();
       toast.success('Account deleted');
+      setShowDeleteConfirm2(false);
       logout();
     } catch (err) {
       toast.error(getApiError(err));
@@ -100,13 +101,33 @@ export default function AccountSettingsPage() {
             variant="danger"
             size="sm"
             className="mt-3"
-            loading={deleting}
-            onClick={handleDelete}
+            onClick={() => setShowDeleteConfirm(true)}
           >
             Delete account
           </Button>
         </div>
       </div>
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title="Delete your account?"
+        message="Are you sure you want to delete your account? This action cannot be undone."
+        confirmLabel="Yes, delete my account"
+        variant="danger"
+        onConfirm={() => { setShowDeleteConfirm(false); setShowDeleteConfirm2(true); }}
+        onClose={() => setShowDeleteConfirm(false)}
+      />
+
+      <ConfirmDialog
+        open={showDeleteConfirm2}
+        title="This is permanent!"
+        message="This will permanently delete all your data including skills, connections, messages, and reviews. Are you absolutely sure?"
+        confirmLabel="Delete everything"
+        variant="danger"
+        loading={deleting}
+        onConfirm={handleDelete}
+        onClose={() => setShowDeleteConfirm2(false)}
+      />
     </div>
   );
 }

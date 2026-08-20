@@ -15,7 +15,7 @@ const CATEGORY_ID = new mongoose.Types.ObjectId();
 const COORDS: [number, number] = [90.4125, 23.8103];
 
 test.before(async () => {
-  await mongoose.connect('mongodb://localhost:27017/skillshare-local');
+  await mongoose.connect('mongodb://localhost:27017/the-skill-hearth-local');
   const base = { passwordHash: 'password123', status: 'active', location: { city: 'dhaka', neighborhood: 'gulshan' } };
   viewer = await User.create({ email: 'geo-viewer@test.local', username: 'geoviewer', displayName: 'Geo Viewer', ...base });
   teacherA = await User.create({

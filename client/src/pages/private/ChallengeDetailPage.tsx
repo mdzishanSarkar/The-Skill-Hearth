@@ -95,7 +95,7 @@ export default function ChallengeDetailPage() {
               <Badge color={statusBadgeColor(challenge.status)}>{challenge.status}</Badge>
             </div>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              by {typeof challenge.creatorId === 'object' ? challenge.creatorId.displayName : 'Unknown'}
+              by {challenge.creatorId && typeof challenge.creatorId === 'object' ? challenge.creatorId.displayName : 'Unknown member'}
             </p>
           </div>
           <div className="text-5xl">{challenge.badgeIcon}</div>

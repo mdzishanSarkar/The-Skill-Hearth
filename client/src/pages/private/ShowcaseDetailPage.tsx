@@ -67,7 +67,8 @@ export default function ShowcaseDetailPage() {
     );
   }
 
-  const isOwner = user?._id === showcase.userId._id;
+  const author = showcase.userId;
+  const isOwner = Boolean(author && user?._id === author._id);
 
   return (
     <div className="page-shell animate-fade-in py-8">
@@ -84,7 +85,7 @@ export default function ShowcaseDetailPage() {
       <PageHeader
         icon={<FiZap />}
         title={showcase.title}
-        subtitle={`by ${showcase.userId.displayName}`}
+        subtitle={`by ${author?.displayName ?? 'Unknown member'}`}
       />
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
@@ -146,31 +147,37 @@ export default function ShowcaseDetailPage() {
               Author
             </h2>
             <div className="mt-3 flex items-center gap-3">
-              <img
-                src={showcase.userId.avatar}
-                alt={showcase.userId.displayName}
-                className="h-10 w-10 rounded-full object-cover"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src =
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(showcase.userId.displayName)}&background=4f46e5&color=fff`;
-                }}
-              />
-              <div className="min-w-0">
-                <Link
-                  to={`/profile/${showcase.userId._id}`}
-                  className="truncate text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400"
-                >
-                  {showcase.userId.displayName}
-                </Link>
-                {showcase.userId.stats && (
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {showcase.userId.stats.totalSessions ?? 0} sessions
-                    {typeof showcase.userId.stats.averageRating === 'number'
-                      ? ` · ${showcase.userId.stats.averageRating.toFixed(1)}★`
-                      : ''}
-                  </p>
-                )}
-              </div>
+              {author ? (
+                <>
+                  <img
+                    src={author.avatar}
+                    alt={author.displayName}
+                    className="h-10 w-10 rounded-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        `https://ui-avatars.com/api/?name=${encodeURIComponent(author.displayName)}&background=4f46e5&color=fff`;
+                    }}
+                  />
+                  <div className="min-w-0">
+                    <Link
+                      to={`/profile/${author._id}`}
+                      className="truncate text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    >
+                      {author.displayName}
+                    </Link>
+                    {author.stats && (
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        {author.stats.totalSessions ?? 0} sessions
+                        {typeof author.stats.averageRating === 'number'
+                          ? ` · ${author.stats.averageRating.toFixed(1)}★`
+                          : ''}
+                      </p>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <span className="text-sm text-gray-500 dark:text-gray-400">Unknown member</span>
+              )}
             </div>
           </div>
 

@@ -41,7 +41,7 @@ async function makeSkill(userId: any, type: 'teach' | 'learn', name: string) {
 }
 
 test.before(async () => {
-  await mongoose.connect('mongodb://localhost:27017/skillshare-local');
+  await mongoose.connect('mongodb://localhost:27017/the-skill-hearth-local');
   await SwapReadyMatch.deleteMany({});
   await SkillSwap.deleteMany({});
   userA = await makeUser('a');

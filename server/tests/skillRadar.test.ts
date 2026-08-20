@@ -12,7 +12,7 @@ import {
 let radar: any = null;
 
 test.before(async () => {
-  await mongoose.connect('mongodb://localhost:27017/skillshare-local');
+  await mongoose.connect('mongodb://localhost:27017/the-skill-hearth-local');
 });
 
 test.after(async () => {

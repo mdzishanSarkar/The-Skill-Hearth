@@ -14,7 +14,7 @@ const VIEWER_COORDS: [number, number] = [90.4125, 23.8103];
 const TEACHER_COORDS: [number, number] = [90.4145, 23.8113];
 
 test.before(async () => {
-  await mongoose.connect('mongodb://localhost:27017/skillshare-local');
+  await mongoose.connect('mongodb://localhost:27017/the-skill-hearth-local');
   viewer = await User.create({
     email: 'nl-viewer@test.local',
     username: 'nlviewer',

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../hooks/useAuth';
-import { updateMe, uploadAvatar } from '../../services/users.service';
+import { reverseGeocode, updateMe, uploadAvatar } from '../../services/users.service';
 import { getApiError } from '../../types/api.types';
 import type { AvailabilitySlot } from '../../types/user.types';
 import { resolveMediaUrl } from '../../utils/media';
@@ -10,7 +10,7 @@ import Avatar from '../../components/ui/Avatar';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import PageHeader from '../../components/ui/PageHeader';
-import { FiUser, FiAtSign } from 'react-icons/fi';
+import { FiUser, FiAtSign, FiMapPin } from 'react-icons/fi';
 import AvailabilityCalendar from '../../components/social/AvailabilityCalendar';
 
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
@@ -38,6 +38,9 @@ export default function EditProfilePage() {
   const [zipCode, setZipCode] = useState(user?.location.zipCode || '');
   const [neighborhood, setNeighborhood] = useState(user?.location.neighborhood || '');
   const [radius, setRadius] = useState<number>(user?.location.radiusPreference ?? 5);
+  const [coordinates, setCoordinates] = useState<[number, number] | null>(null);
+  const [locating, setLocating] = useState(false);
+  const [locationNote, setLocationNote] = useState('');
   const [availability, setAvailability] = useState<AvailabilitySlot[]>(user?.availability ?? []);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
@@ -81,6 +84,61 @@ export default function EditProfilePage() {
     }
   }
 
+  function handleUseMyLocation() {
+    if (!navigator.geolocation) {
+      setLocationNote('Location access is not available in this browser.');
+      return;
+    }
+
+    setLocating(true);
+    setError('');
+    setLocationNote('');
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        const nextCoordinates: [number, number] = [lng, lat];
+        let nextCity = city;
+        let nextZipCode = zipCode;
+        let nextNeighborhood = neighborhood;
+        try {
+          const place = await reverseGeocode(lat, lng);
+          nextCity = place.city || nextCity;
+          nextZipCode = place.zipCode || nextZipCode;
+          nextNeighborhood = place.neighborhood || nextNeighborhood;
+        } catch {
+          setLocationNote('Coordinates found, but the city could not be detected.');
+        }
+        try {
+          const saved = await updateMe({
+            location: {
+              city: nextCity,
+              zipCode: nextZipCode,
+              neighborhood: nextNeighborhood,
+              coordinates: nextCoordinates,
+              radiusPreference: radius,
+            },
+          });
+          setCoordinates(nextCoordinates);
+          setCity(saved.location.city);
+          setZipCode(saved.location.zipCode);
+          setNeighborhood(saved.location.neighborhood);
+          setUser(saved);
+          setLocationNote(`Location updated${saved.location.city ? ` to ${saved.location.city}` : ''}.`);
+          toast.success('Location updated');
+        } catch (err) {
+          setError(getApiError(err));
+        } finally {
+          setLocating(false);
+        }
+      },
+      () => {
+        setLocating(false);
+        setLocationNote('We could not get your location. Please check browser permissions and try again.');
+      },
+    );
+  }
+
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     setError('');
@@ -95,7 +153,13 @@ export default function EditProfilePage() {
         displayName,
         bio,
         showOnMap,
-        location: { city, zipCode, neighborhood, radiusPreference: radius },
+        location: {
+          city,
+          zipCode,
+          neighborhood,
+          coordinates: coordinates ?? undefined,
+          radiusPreference: radius,
+        },
         availability,
       });
       setUser(saved);
@@ -219,6 +283,20 @@ export default function EditProfilePage() {
             onChange={(e) => setNeighborhood(e.target.value)}
             className="sm:col-span-2"
           />
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <Button
+            type="button"
+            variant="secondary"
+            size="sm"
+            loading={locating}
+            onClick={handleUseMyLocation}
+          >
+            <FiMapPin className="h-4 w-4" />
+            Update my location
+          </Button>
+          {locationNote && <p className="text-xs text-gray-500 dark:text-gray-400">{locationNote}</p>}
         </div>
 
         <div>

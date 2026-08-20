@@ -145,7 +145,7 @@ export default function ShowcasePage() {
                     <span>{showcase.media.length} file{showcase.media.length === 1 ? '' : 's'}</span>
                   </div>
                   <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
-                    by {showcase.userId.displayName} · {new Date(showcase.createdAt).toLocaleDateString()}
+                    by {showcase.userId?.displayName ?? 'Unknown member'} · {new Date(showcase.createdAt).toLocaleDateString()}
                   </p>
                 </div>
                 <Button

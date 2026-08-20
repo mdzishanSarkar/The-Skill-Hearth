@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 
 async function main() {
-  const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/skillshare-local';
+  const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/the-skill-hearth-local';
   await mongoose.connect(uri);
   const db = mongoose.connection.db;
   const res = await db.collection('users').updateMany(

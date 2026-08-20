@@ -26,7 +26,7 @@ export const env = {
   clientUrls: parseClientUrls(),
   clientUrl: process.env.CLIENT_URL || "http://localhost:5173",
   siteUrl: process.env.SITE_URL || "http://localhost:5000",
-  mongoUri: process.env.MONGODB_URI || "mongodb://localhost:27017/skillshare-local",
+  mongoUri: process.env.MONGODB_URI || "mongodb://localhost:27017/the-skill-hearth-local",
   jwtSecret: process.env.JWT_SECRET || "dev-secret-change-in-production",
 } as const;
 

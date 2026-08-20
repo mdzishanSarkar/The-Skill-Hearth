@@ -16,7 +16,7 @@ export interface ShowcaseMedia {
 
 export interface Showcase {
   _id: string;
-  userId: ShowcaseAuthor;
+  userId: ShowcaseAuthor | null;
   skillId?: {
     _id: string;
     skillName: string;

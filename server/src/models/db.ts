@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/skillshare-local';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/the-skill-hearth-local';
 
 const connectionOptions = {
   maxPoolSize: 10,

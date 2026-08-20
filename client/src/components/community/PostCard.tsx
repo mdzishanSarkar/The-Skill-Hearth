@@ -6,6 +6,8 @@ import { votePost, deletePost, reportPost } from '../../services/community.servi
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import type { CommunityPost } from '../../types/community.types';
+import ConfirmDialog from '../ui/ConfirmDialog';
+import ReportDialog from '../ui/ReportDialog';
 
 interface PostCardProps {
   post: CommunityPost;
@@ -18,6 +20,8 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
   const [voteScore, setVoteScore] = useState(post.voteScore);
   const [userVote, setUserVote] = useState<'up' | 'down' | null>(post.userVote);
   const [isVoting, setIsVoting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showReportDialog, setShowReportDialog] = useState(false);
 
   const isAuthor = user && String(post.authorId?._id) === user._id;
 
@@ -38,7 +42,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
   }
 
   async function handleDelete() {
-    if (!confirm('Are you sure you want to delete this post?')) return;
+    setShowDeleteConfirm(false);
     try {
       await deletePost(post._id);
       toast.success('Post deleted');
@@ -48,9 +52,8 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
     }
   }
 
-  async function handleReport() {
-    const reason = prompt('Why are you reporting this post? (harassment, inappropriate, spam, other)');
-    if (!reason) return;
+  async function handleReport(reason: string) {
+    setShowReportDialog(false);
     try {
       await reportPost(post._id, reason);
       toast.success('Report submitted');
@@ -133,7 +136,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             <div className="flex-1" />
             {user && !isAuthor && (
               <button
-                onClick={handleReport}
+                onClick={() => setShowReportDialog(true)}
                 className="flex items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-orange-500 transition-colors"
               >
                 <FiFlag className="h-3.5 w-3.5" />
@@ -142,7 +145,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
             )}
             {isAuthor && (
               <button
-                onClick={handleDelete}
+                onClick={() => setShowDeleteConfirm(true)}
                 className="flex items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-red-500 transition-colors"
               >
                 <FiTrash2 className="h-3.5 w-3.5" />
@@ -152,6 +155,23 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
           </div>
         </div>
       </div>
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title="Delete this post?"
+        message="This action cannot be undone. The post will be permanently removed."
+        confirmLabel="Delete post"
+        variant="danger"
+        onConfirm={handleDelete}
+        onClose={() => setShowDeleteConfirm(false)}
+      />
+
+      <ReportDialog
+        open={showReportDialog}
+        title="Report Post"
+        targetName="this post"
+        onSubmit={handleReport}
+        onClose={() => setShowReportDialog(false)}
+      />
     </div>
   );
 }

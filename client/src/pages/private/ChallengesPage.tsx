@@ -152,7 +152,7 @@ export default function ChallengesPage() {
                       </div>
                       <div className="mt-1 text-xs text-gray-400 dark:text-gray-500">
                         {new Date(challenge.startDate).toLocaleDateString()} — {new Date(challenge.endDate).toLocaleDateString()}
-                        {' · by '}{challenge.creatorId.displayName}
+                        {' · by '}{challenge.creatorId?.displayName ?? 'Unknown member'}
                       </div>
                     </div>
                     <div className="flex flex-col items-end gap-2 ml-4">

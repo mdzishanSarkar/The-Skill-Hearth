@@ -41,6 +41,12 @@ export interface MapPin {
 const EARTH_RADIUS_KM = 6378.1;
 const MAX_PINS = 200;
 
+function isValidCoords(coords: unknown): boolean {
+  if (!Array.isArray(coords) || coords.length !== 2) return false;
+  const [lng, lat] = coords;
+  return typeof lng === 'number' && typeof lat === 'number' && (lng !== 0 || lat !== 0);
+}
+
 export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]> {
   const hasGeo = typeof filters.lat === 'number' && typeof filters.lng === 'number';
   const radiusKm = filters.radiusKm && filters.radiusKm > 0 ? filters.radiusKm : undefined;
@@ -55,21 +61,49 @@ export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]
     if (validIds.length) baseMatch.categoryId = { $in: validIds };
   }
 
-  const pipeline: PipelineStage[] = [{ $match: baseMatch }];
+  const pipeline: PipelineStage[] = [
+    { $match: baseMatch },
+    // Join with the skill's owner first to get user coordinates as fallback
+    { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'teacher' } },
+    { $unwind: { path: '$teacher', preserveNullAndEmptyArrays: false } },
+    { $match: { 'teacher.status': 'active', 'teacher.showOnMap': true, 'teacher.isShadowBanned': { $ne: true } } },
+  ];
+
+  // When geo filtering, use skill coords if valid, otherwise fall back to user coords
   if (hasGeo && radiusKm) {
     pipeline.push({
+      $addFields: {
+        _effectiveCoords: {
+          $let: {
+            vars: {
+              skillCoords: '$location.coordinates',
+              userCoords: '$teacher.location.coordinates',
+            },
+            in: {
+              $cond: {
+                if: {
+                  $or: [
+                    { $eq: [{ $arrayElemAt: ['$$skillCoords', 0] }, 0] },
+                    { $eq: [{ $arrayElemAt: ['$$skillCoords', 1] }, 0] },
+                  ],
+                },
+                then: '$$userCoords',
+                else: '$$skillCoords',
+              },
+            },
+          },
+        },
+      },
+    });
+    pipeline.push({
       $match: {
-        'location.coordinates': {
+        _effectiveCoords: {
           $geoWithin: { $centerSphere: [[filters.lng!, filters.lat!], radiusKm / EARTH_RADIUS_KM] },
         },
       },
     });
   }
-  pipeline.push(
-    { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'teacher' } },
-    { $unwind: { path: '$teacher', preserveNullAndEmptyArrays: false } },
-    { $match: { 'teacher.status': 'active', 'teacher.showOnMap': true, 'teacher.isShadowBanned': { $ne: true } } }
-  );
+
   if (filters.viewerId) {
     const blocked = (await getBlockedIds(filters.viewerId)).map((id) => new Types.ObjectId(id));
     if (blocked.length) {
@@ -84,12 +118,15 @@ export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]
   const raw = await Skill.aggregate<Record<string, unknown>>(pipeline);
 
   return raw.map((item) => {
-    const coords = (item.location as { coordinates?: number[] } | undefined)?.coordinates;
+    const skillCoords = (item.location as { coordinates?: number[] } | undefined)?.coordinates;
+    const teacher = (item.teacher ?? {}) as Record<string, unknown>;
+    const userCoords = (teacher.location as { coordinates?: number[] } | undefined)?.coordinates;
+    // Use skill coords if valid, otherwise fall back to user coords
+    const coords = isValidCoords(skillCoords) ? skillCoords : userCoords;
     const distanceKm =
-      hasGeo && Array.isArray(coords) && coords.length === 2
+      hasGeo && Array.isArray(coords) && coords.length === 2 && isValidCoords(coords)
         ? haversineKm([filters.lng!, filters.lat!], [coords[0], coords[1]])
         : undefined;
-    const teacher = (item.teacher ?? {}) as Record<string, unknown>;
     const teacherStats = (teacher.stats ?? {}) as Record<string, unknown>;
     return {
       id: String(item._id),
@@ -99,7 +136,7 @@ export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]
       skillName: String(item.skillName ?? ''),
       format: String(item.format ?? 'either'),
       sessionLength: String(item.sessionLength ?? '1hr'),
-      coordinates: (coords as [number, number]) ?? ([0, 0] as [number, number]),
+      coordinates: (isValidCoords(coords) ? coords : [0, 0]) as [number, number],
       distanceKm: distanceKm !== undefined ? Math.max(0, Math.round(distanceKm * 10) / 10) : undefined,
       teacher: {
         _id: String(teacher._id ?? ''),
