@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getBundle, voteOnBundle } from '../../services/bundle.service';
 import type { SkillBundle } from '../../types/social.types';
@@ -17,15 +17,7 @@ export default function BundleDetailPage() {
   const [loading, setLoading] = useState(true);
   const [voting, setVoting] = useState(false);
 
-  useEffect(() => {
-    if (!id) {
-      navigate('/bundles');
-      return;
-    }
-    loadBundle();
-  }, [id, navigate]);
-
-  async function loadBundle() {
+  const loadBundle = useCallback(async () => {
     try {
       const data = await getBundle(id!);
       setBundle(data);
@@ -35,7 +27,15 @@ export default function BundleDetailPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [id, navigate]);
+
+  useEffect(() => {
+    if (!id) {
+      navigate('/bundles');
+      return;
+    }
+    loadBundle();
+  }, [id, navigate, loadBundle]);
 
   async function handleVote() {
     if (!id) return;

@@ -54,7 +54,7 @@ function estimateMessageHeight(message: MessengerMessage): number {
 }
 
 export function MessageList(props: MessageListProps) {
-  const { messages, typingNames } = props;
+  const { messages, typingNames, hasMore, loadingOlder, onLoadOlder } = props;
   const listRef = useListRef(null as never);
   const [height, setHeight] = useState(0);
   const [atBottom, setAtBottom] = useState(true);
@@ -122,11 +122,11 @@ export function MessageList(props: MessageListProps) {
       const bottom = stopIndex >= rows.length - 2;
       stickToBottomRef.current = bottom;
       setAtBottom(bottom);
-      if (startIndex <= 2 && props.hasMore && !props.loadingOlder) {
-        props.onLoadOlder();
+      if (startIndex <= 2 && hasMore && !loadingOlder) {
+        onLoadOlder();
       }
     },
-    [rows.length, props.hasMore, props.loadingOlder, props.onLoadOlder],
+    [rows.length, hasMore, loadingOlder, onLoadOlder],
   );
 
   const scrollToBottom = useCallback(() => {

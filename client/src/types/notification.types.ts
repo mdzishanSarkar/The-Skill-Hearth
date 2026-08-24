@@ -9,6 +9,13 @@ export type NotificationType =
   | 'account_banned'
   | 'skill_removed'
   | 'review_received'
+  | 'group_session_joined'
+  | 'group_session_left'
+  | 'group_session_completed'
+  | 'group_session_cancelled'
+  | 'friend_request'
+  | 'friend_request_accepted'
+  | 'friend_joined'
   | 'saved_search_match'
   | 'radar_match'
   | 'weekly_digest';
@@ -45,6 +52,13 @@ export const NOTIFICATION_ICONS: Record<NotificationType, string> = {
   account_banned: '🚫',
   skill_removed: '🗑️',
   review_received: '🌟',
+  group_session_joined: '📅',
+  group_session_left: '🚪',
+  group_session_completed: '🎓',
+  group_session_cancelled: '🚫',
+  friend_request: '👥',
+  friend_request_accepted: '🤝',
+  friend_joined: '🎉',
   saved_search_match: '🔖',
   radar_match: '🎯',
   weekly_digest: '📧',

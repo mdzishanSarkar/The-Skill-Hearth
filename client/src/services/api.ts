@@ -2,8 +2,6 @@ import axios, { type AxiosRequestConfig } from 'axios';
 import {
   getAccessToken,
   setAccessToken,
-  getStoredRefreshToken,
-  setStoredRefreshToken,
 } from './tokenStore';
 
 const api = axios.create({
@@ -55,13 +53,9 @@ api.interceptors.response.use(
 
       isRefreshing = true;
       try {
-        const { data } = await api.post('/auth/refresh', {
-          refreshToken: getStoredRefreshToken() ?? undefined,
-        });
+        const { data } = await api.post('/auth/refresh');
         const token = data?.data?.accessToken as string;
-        const refreshToken = data?.data?.refreshToken as string | undefined;
         setAccessToken(token);
-        if (refreshToken) setStoredRefreshToken(refreshToken);
         refreshQueue.forEach((resolve) => resolve(token));
         refreshQueue = [];
         if (original.headers) {

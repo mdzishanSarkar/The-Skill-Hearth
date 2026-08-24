@@ -368,7 +368,7 @@ input[type='password']::-webkit-caps-lock-indicator {
 
 :root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-blue-200,
 :root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-blue-300,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-\[#7dd3fc\] {
+:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-\[\#7dd3fc\] {
   color: #1d4ed8;
 }
 

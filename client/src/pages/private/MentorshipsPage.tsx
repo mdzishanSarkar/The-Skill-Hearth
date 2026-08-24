@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getMyMentorships, respondToMentorship, updateGoal, completeMentorship } from '../../services/mentorship.service';
 import type { Mentorship } from '../../types/mentorship.types';
@@ -49,11 +49,7 @@ export default function MentorshipsPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  useEffect(() => {
-    loadMentorships();
-  }, [tab]);
-
-  async function loadMentorships() {
+  const loadMentorships = useCallback(async () => {
     setLoading(true);
     try {
       const result = await getMyMentorships(tab === 'as-mentor' ? 'mentor' : 'mentee');
@@ -63,7 +59,11 @@ export default function MentorshipsPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [tab]);
+
+  useEffect(() => {
+    loadMentorships();
+  }, [loadMentorships]);
 
   async function handleRespond(id: string, action: 'accept' | 'reject') {
     setRespondingId(id);

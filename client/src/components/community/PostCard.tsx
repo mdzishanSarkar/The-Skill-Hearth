@@ -34,7 +34,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
       setVoteScore(result.voteScore);
       setUserVote(result.userVote);
       onVote?.(post._id, result.voteScore, result.userVote);
-    } catch (err) {
+    } catch {
       toast.error('Failed to vote');
     } finally {
       setIsVoting(false);
@@ -47,7 +47,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
       await deletePost(post._id);
       toast.success('Post deleted');
       onDelete?.(post._id);
-    } catch (err) {
+    } catch {
       toast.error('Failed to delete post');
     }
   }
@@ -57,7 +57,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
     try {
       await reportPost(post._id, reason);
       toast.success('Report submitted');
-    } catch (err) {
+    } catch {
       toast.error('Failed to submit report');
     }
   }

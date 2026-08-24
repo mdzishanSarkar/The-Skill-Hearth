@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../hooks/useAuth';
@@ -47,17 +47,7 @@ export default function AdminReportsPage() {
 
   const isModerator = me && (me.role === 'admin' || me.role === 'moderator');
 
-  useEffect(() => {
-    if (!isModerator) return;
-    loadReports();
-  }, [page, statusFilter, targetFilter, isModerator]);
-
-  if (status === 'loading') return <Spinner />;
-  if (!isModerator) {
-    return <Navigate to="/dashboard" replace />;
-  }
-
-  async function loadReports() {
+  const loadReports = useCallback(async () => {
     setLoading(true);
     setError('');
     try {
@@ -72,6 +62,16 @@ export default function AdminReportsPage() {
     } finally {
       setLoading(false);
     }
+  }, [page, statusFilter, targetFilter]);
+
+  useEffect(() => {
+    if (!isModerator) return;
+    loadReports();
+  }, [isModerator, loadReports]);
+
+  if (status === 'loading') return <Spinner />;
+  if (!isModerator) {
+    return <Navigate to="/dashboard" replace />;
   }
 
   async function handleAssign(id: string) {

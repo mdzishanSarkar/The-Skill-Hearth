@@ -18,59 +18,25 @@ test.describe('Authentication Flow', () => {
 });
 
 test.describe('Page Navigation', () => {
-  test('all main pages have correct titles', async ({ page }) => {
-    const pages = [
-      { path: '/feed', expectedTitle: 'Feed — The Skill Hearth' },
-      { path: '/challenges', expectedTitle: 'Challenges — The Skill Hearth' },
-      { path: '/showcase', expectedTitle: 'Showcase — The Skill Hearth' },
-    ];
-
-    for (const { path, expectedTitle } of pages) {
-      // Note: These tests require authentication
-      // In a real scenario, you'd need to login first
-      // await page.goto(path);
-      // const title = await page.title();
-      // expect(title).toBe(expectedTitle);
-    }
-  });
+  test.skip('all main pages have correct titles', () => {});
 });
 
 test.describe('Feed Page', () => {
-  test('displays feed updates correctly', async ({ page }) => {
-    // This test would require:
-    // 1. Login with valid credentials
-    // 2. Navigate to feed
-    // 3. Verify content is displayed
-    
-    // Placeholder structure for actual implementation
-    const feedSelector = '[data-testid="feed-container"]';
-    // await expect(page.locator(feedSelector)).toBeVisible();
-  });
+  test.skip('displays feed updates correctly', () => {});
 
-  test('handles empty feed gracefully', async ({ page }) => {
-    // Test empty state rendering
-  });
+  test.skip('handles empty feed gracefully', () => {});
 });
 
 test.describe('Challenges Page', () => {
-  test('displays challenges list', async ({ page }) => {
-    // Navigate and verify challenges render
-    // even with null author data
-  });
+  test.skip('displays challenges list', () => {});
 
-  test('can filter and search challenges', async ({ page }) => {
-    // Test search/filter functionality
-  });
+  test.skip('can filter and search challenges', () => {});
 });
 
 test.describe('Showcase Page', () => {
-  test('displays showcase projects', async ({ page }) => {
-    // Verify showcase renders correctly
-  });
+  test.skip('displays showcase projects', () => {});
 
-  test('shows author information when available', async ({ page }) => {
-    // Test conditional author display
-  });
+  test.skip('shows author information when available', () => {});
 });
 
 test.describe('Error Handling', () => {
@@ -80,7 +46,5 @@ test.describe('Error Handling', () => {
     expect(title).toContain('Page not found');
   });
 
-  test('gracefully handles network errors', async ({ page }) => {
-    // Simulate network failure and verify error handling
-  });
+  test.skip('gracefully handles network errors', () => {});
 });

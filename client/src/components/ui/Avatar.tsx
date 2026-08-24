@@ -22,11 +22,15 @@ const iconSizes = {
 };
 
 export default function Avatar({ src, name, size = 'md', className }: AvatarProps) {
-  if (src) {
+  if (src?.trim()) {
     return (
       <img
         src={resolveMediaUrl(src)}
         alt={name}
+        onError={(event) => {
+          event.currentTarget.style.display = 'none';
+          event.currentTarget.nextElementSibling?.removeAttribute('hidden');
+        }}
         className={clsx('rounded-full object-cover ring-2 ring-white dark:ring-gray-800', sizes[size], className)}
       />
     );
@@ -36,6 +40,7 @@ export default function Avatar({ src, name, size = 'md', className }: AvatarProp
     <div
       title={name}
       aria-label={name}
+      hidden={Boolean(src?.trim())}
       className={clsx(
         'flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-amber-100 text-indigo-500 ring-2 ring-white dark:from-indigo-900/60 dark:to-amber-900/40 dark:text-indigo-300 dark:ring-gray-800',
         sizes[size],

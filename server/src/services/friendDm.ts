@@ -1,7 +1,6 @@
 import { Types } from 'mongoose';
 import { DirectMessage, Friendship, User } from '../models';
 import { HttpError } from '../utils/errors';
-import { createNotification } from './notification';
 import { getIO } from '../config/socket';
 import { getDirectMessageRoomId } from './friendship';
 
@@ -41,13 +40,6 @@ export async function sendDirectMessage(userId: string, recipientId: string, con
   });
 
   const sender = await User.findById(userId).select('displayName avatar').lean();
-  await createNotification({
-    userId: recipientId,
-    type: 'new_message',
-    referenceId: message._id,
-    referenceModel: 'Message',
-    message: `${sender?.displayName ?? 'A friend'} sent you a message`,
-  });
 
   try {
     const conversationId = getDirectMessageRoomId(userId, recipientId);

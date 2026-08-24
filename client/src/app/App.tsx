@@ -62,6 +62,7 @@ import GamificationPage from '../pages/private/GamificationPage';
 const MapDiscoveryPage = lazy(() => import('../pages/private/MapDiscoveryPage'));
 const ConnectionDetailPage = lazy(() => import('../pages/private/ConnectionDetailPage'));
 const MessagesPage = lazy(() => import('../pages/private/MessagesPage'));
+const SkillInboxPage = lazy(() => import('../pages/private/SkillInboxPage'));
 const NotificationsPage = lazy(() => import('../pages/private/NotificationsPage'));
 const JournalPage = lazy(() => import('../pages/private/JournalPage'));
 const JournalEntryPage = lazy(() => import('../pages/private/JournalEntryPage'));
@@ -429,7 +430,16 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-        <Route path="/inbox" element={<Navigate to="/messages" replace />} />
+        <Route
+          path="/inbox"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center"><span className="text-sm text-gray-500 dark:text-gray-400">Loading…</span></div>}>
+                <SkillInboxPage />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
         <Route path="/outbox" element={<Navigate to="/messages" replace />} />
         <Route
           path="/connection/:id"

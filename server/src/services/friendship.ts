@@ -2,6 +2,7 @@ import { Types } from 'mongoose';
 import { Friendship, User, Skill, Connection, Block } from '../models';
 import type { FriendTier } from '../models';
 import { HttpError } from '../utils/errors';
+import { escapeRegExp } from '../utils/regex';
 import { createNotification } from './notification';
 import { createActivityEvent } from './activityFeed';
 import { awardXP, awardBadge } from './gamification';
@@ -338,7 +339,7 @@ export async function listFriends(userId: string, query = '') {
     status: 'active',
   };
   if (query) {
-    filter.displayName = { $regex: query, $options: 'i' };
+    filter.displayName = { $regex: new RegExp(escapeRegExp(query.slice(0, 100)), 'i') };
   }
 
   const friends = await User.find(filter)

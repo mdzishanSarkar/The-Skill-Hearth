@@ -32,7 +32,8 @@ export function MessengerProvider({ children }: { children: React.ReactNode }) {
       const state = storeApi.getState();
       state.addMessage(payload.message);
       const isActive = state.activeConversationId === payload.message.conversationId;
-      if (!payload.message.isMine) {
+      const isMine = payload.message.senderId === user._id;
+      if (!isMine) {
         if (isActive) {
           state.markRead(payload.message.conversationId, payload.message.conversationType);
         } else {

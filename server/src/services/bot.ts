@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
 import { BotInstallation, Skill, User } from '../models';
 import { HttpError } from '../utils/errors';
+import { escapeRegExp } from '../utils/regex';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -99,13 +100,14 @@ async function handleFindSkill(args: string[]) {
     return { text: 'Usage: /find-skill [skill name] [location] — e.g. /find-skill guitar Brooklyn' };
   }
 
-  const q = args.join(' ');
+  const q = args.join(' ').slice(0, 100);
+  const pattern = new RegExp(escapeRegExp(q), 'i');
   const skills = await Skill.find({
     isDeleted: false,
     $or: [
-      { skillName: { $regex: q, $options: 'i' } },
-      { categoryName: { $regex: q, $options: 'i' } },
-      { description: { $regex: q, $options: 'i' } },
+      { skillName: { $regex: pattern } },
+      { categoryName: { $regex: pattern } },
+      { description: { $regex: pattern } },
     ],
   })
     .select('skillName categoryName description location stats')

@@ -68,7 +68,7 @@ export default function FriendRequestButton({ userId, onChanged }: FriendRequest
           loading={busy}
           onClick={() => run(() => cancelFriendRequest(status.friendshipId), 'Request cancelled')}
         >
-          Request sent
+          Cancel Request
         </Button>
       );
     case 'pending_received':

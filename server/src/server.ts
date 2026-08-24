@@ -8,6 +8,7 @@ import { initializeSocket } from "./config/socket";
 import { setupInboxNotificationHandlers } from "./services/inbox-notification.service";
 import { startAllJobs, scheduleRecurringJobs } from "./jobs";
 import { runMigrationIfNeeded } from "./migrations/savedSearchToRadar.migration";
+import { runSkillRadarNormalizationIfNeeded } from "./migrations/normalizeSkillRadar.migration";
 
 dotenv.config();
 
@@ -28,6 +29,11 @@ const startServer = (port: number) => {
       await runMigrationIfNeeded();
     } catch (error) {
       console.error("Failed to run saved search migration:", error);
+    }
+    try {
+      await runSkillRadarNormalizationIfNeeded();
+    } catch (error) {
+      console.error("Failed to normalize skill radar data:", error);
     }
    try {
      await startAllJobs();

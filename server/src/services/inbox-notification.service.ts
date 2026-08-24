@@ -1,6 +1,5 @@
 import Bull from 'bull';
-import { Connection, Message, User, Notification } from '../models';
-import { createNotification } from './notification';
+import { Message, User } from '../models';
 import { getIO } from '../config/socket';
 import mongoose from 'mongoose';
 
@@ -65,7 +64,9 @@ export async function queueDigestNotification(userId: string) {
 }
 
 /**
- * Process message notifications: create in-app notification and emit real-time event.
+ * Process message notifications: emit real-time inbox event only.
+ * Chat messages intentionally do NOT create entries in the general
+ * notifications feed — they surface through the chat UI (badge, tone, toast).
  */
 async function processMessageNotification(job: Bull.Job<MessageNotificationJob>) {
   const { recipientId, senderId, connectionId, messagePreview } = job.data;
@@ -80,17 +81,7 @@ async function processMessageNotification(job: Bull.Job<MessageNotificationJob>)
     const sender = await User.findById(senderId).select('displayName').lean();
     if (!sender) throw new Error('Sender not found');
 
-    // Create in-app notification
-    const message = `New message from ${sender.displayName}: "${messagePreview}..."`;
-    await createNotification({
-      userId: recipientId,
-      type: 'new_message',
-      message,
-      referenceId: connectionId,
-      referenceModel: 'Connection',
-    });
-
-    // Emit real-time event for instant badge/toast
+    // Emit real-time event for instant badge/tone/toast (chat-scoped only)
     try {
       getIO().to(`user_${recipientId}`).emit('inbox:message_received', {
         senderId,
@@ -112,7 +103,9 @@ async function processMessageNotification(job: Bull.Job<MessageNotificationJob>)
 }
 
 /**
- * Process digest notifications: aggregate unread messages into a single notification.
+ * Process digest notifications: aggregate unread messages into a summary result.
+ * Digests intentionally do NOT create general-feed notifications — unread
+ * counts are surfaced inside the chat UI itself.
  */
 async function processDigestNotification(job: Bull.Job<DigestJob>) {
   const { userId } = job.data;
@@ -135,46 +128,7 @@ async function processDigestNotification(job: Bull.Job<DigestJob>) {
       return { success: true, userId, digestCount: 0, skipped: true };
     }
 
-    // Fetch top unread conversations
-    const topConversations = await Message.aggregate([
-      {
-        $match: {
-          senderId: { $ne: userObjectId },
-          readAt: null,
-          createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
-        },
-      },
-      {
-        $group: {
-          _id: '$connectionId',
-          count: { $sum: 1 },
-          lastMessage: { $first: '$content' },
-        },
-      },
-      { $sort: { count: -1 } },
-      { $limit: 3 },
-    ]);
-
-    if (topConversations.length === 0) {
-      return { success: true, userId, digestCount: 0, skipped: true };
-    }
-
-    // Build digest message
-    const conversationSummary = topConversations
-      .map((conv) => `${conv.count} message${conv.count > 1 ? 's' : ''}`)
-      .join(', ');
-
-    const message = `You have ${unreadMessages} unread message${unreadMessages > 1 ? 's' : ''} (${conversationSummary})`;
-
-    // Create digest notification
-    await createNotification({
-      userId,
-      type: 'new_message',
-      message,
-      referenceModel: 'Connection',
-    });
-
-    return { success: true, userId, digestCount: unreadMessages };
+    return { success: true, userId, digestCount: unreadMessages, skipped: false };
   } catch (error) {
     console.error(`Error processing digest notification for ${userId}:`, error);
     throw error;

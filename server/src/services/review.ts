@@ -4,6 +4,7 @@ import type { ReviewTag } from '../models';
 import { HttpError } from '../utils/errors';
 import { awardXP } from './gamification';
 import { createActivityEvent } from './activityFeed';
+import { createNotification } from './notification';
 
 const VALID_TAGS: ReviewTag[] = [
   'Patient teacher',
@@ -82,6 +83,19 @@ export async function submitReview(reviewerId: string, connectionId: string, inp
   });
 
   await recalculateUserRating(new Types.ObjectId(revieweeId));
+
+  try {
+    const reviewer = await User.findById(reviewerObjectId).select('displayName').lean();
+    await createNotification({
+      userId: new Types.ObjectId(revieweeId),
+      type: 'review_received',
+      referenceId: review._id,
+      referenceModel: 'Review',
+      message: `${reviewer?.displayName ?? 'Someone'} left you a ${rating}-star review`,
+    });
+  } catch {
+    // best-effort
+  }
 
   try {
     await awardXP(reviewerId, 'leave_review');

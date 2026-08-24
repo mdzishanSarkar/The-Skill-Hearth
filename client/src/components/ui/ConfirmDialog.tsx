@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FiAlertTriangle, FiAlertCircle, FiInfo, FiTrash2 } from 'react-icons/fi';
+import { FiAlertTriangle, FiInfo, FiTrash2 } from 'react-icons/fi';
 
 type Variant = 'danger' | 'warning' | 'info';
 

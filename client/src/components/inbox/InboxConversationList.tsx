@@ -1,93 +1,148 @@
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import Avatar from '../ui/Avatar';
-import Button from '../ui/Button';
+import { FiMapPin, FiVolume2, FiVolumeX } from 'react-icons/fi';
 import type { InboxConversation } from '../../types/inbox.types';
+import { formatConversationTime } from '../messenger/format';
 
 interface InboxConversationListProps {
   conversations: InboxConversation[];
-  onTogglePin?: (connectionId: string) => void;
-  onToggleMute?: (connectionId: string) => void;
+  currentUserId: string | null;
+  pendingActionId?: string | null;
+  onTogglePin: (conversation: InboxConversation) => void;
+  onToggleMute: (conversation: InboxConversation) => void;
 }
 
-function formatMessagePreview(message: InboxConversation['lastMessage']) {
-  if (!message) return 'No messages yet';
-  if (message.isDeleted) return 'Message deleted';
-  if (!message.content) return 'No messages yet';
-  return message.content.length > 60 ? `${message.content.slice(0, 60)}…` : message.content;
+const CATEGORY_COLORS: Record<string, string> = {
+  'Food & Cooking': '#F97316',
+  Gardening: '#22C55E',
+  'Home & Repair': '#3B82F6',
+  Crafts: '#EC4899',
+  Digital: '#8B5CF6',
+  Wellness: '#14B8A6',
+  Language: '#F59E0B',
+  'Arts & Music': '#EF4444',
+  Sports: '#10B981',
+  General: '#64748B',
+};
+
+function categoryColor(category: string): string {
+  return CATEGORY_COLORS[category] ?? CATEGORY_COLORS.General;
 }
 
-export default function InboxConversationList({ conversations, onTogglePin, onToggleMute }: InboxConversationListProps) {
+function previewFor(conversation: InboxConversation, currentUserId: string | null): string {
+  const last = conversation.lastMessage;
+  const prefix = last && last.senderId === currentUserId ? 'You: ' : '';
+  const preview = !last
+    ? 'No messages yet'
+    : last.isDeleted
+      ? 'Message deleted'
+      : last.type === 'image'
+        ? '📷 Photo'
+        : last.content || 'No messages yet';
+  return `${conversation.skill.name} · ${prefix}${preview}`;
+}
+
+export default function InboxConversationList({
+  conversations,
+  currentUserId,
+  pendingActionId,
+  onTogglePin,
+  onToggleMute,
+}: InboxConversationListProps) {
   if (conversations.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-400">
-        No conversations match this filter.
+      <div className="flex flex-col items-center justify-center gap-2 px-6 py-12 text-center">
+        <span className="text-3xl">🔥</span>
+        <p className="text-sm font-medium text-slate-200">No conversations yet.</p>
+        <p className="text-xs text-slate-500">Accept a skill connection to start chatting.</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-3">
+    <ul className="space-y-1 px-1">
       {conversations.map((conversation) => {
-        const other = conversation.otherUser;
-        const skill = conversation.skill;
-        const lastMessageAt = conversation.lastMessage?.createdAt
-          ? new Date(conversation.lastMessage.createdAt).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
-          : 'No recent activity';
+        const busy = pendingActionId === conversation.connectionId;
 
         return (
-          <div
-            key={conversation.connectionId}
-            className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition hover:border-indigo-200 hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:hover:border-indigo-700"
-          >
-            <div className="flex items-start gap-3">
-              <Link to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`} className="shrink-0">
-                <Avatar src={other.avatar} name={other.displayName || 'User'} size="sm" />
+          <li key={conversation.connectionId} className="group relative">
+            <div
+              className={clsx(
+                'flex w-full items-center gap-3 rounded-2xl border border-transparent px-3 py-2.5 transition-all duration-150 hover:bg-white/6',
+                busy && 'opacity-60',
+              )}
+            >
+              <Link
+                to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`}
+                className="shrink-0"
+                aria-label={`Open chat with ${conversation.otherUser.displayName}`}
+              >
+                <span
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white shadow-md shadow-black/20 ring-2 ring-white/12"
+                  style={{ backgroundColor: categoryColor(conversation.skill.category) }}
+                >
+                  {(conversation.skill.name || 'S').charAt(0).toUpperCase()}
+                </span>
               </Link>
 
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between gap-3">
-                  <Link to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`} className="min-w-0 flex-1 text-sm font-semibold text-gray-900 hover:text-indigo-600 dark:text-gray-100 dark:hover:text-indigo-400">
-                    <span className="truncate">{other.displayName || 'Unknown user'}</span>
-                  </Link>
-                  {conversation.unreadCount > 0 && (
-                    <span className="rounded-full bg-indigo-600 px-2 py-0.5 text-[10px] font-semibold text-white">
-                      {conversation.unreadCount > 99 ? '99+' : conversation.unreadCount}
-                    </span>
-                  )}
+              <Link
+                to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`}
+                className="min-w-0 flex-1"
+              >
+                <div className="flex items-center gap-1.5">
+                  <span className="truncate text-sm font-semibold text-[var(--text-primary)]">
+                    {conversation.otherUser.displayName || 'Unknown user'}
+                  </span>
+                  {conversation.isPinned && <FiMapPin className="h-3 w-3 shrink-0 text-slate-400" />}
+                  {conversation.isMuted && <FiVolumeX className="h-3 w-3 shrink-0 text-slate-400" />}
                 </div>
-
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                  {skill.name || 'Skill'}{skill.category ? ` · ${skill.category}` : ''}
+                <p className="mt-0.5 truncate text-xs text-slate-300">
+                  {previewFor(conversation, currentUserId)}
                 </p>
+              </Link>
 
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                  {formatMessagePreview(conversation.lastMessage)}
-                </p>
+              <div className="flex shrink-0 flex-col items-end gap-1 transition group-hover:opacity-0">
+                {conversation.lastMessage && (
+                  <span className="text-[10px] text-slate-400">
+                    {formatConversationTime(conversation.lastMessage.createdAt)}
+                  </span>
+                )}
+                {conversation.unreadCount > 0 && (
+                  <span
+                    className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--bubble-accent-to)] px-1.5 text-[10px] font-bold text-white shadow-md shadow-[color-mix(in_srgb,var(--bubble-accent-to)_40%,transparent)]"
+                    aria-label={`${conversation.unreadCount} unread messages`}
+                  >
+                    {conversation.unreadCount > 99 ? '99+' : conversation.unreadCount}
+                  </span>
+                )}
+              </div>
 
-                <div className="mt-3 flex items-center justify-between gap-2 text-[11px] text-gray-400 dark:text-gray-500">
-                  <span>{lastMessageAt}</span>
-                  <div className="flex items-center gap-2">
-                    {conversation.isPinned && <span>📌</span>}
-                    {conversation.isMuted && <span>🔕</span>}
-                  </div>
-                </div>
+              <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center gap-1 opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
+                <button
+                  type="button"
+                  onClick={() => onTogglePin(conversation)}
+                  disabled={busy}
+                  aria-label={conversation.isPinned ? 'Unpin conversation' : 'Pin conversation'}
+                  title={conversation.isPinned ? 'Unpin' : 'Pin'}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white/6 text-slate-300 transition hover:bg-white/12 hover:text-white"
+                >
+                  <FiMapPin className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onToggleMute(conversation)}
+                  disabled={busy}
+                  aria-label={conversation.isMuted ? 'Unmute conversation' : 'Mute conversation'}
+                  title={conversation.isMuted ? 'Unmute' : 'Mute'}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white/6 text-slate-300 transition hover:bg-white/12 hover:text-white"
+                >
+                  {conversation.isMuted ? <FiVolume2 className="h-4 w-4" /> : <FiVolumeX className="h-4 w-4" />}
+                </button>
               </div>
             </div>
-
-            <div className="mt-4 flex gap-2">
-              <Button size="sm" variant="secondary" onClick={() => onTogglePin?.(conversation.connectionId)}>
-                {conversation.isPinned ? 'Unpin' : 'Pin'}
-              </Button>
-              <Button size="sm" variant="secondary" onClick={() => onToggleMute?.(conversation.connectionId)}>
-                {conversation.isMuted ? 'Unmute' : 'Mute'}
-              </Button>
-              <Link to={`/messages?conversationId=${encodeURIComponent(conversation.connectionId)}&type=skill`} className="ml-auto">
-                <Button size="sm">Open</Button>
-              </Link>
-            </div>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

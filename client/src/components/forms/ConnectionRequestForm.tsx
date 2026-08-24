@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { sendConnectionRequest } from '../../services/connections';
 import { listRequestTemplates } from '../../services/requestTemplate.service';
 import { getApiError } from '../../types/api.types';
+import type { Connection } from '../../types/connection.types';
 import type { RequestTemplate } from '../../types/requestTemplate.types';
 import Button from '../ui/Button';
 
@@ -11,7 +12,7 @@ interface ConnectionRequestFormProps {
   skillId: string;
   skillName: string;
   categoryId?: string;
-  onSuccess?: () => void;
+  onSuccess?: (connection: Connection) => void;
   onCancel?: () => void;
 }
 
@@ -58,9 +59,9 @@ export default function ConnectionRequestForm({
     setLoading(true);
     setError('');
     try {
-      await sendConnectionRequest({ teacherId, skillId, message: trimmed, proposedFormat });
+      const connection = await sendConnectionRequest({ teacherId, skillId, message: trimmed, proposedFormat });
       toast.success('Request sent!');
-      onSuccess?.();
+      onSuccess?.(connection);
     } catch (err) {
       setError(getApiError(err));
     } finally {

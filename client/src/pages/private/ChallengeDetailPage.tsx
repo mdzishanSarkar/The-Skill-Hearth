@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getChallenge, joinChallenge } from '../../services/challenge.service';
 import type { Challenge } from '../../types/challenge.types';
@@ -18,15 +18,7 @@ export default function ChallengeDetailPage() {
   const [loading, setLoading] = useState(true);
   const [joining, setJoining] = useState(false);
 
-  useEffect(() => {
-    if (!id) {
-      navigate('/challenges');
-      return;
-    }
-    loadChallenge();
-  }, [id, navigate]);
-
-  async function loadChallenge() {
+  const loadChallenge = useCallback(async () => {
     try {
       const data = await getChallenge(id!);
       setChallenge(data);
@@ -36,7 +28,15 @@ export default function ChallengeDetailPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [id, navigate]);
+
+  useEffect(() => {
+    if (!id) {
+      navigate('/challenges');
+      return;
+    }
+    loadChallenge();
+  }, [id, navigate, loadChallenge]);
 
   async function handleJoin() {
     if (!id) return;

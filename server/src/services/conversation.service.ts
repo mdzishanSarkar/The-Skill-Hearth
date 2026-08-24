@@ -13,8 +13,6 @@ import { sanitizeText } from '../utils/sanitize';
 import { getRedis } from '../config/redis';
 import { getDirectMessageRoomId } from './friendship';
 import { isUserOnline, getLastSeen } from './presence';
-import { createNotification } from './notification';
-import { isInQuietHours } from './user';
 
 export type ConversationType = 'skill' | 'friend';
 export type MessageStatus = 'sent' | 'delivered' | 'read';
@@ -292,6 +290,11 @@ export async function sendMessageAndNotify(io: Server, params: {
   if (!isShadowBanned) {
     for (const roomId of context.roomIds) {
       io.to(roomId).emit('messenger:message_received', { message: dto });
+    }
+    for (const participantId of context.participantIds) {
+      if (participantId !== params.senderId) {
+        io.to(`user_${participantId}`).emit('messenger:message_received', { message: dto });
+      }
     }
   }
 
@@ -824,23 +827,6 @@ export async function sendMessage(params: {
     await incrementUnread(recipientId, conversationId);
   }
 
-  const recipient = await User.findOne({ _id: { $in: recipientIds.map((id) => new mongoose.Types.ObjectId(id)) } }).select('quietHours').lean();
-  const quiet = isInQuietHours(recipient?.quietHours ?? { enabled: false, startTime: '', endTime: '', timezone: '' });
-  for (const recipientId of recipientIds) {
-    if (quiet) continue;
-    try {
-      await createNotification({
-        userId: recipientId,
-        type: 'new_message',
-        message: `New message from ${sender.displayName}`,
-        referenceId: message._id,
-        referenceModel: 'Message',
-      });
-    } catch {
-      // best-effort
-    }
-  }
-
   await invalidateConversationCache(senderId);
   for (const recipientId of recipientIds) {
     await invalidateConversationCache(recipientId);
@@ -890,23 +876,6 @@ export async function createImageMessage(params: {
   const recipientIds = context.participantIds.filter((id) => id !== senderId);
   for (const recipientId of recipientIds) {
     await incrementUnread(recipientId, conversationId);
-  }
-
-  const recipient = await User.findOne({ _id: { $in: recipientIds.map((id) => new mongoose.Types.ObjectId(id)) } }).select('quietHours').lean();
-  const quiet = isInQuietHours(recipient?.quietHours ?? { enabled: false, startTime: '', endTime: '', timezone: '' });
-  for (const recipientId of recipientIds) {
-    if (quiet) continue;
-    try {
-      await createNotification({
-        userId: recipientId,
-        type: 'new_message',
-        message: `New photo from ${sender.displayName}`,
-        referenceId: message._id,
-        referenceModel: 'Message',
-      });
-    } catch {
-      // best-effort
-    }
   }
 
   await invalidateConversationCache(senderId);

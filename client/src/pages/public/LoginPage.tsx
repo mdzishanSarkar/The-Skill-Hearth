@@ -7,7 +7,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { getApiError } from '../../types/api.types';
 import { resendVerification } from '../../services/auth.service';
 import { getGoogleAuthUrl } from '../../services/social.service';
-import { PASSWORD_HINT, isPasswordPolicyCompliant } from '../../utils/password';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import PasswordInput from '../../components/ui/PasswordInput';
@@ -32,8 +31,8 @@ export default function LoginPage() {
     event.preventDefault();
     setError('');
     setShowResend(false);
-    if (!isPasswordPolicyCompliant(password)) {
-      setError(PASSWORD_HINT);
+    if (!email.trim() || !password) {
+      setError('Please enter your email and password');
       return;
     }
     setLoading(true);
@@ -127,7 +126,6 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p className="-mt-1 text-xs text-gray-400 dark:text-gray-500">{PASSWORD_HINT}</p>
 
           {error && (
             <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-400">

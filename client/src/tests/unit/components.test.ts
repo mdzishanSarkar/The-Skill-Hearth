@@ -1,6 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { describe, it, expect } from 'vitest';
 
 // Example component test structure - adjust imports based on actual component
 describe('RouteTitle Component', () => {
@@ -55,7 +53,7 @@ describe('Protected Route Component', () => {
 describe('Challenges Page Component', () => {
   it('should render challenges list without crashing on null author', () => {
     // Test defensive handling of null creatorId
-    const challenge = {
+    const challenge: { id: string; title: string; creatorId: { displayName: string } | null } = {
       id: '123',
       title: 'Learn React',
       creatorId: null, // Edge case: null author
@@ -66,7 +64,7 @@ describe('Challenges Page Component', () => {
   });
 
   it('should display challenge with valid author', () => {
-    const challenge = {
+    const challenge: { id: string; title: string; creatorId: { displayName: string; _id: string } | null } = {
       id: '123',
       title: 'Learn React',
       creatorId: {
@@ -82,7 +80,7 @@ describe('Challenges Page Component', () => {
 
 describe('Showcase Page Component', () => {
   it('should render showcase without crashing on null author', () => {
-    const showcase = {
+    const showcase: { id: string; title: string; userId: { displayName: string } | null } = {
       id: '123',
       title: 'My Project',
       userId: null, // Edge case: null author
@@ -93,7 +91,7 @@ describe('Showcase Page Component', () => {
   });
 
   it('should display showcase with valid author', () => {
-    const showcase = {
+    const showcase: { id: string; title: string; userId: { displayName: string; _id: string } | null } = {
       id: '123',
       title: 'My Project',
       userId: {

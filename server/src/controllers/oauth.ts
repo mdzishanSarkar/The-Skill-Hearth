@@ -23,7 +23,7 @@ export const googleCallback = asyncHandler(async (req: AuthRequest, res: Respons
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
   const isNewUser = result.isNewUser ? '1' : '0';
   res.redirect(
-    `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}#refreshToken=${encodeURIComponent(result.refreshToken)}`
+    `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`
   );
 });
 
@@ -47,7 +47,7 @@ export const appleCallback = asyncHandler(async (req: AuthRequest, res: Response
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
   const isNewUser = result.isNewUser ? '1' : '0';
   res.redirect(
-    `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}#refreshToken=${encodeURIComponent(result.refreshToken)}`
+    `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`
   );
 });
 

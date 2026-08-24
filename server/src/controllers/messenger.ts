@@ -102,6 +102,11 @@ export const sendImageMessage = asyncHandler(async (req: AuthRequest, res: Respo
   for (const roomId of context.roomIds) {
     io.to(roomId).emit('messenger:message_received', { message: imageMessage });
   }
+  for (const participantId of context.participantIds) {
+    if (participantId !== String(req.userId)) {
+      io.to(`user_${participantId}`).emit('messenger:message_received', { message: imageMessage });
+    }
+  }
   await conversationService.publishConversationUpdated(io, context.participantIds, conversationId);
   await conversationService.publishUnreadTotals(io, context.participantIds);
 

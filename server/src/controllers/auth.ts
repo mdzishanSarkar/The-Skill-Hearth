@@ -45,15 +45,11 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
 
 export const refresh = asyncHandler(async (req: Request, res: Response) => {
   const cookieToken = (req.cookies as Record<string, string> | undefined)?.[REFRESH_COOKIE];
-  const authHeader = req.headers.authorization;
-  const headerToken = authHeader?.startsWith('Bearer ') ? authHeader.slice(7) : undefined;
-  const bodyToken = (req.body as Record<string, string> | undefined)?.refreshToken;
-  const token = cookieToken || headerToken || bodyToken;
-  const data = await authService.refresh(token);
+  const data = await authService.refresh(cookieToken);
   setRefreshCookie(res, data.refreshToken);
   res.json({
     success: true,
-    data: { user: data.user, accessToken: data.accessToken, refreshToken: data.refreshToken },
+    data: { user: data.user, accessToken: data.accessToken },
   });
 });
 

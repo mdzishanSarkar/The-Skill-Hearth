@@ -52,6 +52,8 @@ export async function sendRequest(input: SendRequestInput) {
     throw new HttpError(404, 'TEACHER_NOT_FOUND', 'Teacher not found or inactive');
   }
 
+  const requester = await User.findById(requesterObjectId).select('displayName').lean();
+
   const existingPending = await Connection.findOne({
     requesterId: requesterObjectId,
     teacherId: teacherObjectId,
@@ -76,7 +78,7 @@ export async function sendRequest(input: SendRequestInput) {
     type: 'request_received',
     referenceId: connection._id,
     referenceModel: 'Connection',
-    message: `New skill request from ${input.requesterId}`,
+    message: `New skill request from ${requester?.displayName ?? input.requesterId}`,
   });
 
   return connection.toJSON();
@@ -134,6 +136,24 @@ export async function withdrawRequest(connectionId: string, userId: string) {
 
   connection.status = 'withdrawn';
   await connection.save();
+
+  const teacherIdValue =
+    connection.teacherId && typeof connection.teacherId === 'object'
+      ? connection.teacherId._id
+      : connection.teacherId;
+
+  try {
+    await createNotification({
+      userId: new Types.ObjectId(String(teacherIdValue)),
+      type: 'system_warning',
+      referenceId: connection._id,
+      referenceModel: 'Connection',
+      message: 'A skill request was withdrawn.',
+    });
+  } catch {
+    // best-effort
+  }
+
   return connection.toJSON();
 }
 
@@ -142,8 +162,13 @@ export async function cancelConnection(connectionId: string, userId: string, rea
   const connection = await Connection.findById(id);
   if (!connection) throw new HttpError(404, 'CONNECTION_NOT_FOUND', 'Connection not found');
 
-  const isParticipant =
-    String(connection.requesterId) === userId || String(connection.teacherId) === userId;
+  const requesterId = connection.requesterId && typeof connection.requesterId === 'object'
+    ? connection.requesterId._id
+    : connection.requesterId;
+  const teacherId = connection.teacherId && typeof connection.teacherId === 'object'
+    ? connection.teacherId._id
+    : connection.teacherId;
+  const isParticipant = String(requesterId) === userId || String(teacherId) === userId;
   if (!isParticipant) {
     throw new HttpError(403, 'FORBIDDEN', 'Only participants can cancel this connection');
   }
@@ -254,8 +279,15 @@ export async function getConnection(connectionId: string, userId: string) {
     .populate('skillId', 'skillName categoryName type');
   if (!connection) throw new HttpError(404, 'CONNECTION_NOT_FOUND', 'Connection not found');
 
-  const isParticipant =
-    String(connection.requesterId) === userId || String(connection.teacherId) === userId;
+  const requesterRef =
+    connection.requesterId && typeof connection.requesterId === 'object'
+      ? connection.requesterId._id
+      : connection.requesterId;
+  const teacherRef =
+    connection.teacherId && typeof connection.teacherId === 'object'
+      ? connection.teacherId._id
+      : connection.teacherId;
+  const isParticipant = String(requesterRef) === userId || String(teacherRef) === userId;
   if (!isParticipant) {
     throw new HttpError(403, 'FORBIDDEN', 'Not a participant of this connection');
   }

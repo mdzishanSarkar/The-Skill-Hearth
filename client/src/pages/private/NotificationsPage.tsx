@@ -10,6 +10,7 @@ import PageHeader from '../../components/ui/PageHeader';
 import EmptyState from '../../components/ui/EmptyState';
 import { FiBell, FiEye, FiEyeOff } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import { useNotifications } from '../../hooks/useNotifications';
 
 export default function NotificationsPage() {
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
@@ -18,6 +19,15 @@ export default function NotificationsPage() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [unreadCount, setUnreadCount] = useState(0);
+
+  const handleRealtimeNotification = useCallback((notification: AppNotification) => {
+    setNotifications((current) =>
+      current.some((item) => item._id === notification._id) ? current : [notification, ...current],
+    );
+    setUnreadCount((count) => count + (notification.isRead ? 0 : 1));
+  }, []);
+
+  useNotifications({ onNotification: handleRealtimeNotification });
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -79,6 +89,19 @@ export default function NotificationsPage() {
       if (n.type === 'new_message') return `/messages?conversationId=${encodeURIComponent(n.referenceId)}&type=skill`;
       return `/connection/${n.referenceId}`;
     }
+    if (n.referenceModel === 'Friendship') return '/friends';
+    if (n.referenceModel === 'Skill' && n.referenceId) return `/skills/${n.referenceId}`;
+    if (n.referenceModel === 'Course' && n.referenceId) return `/courses/${n.referenceId}`;
+    if (n.referenceModel === 'LearnerRequest' && n.referenceId) return `/learner-board/${n.referenceId}`;
+    if (n.referenceModel === 'SkillBundle' && n.referenceId) return `/bundles/${n.referenceId}`;
+    if (n.referenceModel === 'Review') return '/reviews';
+    if (n.type === 'new_message') return '/messages';
+    if (n.type === 'review_prompt') return '/reviews';
+    if (n.type?.startsWith('friend_')) return '/friends';
+    if (n.type?.startsWith('group_session')) return '/group-sessions';
+    if (n.referenceModel === 'Mentorship') return '/mentorships';
+    if (n.referenceModel === 'GroupSession') return '/group-sessions';
+    if (n.referenceModel === 'Message') return '/messages';
     return null;
   }
 
@@ -185,7 +208,14 @@ export default function NotificationsPage() {
             );
 
             return link ? (
-              <Link key={n._id} to={link} className="block hover:opacity-80">
+              <Link
+                key={n._id}
+                to={link}
+                onClick={() => {
+                  if (!n.isRead) void handleMarkRead(n._id);
+                }}
+                className="block hover:opacity-80"
+              >
                 {content}
               </Link>
             ) : (

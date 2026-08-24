@@ -31,7 +31,7 @@ export default function LinkedAccounts() {
     try {
       const url = await getGoogleAuthUrl();
       window.location.href = url;
-    } catch (err) {
+    } catch {
       toast.error('Failed to initiate Google linking');
     }
   }
@@ -40,7 +40,7 @@ export default function LinkedAccounts() {
     try {
       const url = await getAppleAuthUrl();
       window.location.href = url;
-    } catch (err) {
+    } catch {
       toast.error('Failed to initiate Apple linking');
     }
   }

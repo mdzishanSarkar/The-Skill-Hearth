@@ -2,6 +2,7 @@ import crypto from 'crypto';
 import { Types } from 'mongoose';
 import { ApiKey, Skill, User, Connection, Review } from '../models';
 import { HttpError } from '../utils/errors';
+import { escapeRegExp } from '../utils/regex';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -35,9 +36,13 @@ export async function createApiKey(input: CreateApiKeyInput) {
 }
 
 export async function listApiKeys(ownerId: string) {
-  return ApiKey.find({ ownerId: toObjectId(ownerId) })
+  const keys = await ApiKey.find({ ownerId: toObjectId(ownerId) })
     .sort({ createdAt: -1 })
     .lean();
+  return keys.map(({ key, ...apiKey }) => ({
+    ...apiKey,
+    key: `${key.slice(0, 12)}...`,
+  }));
 }
 
 export async function revokeApiKey(keyId: string, ownerId: string) {
@@ -56,11 +61,19 @@ export async function validateApiKey(key: string) {
   if (apiKey.expiresAt && new Date(apiKey.expiresAt) < new Date()) {
     throw new HttpError(401, 'KEY_EXPIRED', 'API key has expired');
   }
-  if (apiKey.requestCount >= apiKey.rateLimit) {
+  const updated = await ApiKey.findOneAndUpdate(
+    {
+      _id: apiKey._id,
+      status: 'active',
+      requestCount: { $lt: apiKey.rateLimit },
+    },
+    { $inc: { requestCount: 1 }, $set: { lastUsedAt: new Date() } },
+    { new: true },
+  ).lean();
+  if (!updated) {
     throw new HttpError(429, 'RATE_LIMITED', 'API rate limit exceeded');
   }
-  await ApiKey.updateOne({ _id: apiKey._id }, { $inc: { requestCount: 1 }, lastUsedAt: new Date() });
-  return apiKey;
+  return updated;
 }
 
 export async function querySkills(params: {
@@ -75,13 +88,13 @@ export async function querySkills(params: {
   const skip = (page - 1) * limit;
 
   const filter: Record<string, unknown> = { isDeleted: false };
-  if (params.q) filter.skillName = { $regex: params.q, $options: 'i' };
+  if (params.q) filter.skillName = { $regex: new RegExp(escapeRegExp(params.q.slice(0, 100)), 'i') };
   if (params.category) filter.categoryName = params.category;
-  if (params.city) filter['locations.city'] = params.city;
+  if (params.city) filter['location.city'] = params.city;
 
   const [skills, total] = await Promise.all([
     Skill.find(filter)
-      .select('skillName categoryName description locations averageRating totalReviews')
+      .select('skillName categoryName description location stats')
       .skip(skip)
       .limit(limit)
       .lean(),

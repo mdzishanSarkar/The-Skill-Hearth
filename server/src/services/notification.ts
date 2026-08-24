@@ -43,7 +43,7 @@ export async function createNotification(input: {
       quiet = isInQuietHours(recipient?.quietHours ?? { enabled: false, startTime: '', endTime: '', timezone: '' });
     }
     if (!quiet) {
-      getIO().to(`user_${String(input.userId)}`).emit('notification:new', {});
+      getIO().to(`user_${String(input.userId)}`).emit('notification:new', notification.toJSON());
     }
   } catch {
     // Socket.IO not initialized (e.g. during tests or job processing)
@@ -54,7 +54,8 @@ export async function createNotification(input: {
 
 export async function getNotifications(userId: string, page = 1, limit = 20) {
   const skip = (Math.max(1, page) - 1) * limit;
-  const filter = { userId: new Types.ObjectId(userId) };
+  // Chat messages live in the chat UI only — never in the general feed.
+  const filter = { userId: new Types.ObjectId(userId), type: { $ne: 'new_message' as const } };
 
   const [notifications, total, unreadCount] = await Promise.all([
     Notification.find(filter)
@@ -111,6 +112,11 @@ export async function getUnreadCount(userId: string, types?: string[]) {
     userId: new Types.ObjectId(userId),
     isRead: false,
   };
-  if (types?.length) match.type = { $in: types };
+  if (types?.length) {
+    match.type = { $in: types };
+  } else {
+    // Chat messages surface in the chat UI, not the notification bell.
+    match.type = { $ne: 'new_message' };
+  }
   return Notification.countDocuments(match);
 }

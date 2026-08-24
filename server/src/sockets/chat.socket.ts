@@ -70,7 +70,8 @@ export function setupChatSockets(io: Server, socket: Socket, user: SocketUser) {
   socket.on('message:delivered', async (data: { connectionId: string; messageId: string }) => {
     if (!data.connectionId || !data.messageId) return;
     try {
-      await messageService.markAsDelivered(data.messageId);
+      await conversationService.getConversationContext(user.userId, data.connectionId, 'skill');
+      await messageService.markAsDelivered(data.messageId, user.userId);
       io.to(`chat_${data.connectionId}`).emit('message:delivered', {
         messageId: data.messageId,
         deliveredAt: new Date().toISOString(),
@@ -96,19 +97,33 @@ export function setupChatSockets(io: Server, socket: Socket, user: SocketUser) {
 
   socket.on('typing:start', (data: { connectionId: string }) => {
     if (!data.connectionId) return;
-    socket.to(`chat_${data.connectionId}`).emit('typing:start', {
-      connectionId: data.connectionId,
-      userId: user.userId,
-      displayName: user.displayName,
-    });
+    void conversationService
+      .getConversationContext(user.userId, data.connectionId, 'skill')
+      .then(() => {
+        socket.to(`chat_${data.connectionId}`).emit('typing:start', {
+          connectionId: data.connectionId,
+          userId: user.userId,
+          displayName: user.displayName,
+        });
+      })
+      .catch(() => {
+        // not a participant — ignore
+      });
   });
 
   socket.on('typing:stop', (data: { connectionId: string }) => {
     if (!data.connectionId) return;
-    socket.to(`chat_${data.connectionId}`).emit('typing:stop', {
-      connectionId: data.connectionId,
-      userId: user.userId,
-    });
+    void conversationService
+      .getConversationContext(user.userId, data.connectionId, 'skill')
+      .then(() => {
+        socket.to(`chat_${data.connectionId}`).emit('typing:stop', {
+          connectionId: data.connectionId,
+          userId: user.userId,
+        });
+      })
+      .catch(() => {
+        // not a participant — ignore
+      });
   });
 
   // ── MESSENGER HANDLERS ────────────────────────────────────────────────────
@@ -202,44 +217,51 @@ export function setupChatSockets(io: Server, socket: Socket, user: SocketUser) {
   socket.on('messenger:typing_start', (data: { conversationId: string; conversationType: unknown }) => {
     if (!data?.conversationId || !isConversationType(data.conversationType)) return;
 
-    void checkRateLimit(`messenger:typing:${user.userId}`, TYPING_LIMIT, TYPING_WINDOW_SECONDS).then((rate) => {
-      if (!rate.allowed) {
-        socketEmit(socket, 'messenger:error', { code: 'RATE_LIMITED', event: 'typing', retryAfter: rate.retryAfterSeconds });
-        return;
-      }
-      socket.to(`chat_${data.conversationId}`).except(socket.id).emit('messenger:user_typing', {
-        conversationId: data.conversationId,
-        userId: user.userId,
-        displayName: user.displayName,
-      });
-      if (data.conversationType === 'friend') {
-        socket.to(`dm_${data.conversationId}`).except(socket.id).emit('messenger:user_typing', {
-          conversationId: data.conversationId,
-          userId: user.userId,
-          displayName: user.displayName,
-        });
-      }
-
-      const timerKey = `${user.userId}:${data.conversationId}`;
-      const existing = typingTimers.get(timerKey);
-      if (existing) clearTimeout(existing);
-      typingTimers.set(
-        timerKey,
-        setTimeout(() => {
-          socket.to(`chat_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
+    void conversationService
+      .getConversationContext(user.userId, data.conversationId, data.conversationType)
+      .then(() => {
+        void checkRateLimit(`messenger:typing:${user.userId}`, TYPING_LIMIT, TYPING_WINDOW_SECONDS).then((rate) => {
+          if (!rate.allowed) {
+            socketEmit(socket, 'messenger:error', { code: 'RATE_LIMITED', event: 'typing', retryAfter: rate.retryAfterSeconds });
+            return;
+          }
+          socket.to(`chat_${data.conversationId}`).except(socket.id).emit('messenger:user_typing', {
             conversationId: data.conversationId,
             userId: user.userId,
+            displayName: user.displayName,
           });
           if (data.conversationType === 'friend') {
-            socket.to(`dm_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
+            socket.to(`dm_${data.conversationId}`).except(socket.id).emit('messenger:user_typing', {
               conversationId: data.conversationId,
               userId: user.userId,
+              displayName: user.displayName,
             });
           }
-          typingTimers.delete(timerKey);
-        }, TYPING_AUTO_STOP_MS),
-      );
-    });
+
+          const timerKey = `${user.userId}:${data.conversationId}`;
+          const existing = typingTimers.get(timerKey);
+          if (existing) clearTimeout(existing);
+          typingTimers.set(
+            timerKey,
+            setTimeout(() => {
+              socket.to(`chat_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
+                conversationId: data.conversationId,
+                userId: user.userId,
+              });
+              if (data.conversationType === 'friend') {
+                socket.to(`dm_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
+                  conversationId: data.conversationId,
+                  userId: user.userId,
+                });
+              }
+              typingTimers.delete(timerKey);
+            }, TYPING_AUTO_STOP_MS),
+          );
+        });
+      })
+      .catch(() => {
+        // not a participant — ignore
+      });
   });
 
   socket.on('messenger:typing_stop', (data: { conversationId: string; conversationType: unknown }) => {
@@ -252,16 +274,23 @@ export function setupChatSockets(io: Server, socket: Socket, user: SocketUser) {
       typingTimers.delete(timerKey);
     }
 
-    socket.to(`chat_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
-      conversationId: data.conversationId,
-      userId: user.userId,
-    });
-    if (data.conversationType === 'friend') {
-      socket.to(`dm_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
-        conversationId: data.conversationId,
-        userId: user.userId,
+    void conversationService
+      .getConversationContext(user.userId, data.conversationId, data.conversationType)
+      .then(() => {
+        socket.to(`chat_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
+          conversationId: data.conversationId,
+          userId: user.userId,
+        });
+        if (data.conversationType === 'friend') {
+          socket.to(`dm_${data.conversationId}`).except(socket.id).emit('messenger:user_stopped_typing', {
+            conversationId: data.conversationId,
+            userId: user.userId,
+          });
+        }
+      })
+      .catch(() => {
+        // not a participant — ignore
       });
-    }
   });
 
   socket.on('messenger:react', async (data: { messageId: string; emoji: string }) => {

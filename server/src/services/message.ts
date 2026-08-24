@@ -1,7 +1,7 @@
 import { Types } from 'mongoose';
 import { Message, Connection } from '../models';
 import { HttpError } from '../utils/errors';
-import { createNotification } from './notification';
+import { queueMessageNotification } from './inbox-notification.service';
 
 function toObjectId(value: string): Types.ObjectId {
   if (!Types.ObjectId.isValid(value)) {
@@ -41,12 +41,13 @@ export async function sendMessage(connectionId: string, senderId: string, conten
       ? String(connection.teacherId)
       : String(connection.requesterId);
 
-  await createNotification({
-    userId: new Types.ObjectId(otherUserId),
-    type: 'new_message',
-    referenceId: message._id,
-    referenceModel: 'Message',
-    message: 'You have a new message',
+  // Route through the shared notification pipeline so recipients get the
+  // in-app notification AND the realtime inbox event (message tone + popup).
+  await queueMessageNotification({
+    recipientId: otherUserId,
+    senderId: senderObjectId.toString(),
+    connectionId: connId.toString(),
+    messagePreview: trimmed.slice(0, 80),
   });
 
   return message.toJSON();
@@ -111,8 +112,23 @@ export async function markAsRead(connectionId: string, userId: string) {
   return { success: true };
 }
 
-export async function markAsDelivered(messageId: string) {
+export async function markAsDelivered(messageId: string, userId?: string) {
   const id = toObjectId(messageId);
+  if (userId) {
+    const message = await Message.findById(id).select('connectionId senderId').lean();
+    if (!message || !message.connectionId) {
+      throw new HttpError(404, 'MESSAGE_NOT_FOUND', 'Message not found');
+    }
+    const connection = await Connection.findById(message.connectionId)
+      .select('requesterId teacherId')
+      .lean();
+    const isParticipant =
+      connection &&
+      (String(connection.requesterId) === userId || String(connection.teacherId) === userId);
+    if (!isParticipant && String(message.senderId) !== userId) {
+      throw new HttpError(403, 'FORBIDDEN', 'Not a participant of this conversation');
+    }
+  }
   await Message.updateOne(
     { _id: id, deliveredAt: null },
     { $set: { deliveredAt: new Date() } },

@@ -12,6 +12,8 @@ interface MessengerWindowProps {
   embedded?: boolean;
 }
 
+const NO_TYPING_USERS: Record<string, boolean> = {};
+
 export function MessengerWindow({ conversationId, conversationType, embedded = false }: MessengerWindowProps) {
   const store = useMessengerStore();
   const [replyPreview, setReplyPreview] = useState<{ messageId: string; senderName: string; contentPreview: string } | null>(null);
@@ -26,7 +28,7 @@ export function MessengerWindow({ conversationId, conversationType, embedded = f
   const hasMore = Boolean(store.hasMoreByConversation[key]);
   const draft = store.drafts[conversationId] ?? '';
   const replyTarget = store.replyTargets[conversationId] ?? null;
-  const typingUserIds = store.typingUsers[conversationId] ?? {};
+  const typingUserIds = store.typingUsers[conversationId] ?? NO_TYPING_USERS;
   const typingNames = useMemo(
     () => Object.keys(typingUserIds).map((id) => conversation?.participants.find((p) => p.userId === id)?.displayName ?? 'Someone'),
     [typingUserIds, conversation],

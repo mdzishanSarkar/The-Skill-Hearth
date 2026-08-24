@@ -30,6 +30,7 @@ import {
   FiX,
 } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
+import { useSocket } from '../../hooks/useSocket';
 import { getUnreadRadarCount } from '../../services/notifications';
 import { getUnreadMessageCount } from '../../services/messages';
 import ThemeToggle from '../ui/ThemeToggle';
@@ -137,6 +138,7 @@ function DrawerGroup({ label, items }: { label: string; items: NavItem[] }) {
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
+  const { socket } = useSocket();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [radarUnread, setRadarUnread] = useState(0);
   const [messageUnread, setMessageUnread] = useState(0);
@@ -146,6 +148,30 @@ export default function Navbar() {
     getUnreadRadarCount().then(setRadarUnread).catch(() => {});
     getUnreadMessageCount().then(setMessageUnread).catch(() => {});
   }, [isAuthenticated, user?._id]);
+
+  // Keep navbar badges live: the server pushes authoritative unread totals.
+  useEffect(() => {
+    if (!socket || !isAuthenticated) return;
+
+    const onUnreadTotalUpdated = (payload: { total: number }) => {
+      setMessageUnread(payload.total);
+    };
+    const onNotificationNew = (notification: { type?: string }) => {
+      if (notification.type === 'saved_search_match' || notification.type === 'radar_match') {
+        getUnreadRadarCount().then(setRadarUnread).catch(() => {});
+      }
+      if (notification.type === 'new_message') {
+        getUnreadMessageCount().then(setMessageUnread).catch(() => {});
+      }
+    };
+
+    socket.on('messenger:unread_total_updated', onUnreadTotalUpdated);
+    socket.on('notification:new', onNotificationNew);
+    return () => {
+      socket.off('messenger:unread_total_updated', onUnreadTotalUpdated);
+      socket.off('notification:new', onNotificationNew);
+    };
+  }, [socket, isAuthenticated]);
 
   const groups =
     user?.role === 'admin'

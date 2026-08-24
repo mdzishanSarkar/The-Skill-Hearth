@@ -53,14 +53,16 @@ const chatImageUpload = multer({
 export function handleUpload(field: string) {
   const middleware = field === 'media'
     ? skillImageUpload.single(field)
-    : avatarUpload.single(field);
+    : field === 'image'
+      ? chatImageUpload.single(field)
+      : avatarUpload.single(field);
   return (req: Request, res: Response, next: NextFunction) => {
     middleware(req, res, (err: unknown) => {
       if (!err) return next();
       if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
         res.status(400).json({
           success: false,
-          error: { code: 'FILE_TOO_LARGE', message: 'Image must be 5MB or smaller' },
+          error: { code: 'FILE_TOO_LARGE', message: `Image must be ${field === 'image' ? '12MB' : field === 'media' ? '5MB' : '2MB'} or smaller` },
         });
         return;
       }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getCourse, enrollInCourse } from '../../services/course.service';
 import type { Course } from '../../types/course.types';
@@ -17,15 +17,7 @@ export default function CourseDetailPage() {
   const [loading, setLoading] = useState(true);
   const [enrolling, setEnrolling] = useState(false);
 
-  useEffect(() => {
-    if (!id) {
-      navigate('/courses');
-      return;
-    }
-    loadCourse();
-  }, [id, navigate]);
-
-  async function loadCourse() {
+  const loadCourse = useCallback(async () => {
     try {
       const data = await getCourse(id!);
       setCourse(data);
@@ -35,7 +27,15 @@ export default function CourseDetailPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [id, navigate]);
+
+  useEffect(() => {
+    if (!id) {
+      navigate('/courses');
+      return;
+    }
+    loadCourse();
+  }, [id, navigate, loadCourse]);
 
   async function handleEnroll() {
     if (!id) return;

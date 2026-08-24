@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { useLocation } from 'react-router-dom';
 import { AuthContext } from './auth-context';
 import type { AuthStatus } from './auth-context';
 import * as authService from '../services/auth.service';
@@ -13,41 +12,42 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [status, setStatus] = useState<AuthStatus>('loading');
-  const location = useLocation();
+  // Guards against StrictMode's double effect invocation so the session is
+  // restored exactly once per page load.
+  const restoreStartedRef = useRef(false);
 
   useEffect(() => {
-    let cancelled = false;
-
-    if (location.pathname === '/auth/callback') {
+    // Refresh tokens rotate on every use, so restoring more than once per
+    // page load would race against ourselves. The OAuth callback page is
+    // excluded: it completes sign-in and establishes the session itself.
+    if (restoreStartedRef.current || window.location.pathname === '/auth/callback') {
       return;
     }
+    restoreStartedRef.current = true;
 
     async function restoreSession() {
       try {
         const result = await authService.refreshSession();
-        if (cancelled) return;
         setUser(result.user);
         setStatus('authenticated');
       } catch {
-        if (cancelled) return;
         setUser(null);
         setStatus('unauthenticated');
       }
     }
 
     restoreSession();
+  }, []);
 
+  useEffect(() => {
     function onUnauthorized() {
       setUser(null);
       setStatus('unauthenticated');
     }
 
     window.addEventListener('auth:unauthorized', onUnauthorized);
-    return () => {
-      cancelled = true;
-      window.removeEventListener('auth:unauthorized', onUnauthorized);
-    };
-  }, [location.pathname]);
+    return () => window.removeEventListener('auth:unauthorized', onUnauthorized);
+  }, []);
 
   const login = async (email: string, password: string): Promise<User> => {
     const result = await authService.login(email, password);

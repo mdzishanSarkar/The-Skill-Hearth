@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { setAccessToken, setStoredRefreshToken } from '../../services/tokenStore';
+import { setAccessToken } from '../../services/tokenStore';
 import * as authService from '../../services/auth.service';
 import { getMe } from '../../services/users.service';
 import Spinner from '../../components/ui/Spinner';
@@ -15,7 +15,6 @@ export default function OAuthCallbackPage() {
   useEffect(() => {
     const token = searchParams.get('token');
     const newUser = searchParams.get('newUser');
-    const refreshToken = new URLSearchParams(window.location.hash.slice(1)).get('refreshToken');
 
     if (!token) {
       setError('No authentication token received');
@@ -23,7 +22,6 @@ export default function OAuthCallbackPage() {
     }
 
     setAccessToken(token);
-    if (refreshToken) setStoredRefreshToken(refreshToken);
 
     let cancelled = false;
 

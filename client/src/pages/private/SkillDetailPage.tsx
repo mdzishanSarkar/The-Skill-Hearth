@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../hooks/useAuth';
 import { deleteSkill, getSkill, toggleSkill } from '../../services/skills';
+import { getActiveChats, getOutbox, withdrawRequest } from '../../services/connections';
 import { getSkillReviews } from '../../services/reviews';
 import { getApiError } from '../../types/api.types';
 import type { Review } from '../../types/review.types';
@@ -21,6 +22,7 @@ import ReviewCard from '../../components/shared/ReviewCard';
 import ConnectionRequestForm from '../../components/forms/ConnectionRequestForm';
 import MentorshipRequestForm from '../../components/forms/MentorshipRequestForm';
 import ReportForm from '../../components/forms/ReportForm';
+import FriendRequestButton from '../../components/social/FriendRequestButton';
 import { getCategoryVisual, getSkillEmoji } from '../../data/skillVisuals';
 
 export default function SkillDetailPage() {
@@ -34,6 +36,9 @@ export default function SkillDetailPage() {
   const [showMentorshipForm, setShowMentorshipForm] = useState(false);
   const [showReport, setShowReport] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [inboxConnectionId, setInboxConnectionId] = useState<string | null>(null);
+  const [pendingRequestId, setPendingRequestId] = useState<string | null>(null);
+  const [cancellingRequest, setCancellingRequest] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -51,6 +56,31 @@ export default function SkillDetailPage() {
           setSkill(skillResult);
           setReviews(reviewsResult);
         }
+        if (me && skillResult.userId !== me._id) {
+          try {
+            const activeChats = await getActiveChats();
+            const connection = activeChats.find((item) => {
+              const skillId = typeof item.skillId === 'object' ? item.skillId._id : item.skillId;
+              return String(skillId) === String(skillResult._id);
+            });
+            if (!cancelled) setInboxConnectionId(connection?._id ?? null);
+          } catch {
+            if (!cancelled) setInboxConnectionId(null);
+          }
+          try {
+            const outbox = await getOutbox(1, 100);
+            const pendingRequest = outbox.connections.find((item) => {
+              const skillId = typeof item.skillId === 'object' ? item.skillId._id : item.skillId;
+              return item.status === 'pending' && String(skillId) === String(skillResult._id);
+            });
+            if (!cancelled) setPendingRequestId(pendingRequest?._id ?? null);
+          } catch {
+            if (!cancelled) setPendingRequestId(null);
+          }
+        } else if (!cancelled) {
+          setInboxConnectionId(null);
+          setPendingRequestId(null);
+        }
       } catch (err) {
         if (!cancelled) setError(getApiError(err));
       } finally {
@@ -62,7 +92,7 @@ export default function SkillDetailPage() {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, me]);
 
   if (loading) {
     return (
@@ -108,6 +138,20 @@ export default function SkillDetailPage() {
     }
   }
 
+  async function handleCancelRequest() {
+    if (!pendingRequestId) return;
+    setCancellingRequest(true);
+    try {
+      await withdrawRequest(pendingRequestId);
+      setPendingRequestId(null);
+      toast.success('Request cancelled');
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setCancellingRequest(false);
+    }
+  }
+
   return (
     <div className="page-shell animate-fade-in py-8">
       <div className="card overflow-hidden">
@@ -149,9 +193,18 @@ export default function SkillDetailPage() {
               <div className="w-full">
                 {!showRequestForm ? (
                   <div className="flex items-center gap-3">
-                    <Button onClick={() => setShowRequestForm(true)}>
-                      Request a Session
+                    <Button
+                      onClick={pendingRequestId ? handleCancelRequest : () => setShowRequestForm(true)}
+                      loading={cancellingRequest}
+                    >
+                      {pendingRequestId ? 'Cancel Request' : 'Request a Session'}
                     </Button>
+                    {me && inboxConnectionId ? (
+                      <Link to={`/messages?conversationId=${encodeURIComponent(inboxConnectionId)}&type=skill`}>
+                        <Button variant="secondary">Inbox</Button>
+                      </Link>
+                    ) : null}
+                    {me && <FriendRequestButton userId={current.userId} />}
                     {me && current.type === 'teach' && (
                       <Button variant="secondary" onClick={() => setShowMentorshipForm(true)}>
                         Request Mentorship
@@ -169,7 +222,8 @@ export default function SkillDetailPage() {
                     skillId={current._id}
                     skillName={current.skillName}
                     categoryId={current.categoryId}
-                    onSuccess={() => {
+                    onSuccess={(connection) => {
+                      setPendingRequestId(connection._id);
                       setShowRequestForm(false);
                       toast.success('Request sent! Check your outbox for updates.');
                     }}

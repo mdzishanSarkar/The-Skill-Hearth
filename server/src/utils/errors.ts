@@ -23,6 +23,32 @@ export function toErrorResponse(
       body: { success: false, error: { code: error.code, message: error.message } },
     };
   }
+  if (
+    typeof error === 'object' &&
+    error !== null &&
+    'name' in error &&
+    typeof (error as { name?: unknown }).name === 'string'
+  ) {
+    const name = (error as { name: string }).name;
+    if (name === 'CastError') {
+      return {
+        status: 400,
+        body: { success: false, error: { code: 'INVALID_ID', message: 'Invalid identifier' } },
+      };
+    }
+    if (name === 'ValidationError') {
+      const message =
+        process.env.NODE_ENV === 'production'
+          ? 'Invalid input'
+          : error instanceof Error
+            ? error.message
+            : 'Invalid input';
+      return {
+        status: 400,
+        body: { success: false, error: { code: 'VALIDATION_ERROR', message } },
+      };
+    }
+  }
   const message =
     process.env.NODE_ENV === 'production'
       ? 'Internal server error'
