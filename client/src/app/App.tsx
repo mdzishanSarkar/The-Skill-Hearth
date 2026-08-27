@@ -23,6 +23,7 @@ import DashboardPage from '../pages/private/DashboardPage';
 import EditProfilePage from '../pages/private/EditProfilePage';
 import ProfilePage from '../pages/private/ProfilePage';
 import OnboardingPage from '../pages/private/OnboardingPage';
+import IdentityVerificationPage from '../pages/private/IdentityVerificationPage';
 import AdminUsersPage from '../pages/private/AdminUsersPage';
 import AdminDashboardPage from '../pages/private/AdminDashboardPage';
 import AdminReportsPage from '../pages/private/AdminReportsPage';
@@ -101,6 +102,9 @@ function AppContent() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <div className="border-b border-amber-200 bg-amber-50 px-4 py-3 text-center text-sm text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-100">
+        🛡️ For your safety, we strongly recommend meeting only with Verified users. Unverified accounts have not yet been reviewed by our team.
+      </div>
       <main id="main-content" className="flex-1">
         <RouteTitle />
         <Routes>
@@ -149,6 +153,14 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <OnboardingPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/identity-verification"
+          element={
+            <ProtectedRoute>
+              <IdentityVerificationPage />
             </ProtectedRoute>
           }
         />

@@ -139,7 +139,6 @@ async function main(): Promise<void> {
     quietHours?: { enabled: boolean; startTime: string; endTime: string; timezone: string };
     isEmailVerified?: boolean;
     hasCompletedOnboarding?: boolean;
-    isIdVerified?: boolean;
     isShadowBanned?: boolean;
     lastActive?: Date;
     createdAt?: Date;
@@ -238,7 +237,6 @@ async function main(): Promise<void> {
       quietHours: input.quietHours ?? { enabled: false, startTime: '22:00', endTime: '07:00', timezone: '' },
       isEmailVerified: input.isEmailVerified ?? true,
       hasCompletedOnboarding: input.hasCompletedOnboarding ?? true,
-      isIdVerified: input.isIdVerified ?? false,
       isShadowBanned: input.isShadowBanned ?? false,
       lastActive: input.lastActive ?? daysAgo(0),
       createdAt: input.createdAt ?? daysAgo(Math.max(1, Math.floor((input.xp ?? 0) / 60))),

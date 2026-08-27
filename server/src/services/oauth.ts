@@ -191,6 +191,13 @@ async function handleOAuthLogin(
     throw new HttpError(500, 'INTERNAL_ERROR', 'User not found after OAuth');
   }
 
+  // The provider (Google/Gmail, Apple) has already verified ownership of this
+  // email address, so manual email verification is skipped entirely — including
+  // for users who first registered with a password and never clicked the link.
+  if (!user.isEmailVerified) {
+    user.isEmailVerified = true;
+  }
+
   user.lastActive = new Date();
   await user.save();
 

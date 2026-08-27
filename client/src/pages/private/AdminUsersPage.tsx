@@ -10,10 +10,12 @@ import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Spinner from '../../components/ui/Spinner';
 import PageHeader from '../../components/ui/PageHeader';
+import RejectionDialog from '../../components/ui/RejectionDialog';
 import { FiUsers } from 'react-icons/fi';
 
 const ROLES = ['user', 'moderator', 'admin'] as const;
 const STATUSES = ['active', 'suspended', 'banned'] as const;
+const ID_TYPES: Record<string, string> = { nid: 'National ID', student_id: 'Student ID', passport: 'Passport' };
 
 const statusBadge: Record<string, string> = {
   active: 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300',
@@ -34,6 +36,8 @@ export default function AdminUsersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [busyId, setBusyId] = useState('');
+  const [rejectTarget, setRejectTarget] = useState<{ id: string; name: string } | null>(null);
+  const [rejectLoading, setRejectLoading] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -100,6 +104,39 @@ export default function AdminUsersPage() {
       toast.error(getApiError(err));
     } finally {
       setBusyId('');
+    }
+  }
+
+  async function reviewIdentity(id: string, decision: 'verified' | 'rejected') {
+    if (decision === 'rejected') {
+      const u = users.find((user) => user._id === id);
+      setRejectTarget({ id, name: u?.displayName ?? 'this user' });
+      return;
+    }
+    setBusyId(id);
+    try {
+      const updated = await adminService.reviewIdentity(id, decision);
+      toast.success('Identity approved');
+      setUsers((prev) => prev.map((user) => (user._id === id ? updated : user)));
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setBusyId('');
+    }
+  }
+
+  async function confirmReject(reason: string) {
+    if (!rejectTarget) return;
+    setRejectLoading(true);
+    try {
+      const updated = await adminService.reviewIdentity(rejectTarget.id, 'rejected', reason);
+      toast.success('Identity rejected');
+      setUsers((prev) => prev.map((user) => (user._id === rejectTarget.id ? updated : user)));
+      setRejectTarget(null);
+    } catch (err) {
+      toast.error(getApiError(err));
+    } finally {
+      setRejectLoading(false);
     }
   }
 
@@ -177,7 +214,7 @@ export default function AdminUsersPage() {
                 <th className="px-4 py-3">User</th>
                 <th className="px-4 py-3">Role</th>
                 <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Verified</th>
+                <th className="px-4 py-3">Identity review</th>
                 <th className="px-4 py-3">Actions</th>
               </tr>
             </thead>
@@ -215,7 +252,40 @@ export default function AdminUsersPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-gray-600 dark:text-gray-400">
-                    {u.isEmailVerified ? 'Yes' : 'No'}
+                    <div className="min-w-48">
+                      <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${u.verificationStatus === 'verified' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' : 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300'}`}>
+                        {u.verificationStatus === 'verified' ? 'Verified' : u.verificationStatus === 'rejected' ? 'Rejected' : 'Unverified'}
+                      </span>
+                      {u.identityVerification && (
+                        <p className="mt-1 text-xs">
+                          {ID_TYPES[u.identityVerification.idType]}: document submitted
+                        </p>
+                      )}
+                      {u.identityVerification?.documentPath && (
+                        <div className="mt-2 flex gap-2">
+                          <Button variant="secondary" size="sm" disabled={busyId === u._id} onClick={async () => {
+                            setBusyId(u._id);
+                            try {
+                              const blob = await adminService.downloadIdentityDocument(u._id);
+                              const url = URL.createObjectURL(blob);
+                              const link = document.createElement('a');
+                              link.href = url;
+                              link.download = 'identity-document';
+                              link.click();
+                              URL.revokeObjectURL(url);
+                            } catch (err) {
+                              toast.error(getApiError(err));
+                            } finally {
+                              setBusyId('');
+                            }
+                          }}>View document</Button>
+                          {u.verificationStatus !== 'verified' && (
+                          <Button variant="secondary" size="sm" disabled={busyId === u._id} onClick={() => reviewIdentity(u._id, 'verified')}>Approve</Button>
+                          )}
+                          <Button variant="danger" size="sm" disabled={busyId === u._id} onClick={() => reviewIdentity(u._id, 'rejected')}>Reject</Button>
+                        </div>
+                      )}
+                    </div>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex gap-2">
@@ -283,6 +353,14 @@ export default function AdminUsersPage() {
           </div>
         </div>
       )}
+
+      <RejectionDialog
+        open={!!rejectTarget}
+        userName={rejectTarget?.name ?? ''}
+        loading={rejectLoading}
+        onConfirm={confirmReject}
+        onClose={() => setRejectTarget(null)}
+      />
     </div>
   );
 }

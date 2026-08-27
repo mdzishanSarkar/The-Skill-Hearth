@@ -109,7 +109,7 @@ export default function FriendsPage() {
       <PageHeader
         icon={<FiUsers />}
         title="Friends"
-        subtitle="Grow your circle at the hearth — teach together, learn together."
+        subtitle="Grow your circle at the hearth: teach together, learn together."
       />
 
       <div className="mt-6 flex items-center gap-2 border-b border-gray-200 dark:border-gray-700">

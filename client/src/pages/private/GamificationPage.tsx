@@ -94,7 +94,7 @@ export default function GamificationPage() {
             <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
               {profile.nextLevel
                 ? `${profile.progressToNextLevel}% to Level ${profile.nextLevel.level}: ${profile.nextLevel.name} (${profile.nextLevel.xpRequired} XP)`
-                : 'Max level reached — legendary!'}
+                : 'Max level reached, legendary!'}
             </p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function GamificationPage() {
           </div>
         </div>
         <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">
-          Referral code: <span className="font-mono text-gray-600 dark:text-gray-400">{profile.referralCode || '—'}</span>
+          Referral code: <span className="font-mono text-gray-600 dark:text-gray-400">{profile.referralCode || 'N/A'}</span>
         </p>
       </div>
 
@@ -121,7 +121,7 @@ export default function GamificationPage() {
         <section className="card p-5">
           <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">Streaks</h3>
           <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            Keep the flame alive — miss a day and your streak resets. Use a freeze to protect it.
+            Keep the flame alive. Miss a day and your streak resets. Use a freeze to protect it.
           </p>
           <div className="mt-4 space-y-3">
             {streakTypes.map(({ key, label, emoji }) => {
@@ -149,7 +149,7 @@ export default function GamificationPage() {
                     </Button>
                   ) : (
                     <Badge color={streak?.atRisk ? 'red' : streak && streak.currentStreak >= 7 ? 'green' : 'gray'}>
-                      {streak?.atRisk ? 'At risk' : streak && streak.currentStreak >= 7 ? 'On fire 🔥' : streak?.currentStreak ? 'Active' : '—'}
+                      {streak?.atRisk ? 'At risk' : streak && streak.currentStreak >= 7 ? 'On fire 🔥' : streak?.currentStreak ? 'Active' : 'N/A'}
                     </Badge>
                   )}
                 </div>

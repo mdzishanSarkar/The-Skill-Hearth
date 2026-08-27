@@ -158,7 +158,7 @@ export default function ShowcaseNewPage() {
 
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Media (optional) <span className="font-normal text-gray-400">— {media.length}/{MAX_MEDIA}</span>
+              Media (optional) <span className="font-normal text-gray-400">· {media.length}/{MAX_MEDIA}</span>
             </label>
             <div className="flex flex-col gap-2 sm:flex-row">
               <div className="relative flex-1">

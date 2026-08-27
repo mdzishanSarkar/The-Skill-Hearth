@@ -141,7 +141,7 @@ export default function ChallengeDetailPage() {
                   {new Date(challenge.startDate).toLocaleDateString()}
                 </span>
               </div>
-              <span className="text-gray-400">—</span>
+              <span className="text-gray-400">–</span>
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 {new Date(challenge.endDate).toLocaleDateString()}
               </span>

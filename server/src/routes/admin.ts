@@ -5,6 +5,8 @@ import {
   getUserDetail,
   updateUserStatus,
   updateUserRole,
+  reviewIdentity,
+  downloadIdentityDocument,
   listReports,
   getReportDetail,
   assignReport,
@@ -31,6 +33,8 @@ router.get('/users', ...adminOnly, listUsers);
 router.get('/users/:id', ...adminOnly, getUserDetail);
 router.patch('/users/:id/status', ...adminOnly, updateUserStatus);
 router.patch('/users/:id/role', ...adminOnly, updateUserRole);
+router.patch('/users/:id/identity-review', ...adminOnly, reviewIdentity);
+router.get('/users/:id/identity-document', ...adminOnly, downloadIdentityDocument);
 router.post('/users/:id/warn', ...adminOnly, warnUser);
 router.post('/users/:id/suspend', ...adminOnly, suspendUser);
 router.post('/users/:id/ban', ...adminOnly, banUser);

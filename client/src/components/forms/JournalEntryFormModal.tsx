@@ -94,7 +94,7 @@ export default function JournalEntryFormModal({
         toast.success('Entry updated');
       } else {
         await createEntry(payload);
-        toast.success('Entry added — logging streak updated');
+        toast.success('Entry added, logging streak updated');
       }
       onSubmitted();
       onClose();

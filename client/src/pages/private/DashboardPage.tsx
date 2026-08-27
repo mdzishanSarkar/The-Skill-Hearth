@@ -82,11 +82,15 @@ export default function DashboardPage() {
         >
           {user.isEmailVerified ? 'Email verified' : 'Email not verified'}
         </span>
-        {user.isIdVerified && (
-          <span className="inline-flex rounded-full bg-indigo-100 px-2.5 py-0.5 font-medium text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300">
-            ID verified
-          </span>
-        )}
+        <span
+          className={
+            user.verificationStatus === 'verified'
+              ? 'inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 font-medium text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300'
+              : 'inline-flex rounded-full bg-amber-100 px-2.5 py-0.5 font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-300'
+          }
+        >
+          {user.verificationStatus === 'verified' ? 'Verified' : 'Not verified'}
+        </span>
       </div>
 
       {user.bio && (

@@ -21,10 +21,7 @@ export function WindowHeader({ conversation, onClose, onToggleMute, onTogglePin,
   const [menuOpen, setMenuOpen] = useState(false);
   const currentUserId = useMessengerStore((state) => state.currentUserId);
   const other = otherParticipant(conversation, currentUserId);
-  const title =
-    conversation.conversationType === 'skill'
-      ? conversation.skillContext?.skillName ?? 'Skill chat'
-      : other?.displayName ?? 'Chat';
+  const title = other?.displayName ?? 'Chat';
 
   const status =
     other?.isOnline
@@ -36,14 +33,7 @@ export function WindowHeader({ conversation, onClose, onToggleMute, onTogglePin,
   return (
     <div className="messenger-header relative z-30 flex items-center gap-2.5 overflow-visible border-b border-white/8 px-4 py-3 sm:px-3 sm:py-2.5">
       <div className="relative shrink-0">
-        {conversation.conversationType === 'skill' && conversation.skillContext ? (
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white shadow-lg shadow-black/30 ring-2 ring-white/12"
-            style={{ backgroundColor: conversation.skillContext.categoryColor }}
-          >
-            {conversation.skillContext.skillName.charAt(0).toUpperCase()}
-          </span>
-        ) : other?.avatarUrl ? (
+        {other?.avatarUrl ? (
           <img src={other.avatarUrl} alt={other.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-white/12" />
         ) : (
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent-soft)] text-sm font-semibold text-[var(--accent)] ring-2 ring-white/12">

@@ -4,6 +4,7 @@ import type { AuthRequest } from '../middleware/auth';
 import * as adminService from '../services/admin';
 import * as reportService from '../services/report';
 import * as moderationService from '../services/moderation';
+import fs from 'fs';
 
 export const listUsers = asyncHandler(async (req: Request, res: Response) => {
   const data = await adminService.listUsers({
@@ -35,6 +36,26 @@ export const updateUserRole = asyncHandler(async (req: Request, res: Response) =
   const { role } = req.body || {};
   const user = await adminService.updateUserRole(String(req.params.id), role);
   res.json({ success: true, data: { user } });
+});
+
+export const reviewIdentity = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { decision, rejectionReason } = req.body || {};
+  const user = await adminService.reviewIdentity(
+    String(req.params.id),
+    String(req.userId),
+    decision,
+    rejectionReason
+  );
+  res.json({ success: true, data: { user } });
+});
+
+export const downloadIdentityDocument = asyncHandler(async (req: Request, res: Response) => {
+  const filePath = await adminService.getIdentityDocumentPath(String(req.params.id));
+  if (!fs.existsSync(filePath)) {
+    res.status(404).json({ success: false, error: { code: 'IDENTITY_DOCUMENT_NOT_FOUND', message: 'Identity document not found' } });
+    return;
+  }
+  res.download(filePath, 'identity-document');
 });
 
 export const listReports = asyncHandler(async (req: Request, res: Response) => {

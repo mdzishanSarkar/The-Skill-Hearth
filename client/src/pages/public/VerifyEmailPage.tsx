@@ -51,7 +51,7 @@ export default function VerifyEmailPage() {
             </div>
             <h1 className="mt-5 text-2xl font-bold text-gray-900 dark:text-gray-100">Email verified</h1>
             <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
-              Your email has been verified. You can now sign in.
+              Your email has been verified. Your identity document will be reviewed by our team after registration.
             </p>
             <Link to="/login" className="mt-6 inline-block">
               <Button>Go to sign in</Button>

@@ -111,7 +111,7 @@ export default function SwapsPage() {
         icon={<FiRefreshCw className={refreshing ? 'animate-spin' : undefined} />}
         onIconClick={handleRefresh}
         title="Skill Swaps"
-        subtitle="Your skill swap agreements — accept pending swaps to start learning."
+        subtitle="Your skill swap agreements. Accept pending swaps to start learning."
       />
 
       <div className="mt-4 flex flex-wrap gap-2">

@@ -114,7 +114,7 @@ export default function SkillRadarPage() {
             <EmptyState
               icon={<FiAperture />}
               title="No intents detected yet"
-              description="Browse skills, search, and view profiles — your radar learns from your activity and builds intents automatically."
+              description="Browse skills, search, and view profiles. Your radar learns from your activity and builds intents automatically."
             />
           )
         ) : radar && radar.manualRadars.length > 0 ? (

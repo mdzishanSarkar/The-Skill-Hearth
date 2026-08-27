@@ -171,7 +171,26 @@ const Conversation = {
       })
     );
 
-    let filtered = summaries;
+    const grouped = new Map<string, ConversationSummary>();
+    for (const s of summaries) {
+      const key = String(s.otherUser._id);
+      const existing = grouped.get(key);
+      if (!existing) {
+        grouped.set(key, s);
+      } else {
+        existing.unreadCount += s.unreadCount;
+        if (!existing.isPinned && s.isPinned) existing.isPinned = true;
+        if (!existing.isMuted && s.isMuted) existing.isMuted = true;
+        const existingTime = existing.lastMessage?.createdAt ? new Date(existing.lastMessage.createdAt).getTime() : 0;
+        const newTime = s.lastMessage?.createdAt ? new Date(s.lastMessage.createdAt).getTime() : 0;
+        if (newTime > existingTime) {
+          existing.connectionId = s.connectionId;
+          existing.lastMessage = s.lastMessage;
+        }
+      }
+    }
+
+    let filtered = Array.from(grouped.values());
     if (filter === 'unread') filtered = filtered.filter((c) => c.unreadCount > 0);
     if (filter === 'pinned') filtered = filtered.filter((c) => c.isPinned);
     if (filter === 'archived') filtered = filtered.filter((c) => Boolean((prefMap.get(String(c.connectionId)) as any)?.isArchived));

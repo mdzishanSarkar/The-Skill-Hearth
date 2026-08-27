@@ -99,7 +99,7 @@ export default function MentorshipRequestForm({
                   value={goal}
                   onChange={(e) => updateGoal(index, e.target.value)}
                   maxLength={120}
-                  placeholder={`Goal ${index + 1} — e.g., Confidently bake a sourdough loaf`}
+                  placeholder={`Goal ${index + 1}, e.g. Confidently bake a sourdough loaf`}
                   className={inputClass}
                 />
                 {goals.length > 1 && (

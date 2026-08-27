@@ -1,5 +1,6 @@
 import { User } from '../models';
 import type { IUser } from '../models';
+import mongoose from 'mongoose';
 import { HttpError } from '../utils/errors';
 
 const VALID_ROLES = ['user', 'admin', 'moderator'] as const;
@@ -41,7 +42,7 @@ export async function listUsers(query: ListUsersQuery) {
 
   const [users, total] = await Promise.all([
     User.find(filter)
-      .select('-passwordHash')
+      .select('-passwordHash +identityVerification +identityVerification.documentPath')
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit)
@@ -59,11 +60,51 @@ export async function listUsers(query: ListUsersQuery) {
 }
 
 export async function getUserDetail(userId: string) {
-  const user = await User.findById(userId).select('-passwordHash').lean();
+  const user = await User.findById(userId)
+    .select('-passwordHash +identityVerification +identityVerification.documentPath')
+    .lean();
   if (!user) {
     throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
   }
   return user;
+}
+
+export async function reviewIdentity(
+  userId: string,
+  reviewerId: string,
+  decision: 'verified' | 'rejected',
+  rejectionReason?: string
+) {
+  if (!['verified', 'rejected'].includes(decision)) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid identity review decision');
+  }
+  if (decision === 'rejected' && !rejectionReason?.trim()) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'A reason is required when rejecting identity verification');
+  }
+
+  const user = await User.findById(userId).select('+identityVerification +identityVerification.documentPath');
+  if (!user) {
+    throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+  }
+  if (!user.identityVerification) {
+    throw new HttpError(400, 'IDENTITY_NOT_SUBMITTED', 'This user has not submitted an identity document');
+  }
+
+  user.verificationStatus = decision;
+  user.identityVerification.reviewedAt = new Date();
+  user.identityVerification.reviewedBy = new mongoose.Types.ObjectId(reviewerId);
+  user.identityVerification.rejectionReason = decision === 'rejected' ? rejectionReason!.trim() : undefined;
+  await user.save();
+
+  return sanitizeUser(user);
+}
+
+export async function getIdentityDocumentPath(userId: string) {
+  const user = await User.findById(userId).select('+identityVerification +identityVerification.documentPath').lean();
+  if (!user?.identityVerification?.documentPath) {
+    throw new HttpError(404, 'IDENTITY_DOCUMENT_NOT_FOUND', 'Identity document not found');
+  }
+  return user.identityVerification.documentPath;
 }
 
 export async function updateUserStatus(

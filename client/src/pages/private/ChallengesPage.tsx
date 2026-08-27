@@ -85,7 +85,7 @@ export default function ChallengesPage() {
             .finally(() => setLoading(false));
         }}
         title="Challenges"
-        subtitle="Skill challenges to motivate teaching and learning — earn badges for completing goals."
+        subtitle="Skill challenges to motivate teaching and learning. Earn badges for completing goals."
         actions={
           <Button variant="secondary" size="sm" onClick={() => {
             setPage(1);
@@ -151,7 +151,7 @@ export default function ChallengesPage() {
                         <span>{challenge.participants.length} participant{challenge.participants.length === 1 ? '' : 's'}</span>
                       </div>
                       <div className="mt-1 text-xs text-gray-400 dark:text-gray-500">
-                        {new Date(challenge.startDate).toLocaleDateString()} — {new Date(challenge.endDate).toLocaleDateString()}
+                        {new Date(challenge.startDate).toLocaleDateString()} to {new Date(challenge.endDate).toLocaleDateString()}
                         {' · by '}{challenge.creatorId?.displayName ?? 'Unknown member'}
                       </div>
                     </div>

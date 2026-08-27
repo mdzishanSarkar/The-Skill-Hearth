@@ -23,6 +23,7 @@ export interface Skill {
   proficiencyLevel: ProficiencyLevel;
   format: SessionFormat;
   sessionLength: SessionLength;
+  showOnMap: boolean;
   isActive: boolean;
   isDeleted: boolean;
   location: Pick<UserLocation, 'city' | 'neighborhood' | 'coordinates' | 'radiusPreference'> & {
@@ -78,6 +79,7 @@ export interface SkillInput {
   proficiencyLevel: ProficiencyLevel;
   format: SessionFormat;
   sessionLength: SessionLength;
+  showOnMap: boolean;
 }
 
 export interface SkillListParams {

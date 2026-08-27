@@ -197,7 +197,7 @@ export default function LearnerBoardPage() {
             </div>
           )}
           <div className="mt-6 space-y-4">
-          {requests.map((req) => (
+          {requests.filter((req) => req.authorId).map((req) => (
             <div
               key={req._id}
               className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm"

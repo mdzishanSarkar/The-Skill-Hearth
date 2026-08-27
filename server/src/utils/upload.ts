@@ -8,14 +8,17 @@ import { v2 as cloudinary } from 'cloudinary';
 
 export const UPLOADS_DIR = path.join(process.cwd(), 'uploads');
 export const AVATARS_DIR = path.join(UPLOADS_DIR, 'avatars');
+export const IDENTITY_DIR = path.join(UPLOADS_DIR, 'identity');
 
 fs.mkdirSync(AVATARS_DIR, { recursive: true });
+fs.mkdirSync(IDENTITY_DIR, { recursive: true });
 
 const ALLOWED_MIME = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 
 export const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
 const MAX_SKILL_IMAGE_BYTES = 5 * 1024 * 1024;
 export const MAX_CHAT_IMAGE_BYTES = 12 * 1024 * 1024;
+export const MAX_IDENTITY_BYTES = 10 * 1024 * 1024;
 
 const avatarUpload = multer({
   storage: multer.memoryStorage(),
@@ -50,8 +53,19 @@ const chatImageUpload = multer({
   },
 });
 
+const identityUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: MAX_IDENTITY_BYTES, files: 1 },
+  fileFilter: (_req, file, cb) => {
+    if (['application/pdf', 'image/jpeg', 'image/png'].includes(file.mimetype)) return cb(null, true);
+    cb(new HttpError(400, 'INVALID_FILE_TYPE', 'Identity documents must be PDF, JPEG, or PNG files'));
+  },
+});
+
 export function handleUpload(field: string) {
-  const middleware = field === 'media'
+  const middleware = field === 'identity'
+    ? identityUpload.single(field)
+    : field === 'media'
     ? skillImageUpload.single(field)
     : field === 'image'
       ? chatImageUpload.single(field)
@@ -62,7 +76,7 @@ export function handleUpload(field: string) {
       if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
         res.status(400).json({
           success: false,
-          error: { code: 'FILE_TOO_LARGE', message: `Image must be ${field === 'image' ? '12MB' : field === 'media' ? '5MB' : '2MB'} or smaller` },
+          error: { code: 'FILE_TOO_LARGE', message: `${field === 'identity' ? 'Identity document must be' : 'Image must be'} ${field === 'image' ? '12MB' : field === 'media' ? '5MB' : field === 'identity' ? '10MB' : '2MB'} or smaller` },
         });
         return;
       }
@@ -76,6 +90,13 @@ export function handleUpload(field: string) {
       next(err instanceof Error ? err : new Error('Upload failed'));
     });
   };
+}
+
+export async function saveIdentityFile(userId: string, file: Express.Multer.File): Promise<string> {
+  const extension = path.extname(file.originalname).toLowerCase() || '.bin';
+  const filePath = path.join(IDENTITY_DIR, `${userId}-${Date.now()}${extension}`);
+  await fs.promises.writeFile(filePath, file.buffer);
+  return filePath;
 }
 
 export async function saveAvatarFile(

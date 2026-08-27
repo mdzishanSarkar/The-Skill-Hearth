@@ -109,6 +109,9 @@ export default function ProfilePage() {
                 You
               </span>
             )}
+            <Badge color={profile.verificationStatus === 'verified' ? 'green' : 'amber'}>
+              {profile.verificationStatus === 'verified' ? '✅ Verified' : '⚠️ Not Verified'}
+            </Badge>
           </div>
           {isSelf && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{profile.email}</p>}
           {profile.bio && <p className="mt-3 text-gray-700 dark:text-gray-300">{profile.bio}</p>}

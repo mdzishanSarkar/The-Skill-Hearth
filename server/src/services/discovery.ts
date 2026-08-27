@@ -52,7 +52,7 @@ export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]
   const radiusKm = filters.radiusKm && filters.radiusKm > 0 ? filters.radiusKm : undefined;
   const limit = Math.min(MAX_PINS, Math.max(1, filters.limit || 100));
 
-  const baseMatch: Record<string, unknown> = { isDeleted: false, isActive: true };
+  const baseMatch: Record<string, unknown> = { isDeleted: false, isActive: true, showOnMap: { $ne: false } };
   if (filters.type === 'teach' || filters.type === 'learn') baseMatch.type = filters.type;
   if (filters.categoryIds && filters.categoryIds.length) {
     const validIds = filters.categoryIds
@@ -66,7 +66,7 @@ export async function getMapPins(filters: MapDiscoveryFilters): Promise<MapPin[]
     // Join with the skill's owner first to get user coordinates as fallback
     { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'teacher' } },
     { $unwind: { path: '$teacher', preserveNullAndEmptyArrays: false } },
-    { $match: { 'teacher.status': 'active', 'teacher.showOnMap': true, 'teacher.isShadowBanned': { $ne: true } } },
+    { $match: { 'teacher.status': 'active', 'teacher.isShadowBanned': { $ne: true } } },
   ];
 
   // When geo filtering, use skill coords if valid, otherwise fall back to user coords

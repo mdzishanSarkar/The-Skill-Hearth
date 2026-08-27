@@ -128,7 +128,7 @@ export default function SwapReadyMatchesPage() {
       <PageHeader
         icon={<FiRepeat />}
         title="Swap-Ready Matches"
-        subtitle="People you and they are ready to swap with — you teach something they want, and they teach something you want."
+        subtitle="People you and they are ready to swap with: you teach something they want, and they teach something you want."
       />
 
       {loading ? (

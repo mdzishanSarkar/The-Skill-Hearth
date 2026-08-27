@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { asyncHandler } from '../utils/errors';
 import * as authService from '../services/auth';
 import { AuthRequest } from '../middleware/auth';
+import { HttpError } from '../utils/errors';
 
 const REFRESH_COOKIE = 'refreshToken';
 const REFRESH_TTL_MS = 7 * 24 * 60 * 60 * 1000;
@@ -21,8 +22,9 @@ function clearRefreshCookie(res: Response): void {
 }
 
 export const register = asyncHandler(async (req: Request, res: Response) => {
-  const { email, password, username, displayName, bio, adminCode } = req.body || {};
-  const data = await authService.register({ email, password, username, displayName, bio, adminCode });
+  const { email, password, username, displayName, bio, adminCode, identityIdType } = req.body || {};
+  if (!req.file) throw new HttpError(400, 'IDENTITY_DOCUMENT_REQUIRED', 'An identity document file is required');
+  const data = await authService.register({ email, password, username, displayName, bio, adminCode, identityIdType, identityFile: req.file });
   res.status(201).json({ success: true, data });
 });
 
@@ -76,4 +78,11 @@ export const resetPassword = asyncHandler(async (req: Request, res: Response) =>
 export const me = asyncHandler(async (req: AuthRequest, res: Response) => {
   const data = await authService.getAuthUser(req.userId!);
   res.json({ success: true, data: { user: data } });
+});
+
+export const submitIdentity = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { idType } = req.body || {};
+  if (!req.file) throw new HttpError(400, 'IDENTITY_DOCUMENT_REQUIRED', 'An identity document file is required');
+  const user = await authService.submitIdentity(String(req.userId), idType, req.file);
+  res.json({ success: true, data: { user } });
 });

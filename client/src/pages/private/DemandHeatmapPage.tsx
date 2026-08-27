@@ -77,7 +77,7 @@ export default function DemandHeatmapPage() {
       <PageHeader
         icon={<FiThermometer />}
         title="Skill Demand Heatmap"
-        subtitle="Where the Hearth is hottest — the skills neighbours want to learn most, based on the last 30 days."
+        subtitle="Where the Hearth is hottest: the skills neighbours want to learn most, based on the last 30 days."
       />
 
       {loading ? (

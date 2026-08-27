@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { authenticate } from '../middleware/auth';
+import { handleUpload } from '../utils/upload';
 import {
   register,
   verifyEmail,
@@ -11,6 +12,7 @@ import {
   forgotPassword,
   resetPassword,
   me,
+  submitIdentity,
 } from '../controllers/auth';
 
 const limiterMessage = {
@@ -36,7 +38,7 @@ const tokenLimiter = rateLimit({
 
 const router = Router();
 
-router.post('/register', authLimiter, register);
+router.post('/register', authLimiter, handleUpload('identity'), register);
 router.post('/verify-email/:token', tokenLimiter, verifyEmail);
 router.post('/resend-verification', tokenLimiter, resendVerification);
 router.post('/login', authLimiter, login);
@@ -45,5 +47,6 @@ router.post('/logout', logout);
 router.post('/forgot-password', tokenLimiter, forgotPassword);
 router.post('/reset-password', tokenLimiter, resetPassword);
 router.get('/me', authenticate, me);
+router.patch('/identity', authenticate, handleUpload('identity'), submitIdentity);
 
 export default router;

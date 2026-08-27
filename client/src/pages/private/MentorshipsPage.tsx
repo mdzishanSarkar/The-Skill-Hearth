@@ -121,7 +121,7 @@ export default function MentorshipsPage() {
       <PageHeader
         icon={<FiCompass />}
         title="Mentorships"
-        subtitle="Long-term learning relationships with goals and check-ins — deeper than a single session."
+        subtitle="Long-term learning relationships with goals and check-ins, deeper than a single session."
       />
 
       <div className="mt-4 flex gap-2">

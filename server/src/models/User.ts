@@ -45,6 +45,14 @@ export interface IUserQuietHours {
   timezone: string;
 }
 
+export interface IIdentityVerification {
+  idType: 'nid' | 'student_id' | 'passport';
+  documentPath: string;
+  reviewedAt?: Date;
+  reviewedBy?: Types.ObjectId;
+  rejectionReason?: string;
+}
+
 export interface IUser extends Document {
   email: string;
   passwordHash: string;
@@ -69,7 +77,8 @@ export interface IUser extends Document {
   weeklyDigest: boolean;
   isEmailVerified: boolean;
   hasCompletedOnboarding: boolean;
-  isIdVerified: boolean;
+  verificationStatus: 'unverified' | 'verified' | 'rejected';
+  identityVerification?: IIdentityVerification;
   isShadowBanned: boolean;
   stripeCustomerId?: string;
   lastActive: Date;
@@ -217,9 +226,23 @@ const userSchema = new Schema<IUser>(
       type: Boolean,
       default: true,
     },
-    isIdVerified: {
-      type: Boolean,
-      default: false,
+    verificationStatus: {
+      type: String,
+      enum: ['unverified', 'verified', 'rejected'],
+      default: 'unverified',
+    },
+    identityVerification: {
+      type: new Schema<IIdentityVerification>(
+        {
+          idType: { type: String, enum: ['nid', 'student_id', 'passport'], required: true },
+          documentPath: { type: String, required: true, select: false, trim: true },
+          reviewedAt: { type: Date, default: undefined },
+          reviewedBy: { type: Schema.Types.ObjectId, ref: 'User', default: undefined },
+          rejectionReason: { type: String, default: undefined, maxlength: 500 },
+        },
+        { _id: false }
+      ),
+      select: false,
     },
     isShadowBanned: {
       type: Boolean,

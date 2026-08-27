@@ -31,7 +31,7 @@ const requestTemplateSchema = new Schema<IRequestTemplate>(
     },
     categoryId: {
       type: Schema.Types.ObjectId,
-      ref: 'SkillCategory',
+      ref: 'Category',
     },
     categoryName: {
       type: String,

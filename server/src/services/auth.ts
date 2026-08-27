@@ -22,6 +22,7 @@ import {
   isLoginLocked,
   recordLoginFailure,
 } from '../utils/loginAttempts';
+import { saveIdentityFile } from '../utils/upload';
 
 const VERIFICATION_TTL_MS = 24 * 60 * 60 * 1000;
 const RESET_TTL_MS = 60 * 60 * 1000;
@@ -61,12 +62,15 @@ export interface RegisterInput {
   displayName: string;
   bio?: string;
   adminCode?: string;
+  identityIdType: 'nid' | 'student_id' | 'passport';
+  identityFile: Express.Multer.File;
 }
 
 export async function register(input: RegisterInput) {
   const email = input.email.toLowerCase().trim();
   const username = input.username?.trim() || '';
   const displayName = input.displayName.trim();
+  const validIdentityTypes = ['nid', 'student_id', 'passport'] as const;
 
   if (!EMAIL_REGEX.test(email)) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid email format');
@@ -83,6 +87,9 @@ export async function register(input: RegisterInput) {
   }
   if (displayName.length < 2 || displayName.length > 50) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Display name must be between 2 and 50 characters');
+  }
+  if (!validIdentityTypes.includes(input.identityIdType) || !input.identityFile) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'A valid identity document type and file are required');
   }
 
   let role: 'user' | 'admin' = 'user';
@@ -111,7 +118,13 @@ export async function register(input: RegisterInput) {
     bio: input.bio?.trim() || '',
     role,
     hasCompletedOnboarding: false,
+    verificationStatus: 'unverified',
   });
+  user.identityVerification = {
+    idType: input.identityIdType,
+    documentPath: await saveIdentityFile(user._id.toString(), input.identityFile),
+  };
+  await user.save();
 
   const token = generateToken();
   await EmailVerificationToken.create({
@@ -182,6 +195,25 @@ export async function resendVerification(email: string) {
   return { message: 'If the account exists and is unverified, a new verification email has been sent' };
 }
 
+export async function submitIdentity(
+  userId: string,
+  idType: 'nid' | 'student_id' | 'passport',
+  identityFile: Express.Multer.File
+) {
+  if (!['nid', 'student_id', 'passport'].includes(idType) || !identityFile) {
+    throw new HttpError(400, 'VALIDATION_ERROR', 'A valid identity document type and file are required');
+  }
+  const user = await User.findById(userId);
+  if (!user) throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+  user.identityVerification = {
+    idType,
+    documentPath: await saveIdentityFile(user._id.toString(), identityFile),
+  };
+  user.verificationStatus = 'unverified';
+  await user.save();
+  return sanitizeUser(user);
+}
+
 export interface LoginInput {
   email: string;
   password: string;
@@ -221,15 +253,11 @@ export async function login({ email, password, ip }: LoginInput) {
     throw new HttpError(401, 'INVALID_CREDENTIALS', 'Invalid email or password');
   }
 
-  await clearLoginFailures(emailNorm, ip);
-
   if (!user.isEmailVerified) {
-    throw new HttpError(
-      403,
-      'EMAIL_NOT_VERIFIED',
-      'Please verify your email before signing in'
-    );
+    throw new HttpError(403, 'EMAIL_NOT_VERIFIED', 'Please verify your email before signing in');
   }
+
+  await clearLoginFailures(emailNorm, ip);
 
   user.lastActive = new Date();
   await user.save();

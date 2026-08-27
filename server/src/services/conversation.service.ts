@@ -613,8 +613,40 @@ export async function getConversationList(userId: string): Promise<ConversationS
     );
   }
 
+  const groupedByUser = new Map<string, ConversationSummary>();
+  for (const s of summaries) {
+    const otherP = s.participants.find((p) => p.userId !== userId) ?? s.participants[0];
+    const otherKey = otherP?.userId ?? s.conversationId;
+    const existing = groupedByUser.get(otherKey);
+    if (!existing) {
+      groupedByUser.set(otherKey, s);
+    } else if (s.conversationType === 'friend' && existing.conversationType === 'skill') {
+      existing.conversationType = 'friend';
+      existing.conversationId = s.conversationId;
+      existing.skillContext = undefined;
+      existing.isPinned = existing.isPinned || s.isPinned;
+      existing.isMuted = existing.isMuted || s.isMuted;
+      existing.unreadCount += s.unreadCount;
+      const existTime = existing.lastMessage ? new Date(existing.lastMessage.createdAt).getTime() : new Date(existing.updatedAt).getTime();
+      const newTime = s.lastMessage ? new Date(s.lastMessage.createdAt).getTime() : new Date(s.updatedAt).getTime();
+      if (newTime > existTime) existing.lastMessage = s.lastMessage;
+    } else {
+      existing.unreadCount += s.unreadCount;
+      existing.isPinned = existing.isPinned || s.isPinned;
+      existing.isMuted = existing.isMuted || s.isMuted;
+      const existTime = existing.lastMessage ? new Date(existing.lastMessage.createdAt).getTime() : new Date(existing.updatedAt).getTime();
+      const newTime = s.lastMessage ? new Date(s.lastMessage.createdAt).getTime() : new Date(s.updatedAt).getTime();
+      if (newTime > existTime) {
+        existing.conversationId = s.conversationId;
+        existing.lastMessage = s.lastMessage;
+      }
+    }
+  }
+
+  const deduped = Array.from(groupedByUser.values());
+
   const summariesWithPresence = await Promise.all(
-    summaries.map(async (s) => {
+    deduped.map(async (s) => {
       const withPresence = await Promise.all(
         s.participants.map(async (p) => {
           const isOnline = await isUserOnline(p.userId);

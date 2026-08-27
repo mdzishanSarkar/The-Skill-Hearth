@@ -99,7 +99,7 @@ export default function AvailabilityCalendar() {
                   {new Date(d.date).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
                 </span>
                 {d.reason && (
-                  <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">— {d.reason}</span>
+                  <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">({d.reason})</span>
                 )}
               </div>
               <button

@@ -33,7 +33,6 @@ export default function EditProfilePage() {
   const [displayName, setDisplayName] = useState(user?.displayName || '');
   const [username, setUsername] = useState(user?.username || '');
   const [bio, setBio] = useState(user?.bio || '');
-  const [showOnMap, setShowOnMap] = useState(user?.showOnMap ?? true);
   const [city, setCity] = useState(user?.location.city || '');
   const [zipCode, setZipCode] = useState(user?.location.zipCode || '');
   const [neighborhood, setNeighborhood] = useState(user?.location.neighborhood || '');
@@ -152,7 +151,6 @@ export default function EditProfilePage() {
         username: username.trim(),
         displayName,
         bio,
-        showOnMap,
         location: {
           city,
           zipCode,
@@ -243,7 +241,7 @@ export default function EditProfilePage() {
             onChange={(e) => setUsername(e.target.value)}
           />
           <p className="mt-1.5 text-xs text-gray-400 dark:text-gray-500">
-            Your unique handle. Starts with a lowercase letter, 3-20 characters — letters, numbers, dots and underscores. Must be unique.
+            Your unique handle. Starts with a lowercase letter, 3-20 characters (letters, numbers, dots and underscores). Must be unique.
           </p>
         </div>
 
@@ -395,16 +393,6 @@ export default function EditProfilePage() {
         </div>
 
         <AvailabilityCalendar />
-
-        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-          <input
-            type="checkbox"
-            checked={showOnMap}
-            onChange={(e) => setShowOnMap(e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 dark:border-gray-700 text-indigo-600 dark:text-indigo-400 focus:ring-indigo-500"
-          />
-          Show me on the skill map
-        </label>
 
         {error && (
           <div className="rounded-md bg-red-50 dark:bg-red-950/40 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>

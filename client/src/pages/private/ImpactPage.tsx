@@ -143,7 +143,7 @@ export default function ImpactPage() {
       )}
 
       <p className="mt-8 text-center text-xs text-gray-400 dark:text-gray-500">
-        Keep sharing your skills — your impact grows with every session. You can track your journey{' '}
+        Keep sharing your skills, your impact grows with every session. You can track your journey{' '}
         <Link to="/journal" className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
           in your journal
         </Link>

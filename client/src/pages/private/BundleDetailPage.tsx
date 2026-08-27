@@ -131,7 +131,7 @@ export default function BundleDetailPage() {
         </div>
 
         <Button variant="secondary" onClick={handleVote} loading={voting}>
-          {bundle.votes} vote{bundle.votes === 1 ? '' : 's'} — upvote this path
+          {bundle.votes} vote{bundle.votes === 1 ? '' : 's'}, upvote this path
         </Button>
       </div>
     </div>

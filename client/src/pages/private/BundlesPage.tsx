@@ -75,7 +75,7 @@ export default function BundlesPage() {
         icon={<FiLayers />}
         onIconClick={() => setVersion((v) => v + 1)}
         title="Skill Bundles"
-        subtitle="Curated learning paths — bundles of related skills to help you learn systematically."
+        subtitle="Curated learning paths: bundles of related skills to help you learn systematically."
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Button variant="secondary" size="sm" onClick={() => setVersion((v) => v + 1)}>
@@ -96,14 +96,14 @@ export default function BundlesPage() {
           Why bundles?
         </h2>
         <p className="mt-2 text-sm text-indigo-900/90 dark:text-indigo-200/90">
-          Learning one skill in isolation rarely sticks. Bundles group related skills into a learning path — so a
+          Learning one skill in isolation rarely sticks. Bundles group related skills into a learning path, so a
           learner can build a practical, connected set of abilities. Anyone can create a bundle from their own teach
           skills, and the community votes the best paths to the top.
         </p>
         <ol className="mt-3 space-y-1.5 text-sm text-indigo-900/90 dark:text-indigo-200/90">
-          <li><span className="font-medium">1. Create</span> — group 2–10 of your teach skills into a named path.</li>
-          <li><span className="font-medium">2. Browse</span> — discover community-built paths, sorted by votes.</li>
-          <li><span className="font-medium">3. Vote</span> — upvote bundles you'd recommend to a neighbor.</li>
+          <li><span className="font-medium">1. Create</span>: group 2–10 of your teach skills into a named path.</li>
+          <li><span className="font-medium">2. Browse</span>: discover community-built paths, sorted by votes.</li>
+          <li><span className="font-medium">3. Vote</span>: upvote bundles you'd recommend to a neighbor.</li>
         </ol>
       </div>
 

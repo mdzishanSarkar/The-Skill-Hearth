@@ -167,7 +167,7 @@ export default function SkillSuggestionsPage() {
 
       {isStaff(user?.role) && (
         <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
-          You are a moderator/admin — approve or reject pending suggestions below.
+          You are a moderator/admin. Approve or reject pending suggestions below.
         </div>
       )}
 

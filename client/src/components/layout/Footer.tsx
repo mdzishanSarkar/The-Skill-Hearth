@@ -72,7 +72,7 @@ export default function Footer() {
             </Link>
             <p className="mt-4 max-w-sm text-sm text-gray-500 dark:text-gray-400">
               Trade skills with your neighbors, grow your neighborhood's know-how, and keep learning
-              together — one exchange at a time.
+              together, one exchange at a time.
             </p>
             <div className="mt-5 flex gap-2">
               {SOCIALS.map((social) =>
@@ -91,7 +91,7 @@ export default function Footer() {
                   <span
                     key={social.label}
                     aria-label={`${social.label} (coming soon)`}
-                    title={`${social.label} — coming soon`}
+                    title={`${social.label} (coming soon)`}
                     className="flex h-9 w-9 cursor-not-allowed items-center justify-center rounded-full border border-dashed border-gray-200 text-gray-300 dark:border-gray-800 dark:text-gray-600"
                   >
                     {social.icon}

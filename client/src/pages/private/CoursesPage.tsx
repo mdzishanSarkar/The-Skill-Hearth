@@ -136,12 +136,12 @@ export default function CoursesPage() {
               <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
                 <span>{course.sessions.length} sessions</span>
                 <span>·</span>
-                <span>{course.skillId.categoryName}</span>
+                <span>{course.skillId?.categoryName}</span>
                 <span>·</span>
                 <span>{course.enrollmentCount}/{course.maxEnrollments} enrolled</span>
               </div>
               <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
-                by {course.teacherId.displayName}
+                by {course.teacherId?.displayName ?? 'Unknown'}
               </p>
               <div className="mt-3 flex gap-2">
                 <Link

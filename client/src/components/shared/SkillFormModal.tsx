@@ -34,6 +34,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
   const [proficiencyLevel, setProficiencyLevel] = useState<ProficiencyLevel>('beginner');
   const [format, setFormat] = useState<SessionFormat>('either');
   const [sessionLength, setSessionLength] = useState<SessionLength>('1hr');
+  const [showOnMap, setShowOnMap] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -49,6 +50,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
     setProficiencyLevel(skill?.proficiencyLevel ?? 'beginner');
     setFormat(skill?.format ?? 'either');
     setSessionLength(skill?.sessionLength ?? '1hr');
+    setShowOnMap(skill?.showOnMap ?? true);
     setError('');
   }, [open, skill]);
 
@@ -78,6 +80,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
         proficiencyLevel,
         format,
         sessionLength,
+        showOnMap,
       });
       onClose();
     } catch (err) {
@@ -148,7 +151,7 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
             rows={3}
             maxLength={500}
             className={inputClass}
-            placeholder={type === 'teach' ? 'Max 500 characters' : 'Optional — max 500 characters'}
+            placeholder={type === 'teach' ? 'Max 500 characters' : 'Optional (max 500 characters)'}
           />
           <p className="mt-1 text-right text-xs text-gray-400 dark:text-gray-500">{description.length}/500</p>
         </div>
@@ -191,6 +194,16 @@ export default function SkillFormModal({ open, onClose, skill, onSubmit }: Skill
             </select>
           </div>
         </div>
+
+        <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+          <input
+            type="checkbox"
+            checked={showOnMap}
+            onChange={(event) => setShowOnMap(event.target.checked)}
+            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800"
+          />
+          Show in map
+        </label>
 
         {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
 

@@ -4,7 +4,7 @@ import { describe, it, expect } from 'vitest';
 describe('RouteTitle Component', () => {
   it('should set document title based on current route', () => {
     // Placeholder test structure
-    const expectedTitle = 'Feed — The Skill Hearth';
+    const expectedTitle = 'Feed | The Skill Hearth';
     
     // In real tests:
     // 1. Mock React Router
@@ -16,15 +16,15 @@ describe('RouteTitle Component', () => {
 
   it('should update title when route changes', () => {
     // Test title update on navigation
-    const initialTitle = 'Feed — The Skill Hearth';
-    const updatedTitle = 'Challenges — The Skill Hearth';
+    const initialTitle = 'Feed | The Skill Hearth';
+    const updatedTitle = 'Challenges | The Skill Hearth';
     
     expect(initialTitle).not.toBe(updatedTitle);
   });
 
   it('should show "Page not found" as fallback for unmapped routes', () => {
     // Placeholder for testing fallback behavior
-    const fallbackTitle = 'Page not found — The Skill Hearth';
+    const fallbackTitle = 'Page not found | The Skill Hearth';
     expect(fallbackTitle).toContain('Page not found');
   });
 });

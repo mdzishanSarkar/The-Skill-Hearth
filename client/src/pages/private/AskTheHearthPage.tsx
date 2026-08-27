@@ -52,7 +52,7 @@ export default function AskTheHearthPage() {
       <PageHeader
         icon={<FiZap />}
         title="Ask the Hearth"
-        subtitle="Describe what you're looking for in plain words — we'll find skills and places nearby."
+        subtitle="Describe what you're looking for in plain words, and we'll find skills and places nearby."
       />
 
       <form onSubmit={handleSubmit} className="mt-6">
@@ -165,7 +165,7 @@ export default function AskTheHearthPage() {
 
       {!loading && !searched && (
         <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-          Tip: mention a skill or craft and a place — like <em>“pottery in dhanmondi”</em> — or say
+          Tip: mention a skill or craft and a place, like <em>“pottery in dhanmondi”</em>, or say
           “near me” to search around your saved location.
         </p>
       )}

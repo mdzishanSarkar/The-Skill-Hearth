@@ -58,7 +58,13 @@ export interface User {
   stats: UserStats;
   isEmailVerified: boolean;
   hasCompletedOnboarding: boolean;
-  isIdVerified: boolean;
+  verificationStatus: 'unverified' | 'verified' | 'rejected';
+  identityVerification?: {
+    idType: 'nid' | 'student_id' | 'passport';
+    documentPath?: string;
+    reviewedAt?: string;
+    rejectionReason?: string;
+  };
   isShadowBanned?: boolean;
   gamification?: UserGamification;
   friendIds?: string[];
@@ -96,6 +102,8 @@ export interface RegisterInput {
   displayName: string;
   bio?: string;
   adminCode?: string;
+  identityIdType: 'nid' | 'student_id' | 'passport';
+  identityFile: File;
 }
 
 export interface OnboardingSkillSelection {

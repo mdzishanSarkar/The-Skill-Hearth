@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { FiUser, FiAtSign, FiMail, FiLock, FiKey, FiShield, FiCheck, FiAlertCircle } from 'react-icons/fi';
+import { FiUser, FiAtSign, FiMail, FiLock, FiKey, FiShield, FiCheck, FiAlertCircle, FiUpload } from 'react-icons/fi';
 import { register } from '../../services/auth.service';
 import { getGoogleAuthUrl } from '../../services/social.service';
 import { getApiError } from '../../types/api.types';
@@ -28,6 +28,8 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [identityIdType, setIdentityIdType] = useState<'nid' | 'student_id' | 'passport'>('nid');
+  const [identityFile, setIdentityFile] = useState<File | null>(null);
 
   const confirmTouched = confirmPassword.length > 0;
   const passwordsMatch = confirmTouched && confirmPassword === password;
@@ -52,6 +54,10 @@ export default function RegisterPage() {
       setError('Enter the admin signup code');
       return;
     }
+    if (!identityFile) {
+      setError('Upload your identity document');
+      return;
+    }
 
     setLoading(true);
     try {
@@ -61,6 +67,8 @@ export default function RegisterPage() {
         username: username.trim(),
         displayName,
         adminCode: adminMode ? adminCode.trim() : undefined,
+        identityIdType,
+        identityFile,
       });
       setSuccess(true);
     } catch (err) {
@@ -91,7 +99,7 @@ export default function RegisterPage() {
           <h1 className="mt-5 text-2xl font-bold text-gray-900 dark:text-gray-100">Check your inbox</h1>
           <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
             We sent a verification link to <span className="font-medium">{email}</span>. Click it to
-            activate your account, then sign in.
+            activate your account. Your identity document will be reviewed by our team before your profile is marked verified.
           </p>
           <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
             Didn't get it? Check your spam folder or try again in a few minutes.
@@ -191,7 +199,7 @@ export default function RegisterPage() {
               onChange={(e) => setUsername(e.target.value)}
             />
             <p className="mt-1.5 text-xs text-gray-400 dark:text-gray-500">
-              Your unique handle. Starts with a lowercase letter, 3-20 characters — letters, numbers, dots and underscores. Cannot be changed later.
+              Your unique handle. Starts with a lowercase letter, 3-20 characters (letters, numbers, dots and underscores). Cannot be changed later.
             </p>
           </div>
           <Input
@@ -204,6 +212,31 @@ export default function RegisterPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label htmlFor="register-identityType" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Identity document
+              </label>
+              <select
+                id="register-identityType"
+                value={identityIdType}
+                onChange={(e) => setIdentityIdType(e.target.value as typeof identityIdType)}
+                className="block h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+              >
+                <option value="nid">National ID (NID)</option>
+                <option value="student_id">Student ID</option>
+                <option value="passport">Passport Number</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="register-identityFile" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">Upload document</label>
+              <label htmlFor="register-identityFile" className="flex h-11 cursor-pointer items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                <FiUpload className="h-4 w-4" />
+                <span className="truncate">{identityFile?.name || 'PDF, JPEG, or PNG (max 10MB)'}</span>
+              </label>
+              <input id="register-identityFile" className="sr-only" type="file" accept="application/pdf,image/jpeg,image/png" required onChange={(e) => setIdentityFile(e.target.files?.[0] || null)} />
+            </div>
+          </div>
           <div>
             <PasswordInput
               id="register-password"

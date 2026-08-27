@@ -310,7 +310,7 @@ export default function ConnectionDetailPage() {
 
           {journalEntries.length === 0 ? (
             <p className="mt-4 text-sm text-gray-400 dark:text-gray-500">
-              No reflections yet — capture what you learned or taught.
+              No reflections yet. Capture what you learned or taught.
             </p>
           ) : (
             <ul className="mt-4 space-y-3">

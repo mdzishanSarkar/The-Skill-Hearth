@@ -200,7 +200,7 @@ export default function CreateGroupSessionModal({
               )}
               {scheduledAt && new Date(scheduledAt).getTime() <= Date.now() && (
                 <div className="rounded-lg bg-red-50 dark:bg-red-950/40 p-2 text-xs font-medium text-red-700 dark:text-red-300">
-                  Past dates are not allowed — please pick a future time.
+                  Past dates are not allowed. Please pick a future time.
                 </div>
               )}
             </div>

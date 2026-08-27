@@ -245,6 +245,8 @@ Reference: `.env.example`
 
 > When `REDIS_URL`, Cloudinary, or Stripe credentials are not configured, the server falls back to local equivalents: MongoDB/in-memory stores, local disk uploads, and disabled billing. The application remains fully functional in development without these services.
 
+Identity verification is reviewed by admins. New accounts are marked unverified until an admin approves the submitted National ID, Student ID, or Passport Number.
+
 ---
 
 ## Feature Modules

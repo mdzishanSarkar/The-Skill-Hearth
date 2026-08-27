@@ -68,7 +68,7 @@ export default function RouteTitle() {
   const title = TITLE_ROUTES.find((route) => route.pattern.test(pathname))?.title ?? DEFAULT_TITLE;
 
   useEffect(() => {
-    document.title = `${title} — ${APP_NAME}`;
+    document.title = `${title} | ${APP_NAME}`;
   }, [title]);
 
   return null;

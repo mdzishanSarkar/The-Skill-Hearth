@@ -12,9 +12,6 @@ interface ConversationItemProps {
 }
 
 function titleFor(conversation: ConversationSummary, currentUserId: string | null): string {
-  if (conversation.conversationType === 'skill' && conversation.skillContext) {
-    return conversation.skillContext.skillName;
-  }
   const other = conversation.participants.find((p) => p.userId !== currentUserId) ?? conversation.participants[0];
   return other?.displayName ?? 'Chat';
 }
@@ -33,18 +30,6 @@ function previewFor(conversation: ConversationSummary, currentUserId: string | n
 function Avatar({ conversation, currentUserId, size = 'md' }: { conversation: ConversationSummary; currentUserId: string | null; size?: 'sm' | 'md' }) {
   const dims = size === 'sm' ? 'h-8 w-8' : 'h-10 w-10';
   const ring = size === 'sm' ? 'ring-1' : 'ring-2';
-  if (conversation.conversationType === 'skill' && conversation.skillContext) {
-    return (
-      <span className="relative shrink-0">
-        <span
-          className={clsx('flex items-center justify-center rounded-full text-sm font-bold text-white shadow-md shadow-black/20', dims, ring, 'ring-white/12')}
-          style={{ backgroundColor: conversation.skillContext.categoryColor }}
-        >
-          {conversation.skillContext.skillName.charAt(0).toUpperCase()}
-        </span>
-      </span>
-    );
-  }
   const other = conversation.participants.find((p) => p.userId !== currentUserId) ?? conversation.participants[0];
   if (other?.avatarUrl) {
     return (

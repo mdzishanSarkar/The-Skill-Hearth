@@ -170,11 +170,11 @@ export default function OnboardingPage() {
     setError('');
     if (step === 2) {
       if (!city.trim()) {
-        setError('City is required — please enter your city.');
+        setError('City is required, please enter your city.');
         return;
       }
       if (!zipCode.trim()) {
-        setError('Zip / postal code is required — please enter it.');
+        setError('Zip / postal code is required, please enter it.');
         return;
       }
     }
@@ -208,11 +208,11 @@ export default function OnboardingPage() {
           if (place.neighborhood) setNeighborhood(place.neighborhood);
           setLocationNoteTone('success');
           setLocationNote(
-            `Found ${place.city || 'your area'}${place.neighborhood ? ` — ${place.neighborhood}` : ''}. Confirm below, or tap "Update my location" to try again.`
+            `Found ${place.city || 'your area'}${place.neighborhood ? `, ${place.neighborhood}` : ''}. Confirm below, or tap "Update my location" to try again.`
           );
         } catch {
           setLocationNoteTone('info');
-          setLocationNote('Location set — we could not read the city name, so please type it below.');
+          setLocationNote('Location set. We could not read the city name, so please type it below.');
         }
       },
       (error) => {
@@ -228,7 +228,7 @@ export default function OnboardingPage() {
           setLocationNote('Location request timed out. Please try again or type your city below.');
         } else {
           setLocationNoteTone('warning');
-          setLocationNote('We could not get your location — please type your city below.');
+          setLocationNote('We could not get your location, please type your city below.');
         }
       }
     );
@@ -296,7 +296,7 @@ export default function OnboardingPage() {
       <div className="text-center">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Let's set you up</h1>
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-          Start with what you can teach and learn — the rest follows.
+          Start with what you can teach and learn, the rest follows.
         </p>
       </div>
 
@@ -307,7 +307,7 @@ export default function OnboardingPage() {
           disabled={submitting}
           className="text-sm font-medium text-gray-500 dark:text-gray-400 underline-offset-2 hover:text-indigo-600 hover:underline"
         >
-          Skip skills — set my location
+          Skip skills, set my location
         </button>
       </div>
 
@@ -334,7 +334,7 @@ export default function OnboardingPage() {
         {step === 0 && (
           <>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              What could you teach a neighbor? Pick up to {MAX_SKILLS} — or skip ahead, you can add these later.
+              What could you teach a neighbor? Pick up to {MAX_SKILLS}, or skip ahead, you can add these later.
             </p>
             <div className="mt-3 flex items-center justify-between gap-4">
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Your experience</label>
@@ -355,7 +355,7 @@ export default function OnboardingPage() {
                 onClick={handleSkipToLocation}
                 className="text-sm font-medium text-gray-500 dark:text-gray-400 underline-offset-2 hover:text-indigo-600 hover:underline"
               >
-                Skip — I don't teach anything yet
+                Skip, I don't teach anything yet
               </button>
             </div>
           </>
@@ -364,7 +364,7 @@ export default function OnboardingPage() {
         {step === 1 && (
           <>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              What would you love to learn? Pick up to {MAX_SKILLS} — or skip ahead, you can add these later.
+              What would you love to learn? Pick up to {MAX_SKILLS}, or skip ahead, you can add these later.
             </p>
             <div className="mt-4">{renderSkillPicker(learn, setLearn, '')}</div>
             <div className="mt-4 flex justify-end">
@@ -373,7 +373,7 @@ export default function OnboardingPage() {
                 onClick={handleSkipToLocation}
                 className="text-sm font-medium text-gray-500 dark:text-gray-400 underline-offset-2 hover:text-indigo-600 hover:underline"
               >
-                Skip — nothing to learn right now
+                Skip, nothing to learn right now
               </button>
             </div>
           </>
@@ -382,7 +382,7 @@ export default function OnboardingPage() {
         {step === 2 && (
           <>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              We only ever show an approximate neighborhood — never your exact spot. City and zip code
+              We only ever show an approximate neighborhood, never your exact spot. City and zip code
               are required.
             </p>
             <div className="mt-4 space-y-4">
@@ -408,7 +408,7 @@ export default function OnboardingPage() {
               )}
               {coordinates && (
                 <p className="text-xs font-medium text-green-700 dark:text-green-300">
-                  Location captured — approximated for privacy.
+                  Location captured, approximated for privacy.
                 </p>
               )}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -461,7 +461,7 @@ export default function OnboardingPage() {
 
         {step === 3 && (
           <>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Almost done — add a face to the name (optional).</p>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Almost done. Add a face to the name (optional).</p>
             <div className="mt-4 flex items-center gap-5">
               {previewUrl ? (
                 <img

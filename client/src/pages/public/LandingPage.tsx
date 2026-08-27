@@ -22,13 +22,13 @@ const FEATURES = [
   {
     icon: <FiUsers />,
     title: 'Connection by default',
-    text: 'Friends, close friends, swaps and mentorship grow naturally from shared learning — not networking pressure.',
+    text: 'Friends, close friends, swaps and mentorship grow naturally from shared learning, not networking pressure.',
     tone: 'from-indigo-500 to-violet-600',
   },
   {
     icon: <FiBookOpen />,
     title: 'Grow with a journal',
-    text: 'Reflect after every session. Build streaks, earn XP, and watch your skill — and your confidence — compound.',
+    text: 'Reflect after every session. Build streaks, earn XP, and watch your skill and your confidence compound.',
     tone: 'from-amber-500 to-orange-600',
   },
   {
@@ -67,7 +67,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base text-gray-600 sm:text-lg dark:text-gray-300">
-            The Skill Hearth is where your neighbourhood gathers to teach, learn and grow — one
+            The Skill Hearth is where your neighbourhood gathers to teach, learn and grow, one
             session at a time. No networking. Just real people and real skills.
           </p>
 

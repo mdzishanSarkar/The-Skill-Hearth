@@ -23,7 +23,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
   }
 
-  if (user && !user.hasCompletedOnboarding && location.pathname !== '/onboarding') {
+  if (user && !user.hasCompletedOnboarding && !['/onboarding', '/identity-verification'].includes(location.pathname)) {
     return <Navigate to="/onboarding" replace />;
   }
 

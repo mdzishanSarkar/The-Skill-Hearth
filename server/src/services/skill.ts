@@ -20,6 +20,7 @@ export interface SkillInput {
   proficiencyLevel: ProficiencyLevel;
   format: SessionFormat;
   sessionLength: SessionLength;
+  showOnMap: boolean;
 }
 
 export interface ListSkillsFilters {
@@ -96,7 +97,7 @@ async function loadCategory(categoryId: string) {
 }
 
 export async function createSkill(userId: string, input: SkillInput) {
-  const { type, categoryId, skillName, description = '', proficiencyLevel, format, sessionLength } = input;
+  const { type, categoryId, skillName, description = '', proficiencyLevel, format, sessionLength, showOnMap = true } = input;
 
   if (!VALID_TYPES.includes(type)) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Skill type must be "teach" or "learn"');
@@ -137,6 +138,7 @@ export async function createSkill(userId: string, input: SkillInput) {
     proficiencyLevel,
     format,
     sessionLength,
+    showOnMap: Boolean(showOnMap),
     isActive: true,
     isDeleted: false,
     location: {
@@ -241,6 +243,9 @@ export async function updateSkill(userId: string, id: string, input: Partial<Ski
       throw new HttpError(400, 'VALIDATION_ERROR', 'Invalid session length');
     }
     skill.sessionLength = input.sessionLength;
+  }
+  if (input.showOnMap !== undefined) {
+    skill.showOnMap = Boolean(input.showOnMap);
   }
   if (input.categoryId !== undefined) {
     const category = await loadCategory(input.categoryId);

@@ -24,6 +24,7 @@ export interface ISkill extends Document {
   proficiencyLevel: 'beginner' | 'intermediate' | 'advanced';
   format: 'in-person' | 'online' | 'either';
   sessionLength: '30min' | '1hr' | '2hr+';
+  showOnMap: boolean;
   isActive: boolean;
   isDeleted: boolean;
   deletedAt?: Date;
@@ -114,6 +115,10 @@ const skillSchema = new Schema<ISkill>(
       type: String,
       enum: ['30min', '1hr', '2hr+'],
       required: true,
+    },
+    showOnMap: {
+      type: Boolean,
+      default: true,
     },
     isActive: {
       type: Boolean,

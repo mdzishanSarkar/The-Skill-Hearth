@@ -60,10 +60,10 @@ export function calculateProfileCompleteness(user: IUser): ProfileCompleteness {
     suggestions.push('Verify your email address');
   }
 
-  if (user.isIdVerified) {
+  if (user.verificationStatus === 'verified') {
     score += 5;
   } else {
-    suggestions.push('Verify your ID for a trusted profile badge');
+    suggestions.push('Submit an identity document for a trusted profile badge');
   }
 
   score = Math.min(100, score);

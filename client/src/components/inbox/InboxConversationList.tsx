@@ -12,23 +12,6 @@ interface InboxConversationListProps {
   onToggleMute: (conversation: InboxConversation) => void;
 }
 
-const CATEGORY_COLORS: Record<string, string> = {
-  'Food & Cooking': '#F97316',
-  Gardening: '#22C55E',
-  'Home & Repair': '#3B82F6',
-  Crafts: '#EC4899',
-  Digital: '#8B5CF6',
-  Wellness: '#14B8A6',
-  Language: '#F59E0B',
-  'Arts & Music': '#EF4444',
-  Sports: '#10B981',
-  General: '#64748B',
-};
-
-function categoryColor(category: string): string {
-  return CATEGORY_COLORS[category] ?? CATEGORY_COLORS.General;
-}
-
 function previewFor(conversation: InboxConversation, currentUserId: string | null): string {
   const last = conversation.lastMessage;
   const prefix = last && last.senderId === currentUserId ? 'You: ' : '';
@@ -39,7 +22,7 @@ function previewFor(conversation: InboxConversation, currentUserId: string | nul
       : last.type === 'image'
         ? '📷 Photo'
         : last.content || 'No messages yet';
-  return `${conversation.skill.name} · ${prefix}${preview}`;
+  return `${prefix}${preview}`;
 }
 
 export default function InboxConversationList({
@@ -77,12 +60,13 @@ export default function InboxConversationList({
                 className="shrink-0"
                 aria-label={`Open chat with ${conversation.otherUser.displayName}`}
               >
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white shadow-md shadow-black/20 ring-2 ring-white/12"
-                  style={{ backgroundColor: categoryColor(conversation.skill.category) }}
-                >
-                  {(conversation.skill.name || 'S').charAt(0).toUpperCase()}
-                </span>
+                {conversation.otherUser.avatar ? (
+                  <img src={conversation.otherUser.avatar} alt={conversation.otherUser.displayName} className="h-10 w-10 rounded-full object-cover ring-2 ring-white/12" />
+                ) : (
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent-soft)] text-sm font-semibold text-[var(--accent)] ring-2 ring-white/12">
+                    {(conversation.otherUser.displayName || '?').charAt(0).toUpperCase()}
+                  </span>
+                )}
               </Link>
 
               <Link

@@ -3,7 +3,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { setAccessToken } from '../../services/tokenStore';
 import * as authService from '../../services/auth.service';
-import { getMe } from '../../services/users.service';
 import Spinner from '../../components/ui/Spinner';
 
 export default function OAuthCallbackPage() {
@@ -32,12 +31,14 @@ export default function OAuthCallbackPage() {
           const result = await authService.refreshSession();
           user = result.user;
         } catch {
-          user = await getMe();
+          user = await authService.getAuthUser();
         }
         if (cancelled) return;
         setUser(user);
         setStatus('authenticated');
-        if (newUser === '1') {
+        if (newUser === '1' && !user.identityVerification) {
+          navigate('/identity-verification', { replace: true });
+        } else if (newUser === '1') {
           navigate('/onboarding', { replace: true });
         } else {
           navigate('/dashboard', { replace: true });

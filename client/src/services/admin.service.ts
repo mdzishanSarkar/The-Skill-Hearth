@@ -55,6 +55,20 @@ export async function updateUserRole(id: string, role: string): Promise<User> {
   return (data.data as { user: User }).user;
 }
 
+export async function reviewIdentity(
+  id: string,
+  decision: 'verified' | 'rejected',
+  rejectionReason?: string
+): Promise<User> {
+  const { data } = await api.patch(`/admin/users/${id}/identity-review`, { decision, rejectionReason });
+  return (data.data as { user: User }).user;
+}
+
+export async function downloadIdentityDocument(id: string): Promise<Blob> {
+  const { data } = await api.get(`/admin/users/${id}/identity-document`, { responseType: 'blob' });
+  return data as Blob;
+}
+
 export async function warnUser(id: string, reason?: string, reportId?: string): Promise<User> {
   const { data } = await api.post(`/admin/users/${id}/warn`, { reason, reportId });
   return (data.data as { user: User }).user;
