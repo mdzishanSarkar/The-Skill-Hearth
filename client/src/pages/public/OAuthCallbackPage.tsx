@@ -26,12 +26,12 @@ export default function OAuthCallbackPage() {
 
     async function complete() {
       try {
-        let user = null;
+        let user;
         try {
+          user = await authService.getAuthUser();
+        } catch {
           const result = await authService.refreshSession();
           user = result.user;
-        } catch {
-          user = await authService.getAuthUser();
         }
         if (cancelled) return;
         setUser(user);

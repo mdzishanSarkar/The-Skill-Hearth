@@ -22,7 +22,8 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
     const token = getAccessToken();
     if (!token) return;
 
-    const s = io(import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000', {
+    const apiBase = (import.meta.env.VITE_API_URL as string) || (import.meta.env.DEV ? 'http://localhost:5000' : '');
+    const s = io(apiBase.replace(/\/api$/, ''), {
       auth: { token },
       withCredentials: true,
       transports: ['websocket', 'polling'],

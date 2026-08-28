@@ -44,16 +44,7 @@ const startServer = (port: number) => {
    console.log(`Server running on port ${port}`);
  });
 
- serverInstance.on("error", async (error: NodeJS.ErrnoException) => {
-   if (error.code === "EADDRINUSE") {
-     const fallbackPort = port + 1;
-     console.warn(`Port ${port} is already in use. Retrying on ${fallbackPort}...`);
-     process.env.PORT = String(fallbackPort);
-     httpServer.close();
-     server = startServer(fallbackPort);
-     return;
-   }
-
+ serverInstance.on("error", (error: NodeJS.ErrnoException) => {
    console.error("Failed to start server:", error);
    process.exit(1);
  });

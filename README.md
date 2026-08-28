@@ -195,7 +195,7 @@ npm run dev                    # runs the API (:5000) and the SPA (:5173) concur
 | Service | URL                    |
 | ------- | ---------------------- |
 | Client  | http://localhost:5173  |
-| Server  | http://localhost:5000  |
+| Server  | https://the-skill-hearth.onrender.com  |
 
 ### 6. Seed Demo Data (Optional)
 
@@ -241,7 +241,7 @@ Reference: `.env.example`
 | `EMAIL_FROM`              | Server  | From-address for outbound email                            |
 | `CLOUDINARY_*`            | Server  | Cloudinary credentials (avatar and media uploads)          |
 | `STRIPE_SECRET_KEY`       | Server  | Stripe secret key (tipping and promotions)                 |
-| `VITE_API_URL`            | Client  | Base URL of the API (`http://localhost:5000/api`)          |
+| `VITE_API_URL`            | Client  | Base URL of the API (`https://the-skill-hearth.onrender.com/api`)          |
 
 > When `REDIS_URL`, Cloudinary, or Stripe credentials are not configured, the server falls back to local equivalents: MongoDB/in-memory stores, local disk uploads, and disabled billing. The application remains fully functional in development without these services.
 

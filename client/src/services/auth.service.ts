@@ -20,9 +20,7 @@ export async function register(input: RegisterInput): Promise<void> {
   form.append('identity', input.identityFile);
   if (input.bio) form.append('bio', input.bio);
   if (input.adminCode) form.append('adminCode', input.adminCode);
-  await api.post('/auth/register', form, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  await api.post('/auth/register', form);
 }
 
 export async function verifyEmail(token: string): Promise<User> {

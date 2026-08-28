@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: the-skill-hearth-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        value: https://the-skill-hearth.vercel.app
+      - key: SITE_URL
+        value: https://the-skill-hearth.vercel.app
+      - key: ADMIN_SIGNUP_CODE
+        sync: false

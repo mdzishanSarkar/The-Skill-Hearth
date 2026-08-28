@@ -3,6 +3,7 @@ import type { Transporter } from 'nodemailer';
 
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 const EMAIL_FROM = process.env.EMAIL_FROM || '"The Skill Hearth" <no-reply@gmail.com>';
+const SMTP_TIMEOUT_MS = 15_000;
 
 let transporter: Transporter | null = null;
 
@@ -21,6 +22,9 @@ function getTransporter(): Transporter {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: Number(process.env.SMTP_PORT) || 587,
     secure: Number(process.env.SMTP_PORT) === 465,
+    connectionTimeout: SMTP_TIMEOUT_MS,
+    greetingTimeout: SMTP_TIMEOUT_MS,
+    socketTimeout: SMTP_TIMEOUT_MS,
     auth: {
       user: process.env.SMTP_USER || '',
       pass: process.env.SMTP_PASS || '',
@@ -51,13 +55,23 @@ async function sendEmail(
     return { delivered: false };
   }
 
+  let timeoutHandle: ReturnType<typeof setTimeout> | undefined;
   try {
-    await getTransporter().sendMail({ from: EMAIL_FROM, to, subject, html });
+    await Promise.race([
+      getTransporter().sendMail({ from: EMAIL_FROM, to, subject, html }),
+      new Promise<never>((_, reject) => {
+        timeoutHandle = setTimeout(() => {
+          reject(new Error(`SMTP send timed out after ${SMTP_TIMEOUT_MS}ms`));
+        }, SMTP_TIMEOUT_MS);
+      }),
+    ]);
     console.log(`✉️  Email sent to ${to} | ${subject}`);
     return { delivered: true };
   } catch (error) {
     console.error(`Email send FAILED for ${to}:`, error);
     return { delivered: false };
+  } finally {
+    if (timeoutHandle) clearTimeout(timeoutHandle);
   }
 }
 

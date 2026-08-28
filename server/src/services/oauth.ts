@@ -8,12 +8,12 @@ import { RefreshToken } from '../models';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
-const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || 'http://localhost:5000/api/oauth/google/callback';
+const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || 'https://the-skill-hearth.onrender.com/api/oauth/google/callback';
 const APPLE_CLIENT_ID = process.env.APPLE_CLIENT_ID || '';
 const APPLE_TEAM_ID = process.env.APPLE_TEAM_ID || '';
 const APPLE_KEY_ID = process.env.APPLE_KEY_ID || '';
 const APPLE_PRIVATE_KEY = process.env.APPLE_PRIVATE_KEY || '';
-const APPLE_REDIRECT_URI = process.env.APPLE_REDIRECT_URI || 'http://localhost:5000/api/oauth/apple/callback';
+const APPLE_REDIRECT_URI = process.env.APPLE_REDIRECT_URI || 'https://the-skill-hearth.onrender.com/api/oauth/apple/callback';
 
 interface OAuthUserInfo {
   providerUserId: string;
