@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useGeolocation } from '../../hooks/useGeolocation';
-import { useTheme } from '../../hooks/useTheme';
 import { getCategories } from '../../services/skills';
 import { geocodePlace, getMapPins } from '../../services/discovery';
 import { updateMe } from '../../services/users.service';
@@ -11,7 +10,7 @@ import { formatDistanceShort } from '../../utils/formatDistance';
 import { getSkillEmoji } from '../../data/skillVisuals';
 import type { Category } from '../../types/skill.types';
 import type { MapFilterType, MapPin } from '../../types/discovery.types';
-import type { MapMode, UserMapPreferences } from '../../types/user.types';
+import type { UserMapPreferences } from '../../types/user.types';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Spinner from '../../components/ui/Spinner';
@@ -21,14 +20,8 @@ import MapFilters from '../../components/map/MapFilters';
 const DEFAULT_RADIUS_KM = 10;
 const DEFAULT_CENTER: [number, number] = [90.4125, 23.8103];
 
-function resolveMapMode(pref: MapMode | undefined, isDark: boolean): 'day' | 'night' {
-  if (pref === 'day' || pref === 'night') return pref;
-  return isDark ? 'night' : 'day';
-}
-
 export default function MapDiscoveryPage() {
   const { user, isAuthenticated, setUser } = useAuth();
-  const { isDark } = useTheme();
   const navigate = useNavigate();
   const didInteract = useRef(false);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -44,19 +37,12 @@ export default function MapDiscoveryPage() {
   const [fallbackError, setFallbackError] = useState('');
   const [geocoding, setGeocoding] = useState(false);
   const [searching, setSearching] = useState(false);
-  const [mode, setMode] = useState<'day' | 'night'>(() =>
-    resolveMapMode(user?.mapPreferences?.defaultMode, isDark),
-  );
+  const [showFilters, setShowFilters] = useState(false);
   const [clusterMarkers, setClusterMarkers] = useState<boolean>(
     user?.mapPreferences?.clusterMarkers ?? true,
   );
   const [showList, setShowList] = useState<boolean>(user?.mapPreferences?.defaultView === 'list');
   const [recenterTick, setRecenterTick] = useState(0);
-
-  useEffect(() => {
-    if (didInteract.current) return;
-    setMode(resolveMapMode(user?.mapPreferences?.defaultMode, isDark));
-  }, [isDark, user]);
 
   useEffect(() => {
     if (user?.mapPreferences && !didInteract.current) {
@@ -65,7 +51,7 @@ export default function MapDiscoveryPage() {
     }
   }, [user]);
 
-  const night = mode === 'night';
+  const night = false;
   const overlayPanel = night
     ? 'border-gray-700 bg-gray-900/95 text-gray-100'
     : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-900 dark:text-gray-100';
@@ -79,13 +65,6 @@ export default function MapDiscoveryPage() {
     } catch {
       // Non-critical preference save; keep the local selection.
     }
-  }
-
-  function handleToggleMode() {
-    const next = mode === 'day' ? 'night' : 'day';
-    didInteract.current = true;
-    setMode(next);
-    void persistMapPreferences({ defaultMode: next });
   }
 
   function handleToggleCluster() {
@@ -206,7 +185,6 @@ export default function MapDiscoveryPage() {
           pins={pins}
           center={geo.coordinates ?? DEFAULT_CENTER}
           isAuthenticated={isAuthenticated}
-          mode={mode}
           clusterMarkers={clusterMarkers}
           recenterSignal={recenterTick}
         />
@@ -251,7 +229,20 @@ export default function MapDiscoveryPage() {
             )}
           </form>
 
-          <div className="w-full sm:w-72 sm:max-w-[calc(100vw-2.5rem)]">
+          <button
+            type="button"
+            onClick={() => setShowFilters((visible) => !visible)}
+            aria-expanded={showFilters}
+            aria-controls="map-filters"
+            className={`flex items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-semibold shadow-lg backdrop-blur sm:hidden ${overlayPanel}`}
+          >
+            <span>Filters</span>
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+              {showFilters ? 'Hide' : 'Show'}
+            </span>
+          </button>
+
+          <div id="map-filters" className={`w-full sm:w-72 sm:max-w-[calc(100vw-2.5rem)] ${showFilters ? '' : 'hidden sm:block'}`}>
             <MapFilters
               categories={categories}
               selectedCategoryIds={selectedCategoryIds}
@@ -291,35 +282,6 @@ export default function MapDiscoveryPage() {
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-5.1-7-11a7 7 0 0114 0c0 5.9-7 11-7 11z" />
                   <circle cx="12" cy="10" r="2.5" />
-                </svg>
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={handleToggleMode}
-              aria-label={night ? 'Switch to day mode' : 'Switch to night mode'}
-              title={night ? 'Switch to day mode' : 'Switch to night mode'}
-              className={`flex h-10 w-10 items-center justify-center rounded-full border shadow backdrop-blur transition-colors ${
-                night
-                  ? 'border-amber-400/40 bg-gray-900/95 text-amber-300 hover:bg-gray-800'
-                  : 'border-blue-200 bg-white dark:bg-gray-900/95 text-blue-600 dark:text-blue-400 hover:bg-blue-50'
-              }`}
-            >
-              {night ? (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                  <circle cx="12" cy="12" r="4" />
-                  <path
-                    strokeLinecap="round"
-                    d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-                  />
-                </svg>
-              ) : (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-                  />
                 </svg>
               )}
             </button>

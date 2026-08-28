@@ -13,22 +13,12 @@ interface MapViewProps {
   center: [number, number];
   zoom?: number;
   isAuthenticated: boolean;
-  mode?: 'day' | 'night';
   clusterMarkers?: boolean;
   recenterSignal?: number;
 }
 
-const TILE_URLS: Record<'day' | 'night', { url: string; attribution: string }> = {
-  day: {
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  },
-  night: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  },
-};
+const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 function Recenter({
   center,
@@ -152,21 +142,19 @@ export default function MapView({
   center,
   zoom = 12,
   isAuthenticated,
-  mode = 'day',
   clusterMarkers = true,
   recenterSignal,
 }: MapViewProps) {
   const centerLatLng: [number, number] = [center[1], center[0]];
-  const tiles = TILE_URLS[mode];
   return (
     <MapContainer
       center={centerLatLng}
       zoom={zoom}
-      className={`h-full w-full${mode === 'night' ? ' map--night' : ''}`}
+      className="h-full w-full"
       zoomControl={false}
       style={{ zIndex: 0 }}
     >
-      <TileLayer attribution={tiles.attribution} url={tiles.url} />
+      <TileLayer attribution={TILE_ATTRIBUTION} url={TILE_URL} />
       <ZoomControl position="bottomleft" />
       <MapSizer />
       <Recenter center={centerLatLng} zoom={zoom} signal={recenterSignal} />

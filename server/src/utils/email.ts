@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
+import { HttpError } from './errors';
 
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 const EMAIL_FROM = process.env.EMAIL_FROM || '"The Skill Hearth" <no-reply@gmail.com>';
@@ -49,10 +50,11 @@ async function sendEmail(
   }
 
   if (!smtpConfigured()) {
-    console.warn(
-      '⚠️  SMTP not configured (SMTP_HOST/PORT/USER/PASS missing in server/.env). Email was NOT sent.'
+    throw new HttpError(
+      503,
+      'EMAIL_DELIVERY_UNAVAILABLE',
+      'Email delivery is not configured. Please try again later.'
     );
-    return { delivered: false };
   }
 
   let timeoutHandle: ReturnType<typeof setTimeout> | undefined;
@@ -69,7 +71,11 @@ async function sendEmail(
     return { delivered: true };
   } catch (error) {
     console.error(`Email send FAILED for ${to}:`, error);
-    return { delivered: false };
+    throw new HttpError(
+      503,
+      'EMAIL_DELIVERY_FAILED',
+      'The verification email could not be sent. Please try again.'
+    );
   } finally {
     if (timeoutHandle) clearTimeout(timeoutHandle);
   }
