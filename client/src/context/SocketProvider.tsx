@@ -32,9 +32,16 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
       reconnectionDelay: 1000,
     });
 
+    const HEARTBEAT_INTERVAL_MS = 20000;
+    const sendHeartbeat = () => {
+      if (s.connected) s.emit('ping');
+    };
+
     s.on('connect', () => {
       console.log('Socket connected');
+      sendHeartbeat();
     });
+    const heartbeatInterval = setInterval(sendHeartbeat, HEARTBEAT_INTERVAL_MS);
 
     s.on('connect_error', () => {
       console.warn('Socket connection error');
@@ -44,6 +51,7 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
     setSocket(s);
 
     return () => {
+      clearInterval(heartbeatInterval);
       s.disconnect();
       socketRef.current = null;
       setSocket(null);

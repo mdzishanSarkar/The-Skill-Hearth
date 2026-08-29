@@ -1,13 +1,19 @@
-import { User } from '../models';
+import { User, Connection, Friendship } from '../models';
 import { getIO } from '../config/socket';
 import { getRedis, redisDel, redisSetEx } from '../config/redis';
 
 const PRESENCE_PREFIX = 'presence:';
 const PRESENCE_FRIENDS_PREFIX = 'presence:friends:';
-const PRESENCE_TTL_SECONDS = 35;
+// Long enough to survive browser-throttled heartbeat intervals (~60s) while
+// still pausing presence shortly after a real disconnect. Refreshed by the
+// client's heartbeat and by server-side message activity.
+const PRESENCE_TTL_SECONDS = 75;
 const LAST_SEEN_TTL_SECONDS = 7 * 24 * 60 * 60;
 
-const onlineUsers = new Set<string>();
+// Tracks live sockets per user. A user is only "offline" once their LAST
+// socket disconnects, so multiple tabs/devices and reconnects no longer
+// flip an actively-texting user to offline.
+const activeConnections = new Map<string, Set<string>>();
 
 function presenceKey(userId: string): string {
   return `${PRESENCE_PREFIX}${userId}`;
@@ -22,8 +28,47 @@ async function getFriendIds(userId: string): Promise<string[]> {
   return (user?.friendIds ?? []).map((id) => String(id));
 }
 
+/**
+ * All users this user can converse with: friendships plus accepted/completed
+ * skill connections (both directions). Used to scope presence broadcasts so
+ * skill-chat peers get real-time online indicators too.
+ */
+export async function getPresenceRecipients(userId: string): Promise<string[]> {
+  const id = String(userId);
+  const recipientIds = new Set<string>();
+  for (const friendId of await getFriendIds(id)) {
+    if (friendId !== id) recipientIds.add(friendId);
+  }
+  try {
+    const [friendships, connections] = await Promise.all([
+      Friendship.find({
+        status: 'accepted',
+        $or: [{ requesterId: id }, { addresseeId: id }],
+      })
+        .select('requesterId addresseeId')
+        .lean(),
+      Connection.find({
+        status: { $in: ['accepted', 'completed'] },
+        $or: [{ requesterId: id }, { teacherId: id }],
+      })
+        .select('requesterId teacherId')
+        .lean(),
+    ]);
+    for (const f of friendships) {
+      const other = String(f.requesterId) === id ? String(f.addresseeId) : String(f.requesterId);
+      if (other !== id) recipientIds.add(other);
+    }
+    for (const c of connections) {
+      const other = String(c.requesterId) === id ? String(c.teacherId) : String(c.requesterId);
+      if (other !== id) recipientIds.add(other);
+    }
+  } catch {
+    // best-effort
+  }
+  return [...recipientIds];
+}
+
 async function setOnlineFlag(userId: string, isOnline: boolean, lastSeen = new Date()): Promise<void> {
-  onlineUsers[isOnline ? 'add' : 'delete'](userId);
   const redis = await getRedis();
   if (!redis) return;
   try {
@@ -68,45 +113,72 @@ async function removeFromFriendSets(userId: string): Promise<void> {
   }
 }
 
+/**
+ * Registers a connected socket and transitions the user to online when it is
+ * their first socket. Returns the recipients who were notified (empty when
+ * the user already had other active sockets).
+ */
+export async function onUserConnect(userId: string, socketId: string): Promise<string[]> {
+  const id = String(userId);
+  const sockets = activeConnections.get(id);
+  const isFirstSocket = !sockets || sockets.size === 0;
+
+  if (!sockets) activeConnections.set(id, new Set([socketId]));
+  else sockets.add(socketId);
+
+  if (!isFirstSocket) return [];
+
+  await setOnlineFlag(id, true);
+  await addToFriendSets(id);
+  const recipients = await getPresenceRecipients(id);
+  const io = getIO();
+  for (const peerId of recipients) {
+    io.to(`user_${peerId}`).emit('messenger:presence_update', { userId: id, isOnline: true });
+    io.to(`user_${peerId}`).emit('friend:online', { userId: id });
+  }
+  return recipients;
+}
+
+/**
+ * Unregisters a disconnected socket (idempotent) and transitions the user to
+ * offline only when it was their last socket. Returns the recipients notified,
+ * or an empty array if the user still has active sockets.
+ */
+export async function onUserDisconnect(userId: string, socketId: string): Promise<string[]> {
+  const id = String(userId);
+  const sockets = activeConnections.get(id);
+  if (!sockets) return [];
+
+  sockets.delete(socketId);
+  if (sockets.size > 0) return [];
+
+  activeConnections.delete(id);
+
+  await setOnlineFlag(id, false);
+  await removeFromFriendSets(id);
+  const recipients = await getPresenceRecipients(id);
+  const lastSeen = new Date();
+  const io = getIO();
+  for (const peerId of recipients) {
+    io.to(`user_${peerId}`).emit('messenger:presence_update', {
+      userId: id,
+      isOnline: false,
+      lastSeen: lastSeen.toISOString(),
+    });
+    io.to(`user_${peerId}`).emit('friend:offline', {
+      userId: id,
+      lastSeen: lastSeen.toISOString(),
+    });
+  }
+  return recipients;
+}
+
 export async function setUserOnline(userId: string): Promise<void> {
   await setOnlineFlag(userId, true);
 }
 
 export async function setUserOffline(userId: string): Promise<void> {
   await setOnlineFlag(userId, false);
-}
-
-export async function onUserConnect(userId: string): Promise<void> {
-  await setOnlineFlag(userId, true);
-  await addToFriendSets(userId);
-  const friends = await getFriendIds(userId);
-  const io = getIO();
-  for (const friendId of friends) {
-    io.to(`user_${friendId}`).emit('messenger:presence_update', {
-      userId,
-      isOnline: true,
-    });
-    io.to(`user_${friendId}`).emit('friend:online', { userId });
-  }
-}
-
-export async function onUserDisconnect(userId: string): Promise<void> {
-  await setOnlineFlag(userId, false);
-  await removeFromFriendSets(userId);
-  const friends = await getFriendIds(userId);
-  const lastSeen = new Date();
-  const io = getIO();
-  for (const friendId of friends) {
-    io.to(`user_${friendId}`).emit('messenger:presence_update', {
-      userId,
-      isOnline: false,
-      lastSeen: lastSeen.toISOString(),
-    });
-    io.to(`user_${friendId}`).emit('friend:offline', {
-      userId,
-      lastSeen: lastSeen.toISOString(),
-    });
-  }
 }
 
 export async function heartbeat(userId: string): Promise<void> {
@@ -120,7 +192,8 @@ export async function heartbeat(userId: string): Promise<void> {
 }
 
 export async function isUserOnline(userId: string): Promise<boolean> {
-  if (onlineUsers.has(userId)) return true;
+  const sockets = activeConnections.get(userId);
+  if (sockets && sockets.size > 0) return true;
   const redis = await getRedis();
   if (!redis) return false;
   try {
@@ -166,7 +239,7 @@ export async function getOnlineFriends(userId: string): Promise<string[]> {
 }
 
 export async function invalidatePresenceCache(userId: string): Promise<void> {
-  onlineUsers.delete(userId);
+  activeConnections.delete(userId);
   await redisDel(presenceKey(userId));
 }
 

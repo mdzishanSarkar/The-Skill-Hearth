@@ -5,6 +5,7 @@ import * as conversationService from '../services/conversation.service';
 import type { ConversationType } from '../services/conversation.service';
 import type { SocketUser } from '../types/socket.types';
 import { checkRateLimit } from '../utils/rateLimit';
+import { heartbeat } from '../services/presence';
 
 const typingTimers = new Map<string, NodeJS.Timeout>();
 
@@ -206,6 +207,7 @@ export function setupChatSockets(io: Server, socket: Socket, user: SocketUser) {
           const total = await conversationService.getTotalUnread(user.userId);
           socketEmit(socket, 'messenger:unread_total_updated', { total });
         }
+        heartbeat(user.userId).catch(() => {});
       } catch (error) {
         const code = error instanceof Error && 'code' in error ? String((error as { code?: unknown }).code ?? 'MESSAGE_ERROR') : 'MESSAGE_ERROR';
         const message = error instanceof Error ? error.message : 'Message could not be sent.';

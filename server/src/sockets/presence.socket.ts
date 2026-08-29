@@ -2,7 +2,13 @@ import type { Server, Socket } from 'socket.io';
 import { User, Friendship } from '../models';
 import type { SocketUser } from '../types/socket.types';
 import { onUserConnect, onUserDisconnect, heartbeat } from '../services/presence';
+import { invalidateConversationCache } from '../services/conversation.service';
 import { getDirectMessageRoomId } from '../services/friendship';
+
+async function invalidatePeerCaches(recipients: string[], userId: string): Promise<void> {
+  await invalidateConversationCache(userId).catch(() => {});
+  await Promise.allSettled(recipients.map((id) => invalidateConversationCache(id)));
+}
 
 export function setupPresenceSockets(io: Server, socket: Socket, user: SocketUser) {
   socket.on('dm:join', async (otherUserId: string) => {
@@ -30,13 +36,13 @@ export function setupPresenceSockets(io: Server, socket: Socket, user: SocketUse
 }
 
 export async function handleUserConnected(io: Server, socket: Socket, user: SocketUser) {
-  await onUserConnect(user.userId);
+  const recipients = await onUserConnect(user.userId, socket.id);
+  await invalidatePeerCaches(recipients, user.userId);
   void io;
-  void socket;
 }
 
 export async function handleUserDisconnected(io: Server, socket: Socket, user: SocketUser) {
-  await onUserDisconnect(user.userId);
+  const recipients = await onUserDisconnect(user.userId, socket.id);
+  await invalidatePeerCaches(recipients, user.userId);
   void io;
-  void socket;
 }

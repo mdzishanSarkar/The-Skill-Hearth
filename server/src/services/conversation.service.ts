@@ -411,12 +411,31 @@ function buildSummary(
   };
 }
 
+async function applyPresenceToSummaries(summaries: ConversationSummary[]): Promise<ConversationSummary[]> {
+  return Promise.all(
+    summaries.map(async (s) => {
+      const withPresence = await Promise.all(
+        s.participants.map(async (p) => {
+          const isOnline = await isUserOnline(p.userId);
+          const lastSeen = await getLastSeen(p.userId);
+          return {
+            ...p,
+            isOnline,
+            lastSeen: lastSeen ? lastSeen.toISOString() : null,
+          };
+        })
+      );
+      return { ...s, participants: withPresence };
+    })
+  );
+}
+
 export async function getConversationList(userId: string): Promise<ConversationSummary[]> {
   const redis = await getRedis();
   if (redis) {
     try {
       const cached = await redis.get(`${CONVERSATION_CACHE_PREFIX}${userId}`);
-      if (cached) return JSON.parse(cached) as ConversationSummary[];
+      if (cached) return applyPresenceToSummaries(JSON.parse(cached) as ConversationSummary[]);
     } catch {
       // fall through
     }
@@ -645,22 +664,7 @@ export async function getConversationList(userId: string): Promise<ConversationS
 
   const deduped = Array.from(groupedByUser.values());
 
-  const summariesWithPresence = await Promise.all(
-    deduped.map(async (s) => {
-      const withPresence = await Promise.all(
-        s.participants.map(async (p) => {
-          const isOnline = await isUserOnline(p.userId);
-          const lastSeen = await getLastSeen(p.userId);
-          return {
-            ...p,
-            isOnline,
-            lastSeen: lastSeen ? lastSeen.toISOString() : null,
-          };
-        })
-      );
-      return { ...s, participants: withPresence };
-    })
-  );
+  const summariesWithPresence = await applyPresenceToSummaries(deduped);
 
   const sorted = summariesWithPresence
     .filter((s) => !s.isArchived && !s.deletedAt)
