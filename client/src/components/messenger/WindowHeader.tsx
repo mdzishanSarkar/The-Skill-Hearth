@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import clsx from 'clsx';
-import { FiX, FiMoreVertical, FiVolume2, FiVolumeX, FiTrash2, FiMapPin } from 'react-icons/fi';
+import { FiX, FiMoreVertical, FiVolume2, FiVolumeX, FiTrash2, FiMapPin, FiUser } from 'react-icons/fi';
 import type { ConversationSummary } from '../../types/messenger.types';
 import { useMessengerStore } from '../../stores/messengerStore';
 import { formatRelativeSeen } from './format';
@@ -33,11 +33,11 @@ export function WindowHeader({ conversation, onClose, onToggleMute, onTogglePin,
   return (
     <div className="messenger-header relative z-30 flex items-center gap-2.5 overflow-visible border-b border-white/8 px-4 py-3 sm:px-3 sm:py-2.5">
       <div className="relative shrink-0">
-        {other?.avatarUrl ? (
+        {other?.avatarUrl && other.avatarUrl.trim() ? (
           <img src={other.avatarUrl} alt={other.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-white/12" />
         ) : (
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent-soft)] text-sm font-semibold text-[var(--accent)] ring-2 ring-white/12">
-            {(other?.displayName ?? '?').charAt(0).toUpperCase()}
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)] ring-2 ring-white/12">
+            <FiUser className="h-4 w-4" />
           </span>
         )}
         <span

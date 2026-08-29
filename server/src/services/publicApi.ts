@@ -49,7 +49,7 @@ export async function revokeApiKey(keyId: string, ownerId: string) {
   const key = await ApiKey.findOneAndUpdate(
     { _id: toObjectId(keyId), ownerId: toObjectId(ownerId) },
     { status: 'revoked' },
-    { new: true }
+    { returnDocument: 'after' }
   );
   if (!key) throw new HttpError(404, 'NOT_FOUND', 'API key not found');
   return key.toJSON();
@@ -68,7 +68,7 @@ export async function validateApiKey(key: string) {
       requestCount: { $lt: apiKey.rateLimit },
     },
     { $inc: { requestCount: 1 }, $set: { lastUsedAt: new Date() } },
-    { new: true },
+    { returnDocument: 'after' },
   ).lean();
   if (!updated) {
     throw new HttpError(429, 'RATE_LIMITED', 'API rate limit exceeded');

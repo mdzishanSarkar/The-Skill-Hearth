@@ -82,7 +82,7 @@ export async function markAsRead(notificationId: string, userId: string) {
   const notification = await Notification.findOneAndUpdate(
     { _id: id, userId: new Types.ObjectId(userId) },
     { $set: { isRead: true } },
-    { new: true },
+    { returnDocument: 'after' },
   );
   if (!notification) throw new HttpError(404, 'NOTIFICATION_NOT_FOUND', 'Notification not found');
   return notification.toJSON();
@@ -93,7 +93,7 @@ export async function markAsUnread(notificationId: string, userId: string) {
   const notification = await Notification.findOneAndUpdate(
     { _id: id, userId: new Types.ObjectId(userId) },
     { $set: { isRead: false } },
-    { new: true },
+    { returnDocument: 'after' },
   );
   if (!notification) throw new HttpError(404, 'NOTIFICATION_NOT_FOUND', 'Notification not found');
   return notification.toJSON();

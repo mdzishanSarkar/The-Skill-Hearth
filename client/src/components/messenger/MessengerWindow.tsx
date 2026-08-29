@@ -98,7 +98,7 @@ export function MessengerWindow({ conversationId, conversationType, embedded = f
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: 12 }}
       transition={{ duration: 0.18, ease: 'easeOut' }}
-      className={`messenger-window flex h-full w-full flex-col overflow-visible border border-white/8 ${
+      className={`messenger-window flex h-full w-full flex-col overflow-hidden border border-white/8 ${
         embedded ? '' : 'sm:w-80 sm:rounded-[28px] sm:shadow-[0_20px_48px_rgba(0,0,0,0.32)]'
       }`}
       aria-label={`Conversation with ${conversation.skillContext?.skillName ?? 'chat'}`}

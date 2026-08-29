@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { FiUser } from 'react-icons/fi';
 import { resolveMediaUrl } from '../../utils/media';
+import { getAvatarDisplayMode } from '../../utils/avatar';
 
 interface AvatarProps {
   src?: string;
@@ -22,10 +23,12 @@ const iconSizes = {
 };
 
 export default function Avatar({ src, name, size = 'md', className }: AvatarProps) {
-  if (src?.trim()) {
+  const { mode, src: safeSrc } = getAvatarDisplayMode(src, name);
+
+  if (mode === 'image' && safeSrc) {
     return (
       <img
-        src={resolveMediaUrl(src)}
+        src={resolveMediaUrl(safeSrc)}
         alt={name}
         onError={(event) => {
           event.currentTarget.style.display = 'none';
@@ -40,7 +43,6 @@ export default function Avatar({ src, name, size = 'md', className }: AvatarProp
     <div
       title={name}
       aria-label={name}
-      hidden={Boolean(src?.trim())}
       className={clsx(
         'flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-amber-100 text-indigo-500 ring-2 ring-white dark:from-indigo-900/60 dark:to-amber-900/40 dark:text-indigo-300 dark:ring-gray-800',
         sizes[size],

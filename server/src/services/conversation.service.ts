@@ -948,7 +948,7 @@ export async function markConversationRead(params: {
         lastReadAt: new Date(),
       },
     },
-    { upsert: true, new: true, setDefaultsOnInsert: true }
+    { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
   );
 
   await resetUnread(userId, conversationId);
@@ -1355,7 +1355,7 @@ export async function updateConversationSettings(params: {
   const result = await ConversationSettings.findOneAndUpdate(
     { userId: assertValidObjectId(userId, 'userId'), conversationId },
     update,
-    { upsert: true, new: true, setDefaultsOnInsert: true }
+    { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
   ).lean();
 
   await invalidateConversationCache(userId);

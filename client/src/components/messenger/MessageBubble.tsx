@@ -8,6 +8,7 @@ import {
   FiSmile,
   FiCopy,
   FiCheck,
+  FiUser,
 } from 'react-icons/fi';
 import type { MessengerMessage, ReactionEmoji } from '../../types/messenger.types';
 import { REACTION_EMOJIS } from '../../types/messenger.types';
@@ -241,7 +242,7 @@ export function MessageBubble({
     >
       {!isMine && (
         <div className={clsx('w-8 shrink-0 self-end pb-5', showAvatar ? 'block' : 'invisible')}>
-          {showAvatar && message.senderAvatar ? (
+          {showAvatar && message.senderAvatar && message.senderAvatar.trim() ? (
             <img
               src={message.senderAvatar}
               alt={message.senderName}
@@ -249,8 +250,8 @@ export function MessageBubble({
               loading="lazy"
             />
           ) : (
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent-soft)] text-xs font-semibold text-[var(--accent)]">
-              {message.senderName.charAt(0).toUpperCase()}
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
+              <FiUser className="h-4 w-4" />
             </span>
           )}
         </div>

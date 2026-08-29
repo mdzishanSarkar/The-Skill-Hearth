@@ -130,7 +130,7 @@ export async function updateSessionNote(connectionId: string, userId: string, co
   const note = await SessionNote.findOneAndUpdate(
     { connectionId: id, userId: new Types.ObjectId(userId) },
     { content: trimmed },
-    { upsert: true, new: true },
+    { upsert: true, returnDocument: 'after' },
   ).lean();
 
   return note;

@@ -147,7 +147,7 @@ export async function deleteMessage(params: { messageId: string; requestingUserI
       deletedBy: userId,
       content: '',
     },
-    { new: true }
+    { returnDocument: 'after' }
   );
 
   return { message: 'Message deleted', result: updated };
@@ -181,7 +181,7 @@ export async function markAsRead(params: { connectionId: string; userId: string;
   await UserInboxPreference.findOneAndUpdate(
     { userId: userObjectId, connectionId: connectionIdObject },
     { $set: { lastReadAt: new Date() } },
-    { upsert: true, new: true }
+    { upsert: true, returnDocument: 'after' }
   );
 
   return { updatedCount: result.modifiedCount ?? 0 };
@@ -221,7 +221,7 @@ export async function addReaction(params: { messageId: string; userId: string; e
     reactions.push({ userId, emoji });
   }
 
-  const updated = await Message.findByIdAndUpdate(messageId, { reactions }, { new: true });
+  const updated = await Message.findByIdAndUpdate(messageId, { reactions }, { returnDocument: 'after' });
   return { reactions: updated?.reactions ?? reactions };
 }
 
@@ -276,7 +276,7 @@ export async function setPreference(params: { userId: string; connectionId: stri
   const updated = await UserInboxPreference.findOneAndUpdate(
     { userId: userIdObject, connectionId: connectionIdObject },
     { $set: { ...patch } },
-    { upsert: true, new: true, setDefaultsOnInsert: true }
+    { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
   );
 
   return updated || current;

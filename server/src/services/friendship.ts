@@ -117,7 +117,7 @@ export async function sendFriendRequest(userId: string, targetId: string) {
       const friendship = await Friendship.findByIdAndUpdate(
         existing._id,
         { status: 'pending', requesterId: userId, addresseeId: targetId, expiresAt: new Date(Date.now() + REQUEST_TTL_MS) },
-        { new: true },
+        { returnDocument: 'after' },
       );
       await notifyFriendRequest(friendship!);
       return friendship!.toJSON();

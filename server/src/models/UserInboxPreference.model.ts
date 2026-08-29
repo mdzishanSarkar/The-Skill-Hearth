@@ -44,7 +44,7 @@ userInboxPreferenceSchema.statics.setPreference = async function (
   return this.findOneAndUpdate(
     { userId: new mongoose.Types.ObjectId(userId), connectionId: new mongoose.Types.ObjectId(connectionId) },
     { $set: { ...patch } },
-    { upsert: true, new: true, setDefaultsOnInsert: true }
+    { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
   );
 };
 

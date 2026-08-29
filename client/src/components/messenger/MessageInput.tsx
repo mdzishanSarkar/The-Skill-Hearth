@@ -113,7 +113,7 @@ export function MessageInput({
   };
 
   return (
-    <div className="messenger-composer border-t border-white/8 px-3 py-2.5 backdrop-blur-xl">
+    <div className="messenger-composer sticky bottom-0 z-20 border-t border-white/8 px-3 py-2.5 backdrop-blur-xl">
       {replyPreview && (
         <div className="mb-2 flex items-center gap-2 rounded-xl border border-blue-400/20 bg-[rgba(59,130,246,0.08)] px-3 py-1.5 text-xs text-slate-200 backdrop-blur-sm">
           <FiCornerUpLeft className="shrink-0 text-blue-400/60" />

@@ -298,10 +298,19 @@ input[type='password']::-webkit-caps-lock-indicator {
   background: #0c1118;
 }
 
-.messenger-message-list,
-.messenger-composer {
+.messenger-message-list {
   background: #0c1118;
   background-image: none;
+  padding-bottom: 0.5rem;
+}
+
+.messenger-composer {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  background: rgba(12, 17, 24, 0.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 -12px 24px rgba(2, 6, 23, 0.2);
 }
 
 .messenger-typing-dot {
