@@ -8,12 +8,27 @@ const SMTP_TIMEOUT_MS = 15_000;
 
 let transporter: Transporter | null = null;
 
-function smtpConfigured(): boolean {
+export function smtpConfigured(): boolean {
   return Boolean(
     process.env.SMTP_HOST &&
       process.env.SMTP_PORT &&
       process.env.SMTP_USER &&
       process.env.SMTP_PASS
+  );
+}
+
+export function validateSmtpConfiguration(): void {
+  const missing = [
+    !process.env.SMTP_HOST && 'SMTP_HOST',
+    !process.env.SMTP_PORT && 'SMTP_PORT',
+    !process.env.SMTP_USER && 'SMTP_USER',
+    !process.env.SMTP_PASS && 'SMTP_PASS',
+  ].filter(Boolean) as string[];
+
+  if (missing.length === 0) return;
+
+  console.warn(
+    `[email] SMTP is not fully configured. Missing: ${missing.join(', ')}. Email delivery will fail until these values are set in the server environment.`
   );
 }
 

@@ -9,8 +9,10 @@ import { setupInboxNotificationHandlers } from "./services/inbox-notification.se
 import { startAllJobs, scheduleRecurringJobs } from "./jobs";
 import { runMigrationIfNeeded } from "./migrations/savedSearchToRadar.migration";
 import { runSkillRadarNormalizationIfNeeded } from "./migrations/normalizeSkillRadar.migration";
+import { validateSmtpConfiguration } from "./utils/email";
 
 dotenv.config();
+validateSmtpConfiguration();
 
 const startServer = (port: number) => {
  const httpServer = http.createServer(app);

@@ -38,6 +38,7 @@ export default function MapDiscoveryPage() {
   const [geocoding, setGeocoding] = useState(false);
   const [searching, setSearching] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [isOverlayCollapsed, setIsOverlayCollapsed] = useState(false);
   const [clusterMarkers, setClusterMarkers] = useState<boolean>(
     user?.mapPreferences?.clusterMarkers ?? true,
   );
@@ -196,70 +197,84 @@ export default function MapDiscoveryPage() {
       )}
 
       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-stretch gap-3 p-3 sm:flex-row sm:items-start sm:p-4">
-        <div className="pointer-events-auto flex flex-col gap-3 sm:min-w-0">
-          <form
-            onSubmit={handleSearch}
-            className={`w-full rounded-xl border p-3 shadow-lg backdrop-blur sm:w-72 sm:max-w-[calc(100vw-2.5rem)] ${overlayPanel}`}
-          >
-            <div className="flex gap-2">
-              <Input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search city or neighborhood"
-                className="flex-1"
-                dark={night}
-              />
-              <Button type="submit" size="sm" loading={searching} className="shrink-0">
-                Search
-              </Button>
-            </div>
-            <Button
-              type="button"
-              variant="secondary"
-              size="sm"
-              className="mt-2 w-full"
-              onClick={geo.requestGeolocation}
+        {!isOverlayCollapsed && (
+          <div className="pointer-events-auto flex flex-col gap-3 sm:min-w-0">
+            <form
+              onSubmit={handleSearch}
+              className={`w-full rounded-xl border p-3 shadow-lg backdrop-blur sm:w-72 sm:max-w-[calc(100vw-2.5rem)] ${overlayPanel}`}
             >
-              Near me
-            </Button>
-            {geo.placedAt && (
-              <p className={`mt-2 truncate text-xs ${mutedText}`} title={geo.placedAtFull || geo.placedAt}>
-                Showing around: {geo.placedAt}
-              </p>
-            )}
-          </form>
+              <div className="flex gap-2">
+                <Input
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search city or neighborhood"
+                  className="flex-1"
+                  dark={night}
+                />
+                <Button type="submit" size="sm" loading={searching} className="shrink-0">
+                  Search
+                </Button>
+              </div>
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                className="mt-2 w-full"
+                onClick={geo.requestGeolocation}
+              >
+                Near me
+              </Button>
+              {geo.placedAt && (
+                <p className={`mt-2 truncate text-xs ${mutedText}`} title={geo.placedAtFull || geo.placedAt}>
+                  Showing around: {geo.placedAt}
+                </p>
+              )}
+            </form>
 
-          <button
-            type="button"
-            onClick={() => setShowFilters((visible) => !visible)}
-            aria-expanded={showFilters}
-            aria-controls="map-filters"
-            className={`flex items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-semibold shadow-lg backdrop-blur sm:hidden ${overlayPanel}`}
-          >
-            <span>Filters</span>
-            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-              {showFilters ? 'Hide' : 'Show'}
-            </span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setShowFilters((visible) => !visible)}
+              aria-expanded={showFilters}
+              aria-controls="map-filters"
+              className={`flex items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-semibold shadow-lg backdrop-blur sm:hidden ${overlayPanel}`}
+            >
+              <span>Filters</span>
+              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                {showFilters ? 'Hide' : 'Show'}
+              </span>
+            </button>
 
-          <div id="map-filters" className={`w-full sm:w-72 sm:max-w-[calc(100vw-2.5rem)] ${showFilters ? '' : 'hidden sm:block'}`}>
-            <MapFilters
-              categories={categories}
-              selectedCategoryIds={selectedCategoryIds}
-              onToggleCategory={toggleCategory}
-              type={type}
-              onTypeChange={setType}
-              availability={availability}
-              onAvailabilityChange={setAvailability}
-              radiusKm={radiusKm}
-              onRadiusChange={setRadiusKm}
-              onReset={handleResetFilters}
-              night={night}
-            />
+            <div id="map-filters" className={`w-full sm:w-72 sm:max-w-[calc(100vw-2.5rem)] ${showFilters ? '' : 'hidden sm:block'}`}>
+              <MapFilters
+                categories={categories}
+                selectedCategoryIds={selectedCategoryIds}
+                onToggleCategory={toggleCategory}
+                type={type}
+                onTypeChange={setType}
+                availability={availability}
+                onAvailabilityChange={setAvailability}
+                radiusKm={radiusKm}
+                onRadiusChange={setRadiusKm}
+                onReset={handleResetFilters}
+                night={night}
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="pointer-events-auto ml-auto flex w-full flex-col items-start gap-3 sm:w-auto sm:items-end">
+          <button
+            type="button"
+            onClick={() => setIsOverlayCollapsed((collapsed) => !collapsed)}
+            aria-label={isOverlayCollapsed ? 'Show map controls' : 'Hide map controls'}
+            title={isOverlayCollapsed ? 'Show map controls' : 'Hide map controls'}
+            className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold shadow-lg backdrop-blur transition-colors ${overlayPanel}`}
+          >
+            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d={isOverlayCollapsed ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12'} />
+            </svg>
+            {isOverlayCollapsed ? 'Show controls' : 'Hide controls'}
+          </button>
           <div className="flex items-center gap-2">
             <button
               type="button"
