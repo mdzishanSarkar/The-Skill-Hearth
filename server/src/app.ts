@@ -70,6 +70,10 @@ dotenv.config();
 
 const app = express();
 
+// Render sits in front of the app as a reverse proxy, so Express must trust the forwarded IP headers.
+// Without this, express-rate-limit rejects X-Forwarded-For and throws ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+app.set("trust proxy", 1);
+
 app.use(
   helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
