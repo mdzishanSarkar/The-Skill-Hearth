@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
 import { HttpError } from './errors';
 
-// 30 seconds connection/socket timeout to accommodate Render free-tier spin-up delays
+// 30 seconds timeout to handle Render cold starts
 const SMTP_TIMEOUT_MS = 30_000;
 
 let transporter: Transporter | null = null;
@@ -20,7 +20,6 @@ export function getClientUrl(): string {
  */
 export function getEmailFrom(): string {
   if (process.env.EMAIL_FROM) {
-    // Remove accidental outer quotes if entered in dashboard
     return process.env.EMAIL_FROM.replace(/^["']|["']$/g, '');
   }
 
@@ -54,7 +53,7 @@ export function validateSmtpConfiguration(): void {
   if (missing.length === 0) return;
 
   console.warn(
-    `[email] ⚠️ SMTP is not fully configured. Missing: ${missing.join(', ')}. Email delivery will fail until these are set.`
+    `[email] ⚠️ SMTP is not fully configured. Missing: ${missing.join(', ')}. Email delivery will fail.`
   );
 }
 
@@ -70,7 +69,9 @@ function getTransporter(): Transporter {
   transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port,
-    secure: isSecure, // true for 465, false for 587
+    secure: isSecure, // false for 587, true for 465
+    // ⬇️ CRITICAL FIX: Force IPv4 connection to prevent ENETUNREACH on Render
+    family: 4 as any, 
     connectionTimeout: SMTP_TIMEOUT_MS,
     greetingTimeout: SMTP_TIMEOUT_MS,
     socketTimeout: SMTP_TIMEOUT_MS,
@@ -80,6 +81,7 @@ function getTransporter(): Transporter {
     },
     tls: {
       rejectUnauthorized: process.env.NODE_ENV === 'production',
+      minVersion: 'TLSv1.2',
     },
   });
 
@@ -99,7 +101,6 @@ async function sendEmail(
   html: string,
   link?: string
 ): Promise<SendEmailResult> {
-  // Helpful preview in local development
   if (process.env.NODE_ENV !== 'production' && link) {
     console.log(`\n📧 [dev preview] To: ${to} | Subject: ${subject}`);
     console.log(`🔗 Link: ${link}\n`);
