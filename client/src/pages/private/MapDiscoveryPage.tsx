@@ -275,151 +275,156 @@ export default function MapDiscoveryPage() {
             </svg>
             {isOverlayCollapsed ? 'Show controls' : 'Hide controls'}
           </button>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handleToggleCluster}
-              aria-label={clusterMarkers ? 'Show individual markers' : 'Cluster nearby markers'}
-              title={clusterMarkers ? 'Show individual markers' : 'Cluster nearby markers'}
-              className={`flex h-10 w-10 items-center justify-center rounded-full border shadow backdrop-blur transition-colors ${
-                night
-                  ? 'border-gray-700 bg-gray-900/95 text-gray-300 hover:bg-gray-800'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-              }`}
-            >
-              {clusterMarkers ? (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l9 5-9 5-9-5 9-5z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9 5 9-5" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l9 5 9-5" />
-                </svg>
-              ) : (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-5.1-7-11a7 7 0 0114 0c0 5.9-7 11-7 11z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-              )}
-            </button>
-          </div>
-          {geo.status === 'found' && (
-            <button
-              type="button"
-              onClick={() => setRecenterTick((t) => t + 1)}
-              aria-label={geo.placedAt ? `Re-center to ${geo.placedAt}` : 'Re-center to your location'}
-              title={geo.placedAt ? `Re-center to ${geo.placedAt}` : 'Re-center to your location'}
-              className={`pointer-events-auto flex cursor-pointer items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium shadow backdrop-blur transition-colors ${
-                night
-                  ? 'border-green-800 bg-green-950/95 text-green-300 hover:bg-green-900'
-                  : 'border-green-200 bg-green-50 dark:bg-green-950/40/95 text-green-700 dark:text-green-300 hover:bg-green-100'
-              }`}
-            >
-              <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <circle cx="12" cy="11" r="3" />
-              </svg>
-              {geo.placedAt ? `Near ${geo.placedAt}` : 'Using your location'}
-            </button>
-          )}
-          {geo.status === 'denied' && (
-            <div
-              className={`pointer-events-none flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium shadow backdrop-blur ${
-                night
-                  ? 'border-gray-700 bg-gray-900/95 text-gray-300'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400'
-              }`}
-            >
-              <span className="h-2 w-2 rounded-full bg-gray-400" />
-              Location off, searching from a place
-            </div>
-          )}
-          {geo.status === 'found' && pins.length > 0 && (
-            <div
-              className={`pointer-events-none rounded-full border px-3 py-1.5 text-xs font-medium shadow backdrop-blur ${
-                night
-                  ? 'border-gray-700 bg-gray-900/95 text-gray-300'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-700 dark:text-gray-300'
-              }`}
-            >
-              {pins.length} skill{pins.length === 1 ? '' : 's'} found
-            </div>
-          )}
-          {pins.length > 0 && (
-            <button
-              type="button"
-              onClick={handleToggleList}
-              aria-expanded={showList}
-              aria-controls="map-skills-list"
-              className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold shadow backdrop-blur transition-colors ${
-                night
-                  ? 'border-blue-700 bg-blue-950/95 text-blue-300 hover:bg-blue-900'
-                  : 'border-blue-200 bg-blue-50 dark:bg-blue-950/40/95 text-blue-700 dark:text-blue-400 hover:bg-blue-100'
-              }`}
-            >
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h10" />
-              </svg>
-              {showList ? 'Hide list' : `Skills list (${pins.length})`}
-            </button>
-          )}
-          {showList && pins.length > 0 && (
-            <div
-              id="map-skills-list"
-              className={`pointer-events-auto flex w-full max-h-[55vh] flex-col overflow-hidden rounded-xl border shadow-lg backdrop-blur sm:w-72 ${overlayPanel}`}
-            >
-              <div className={`border-b px-4 py-2.5 text-xs font-semibold ${night ? 'border-gray-800 text-gray-400 dark:text-gray-500' : 'border-gray-100 text-gray-500 dark:text-gray-400'}`}>
-                {pins.length} skill{pins.length === 1 ? '' : 's'} in this area
+
+          {!isOverlayCollapsed && (
+            <>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleToggleCluster}
+                  aria-label={clusterMarkers ? 'Show individual markers' : 'Cluster nearby markers'}
+                  title={clusterMarkers ? 'Show individual markers' : 'Cluster nearby markers'}
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border shadow backdrop-blur transition-colors ${
+                    night
+                      ? 'border-gray-700 bg-gray-900/95 text-gray-300 hover:bg-gray-800'
+                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  {clusterMarkers ? (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l9 5-9 5-9-5 9-5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9 5 9-5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l9 5 9-5" />
+                    </svg>
+                  ) : (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-5.1-7-11a7 7 0 0114 0c0 5.9-7 11-7 11z" />
+                      <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                  )}
+                </button>
               </div>
-              <ul className={`flex-1 overflow-y-auto divide-y ${night ? 'divide-gray-800' : 'divide-gray-100 dark:divide-gray-800'}`}>
-                {pins.map((pin) => (
-                  <li key={pin.id}>
-                    <button
-                      type="button"
-                      onClick={() => navigate(`/skills/${pin.id}`)}
-                      className={`flex w-full items-center gap-3 px-4 py-2.5 text-left ${
-                        night ? 'hover:bg-blue-900/40' : 'hover:bg-blue-50/60'
-                      }`}
-                    >
-                      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base ${night ? 'bg-gray-800' : 'bg-gray-100 dark:bg-gray-800'}`}>
-                        {getSkillEmoji(pin.categoryName, pin.skillName)}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className={`block truncate text-sm font-medium ${night ? 'text-gray-100' : 'text-gray-900 dark:text-gray-100'}`}>
-                          {pin.skillName}
-                        </span>
-                        <span className={`block truncate text-xs ${mutedText}`}>
-                          {pin.teacher.displayName} · {pin.categoryName}
-                        </span>
-                      </span>
-                      <span className={`shrink-0 text-xs ${night ? 'text-gray-500 dark:text-gray-400' : 'text-gray-400 dark:text-gray-500'}`}>
-                        {pin.distanceKm !== undefined ? formatDistanceShort(pin.distanceKm) : ''}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {geo.status === 'found' && (
+                <button
+                  type="button"
+                  onClick={() => setRecenterTick((t) => t + 1)}
+                  aria-label={geo.placedAt ? `Re-center to ${geo.placedAt}` : 'Re-center to your location'}
+                  title={geo.placedAt ? `Re-center to ${geo.placedAt}` : 'Re-center to your location'}
+                  className={`pointer-events-auto flex cursor-pointer items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium shadow backdrop-blur transition-colors ${
+                    night
+                      ? 'border-green-800 bg-green-950/95 text-green-300 hover:bg-green-900'
+                      : 'border-green-200 bg-green-50 dark:bg-green-950/40/95 text-green-700 dark:text-green-300 hover:bg-green-100'
+                  }`}
+                >
+                  <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <circle cx="12" cy="11" r="3" />
+                  </svg>
+                  {geo.placedAt ? `Near ${geo.placedAt}` : 'Using your location'}
+                </button>
+              )}
+              {geo.status === 'denied' && (
+                <div
+                  className={`pointer-events-none flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium shadow backdrop-blur ${
+                    night
+                      ? 'border-gray-700 bg-gray-900/95 text-gray-300'
+                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400'
+                  }`}
+                >
+                  <span className="h-2 w-2 rounded-full bg-gray-400" />
+                  Location off, searching from a place
+                </div>
+              )}
+              {geo.status === 'found' && pins.length > 0 && (
+                <div
+                  className={`pointer-events-none rounded-full border px-3 py-1.5 text-xs font-medium shadow backdrop-blur ${
+                    night
+                      ? 'border-gray-700 bg-gray-900/95 text-gray-300'
+                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-700 dark:text-gray-300'
+                  }`}
+                >
+                  {pins.length} skill{pins.length === 1 ? '' : 's'} found
+                </div>
+              )}
+              {pins.length > 0 && (
+                <button
+                  type="button"
+                  onClick={handleToggleList}
+                  aria-expanded={showList}
+                  aria-controls="map-skills-list"
+                  className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold shadow backdrop-blur transition-colors ${
+                    night
+                      ? 'border-blue-700 bg-blue-950/95 text-blue-300 hover:bg-blue-900'
+                      : 'border-blue-200 bg-blue-50 dark:bg-blue-950/40/95 text-blue-700 dark:text-blue-400 hover:bg-blue-100'
+                  }`}
+                >
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h10" />
+                  </svg>
+                  {showList ? 'Hide list' : `Skills list (${pins.length})`}
+                </button>
+              )}
+              {showList && pins.length > 0 && (
+                <div
+                  id="map-skills-list"
+                  className={`pointer-events-auto flex w-full max-h-[55vh] flex-col overflow-hidden rounded-xl border shadow-lg backdrop-blur sm:w-72 ${overlayPanel}`}
+                >
+                  <div className={`border-b px-4 py-2.5 text-xs font-semibold ${night ? 'border-gray-800 text-gray-400 dark:text-gray-500' : 'border-gray-100 text-gray-500 dark:text-gray-400'}`}>
+                    {pins.length} skill{pins.length === 1 ? '' : 's'} in this area
+                  </div>
+                  <ul className={`flex-1 overflow-y-auto divide-y ${night ? 'divide-gray-800' : 'divide-gray-100 dark:divide-gray-800'}`}>
+                    {pins.map((pin) => (
+                      <li key={pin.id}>
+                        <button
+                          type="button"
+                          onClick={() => navigate(`/skills/${pin.id}`)}
+                          className={`flex w-full items-center gap-3 px-4 py-2.5 text-left ${
+                            night ? 'hover:bg-blue-900/40' : 'hover:bg-blue-50/60'
+                          }`}
+                        >
+                          <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base ${night ? 'bg-gray-800' : 'bg-gray-100 dark:bg-gray-800'}`}>
+                            {getSkillEmoji(pin.categoryName, pin.skillName)}
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            <span className={`block truncate text-sm font-medium ${night ? 'text-gray-100' : 'text-gray-900 dark:text-gray-100'}`}>
+                              {pin.skillName}
+                            </span>
+                            <span className={`block truncate text-xs ${mutedText}`}>
+                              {pin.teacher.displayName} · {pin.categoryName}
+                            </span>
+                          </span>
+                          <span className={`shrink-0 text-xs ${night ? 'text-gray-500 dark:text-gray-400' : 'text-gray-400 dark:text-gray-500'}`}>
+                            {pin.distanceKm !== undefined ? formatDistanceShort(pin.distanceKm) : ''}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className={`w-full rounded-lg border px-3 py-2 text-xs shadow backdrop-blur sm:w-auto ${night ? 'border-gray-700 bg-gray-900/95 text-gray-300' : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400'}`}>
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center gap-1.5">
+                    <span className={`inline-block h-3 w-2.5 rounded-sm border-2 bg-white dark:bg-gray-900 ${night ? 'border-blue-400' : 'border-blue-600'}`} />
+                    Can teach
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className={`inline-block h-3 w-2.5 rounded-sm border-2 bg-white dark:bg-gray-900 ${night ? 'border-orange-400' : 'border-orange-500'}`} />
+                    Want to learn
+                  </span>
+                </div>
+              </div>
+              <div className={`w-full rounded-lg border px-3 py-2 text-xs shadow backdrop-blur sm:w-auto ${night ? 'border-gray-700 bg-gray-900/95 text-gray-300' : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400'}`}>
+                <Link to="/skills" className={`font-medium ${night ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 dark:text-blue-400 hover:text-blue-500'}`}>
+                  Browse as a list
+                </Link>
+                <span className={`mx-2 ${night ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300'}`}>·</span>
+                <Link to="/edit-profile" className={`font-medium ${night ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 dark:text-blue-400 hover:text-blue-500'}`}>
+                  Manage map visibility
+                </Link>
+              </div>
+            </>
           )}
-          <div className={`w-full rounded-lg border px-3 py-2 text-xs shadow backdrop-blur sm:w-auto ${night ? 'border-gray-700 bg-gray-900/95 text-gray-300' : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400'}`}>
-            <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5">
-                <span className={`inline-block h-3 w-2.5 rounded-sm border-2 bg-white dark:bg-gray-900 ${night ? 'border-blue-400' : 'border-blue-600'}`} />
-                Can teach
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className={`inline-block h-3 w-2.5 rounded-sm border-2 bg-white dark:bg-gray-900 ${night ? 'border-orange-400' : 'border-orange-500'}`} />
-                Want to learn
-              </span>
-            </div>
-          </div>
-          <div className={`w-full rounded-lg border px-3 py-2 text-xs shadow backdrop-blur sm:w-auto ${night ? 'border-gray-700 bg-gray-900/95 text-gray-300' : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900/95 text-gray-600 dark:text-gray-400'}`}>
-            <Link to="/skills" className={`font-medium ${night ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 dark:text-blue-400 hover:text-blue-500'}`}>
-              Browse as a list
-            </Link>
-            <span className={`mx-2 ${night ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300'}`}>·</span>
-            <Link to="/edit-profile" className={`font-medium ${night ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 dark:text-blue-400 hover:text-blue-500'}`}>
-              Manage map visibility
-            </Link>
-          </div>
         </div>
       </div>
 
