@@ -66,25 +66,25 @@ function getTransporter(): Transporter {
   const port = Number(process.env.SMTP_PORT) || 587;
   const isSecure = port === 465;
 
-  transporter = nodemailer.createTransport({
+  const transportOptions: any = {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port,
     secure: isSecure, // false for 587, true for 465
-    // ⬇️ CRITICAL FIX: Force IPv4 connection to prevent ENETUNREACH on Render
-    family: 4 as any, 
+    family: 4, // Force IPv4 connection to prevent ENETUNREACH on Render
     connectionTimeout: SMTP_TIMEOUT_MS,
     greetingTimeout: SMTP_TIMEOUT_MS,
     socketTimeout: SMTP_TIMEOUT_MS,
     auth: {
       user: process.env.SMTP_USER?.trim() || '',
-      pass: process.env.SMTP_PASS?.trim() || '',
+      pass: (process.env.SMTP_PASS || '').replace(/\s+/g, ''),
     },
     tls: {
       rejectUnauthorized: process.env.NODE_ENV === 'production',
       minVersion: 'TLSv1.2',
     },
-  });
+  };
 
+  transporter = nodemailer.createTransport(transportOptions);
   return transporter;
 }
 
