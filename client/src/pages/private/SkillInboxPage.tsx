@@ -7,6 +7,7 @@ import { useInboxConversations } from '../../hooks/useInboxConversations';
 import { setInboxPreference } from '../../services/inbox';
 import type { InboxConversation, InboxFilter } from '../../types/inbox.types';
 import InboxConversationList from '../../components/inbox/InboxConversationList';
+import { useAvailableViewportHeight } from '../../hooks/useAvailableViewportHeight';
 
 const FILTERS: { value: InboxFilter; label: string }[] = [
   { value: 'all', label: 'All' },
@@ -29,6 +30,7 @@ function matchesQuery(conversation: InboxConversation, query: string): boolean {
 
 export default function SkillInboxPage() {
   const { user } = useAuth();
+  const { ref: viewportRef, height } = useAvailableViewportHeight<HTMLDivElement>();
   const {
     conversations,
     page,
@@ -70,7 +72,7 @@ export default function SkillInboxPage() {
   }
 
   return (
-    <div className="h-[calc(100dvh-64px)] overflow-hidden px-3 py-3 md:px-4">
+    <div ref={viewportRef} style={{ height }} className="min-h-0 overflow-hidden px-3 py-3 md:px-4">
       <div className="messenger-app-surface flex h-full overflow-hidden rounded-[26px] border border-white/8 bg-[rgba(13,17,23,0.94)] shadow-[0_32px_72px_rgba(2,6,23,0.56)] backdrop-blur-xl">
         <aside
           className="messenger-sidebar flex h-full w-full shrink-0 flex-col border-r border-white/8 bg-[linear-gradient(180deg,_rgba(18,22,30,0.96),_rgba(13,17,23,0.98))] md:w-[380px] lg:w-[420px]"

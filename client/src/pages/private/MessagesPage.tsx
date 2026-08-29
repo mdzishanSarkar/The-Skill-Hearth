@@ -2,10 +2,12 @@ import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useMessengerStore } from '../../stores/messengerStore';
 import { MessengerPanel } from '../../components/messenger/MessengerPanel';
+import { useAvailableViewportHeight } from '../../hooks/useAvailableViewportHeight';
 
 export default function MessagesPage() {
   const [searchParams] = useSearchParams();
   const initialConversationOpened = useRef(false);
+  const { ref: viewportRef, height } = useAvailableViewportHeight<HTMLDivElement>();
   const targetConversationId = searchParams.get('conversationId');
   const targetType = searchParams.get('type');
   const conversations = useMessengerStore((state) => state.conversations);
@@ -39,7 +41,7 @@ export default function MessagesPage() {
   }, [conversations, openWindows.length, activeConversationId, openConversation, targetConversationId]);
 
   return (
-    <div className="h-[calc(100dvh-64px)] overflow-hidden px-3 py-3 md:px-4">
+    <div ref={viewportRef} style={{ height }} className="min-h-0 overflow-hidden px-3 py-3 md:px-4">
       <MessengerPanel />
     </div>
   );

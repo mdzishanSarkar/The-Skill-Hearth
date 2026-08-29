@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import { FiVolumeX, FiMapPin, FiUser } from 'react-icons/fi';
+import { FiVolumeX, FiMapPin } from 'react-icons/fi';
 import type { ConversationSummary } from '../../types/messenger.types';
 import { formatConversationTime } from './format';
+import { MessengerAvatar } from './MessengerAvatar';
 
 interface ConversationItemProps {
   conversation: ConversationSummary;
@@ -28,24 +29,14 @@ function previewFor(conversation: ConversationSummary, currentUserId: string | n
 }
 
 function Avatar({ conversation, currentUserId, size = 'md' }: { conversation: ConversationSummary; currentUserId: string | null; size?: 'sm' | 'md' }) {
-  const dims = size === 'sm' ? 'h-8 w-8' : 'h-10 w-10';
-  const ring = size === 'sm' ? 'ring-1' : 'ring-2';
   const other = conversation.participants.find((p) => p.userId !== currentUserId) ?? conversation.participants[0];
-  if (other?.avatarUrl && other.avatarUrl.trim()) {
-    return (
-      <span className="relative shrink-0">
-        <img src={other.avatarUrl} alt={other.displayName} className={clsx('rounded-full object-cover', dims, ring, 'ring-white/12')} />
-        {other.isOnline && <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#12161e] bg-emerald-400" aria-label="Online" />}
-      </span>
-    );
-  }
   return (
-    <span className="relative shrink-0">
-      <span className={clsx('flex items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]', dims, ring, 'ring-white/12')}>
-        <FiUser className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'} />
-      </span>
-      {other?.isOnline && <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#12161e] bg-emerald-400" aria-label="Online" />}
-    </span>
+    <MessengerAvatar
+      src={other?.avatarUrl}
+      name={other?.displayName}
+      size={size === 'sm' ? 'sm' : 'lg'}
+      online={other?.isOnline}
+    />
   );
 }
 

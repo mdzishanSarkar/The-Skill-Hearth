@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import clsx from 'clsx';
-import { FiX, FiMoreVertical, FiVolume2, FiVolumeX, FiTrash2, FiMapPin, FiUser } from 'react-icons/fi';
+import { FiX, FiMoreVertical, FiVolume2, FiVolumeX, FiTrash2, FiMapPin } from 'react-icons/fi';
 import type { ConversationSummary } from '../../types/messenger.types';
 import { useMessengerStore } from '../../stores/messengerStore';
 import { formatRelativeSeen } from './format';
+import { MessengerAvatar } from './MessengerAvatar';
 
 interface WindowHeaderProps {
   conversation: ConversationSummary;
@@ -32,22 +32,7 @@ export function WindowHeader({ conversation, onClose, onToggleMute, onTogglePin,
 
   return (
     <div className="messenger-header relative z-30 flex items-center gap-2.5 overflow-visible border-b border-white/8 px-4 py-3 sm:px-3 sm:py-2.5">
-      <div className="relative shrink-0">
-        {other?.avatarUrl && other.avatarUrl.trim() ? (
-          <img src={other.avatarUrl} alt={other.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-white/12" />
-        ) : (
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)] ring-2 ring-white/12">
-            <FiUser className="h-4 w-4" />
-          </span>
-        )}
-        <span
-          className={clsx(
-            'absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#191d23]',
-            other?.isOnline ? 'bg-emerald-500' : 'bg-[var(--text-tertiary)]',
-          )}
-          aria-hidden="true"
-        />
-      </div>
+      <MessengerAvatar src={other?.avatarUrl} name={other?.displayName} size="md" online={other?.isOnline} ring />
 
       <div className="min-w-0 flex-1">
         <h2 className="truncate text-[15px] font-semibold text-[var(--text-primary)] leading-5">{title}</h2>

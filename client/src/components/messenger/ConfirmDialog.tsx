@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiAlertTriangle } from 'react-icons/fi';
+import { resolveMediaUrl } from '../../utils/media';
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -28,6 +29,8 @@ export function ConfirmDialog({
   onConfirm,
   onClose,
 }: ConfirmDialogProps) {
+  const [avatarFailed, setAvatarFailed] = useState(false);
+
   useEffect(() => {
     if (!open) return;
     const handleKey = (event: KeyboardEvent) => {
@@ -36,6 +39,10 @@ export function ConfirmDialog({
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
   }, [open, onClose]);
+
+  useEffect(() => {
+    setAvatarFailed(false);
+  }, [avatarUrl]);
 
   return createPortal(
     <AnimatePresence>
@@ -63,10 +70,11 @@ export function ConfirmDialog({
           >
             <div className="px-6 pb-5 pt-6 text-center">
               {name ? (
-                avatarUrl ? (
+                avatarUrl && !avatarFailed ? (
                   <img
-                    src={avatarUrl}
+                    src={resolveMediaUrl(avatarUrl)}
                     alt={name}
+                    onError={() => setAvatarFailed(true)}
                     className="mx-auto h-16 w-16 rounded-full object-cover ring-2 ring-white/12"
                   />
                 ) : (
