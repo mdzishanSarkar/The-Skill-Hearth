@@ -1,0 +1,285 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1170"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "provider": "outlook",
+  "accessToken": "at_outlook_arnob",
+  "refreshToken": "rt_outlook_arnob",
+  "calendarId": "outlook",
+  "calendarName": "Work Calendar",
+  "syncStatus": "disabled",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1788423978166"
+   }
+  },
+  "syncToken": "sync_arnob_1",
+  "events": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978170"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978170"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb116c"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "provider": "google",
+  "accessToken": "at_google_abir",
+  "refreshToken": "rt_google_abir",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "active",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1789201578166"
+   }
+  },
+  "syncToken": "sync_abir_1",
+  "events": [
+   {
+    "externalId": "ev_a1",
+    "title": "Spanish Circle",
+    "start": {
+     "$date": {
+      "$numberLong": "1789460778166"
+     }
+    },
+    "end": {
+     "$date": {
+      "$numberLong": "1789460778166"
+     }
+    },
+    "description": "Conversation circle",
+    "location": "Banani",
+    "connectionId": {
+     "$oid": "6aa65e2019d1dc63c8cb100a"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978173"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978173"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb116b"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "provider": "google",
+  "accessToken": "at_google_kabir",
+  "refreshToken": "rt_google_kabir",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "active",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1789287978166"
+   }
+  },
+  "syncToken": "sync_kabir_1",
+  "events": [
+   {
+    "externalId": "ev_k1",
+    "title": "Street Photography Walk",
+    "start": {
+     "$date": {
+      "$numberLong": "1789374378166"
+     }
+    },
+    "end": {
+     "$date": {
+      "$numberLong": "1789374378166"
+     }
+    },
+    "description": "Group photo walk in Gulshan",
+    "location": "Gulshan Avenue",
+    "connectionId": {
+     "$oid": "6aa65e2019d1dc63c8cb1008"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978172"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978172"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb116d"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "provider": "google",
+  "accessToken": "at_google_zishan",
+  "refreshToken": "rt_google_zishan",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "active",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1789287978166"
+   }
+  },
+  "syncToken": "sync_zishan_1",
+  "events": [
+   {
+    "externalId": "ev_z1",
+    "title": "Meditation Circle",
+    "start": {
+     "$date": {
+      "$numberLong": "1789374378166"
+     }
+    },
+    "end": {
+     "$date": {
+      "$numberLong": "1789374378166"
+     }
+    },
+    "description": "Morning meditation",
+    "location": "Zoom",
+    "connectionId": {
+     "$oid": "6aa65e2019d1dc63c8cb1014"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978173"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978173"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb116e"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "provider": "outlook",
+  "accessToken": "at_outlook_fahim",
+  "refreshToken": "rt_outlook_fahim",
+  "calendarId": "outlook",
+  "calendarName": "Outlook",
+  "syncStatus": "error",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1788683178166"
+   }
+  },
+  "syncToken": "sync_fahim_1",
+  "events": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978170"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978170"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb116f"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "provider": "google",
+  "accessToken": "at_google_rakib",
+  "refreshToken": "rt_google_rakib",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "active",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1789115178166"
+   }
+  },
+  "syncToken": "sync_rakib_1",
+  "events": [
+   {
+    "externalId": "ev_r1",
+    "title": "English Coaching",
+    "start": {
+     "$date": {
+      "$numberLong": "1789460778166"
+     }
+    },
+    "end": {
+     "$date": {
+      "$numberLong": "1789460778166"
+     }
+    },
+    "description": "Client-call practice",
+    "connectionId": {
+     "$oid": "6aa65e2119d1dc63c8cb1022"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978173"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978173"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,125 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1235"
+  },
+  "reporterId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "targetType": "post",
+  "targetId": {
+   "$oid": "6aa65e2719d1dc63c8cb1101"
+  },
+  "reason": "inappropriate",
+  "description": "This post may be running a raffle without approval.",
+  "status": "open",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981763"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981763"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1236"
+  },
+  "reporterId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "targetType": "user",
+  "targetId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "reason": "other",
+  "description": "Testing the report flow with seed data - no action required.",
+  "status": "dismissed",
+  "action": "no_action",
+  "resolution": "Seed test report, no action needed.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981764"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981764"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1237"
+  },
+  "reporterId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "targetType": "message",
+  "targetId": {
+   "$oid": "6aa65e2319d1dc63c8cb1078"
+  },
+  "reason": "misleading",
+  "description": "Edited-message demo report.",
+  "status": "under_review",
+  "assignedTo": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981764"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981764"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1238"
+  },
+  "reporterId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "targetType": "review",
+  "targetId": {
+   "$oid": "6aa65e2419d1dc63c8cb1096"
+  },
+  "reason": "other",
+  "description": "Duplicate review - please verify.",
+  "status": "resolved",
+  "action": "no_action",
+  "resolution": "Reviewed and confirmed original.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981764"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981764"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,424 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "slug": "food-cooking",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Cooking, baking, and kitchen skills.",
+  "displayOrder": {
+   "$numberInt": "1"
+  },
+  "icon": "utensils",
+  "isActive": true,
+  "name": "Food & Cooking",
+  "skills": [
+   {
+    "name": "Baking",
+    "slug": "baking",
+    "description": "Breads, pastries, cakes and more.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348b9e"
+    }
+   },
+   {
+    "name": "Fermentation & Preserving",
+    "slug": "fermentation-preserving",
+    "description": "Sauerkraut, kimchi, pickling, jams.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348b9f"
+    }
+   },
+   {
+    "name": "Knife Skills",
+    "slug": "knife-skills",
+    "description": "Safe, efficient cutting and prep.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba0"
+    }
+   },
+   {
+    "name": "Meal Prep",
+    "slug": "meal-prep",
+    "description": "Plan and prep meals for the week.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba1"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "slug": "home-garden",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Hands-on household and garden know-how.",
+  "displayOrder": {
+   "$numberInt": "2"
+  },
+  "icon": "home",
+  "isActive": true,
+  "name": "Home & Garden",
+  "skills": [
+   {
+    "name": "Basic Plumbing",
+    "slug": "basic-plumbing",
+    "description": "Fix a tap, unclog a drain, fit a washer.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba2"
+    }
+   },
+   {
+    "name": "Vegetable Gardening",
+    "slug": "vegetable-gardening",
+    "description": "Grow vegetables in beds, pots, or raised beds.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba3"
+    }
+   },
+   {
+    "name": "Composting",
+    "slug": "composting",
+    "description": "Turn kitchen and garden waste into soil.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba4"
+    }
+   },
+   {
+    "name": "Basic Electrical",
+    "slug": "basic-electrical",
+    "description": "Safe basics: sockets, switches, fuses.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba5"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "slug": "textile-craft",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Sewing, mending, knitting, and upcycling.",
+  "displayOrder": {
+   "$numberInt": "3"
+  },
+  "icon": "scissors",
+  "isActive": true,
+  "name": "Textile & Craft",
+  "skills": [
+   {
+    "name": "Sewing & Mending",
+    "slug": "sewing-mending",
+    "description": "Repairs, alterations, and simple garments.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba6"
+    }
+   },
+   {
+    "name": "Knitting / Crochet",
+    "slug": "knitting-crochet",
+    "description": "Stitches, patterns, and finished projects.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba7"
+    }
+   },
+   {
+    "name": "Upcycling",
+    "slug": "upcycling",
+    "description": "Turn old things into something useful again.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba8"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c4"
+  },
+  "slug": "photography-visual",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Photography, editing, and visual creativity.",
+  "displayOrder": {
+   "$numberInt": "6"
+  },
+  "icon": "camera",
+  "isActive": true,
+  "name": "Photography & Visual Arts",
+  "skills": [
+   {
+    "name": "Photography",
+    "slug": "photography",
+    "description": "Composition, light, and shooting with confidence.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bae"
+    }
+   },
+   {
+    "name": "Photo Editing",
+    "slug": "photo-editing",
+    "description": "Retouching, color, and organizing your shots.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348baf"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "slug": "music-arts",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Instruments, vocals, and performance skills.",
+  "displayOrder": {
+   "$numberInt": "8"
+  },
+  "icon": "music",
+  "isActive": true,
+  "name": "Music & Performing Arts",
+  "skills": [
+   {
+    "name": "Guitar",
+    "slug": "guitar",
+    "description": "Chords, strumming, and your first songs.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bb2"
+    }
+   },
+   {
+    "name": "Singing",
+    "slug": "singing",
+    "description": "Breath control and finding your range.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bb3"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "slug": "technology-web",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Coding and web development fundamentals.",
+  "displayOrder": {
+   "$numberInt": "7"
+  },
+  "icon": "code",
+  "isActive": true,
+  "name": "Technology & Web",
+  "skills": [
+   {
+    "name": "JavaScript / Web Development",
+    "slug": "javascript-web",
+    "description": "From variables to interactive web pages.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bb0"
+    }
+   },
+   {
+    "name": "Intro to Programming",
+    "slug": "intro-programming",
+    "description": "First steps in thinking like a developer.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bb1"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "slug": "digital-literacy",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Confidence with everyday technology.",
+  "displayOrder": {
+   "$numberInt": "4"
+  },
+  "icon": "monitor",
+  "isActive": true,
+  "name": "Digital Literacy",
+  "skills": [
+   {
+    "name": "Smartphone Basics",
+    "slug": "smartphone-basics",
+    "description": "Apps, photos, settings, and staying safe.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348ba9"
+    }
+   },
+   {
+    "name": "Email & Video Calls",
+    "slug": "email-video-calls",
+    "description": "Compose, attach, and call with confidence.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348baa"
+    }
+   },
+   {
+    "name": "Online Safety",
+    "slug": "online-safety",
+    "description": "Spot scams, manage passwords, protect privacy.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bab"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "slug": "languages-communication",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671141125"
+   }
+  },
+  "description": "Practice and improve communication.",
+  "displayOrder": {
+   "$numberInt": "5"
+  },
+  "icon": "message",
+  "isActive": true,
+  "name": "Languages & Communication",
+  "skills": [
+   {
+    "name": "Conversational Language Practice",
+    "slug": "conversational-language-practice",
+    "description": "Casual speaking practice in any language.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bac"
+    }
+   },
+   {
+    "name": "Writing & Reading",
+    "slug": "writing-reading",
+    "description": "Everyday writing, reading, and clarity.",
+    "isActive": true,
+    "_id": {
+     "$oid": "6aa640a829419c4af5348bad"
+    }
+   }
+  ],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280424115"
+   }
+  }
+ }
+]

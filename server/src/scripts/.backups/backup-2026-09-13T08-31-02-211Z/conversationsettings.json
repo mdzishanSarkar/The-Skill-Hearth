@@ -1,0 +1,628 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1210"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6aa6423029419c4af5348bc0",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1211"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "conversationId": "dm_6a9f8e045f1165d4d897d3c3_6aa0e3c420626861e93ef947",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb120a"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6a9f8e045f1165d4d897d3c3",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb120f"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6aa6423029419c4af5348bc0",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "midnight",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1212"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "conversationId": "dm_6a9f8e045f1165d4d897d3c3_6aa0e3c420626861e93ef947",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb120b"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6aa0e3c420626861e93ef947",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "all",
+  "chatTheme": "sunset",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1209"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6a9f8e045f1165d4d897d3c3",
+  "conversationType": "friend",
+  "isPinned": true,
+  "pinnedAt": {
+   "$date": {
+    "$numberLong": "1788423980525"
+   }
+  },
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "ocean",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb120e"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6aa641a629419c4af5348bba",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb120d"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6aa641a629419c4af5348bba",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": true,
+  "mutedUntil": {
+   "$date": {
+    "$numberLong": "1789460780525"
+   }
+  },
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "forest",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb120c"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "conversationId": "dm_6a9d59a0ec81a378e2840fd6_6aa0e3c420626861e93ef947",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980534"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1213"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "conversationId": "dm_6a9f8e045f1165d4d897d3c3_6aa641a629419c4af5348bba",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "ocean",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1214"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "conversationId": "dm_6a9f8e045f1165d4d897d3c3_6aa641a629419c4af5348bba",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1215"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "conversationId": "dm_6aa0e3c420626861e93ef947_6aa641ef29419c4af5348bbd",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "sunset",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1217"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "conversationId": "dm_6aa0e3c420626861e93ef947_6aa641a629419c4af5348bba",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "forest",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1216"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "conversationId": "dm_6aa0e3c420626861e93ef947_6aa641ef29419c4af5348bbd",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb121c"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "conversationId": "dm_6aa641a629419c4af5348bba_6aa641ef29419c4af5348bbd",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1218"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "conversationId": "dm_6aa0e3c420626861e93ef947_6aa641a629419c4af5348bba",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1219"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "conversationId": "dm_6aa0e3c420626861e93ef947_6aa6423029419c4af5348bc0",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "midnight",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb121b"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "conversationId": "dm_6aa641a629419c4af5348bba_6aa641ef29419c4af5348bbd",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb121a"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "conversationId": "dm_6aa0e3c420626861e93ef947_6aa6423029419c4af5348bc0",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb121d"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "conversationId": "dm_6aa641ef29419c4af5348bbd_6aa6423029419c4af5348bc0",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "ocean",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb121e"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "conversationId": "dm_6aa641ef29419c4af5348bbd_6aa6423029419c4af5348bc0",
+  "conversationType": "friend",
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "notificationOverride": "default",
+  "chatTheme": "default",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980535"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,281 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c64"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af4"
+  },
+  "title": "Baguette day",
+  "description": "Morning bake.",
+  "media": [
+   {
+    "url": "https://res.cloudinary.com/demo/image/upload/v1/show/baguette.jpg",
+    "publicId": "show/baguette"
+   }
+  ],
+  "likes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788412001129"
+     }
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa3"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788412001129"
+     }
+    }
+   }
+  ],
+  "likeCount": {
+   "$numberInt": "2"
+  },
+  "commentCount": {
+   "$numberInt": "1"
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201137"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201137"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c62"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "title": "First sourdough loaf",
+  "description": "My first successful bake.",
+  "media": [
+   {
+    "url": "https://res.cloudinary.com/demo/image/upload/v1/show/loaf.jpg",
+    "publicId": "show/loaf",
+    "caption": "Golden crust"
+   },
+   {
+    "url": "https://res.cloudinary.com/demo/image/upload/v1/show/crumb.jpg",
+    "publicId": "show/crumb"
+   }
+  ],
+  "likes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa3"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584801129"
+     }
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa4"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584801129"
+     }
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa7"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584801129"
+     }
+    }
+   }
+  ],
+  "likeCount": {
+   "$numberInt": "3"
+  },
+  "commentCount": {
+   "$numberInt": "2"
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201137"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201137"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c65"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cc94340b9768648b0e"
+  },
+  "title": "Deleted showcase",
+  "description": "Removed content test.",
+  "media": [
+   {
+    "url": "https://res.cloudinary.com/demo/image/upload/v1/show/spam.jpg",
+    "publicId": "show/spam"
+   }
+  ],
+  "likes": [],
+  "likeCount": {
+   "$numberInt": "0"
+  },
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "isDeleted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201138"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201138"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c66"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cc94340b9768648b08"
+  },
+  "title": "Scarf in progress",
+  "description": "Brooklyn knitter checking in.",
+  "media": [
+   {
+    "url": "https://res.cloudinary.com/demo/image/upload/v1/show/scarf.jpg",
+    "publicId": "show/scarf"
+   }
+  ],
+  "likes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788325601129"
+     }
+    }
+   }
+  ],
+  "likeCount": {
+   "$numberInt": "1"
+  },
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201138"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201138"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c63"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af2"
+  },
+  "title": "Mended jeans",
+  "description": "Invisible mending on old jeans.",
+  "media": [
+   {
+    "url": "https://res.cloudinary.com/demo/image/upload/v1/show/jeans.jpg",
+    "publicId": "show/jeans"
+   }
+  ],
+  "likes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788498401129"
+     }
+    }
+   }
+  ],
+  "likeCount": {
+   "$numberInt": "1"
+  },
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201137"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201137"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

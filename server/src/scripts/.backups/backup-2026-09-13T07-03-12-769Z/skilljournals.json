@@ -1,0 +1,152 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cde"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b36"
+  },
+  "prompt": "What did you learn today?",
+  "content": "Learned the right soil mix for container tomatoes. Fatima asked great questions!",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce2"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b50"
+  },
+  "prompt": "Reflection",
+  "content": "Demo built the bin perfectly.",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cdf"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b40"
+  },
+  "prompt": "What went well?",
+  "content": "Sourdough starter came alive during our session.",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce0"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "prompt": "Biggest takeaway?",
+  "content": "Replacing a tap washer is easy once you turn off the water first!",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce1"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "prompt": "How did it go?",
+  "content": "Shaping practice went well.",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209412"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

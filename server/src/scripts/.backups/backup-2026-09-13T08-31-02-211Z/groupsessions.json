@@ -1,0 +1,431 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10dd"
+  },
+  "teacherId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "title": "Street Photography Walk",
+  "description": "A guided golden-hour walk through Gulshan Avenue for beginners.",
+  "maxParticipants": {
+   "$numberInt": "8"
+  },
+  "participants": [
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789547175019"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs1-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975020"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975020"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10df"
+  },
+  "teacherId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "title": "JavaScript Study Group",
+  "description": "Weekly online study session for absolute beginners.",
+  "maxParticipants": {
+   "$numberInt": "6"
+  },
+  "participants": [
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "format": "online",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789719975019"
+   }
+  },
+  "status": "open",
+  "sessionType": "regular",
+  "chatRoomId": "gs-gs2-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975078"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975078"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10e1"
+  },
+  "teacherId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "title": "Spanish Conversation Circle",
+  "description": "Relaxed speaking practice every other week in Banani.",
+  "maxParticipants": {
+   "$numberInt": "8"
+  },
+  "participants": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789460775019"
+   }
+  },
+  "status": "full",
+  "sessionType": "regular",
+  "chatRoomId": "gs-gs3-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975124"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975124"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10e3"
+  },
+  "teacherId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "title": "Morning Meditation Circle",
+  "description": "Start your day with 20 minutes of guided meditation on Zoom.",
+  "maxParticipants": {
+   "$numberInt": "12"
+  },
+  "participants": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "format": "online",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789374375019"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs4-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975170"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975170"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10e5"
+  },
+  "teacherId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "title": "Sunday Meal Prep Workshop",
+  "description": "Cook a week of healthy meals together in Dhanmondi.",
+  "maxParticipants": {
+   "$numberInt": "6"
+  },
+  "participants": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   },
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789892775019"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs5-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975216"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975216"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10e7"
+  },
+  "teacherId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+  },
+  "title": "Desk-Yoga For Programmers",
+  "description": "Gentle stretches for people who sit at a desk all day.",
+  "maxParticipants": {
+   "$numberInt": "10"
+  },
+  "participants": [
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789460775019"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs6-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975271"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975271"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10e9"
+  },
+  "teacherId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff0"
+  },
+  "title": "Online Safety Crash Course",
+  "description": "Spot scams, strong passwords, and secure your accounts.",
+  "maxParticipants": {
+   "$numberInt": "8"
+  },
+  "participants": [
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789633575019"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs7-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975323"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975323"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10eb"
+  },
+  "teacherId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "title": "Portrait Lighting Basics",
+  "description": "Past completed workshop reviewing window-light portraits.",
+  "maxParticipants": {
+   "$numberInt": "6"
+  },
+  "participants": [
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1788251175019"
+   }
+  },
+  "status": "completed",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs8-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975374"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975374"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10ed"
+  },
+  "teacherId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "skillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffe"
+  },
+  "title": "Balcony Gardening 101",
+  "description": "Grow chillies and herbs in small pots on a balcony.",
+  "maxParticipants": {
+   "$numberInt": "6"
+  },
+  "participants": [
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1790065575019"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-gs9-room",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975422"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975422"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

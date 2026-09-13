@@ -1,0 +1,140 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1171"
+  },
+  "externalId": "ext_slack_kabir",
+  "name": "Skill Hearth Bot",
+  "platform": "slack",
+  "accessToken": "at_slack_kabir",
+  "botToken": "bt_slack_kabir",
+  "teamId": "T_KABIR",
+  "teamName": "Kabir Workspace",
+  "channelId": "C_KABIR",
+  "channelName": "general",
+  "installedBy": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "status": "active",
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1789201578223"
+   }
+  },
+  "commandCount": {
+   "$numberInt": "20"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1174"
+  },
+  "externalId": "ext_slack_arnob",
+  "name": "Garden Bot",
+  "platform": "slack",
+  "accessToken": "at_slack_arnob",
+  "botToken": "bt_slack_arnob",
+  "teamId": "T_ARN",
+  "teamName": "Arnob Station",
+  "channelId": "C_ARN",
+  "channelName": "side-projects",
+  "installedBy": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "status": "active",
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1789028778223"
+   }
+  },
+  "commandCount": {
+   "$numberInt": "8"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1172"
+  },
+  "externalId": "ext_discord_abir",
+  "name": "Hearth Bot",
+  "platform": "discord",
+  "accessToken": "at_discord_abir",
+  "botToken": "bt_discord_abir",
+  "installedBy": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "status": "active",
+  "commandCount": {
+   "$numberInt": "12"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1173"
+  },
+  "externalId": "ext_slack_zishan",
+  "name": "Kitchen Bot",
+  "platform": "slack",
+  "accessToken": "at_slack_zishan",
+  "botToken": "bt_slack_zishan",
+  "installedBy": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "status": "disabled",
+  "commandCount": {
+   "$numberInt": "5"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978225"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

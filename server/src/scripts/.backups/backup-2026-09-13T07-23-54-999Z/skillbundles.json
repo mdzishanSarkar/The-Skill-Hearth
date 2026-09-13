@@ -1,0 +1,132 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c21"
+  },
+  "name": "Community Craft Bundle",
+  "description": "Crafts curated by the community.",
+  "skillIds": [
+   {
+    "$oid": "6a9cf4ca94340b9768648af2"
+   },
+   {
+    "$oid": "6a9cf4cb94340b9768648afa"
+   },
+   {
+    "$oid": "6a9cf4cc94340b9768648b08"
+   }
+  ],
+  "isOfficial": false,
+  "createdBy": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "votes": {
+   "$numberInt": "4"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa7"
+   }
+  ],
+  "coverImage": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196695"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196695"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c20"
+  },
+  "name": "Beginner Kitchen Pack",
+  "description": "Everything to start cooking.",
+  "skillIds": [
+   {
+    "$oid": "6a9cf4c894340b9768648ae2"
+   },
+   {
+    "$oid": "6a9cf4ca94340b9768648af4"
+   },
+   {
+    "$oid": "6a9cf4cb94340b9768648b04"
+   }
+  ],
+  "isOfficial": true,
+  "createdBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "votes": {
+   "$numberInt": "12"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa6"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa7"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab4"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab5"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab6"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab7"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab8"
+   }
+  ],
+  "coverImage": "https://res.cloudinary.com/demo/image/upload/v1/bundles/kitchen.jpg",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196695"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196695"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,342 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb1142"
+  },
+  "mentorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "menteeId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "status": "active",
+  "goals": [
+   {
+    "title": "Master food photography",
+    "description": "Use natural light and composition for blog photos",
+    "targetDate": {
+     "$date": {
+      "$numberLong": "1791879977267"
+     }
+    },
+    "completed": false
+   },
+   {
+    "title": "Build a photo portfolio",
+    "description": "10 portfolio images",
+    "completed": false
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1789115177267"
+     }
+    },
+    "notes": "Practised overhead shots with window light.",
+    "mentorNotes": "Great improvement on exposure!"
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788423977267"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977270"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977270"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb1144"
+  },
+  "mentorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "menteeId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "status": "active",
+  "goals": [
+   {
+    "title": "Hold a 5-minute conversation",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1788942377267"
+     }
+    },
+    "notes": "Practised ordering at a cafe.",
+    "mentorNotes": "Good pronunciation."
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788078377267"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977321"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977321"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb1146"
+  },
+  "mentorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "menteeId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "status": "completed",
+  "goals": [
+   {
+    "title": "Establish a daily practice",
+    "description": "",
+    "completed": true,
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1789201577267"
+     }
+    }
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1788855977267"
+     }
+    },
+    "notes": "Completed a 10-day streak.",
+    "mentorNotes": "Well done!"
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1786695977267"
+   }
+  },
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1789201577267"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "1"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977367"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977367"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb1148"
+  },
+  "mentorId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "menteeId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+  },
+  "status": "active",
+  "goals": [
+   {
+    "title": "Run a flawless client call",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1789115177267"
+     }
+    },
+    "notes": "Rehearsed the opening script.",
+    "mentorNotes": "Confidence is growing."
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788596777267"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977411"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977411"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb114a"
+  },
+  "mentorId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "menteeId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+  },
+  "status": "pending",
+  "goals": [
+   {
+    "title": "Build a morning stretch routine",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789201577267"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "1"
+  },
+  "meetingFrequency": "biweekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977461"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977461"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb114c"
+  },
+  "mentorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "menteeId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "skillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffc"
+  },
+  "status": "active",
+  "goals": [
+   {
+    "title": "Ship a personal homepage",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1789201577267"
+     }
+    },
+    "notes": "Wrote the HTML structure.",
+    "mentorNotes": "Clean semantics!"
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789028777267"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977505"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977505"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

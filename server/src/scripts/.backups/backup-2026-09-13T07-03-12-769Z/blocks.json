@@ -1,0 +1,59 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bd5"
+  },
+  "blockerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "blockedId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671192939"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bd6"
+  },
+  "blockerId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "blockedId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671192939"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bd7"
+  },
+  "blockerId": {
+   "$oid": "6a9cf4a594340b9768648aab"
+  },
+  "blockedId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671192939"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

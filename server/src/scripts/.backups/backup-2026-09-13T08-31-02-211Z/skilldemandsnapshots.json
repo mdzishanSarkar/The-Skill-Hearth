@@ -1,0 +1,188 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb11fe"
+  },
+  "skills": [
+   {
+    "skillName": "Healthy Cooking",
+    "categoryName": "Food & Cooking",
+    "demandScore": {
+     "$numberInt": "78"
+    },
+    "topRegions": [
+     {
+      "name": "Dhanmondi",
+      "count": {
+       "$numberInt": "9"
+      }
+     },
+     {
+      "name": "Uttara",
+      "count": {
+       "$numberInt": "7"
+      }
+     }
+    ]
+   },
+   {
+    "skillName": "Meditation",
+    "categoryName": "Music & Performing Arts",
+    "demandScore": {
+     "$numberInt": "64"
+    },
+    "topRegions": [
+     {
+      "name": "Dhanmondi",
+      "count": {
+       "$numberInt": "6"
+      }
+     },
+     {
+      "name": "Mirpur",
+      "count": {
+       "$numberInt": "3"
+      }
+     }
+    ]
+   },
+   {
+    "skillName": "Yoga & Stretching",
+    "categoryName": "Music & Performing Arts",
+    "demandScore": {
+     "$numberInt": "60"
+    },
+    "topRegions": [
+     {
+      "name": "Uttara",
+      "count": {
+       "$numberInt": "5"
+      }
+     },
+     {
+      "name": "Mirpur",
+      "count": {
+       "$numberInt": "4"
+      }
+     }
+    ]
+   }
+  ],
+  "windowStart": {
+   "$date": {
+    "$numberLong": "1788078380017"
+   }
+  },
+  "windowEnd": {
+   "$date": {
+    "$numberLong": "1789287980017"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980022"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980022"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb11fd"
+  },
+  "skills": [
+   {
+    "skillName": "Photography",
+    "categoryName": "Photography & Visual Arts",
+    "demandScore": {
+     "$numberInt": "85"
+    },
+    "topRegions": [
+     {
+      "name": "Gulshan",
+      "count": {
+       "$numberInt": "12"
+      }
+     },
+     {
+      "name": "Banani",
+      "count": {
+       "$numberInt": "8"
+      }
+     }
+    ]
+   },
+   {
+    "skillName": "Spanish",
+    "categoryName": "Languages & Communication",
+    "demandScore": {
+     "$numberInt": "72"
+    },
+    "topRegions": [
+     {
+      "name": "Banani",
+      "count": {
+       "$numberInt": "7"
+      }
+     },
+     {
+      "name": "Dhanmondi",
+      "count": {
+       "$numberInt": "5"
+      }
+     }
+    ]
+   },
+   {
+    "skillName": "JavaScript",
+    "categoryName": "Technology & Web",
+    "demandScore": {
+     "$numberInt": "68"
+    },
+    "topRegions": [
+     {
+      "name": "Gulshan",
+      "count": {
+       "$numberInt": "6"
+      }
+     },
+     {
+      "name": "Motijheel",
+      "count": {
+       "$numberInt": "4"
+      }
+     }
+    ]
+   }
+  ],
+  "windowStart": {
+   "$date": {
+    "$numberLong": "1786695980017"
+   }
+  },
+  "windowEnd": {
+   "$date": {
+    "$numberLong": "1789287980017"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980022"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980022"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

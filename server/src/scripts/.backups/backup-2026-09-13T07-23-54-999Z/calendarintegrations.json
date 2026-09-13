@@ -1,0 +1,146 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c71"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "provider": "outlook",
+  "accessToken": "at_outlook_demo",
+  "refreshToken": "rt_outlook_demo",
+  "calendarId": "outlook",
+  "calendarName": "Outlook",
+  "syncStatus": "error",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1788239201745"
+   }
+  },
+  "syncToken": "sync_2",
+  "events": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201749"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201749"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c72"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "provider": "google",
+  "accessToken": "at_google_maria",
+  "refreshToken": "rt_google_maria",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "pending",
+  "events": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201749"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201749"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c73"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "provider": "google",
+  "accessToken": "at_google_kabir",
+  "refreshToken": "rt_google_kabir",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "disabled",
+  "events": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201750"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201750"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c70"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "provider": "google",
+  "accessToken": "at_google_demo",
+  "refreshToken": "rt_google_demo",
+  "calendarId": "primary",
+  "calendarName": "Primary",
+  "syncStatus": "active",
+  "lastSyncedAt": {
+   "$date": {
+    "$numberLong": "1788584801745"
+   }
+  },
+  "syncToken": "sync_1",
+  "events": [
+   {
+    "externalId": "ev_1",
+    "title": "Baking session with Kabir",
+    "start": {
+     "$date": {
+      "$numberLong": "1788757601745"
+     }
+    },
+    "end": {
+     "$date": {
+      "$numberLong": "1788757601745"
+     }
+    },
+    "description": "Sourdough lesson",
+    "location": "Gulshan",
+    "connectionId": {
+     "$oid": "6a9cf4cf94340b9768648b32"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201753"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201753"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

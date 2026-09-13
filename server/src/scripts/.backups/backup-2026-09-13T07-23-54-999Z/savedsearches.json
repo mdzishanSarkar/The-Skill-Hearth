@@ -1,0 +1,102 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648bef"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "name": "Online knitting",
+  "filters": {
+   "category": "Textile & Craft",
+   "format": "online",
+   "availability": []
+  },
+  "alertEnabled": false,
+  "matchedSkillIds": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194583"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194583"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648bf0"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "name": "Beginner gardening",
+  "filters": {
+   "category": "Home & Garden",
+   "proficiencyLevel": "beginner",
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1788498394580"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194583"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194583"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648bee"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "name": "Baking teachers nearby",
+  "filters": {
+   "category": "Food & Cooking",
+   "type": "teach",
+   "radius": {
+    "$numberInt": "10"
+   },
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1788584794579"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194583"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194583"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

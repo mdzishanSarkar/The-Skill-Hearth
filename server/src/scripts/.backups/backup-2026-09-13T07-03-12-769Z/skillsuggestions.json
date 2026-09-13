@@ -1,0 +1,138 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c1b"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillName": "Pottery",
+  "categoryName": "Textile & Craft",
+  "description": "Hand building and wheel throwing.",
+  "status": "approved",
+  "adminNotes": "Great addition to the taxonomy.",
+  "votes": {
+   "$numberInt": "5"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab4"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   }
+  ],
+  "reviewedBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "reviewedAt": {
+   "$date": {
+    "$numberLong": "1788498396584"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196587"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196587"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c1a"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "skillName": "Carpentry Basics",
+  "categoryName": "Home & Garden",
+  "description": "Woodworking for beginners.",
+  "status": "pending",
+  "adminNotes": "",
+  "votes": {
+   "$numberInt": "3"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196587"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196587"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c1c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "skillName": "Candle Making",
+  "categoryName": "Textile & Craft",
+  "description": "Soy candle pouring.",
+  "status": "rejected",
+  "adminNotes": "Duplicate of existing category.",
+  "votes": {
+   "$numberInt": "1"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9cf4a594340b9768648ab3"
+   }
+  ],
+  "reviewedBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "reviewedAt": {
+   "$date": {
+    "$numberLong": "1788325596584"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196587"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196587"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

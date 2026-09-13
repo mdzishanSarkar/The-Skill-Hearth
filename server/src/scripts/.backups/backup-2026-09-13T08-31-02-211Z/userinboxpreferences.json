@@ -1,0 +1,611 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb121f"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "isPinned": true,
+  "isMuted": false,
+  "isArchived": false,
+  "lastReadAt": {
+   "$date": {
+    "$numberLong": "1789287980686"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980687"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980687"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1220"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "isPinned": true,
+  "isMuted": false,
+  "isArchived": false,
+  "lastReadAt": {
+   "$date": {
+    "$numberLong": "1789287980686"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980731"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980731"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1221"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1012"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980776"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1222"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "lastReadAt": {
+   "$date": {
+    "$numberLong": "1789201580686"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980821"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980821"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1223"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980874"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980874"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1224"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101a"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980922"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980922"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1225"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980967"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980967"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1226"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1012"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981014"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981014"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1227"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1016"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981060"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981060"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1228"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1018"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981115"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981115"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1229"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "isPinned": true,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981161"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981161"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb122a"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101e"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981202"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981202"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb122b"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "isPinned": false,
+  "isMuted": true,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981247"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981247"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb122c"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1024"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981304"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981304"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb122d"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981350"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981350"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb122e"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1024"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981400"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981400"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb122f"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981449"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981449"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1230"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981528"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981528"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1231"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981576"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981576"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1232"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981619"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981619"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1233"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb102e"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981674"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981674"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1234"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb102c"
+  },
+  "isPinned": false,
+  "isMuted": false,
+  "isArchived": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981719"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287981719"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,3684 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "email": "demo@skillhearth.test",
+  "passwordHash": "$2b$12$bjvL4GU4P8rvfE.7Q0hAm.ETZvCt2XIddWjYwMcihFVjLZbF5Zgou",
+  "displayName": "Demo Tester",
+  "username": "demo_tester",
+  "bio": "Demo Tester - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [
+   {
+    "day": "monday",
+    "startTime": "09:00",
+    "endTime": "12:00"
+   },
+   {
+    "day": "saturday",
+    "startTime": "10:00",
+    "endTime": "14:00"
+   }
+  ],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "1250"
+   },
+   "level": {
+    "$numberInt": "5"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "ready_to_share",
+    "first_session",
+    "five_star_debut",
+    "first_friend",
+    "ten_friends",
+    "skill_swapper",
+    "streak_7",
+    "streak_30",
+    "multi_skill",
+    "early_adopter",
+    "local_legend"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-DEMO42"
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa5"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa6"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa7"
+   }
+  ],
+  "closeFriendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   }
+  ],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671142475"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786943142475"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786943142475"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "email": "maria@skillhearth.test",
+  "passwordHash": "$2b$12$L6ZzzOSYdV7S32c8b9foPOkOLeCjnuOVhcIFh0fDAFRXA4fHyAQqK",
+  "displayName": "Maria Ahmed",
+  "username": "maria_ahmed",
+  "bio": "Maria Ahmed - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "600"
+   },
+   "level": {
+    "$numberInt": "4"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "first_session"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   }
+  ],
+  "closeFriendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   }
+  ],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671142938"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787807142938"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787807142938"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "email": "kabir@skillhearth.test",
+  "passwordHash": "$2b$12$jZpRXbEul3hqW/K3t6a0w.kwQ8i/bC5EPUl5XTPsk7aGRnk712ZeC",
+  "displayName": "Kabir Hossain",
+  "username": "kabir_hossain",
+  "bio": "Kabir Hossain - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "800"
+   },
+   "level": {
+    "$numberInt": "4"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "first_session"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa5"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671143379"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787547943379"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787547943379"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "email": "rahim@skillhearth.test",
+  "passwordHash": "$2b$12$xLF22.SpAEkmlvDv.IgVf.goZmtGkq8h8DeDltw2Ujdo5s1ymwouO",
+  "displayName": "Rahim Uddin",
+  "username": "rahim_uddin",
+  "bio": "Rahim Uddin - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "300"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671143811"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239143811"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239143811"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "email": "fatima@skillhearth.test",
+  "passwordHash": "$2b$12$9oWUwgoqroPYfM21HRqZFu3YR0zcEAg6xDhpLLzNm55mD68xladjW",
+  "displayName": "Fatima Begum",
+  "username": "fatima_begum",
+  "bio": "Fatima Begum - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "450"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671144214"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788066344214"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788066344214"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "email": "noah@skillhearth.test",
+  "passwordHash": "$2b$12$Q5haCfWITnVemD5t83tQmeK.5dXD2A7nxko8zTL6/pK4YX.t1PDdC",
+  "displayName": "Noah Rahman",
+  "username": "noah_rahman",
+  "bio": "Noah Rahman - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "200"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671144749"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411944749"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411944749"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "email": "ayesha@skillhearth.test",
+  "passwordHash": "$2b$12$STRZlERVMgW7G70cfbofHOa1fy31KDfadqH.FRDmQWX/wlFC9zhWe",
+  "displayName": "Ayesha Siddiqua",
+  "username": "ayesha_siddiqua",
+  "bio": "Ayesha Siddiqua - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3643"
+    },
+    {
+     "$numberDouble": "23.8757"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "120"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671145773"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498345773"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498345773"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aa9"
+  },
+  "email": "james@skillhearth.test",
+  "passwordHash": "$2b$12$H/1DgIZqhGmbZGxWmz4NLulMn4PjTVhKFiG/nzkaWM984WtrPrBzq",
+  "displayName": "James Wilson",
+  "username": "james_wilson",
+  "bio": "James Wilson - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mohammadpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3606"
+    },
+    {
+     "$numberDouble": "23.7648"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "80"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671146881"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584746881"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584746881"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "email": "spam@skillhearth.test",
+  "passwordHash": "$2b$12$TcB5wf2iYdw.aCQFIvvlLukv09nspA.xjYekh5bk5R/pf2VnfNXTq",
+  "displayName": "Spam Account",
+  "username": "spam_account",
+  "bio": "Spam Account - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "suspended",
+  "suspensionExpiresAt": {
+   "$date": {
+    "$numberLong": "1789880748089"
+   }
+  },
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "0"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671148089"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584748089"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584748089"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aab"
+  },
+  "email": "banned@skillhearth.test",
+  "passwordHash": "$2b$12$//X1LZk1dOZCAu.2Gd7CtuFZ23ovqi/FbK6hL5IgbDe.vHkO2rNHi",
+  "displayName": "Banned User",
+  "username": "banned_user",
+  "bio": "Banned User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "banned",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "0"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671149167"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584749167"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584749167"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aac"
+  },
+  "email": "shadow@skillhearth.test",
+  "passwordHash": "$2b$12$quv2ROWddgKUXH.K6Q4LFeaK0Kp.m7OTChtxHxKDqqOkIwvmj7rOu",
+  "displayName": "Shadow User",
+  "username": "shadow_user",
+  "bio": "Shadow User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "60"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": true,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671150334"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584750334"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584750334"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aad"
+  },
+  "email": "unverified@skillhearth.test",
+  "passwordHash": "$2b$12$Wzf4NWdrxfUQgzAgD0FX1Oux8Zf2g484NG5xzK36WTDlY5L3Vy1Z6",
+  "displayName": "Unverified User",
+  "username": "unverified_user",
+  "bio": "Unverified User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "20"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": false,
+  "hasCompletedOnboarding": false,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671151453"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584751453"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584751453"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aae"
+  },
+  "email": "pro@skillhearth.test",
+  "passwordHash": "$2b$12$3/Nt7fv0aiaGpV0qdqmcWO8P0KLXBF3O7JwIApNq6UanlUsYr.lBS",
+  "displayName": "Pro User",
+  "username": "pro_user",
+  "bio": "Pro User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.406"
+    },
+    {
+     "$numberDouble": "23.798"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "900"
+   },
+   "level": {
+    "$numberInt": "4"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "first_session",
+    "ten_sessions"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671152586"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787375152586"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787375152586"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aaf"
+  },
+  "email": "offline@skillhearth.test",
+  "passwordHash": "$2b$12$i/qVx5.9WVkHkZ4wF/adVugCwlJ.g.U4gIWkoIkVwNuwv.w9LWPvy",
+  "displayName": "Offline User",
+  "username": "offline_user",
+  "bio": "Offline User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "150"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": true,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1787893541383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498353761"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498353761"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "email": "nyc@skillhearth.test",
+  "passwordHash": "$2b$12$ddkQSagI5KfHhWXE1OLlk.g1YREgr2yGOTF3/6fEORHPMIVZpQqhe",
+  "displayName": "NYC Sarah",
+  "username": "nyc_sarah",
+  "bio": "NYC Sarah - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "new york",
+   "zipCode": "1207",
+   "neighborhood": "brooklyn",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "-73.9442"
+    },
+    {
+     "$numberDouble": "40.6782"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "500"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671155051"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787979955051"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787979955051"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab1"
+  },
+  "email": "london@skillhearth.test",
+  "passwordHash": "$2b$12$S61TN.qXHlldnmXJ1ioMLeGNOIiMH5VxOH9Y9zBZQOxnSLn8xzoqK",
+  "displayName": "London Paul",
+  "username": "london_paul",
+  "bio": "London Paul - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "london",
+   "zipCode": "1207",
+   "neighborhood": "camden",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "-0.1459"
+    },
+    {
+     "$numberDouble": "51.5413"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "300"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671156162"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239156162"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239156162"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "email": "gen1@skillhearth.test",
+  "passwordHash": "$2b$12$MthS7u.2hsOa1tlD/4AObOqK4AGkkh/YxGp..1KxiOUGWyHJtL.zi",
+  "displayName": "Gen 1 User",
+  "username": "gen_user_1",
+  "bio": "Gen 1 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.395"
+    },
+    {
+     "$numberDouble": "23.815"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "25"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648ab3"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788498341383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584757289"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584757289"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "email": "gen2@skillhearth.test",
+  "passwordHash": "$2b$12$4CIlZAbZiWEEiRCRhVZC5OQHphFcUlOGgYwBQ6SoRly2AMfAPBU1O",
+  "displayName": "Gen 2 User",
+  "username": "gen_user_2",
+  "bio": "Gen 2 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.405"
+    },
+    {
+     "$numberDouble": "23.805"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "50"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9cf4a594340b9768648ab2"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788584741383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584758402"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584758402"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "email": "gen3@skillhearth.test",
+  "passwordHash": "$2b$12$ZhSnxPmn/OA5eYgOEyGpu.6quhpx.HPCtzRNBKBs1FUUn.hlW0SzK",
+  "displayName": "Gen 3 User",
+  "username": "gen_user_3",
+  "bio": "Gen 3 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.42"
+    },
+    {
+     "$numberDouble": "23.79"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "75"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584759556"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584759556"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "email": "gen4@skillhearth.test",
+  "passwordHash": "$2b$12$nJeIlCAOz0MRitQO1Vza2OnigEt.uXh33uzPsnbAjTeG9Jts43hXq",
+  "displayName": "Gen 4 User",
+  "username": "gen_user_4",
+  "bio": "Gen 4 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.385"
+    },
+    {
+     "$numberDouble": "23.82"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "100"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584760888"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584760888"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab6"
+  },
+  "email": "gen5@skillhearth.test",
+  "passwordHash": "$2b$12$s7FztJZ9KADvER573iapDuH0.Grc3oaAc.m.uMBEK9QaPHNKSqQPW",
+  "displayName": "Gen 5 User",
+  "username": "gen_user_5",
+  "bio": "Gen 5 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.43"
+    },
+    {
+     "$numberDouble": "23.775"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "125"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498362904"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498362904"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab7"
+  },
+  "email": "gen6@skillhearth.test",
+  "passwordHash": "$2b$12$zfJGk9zsHyIvHtpcmCgQJOc6XZr1KIs.So8YfXSiv5bUOsuwjAQAK",
+  "displayName": "Gen 6 User",
+  "username": "gen_user_6",
+  "bio": "Gen 6 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.83"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "150"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498364366"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498364366"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab8"
+  },
+  "email": "gen7@skillhearth.test",
+  "passwordHash": "$2b$12$UZ/w6qYV9S4TeEW7xEAW9OBwq3au1kMCpv/KpSVk3ut5UGk8bMTye",
+  "displayName": "Gen 7 User",
+  "username": "gen_user_7",
+  "bio": "Gen 7 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.415"
+    },
+    {
+     "$numberDouble": "23.77"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "175"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498365522"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498365522"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ab9"
+  },
+  "email": "gen8@skillhearth.test",
+  "passwordHash": "$2b$12$M.louUcA7o8DGpNFRpbtPeania43LHxF5ktDKBgqE1SCtldhl/DRq",
+  "displayName": "Gen 8 User",
+  "username": "gen_user_8",
+  "bio": "Gen 8 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.392"
+    },
+    {
+     "$numberDouble": "23.812"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "200"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411966510"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411966510"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648aba"
+  },
+  "email": "gen9@skillhearth.test",
+  "passwordHash": "$2b$12$19K/tIs1CcFMFP.SVOxviuOr1lt3RzvOQ.Zg3KwWCQF3jn5A7Byw2",
+  "displayName": "Gen 9 User",
+  "username": "gen_user_9",
+  "bio": "Gen 9 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.41"
+    },
+    {
+     "$numberDouble": "23.8"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "225"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411967749"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411967749"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648abb"
+  },
+  "email": "gen10@skillhearth.test",
+  "passwordHash": "$2b$12$5Xh9dx3sGkgE6Ib3HlVxTuphlnJq1ETo5YLHpe0GJYCYQ7VzxGrYa",
+  "displayName": "Gen 10 User",
+  "username": "gen_user_10",
+  "bio": "Gen 10 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.398"
+    },
+    {
+     "$numberDouble": "23.8"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "250"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325569079"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325569079"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648abc"
+  },
+  "email": "gen11@skillhearth.test",
+  "passwordHash": "$2b$12$dPJs4EPa.bkJCm2zaOJBHu8/Lapez0dW3vVkX9WGUI3DpckD19rfS",
+  "displayName": "Gen 11 User",
+  "username": "gen_user_11",
+  "bio": "Gen 11 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.422"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "275"
+   },
+   "level": {
+    "$numberInt": "2"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325570740"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325570740"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648abd"
+  },
+  "email": "gen12@skillhearth.test",
+  "passwordHash": "$2b$12$HHPR1K.iHyVvcROawLai.uH63/YfxdrxDzcEtwVDcQ6wPLFRLRhpW",
+  "displayName": "Gen 12 User",
+  "username": "gen_user_12",
+  "bio": "Gen 12 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.38"
+    },
+    {
+     "$numberDouble": "23.815"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "300"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239172051"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239172051"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648abe"
+  },
+  "email": "gen13@skillhearth.test",
+  "passwordHash": "$2b$12$PBdcc26ZSOY21U/351L.fOU0UWaWUgTi3SYH7S4z9YEie4zjBtgTq",
+  "displayName": "Gen 13 User",
+  "username": "gen_user_13",
+  "bio": "Gen 13 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.425"
+    },
+    {
+     "$numberDouble": "23.8"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "325"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239173232"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239173232"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648abf"
+  },
+  "email": "gen14@skillhearth.test",
+  "passwordHash": "$2b$12$rCVfysriaOWujdVuKR0OperkgMXsW/QVI.ifdwEF5XN.ugl3HTG6i",
+  "displayName": "Gen 14 User",
+  "username": "gen_user_14",
+  "bio": "Gen 14 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.388"
+    },
+    {
+     "$numberDouble": "23.795"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "350"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239174490"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239174490"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4a594340b9768648ac0"
+  },
+  "email": "gen15@skillhearth.test",
+  "passwordHash": "$2b$12$qdY4MYQHHaRuSxPe6bw1uObX9ze7TMIAin/z33hyUmG4Y3P24Iclq",
+  "displayName": "Gen 15 User",
+  "username": "gen_user_15",
+  "bio": "Gen 15 User - seeded test account on Skill Hearth.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4"
+    },
+    {
+     "$numberDouble": "23.82"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "availability": [],
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "375"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1788671141383"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788152775522"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788152775522"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "email": "simoksimon147@gmail.com",
+  "passwordHash": "$2b$12$9Czfo/W64doLqk0xP30z9.dkKJpkHHmDwnv44kghUUPWlIvmIaf9i",
+  "displayName": "Kabir",
+  "username": "kabir012",
+  "bio": "",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "admin",
+  "status": "active",
+  "location": {
+   "city": "দত্তপাড়া",
+   "zipCode": "1341",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.319998"
+    },
+    {
+     "$numberDouble": "23.872"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "20"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "1"
+   },
+   "referralCode": "SH-840FD6",
+   "lastXPAction": {
+    "$date": {
+     "$numberLong": "1788841823770"
+    }
+   }
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": false
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "availability": [],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789280655368"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788696992797"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280655369"
+   }
+  },
+  "__v": {
+   "$numberInt": "2"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6a9d59a0ec81a378e2840fd6-1788696995116.pdf"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "email": "partoftech150@gmail.com",
+  "passwordHash": "$2b$12$AQTnlckH60ad4N/2Thk00ODf8Igf8TCStIwaUHDFeds8LnMOS1CvS",
+  "displayName": "Abir",
+  "username": "abir01",
+  "bio": "",
+  "avatar": "/uploads/avatars/6a9f8e045f1165d4d897d3c3-1788841568540.png",
+  "avatarPublicId": "",
+  "role": "admin",
+  "status": "active",
+  "location": {
+   "city": "দত্তপাড়া",
+   "zipCode": "1341",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberInt": "0"
+    },
+    {
+     "$numberInt": "0"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": false,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "30"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [
+    "first_spark"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "1"
+   },
+   "referralCode": "",
+   "lastXPAction": {
+    "$date": {
+     "$numberLong": "1788841625385"
+    }
+   }
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": false
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "availability": [],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789280609538"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841476829"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280609539"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6a9f8e045f1165d4d897d3c3-1788841479104.pdf"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "email": "zishan@gmail.com",
+  "passwordHash": "$2b$12$Z18JGGEFQ4FcF88T0/t5t.Hg8Vh9ZpimFzkOlSxJY3XEaqqdtr1yW",
+  "displayName": "Zishan",
+  "username": "zishan",
+  "bio": "",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "admin",
+  "status": "active",
+  "location": {
+   "city": "দত্তপাড়া",
+   "zipCode": "1341",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberInt": "0"
+    },
+    {
+     "$numberInt": "0"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": false,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "20"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "1"
+   },
+   "referralCode": "SH-3EF947",
+   "lastXPAction": {
+    "$date": {
+     "$numberLong": "1788929032519"
+    }
+   }
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "list",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789280883533"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788928964021"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280883534"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa0e3c420626861e93ef947-1788928966292.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1788929021457"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "email": "freedrob32@gmail.com",
+  "passwordHash": "$2b$12$pH9TMBN.f7liP//xb30yX.U8/lOTDtV5BvpLyRukwBvfc72v6CbHi",
+  "displayName": "Fahim",
+  "username": "fahim0123",
+  "bio": "",
+  "avatar": "/uploads/avatars/6aa641a629419c4af5348bba-1789280722906.jpg",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "দত্তপাড়া",
+   "zipCode": "1341",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberInt": "0"
+    },
+    {
+     "$numberInt": "0"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": false,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "0"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "1"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789280681733"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280678948"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280895567"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa641a629419c4af5348bba-1789280699269.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1789280895566"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "email": "himonchalse@gmail.com",
+  "passwordHash": "$2b$12$OeepDqc2jEsmOzHguV39sOxaD7rAsS5V87JIaS0wuD7lju.iVUZHq",
+  "displayName": "Rakib Hasan",
+  "username": "rakibhasan01",
+  "bio": "",
+  "avatar": "/uploads/avatars/6aa641ef29419c4af5348bbd-1789280787797.jpg",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "দত্তপাড়া",
+   "zipCode": "1341",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberInt": "0"
+    },
+    {
+     "$numberInt": "0"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": false,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "0"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "1"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789280754537"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280751818"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280895222"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa641ef29419c4af5348bbd-1789280763433.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1789280895222"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "email": "arnobmojumder935@gmail.com",
+  "passwordHash": "$2b$12$Yt8bBPSelVN2dMgHAkBxaOFuSsjLr9TFnsbe0h.nbGEeae9jSKoCe",
+  "displayName": "Arnob Mojumder",
+  "username": "arnobmojumder",
+  "bio": "",
+  "avatar": "/uploads/avatars/6aa6423029419c4af5348bc0-1789280858779.jpg",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "Dhaka",
+   "zipCode": "1000",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberInt": "0"
+    },
+    {
+     "$numberInt": "0"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "showOnMap": false,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "0"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "0"
+   },
+   "level": {
+    "$numberInt": "1"
+   },
+   "badges": [],
+   "streakFreezeAvailable": {
+    "$numberInt": "1"
+   },
+   "referralCode": ""
+  },
+  "friendIds": [],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": ""
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789280819745"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280816972"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280893566"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa6423029419c4af5348bc0-1789280828772.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1789280893564"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ }
+]

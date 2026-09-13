@@ -1,0 +1,166 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c2a"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "skillName": "Basic Plumbing",
+  "categoryName": "Home & Garden",
+  "description": "Fix a leaking tap.",
+  "city": "dhaka",
+  "neighborhood": "uttara",
+  "format": "in-person",
+  "availability": [
+   "Evenings"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c29"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillName": "Knitting / Crochet",
+  "categoryName": "Textile & Craft",
+  "description": "Want to knit a scarf this winter.",
+  "city": "dhaka",
+  "neighborhood": "gulshan",
+  "format": "in-person",
+  "availability": [
+   "Weekends"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "2"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c2b"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "skillName": "Vegetable Gardening",
+  "categoryName": "Home & Garden",
+  "description": "Balcony garden setup.",
+  "city": "dhaka",
+  "neighborhood": "banani",
+  "format": "either",
+  "availability": [],
+  "status": "filled",
+  "responsesCount": {
+   "$numberInt": "3"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c2c"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "skillName": "Sewing & Mending",
+  "categoryName": "Textile & Craft",
+  "description": "Mend old jeans.",
+  "city": "dhaka",
+  "neighborhood": "dhanmondi",
+  "format": "online",
+  "availability": [],
+  "status": "expired",
+  "responsesCount": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c2d"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "skillName": "Smartphone Basics",
+  "categoryName": "Digital Literacy",
+  "description": "Help my grandmother with her phone.",
+  "city": "dhaka",
+  "neighborhood": "mirpur",
+  "format": "in-person",
+  "availability": [],
+  "status": "deleted",
+  "responsesCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196871"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

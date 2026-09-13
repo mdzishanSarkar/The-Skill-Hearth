@@ -1,0 +1,252 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11da"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1024"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Set up password manager and automated cloud backups. Fahim is all set.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d2"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Covered aperture, shutter speed and the rule of thirds. Abir did great with manual mode.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d5"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1012"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Made hummus, tabbouleh and a green smoothie. Kabir loved all three.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11db"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Covered cloud storage and backup strategy. Arnob set up automatic sync.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d8"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Kids-portrait session: catching genuine smiles. Fahim had a great eye for moments.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1018"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Taught open chords G, C and D. Zishan practised strumming patterns.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d7"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101a"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Guided a 15-minute body scan. Abir said it improved focus for coding.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d3"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Practised greetings and ordering food in Spanish. Kabir is a fast learner.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d4"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Shot food photos with natural window light. Zishan learned composition basics for the blog.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979645"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d9"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Client-call scenarios with a template script. Fahim will rehearse daily.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

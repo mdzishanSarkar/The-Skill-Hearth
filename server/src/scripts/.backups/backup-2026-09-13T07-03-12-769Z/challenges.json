@@ -1,0 +1,255 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4df94340b9768648c4e"
+  },
+  "creatorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "title": "Bake 10 Loaves",
+  "description": "Ten loaves in a month.",
+  "skillCategory": "Food & Cooking",
+  "challengeType": "both",
+  "goalDescription": "Bake 10 loaves",
+  "goalTarget": {
+   "$numberInt": "10"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788411999492"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1791003999492"
+   }
+  },
+  "status": "active",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1788411999492"
+     }
+    },
+    "progress": {
+     "$numberInt": "4"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa3"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1788498399492"
+     }
+    },
+    "progress": {
+     "$numberInt": "2"
+    }
+   }
+  ],
+  "badgeName": "Bread Champion",
+  "badgeIcon": "🍞",
+  "maxParticipants": {
+   "$numberInt": "50"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671199495"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671199495"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4df94340b9768648c50"
+  },
+  "creatorId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "title": "Sourdough Summer",
+  "description": "Upcoming challenge.",
+  "skillCategory": "Food & Cooking",
+  "challengeType": "teach",
+  "goalDescription": "Teach 5 sourdough lessons",
+  "goalTarget": {
+   "$numberInt": "5"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789103199492"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1791695199492"
+   }
+  },
+  "status": "upcoming",
+  "participants": [],
+  "badgeName": "Sourdough Sage",
+  "badgeIcon": "🥖",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671199698"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671199698"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4df94340b9768648c52"
+  },
+  "creatorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "title": "Gardening Week",
+  "description": "Completed challenge.",
+  "skillCategory": "Home & Garden",
+  "challengeType": "learn",
+  "goalDescription": "Learn 3 gardening skills",
+  "goalTarget": {
+   "$numberInt": "3"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1786079199492"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1788498399492"
+   }
+  },
+  "status": "completed",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1786079199492"
+     }
+    },
+    "progress": {
+     "$numberInt": "3"
+    },
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1788498399492"
+     }
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa6"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1786251999492"
+     }
+    },
+    "progress": {
+     "$numberInt": "3"
+    },
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1788411999492"
+     }
+    }
+   }
+  ],
+  "badgeName": "Green Thumb",
+  "badgeIcon": "🌱",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671199901"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671199901"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c54"
+  },
+  "creatorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "title": "Mending March",
+  "description": "Cancelled challenge.",
+  "skillCategory": "Textile & Craft",
+  "challengeType": "both",
+  "goalDescription": "Mend 5 items",
+  "goalTarget": {
+   "$numberInt": "5"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788498399492"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1789535199492"
+   }
+  },
+  "status": "cancelled",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648ab2"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1788584799492"
+     }
+    },
+    "progress": {
+     "$numberInt": "0"
+    }
+   }
+  ],
+  "badgeName": "Stitch Wizard",
+  "badgeIcon": "🧵",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200106"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200106"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

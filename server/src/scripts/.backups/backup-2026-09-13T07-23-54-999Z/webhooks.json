@@ -1,0 +1,161 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c68"
+  },
+  "ownerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "url": "https://example.com/hook2",
+  "events": [
+   "review.created"
+  ],
+  "secret": "whsec_test_2",
+  "status": "disabled",
+  "failCount": {
+   "$numberInt": "2"
+  },
+  "lastTriggeredAt": {
+   "$date": {
+    "$numberLong": "1788412001337"
+   }
+  },
+  "logs": [
+   {
+    "event": "review.created",
+    "statusCode": {
+     "$numberInt": "500"
+    },
+    "success": false,
+    "error": "Timeout",
+    "attemptedAt": {
+     "$date": {
+      "$numberLong": "1788412001337"
+     }
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201345"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201345"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c67"
+  },
+  "ownerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "url": "https://example.com/hook1",
+  "events": [
+   "session.completed",
+   "member.joined",
+   "skill.created"
+  ],
+  "secret": "whsec_test_1",
+  "status": "active",
+  "failCount": {
+   "$numberInt": "0"
+  },
+  "lastTriggeredAt": {
+   "$date": {
+    "$numberLong": "1788584801336"
+   }
+  },
+  "lastSuccessAt": {
+   "$date": {
+    "$numberLong": "1788584801336"
+   }
+  },
+  "logs": [
+   {
+    "event": "session.completed",
+    "payload": {
+     "ok": true
+    },
+    "statusCode": {
+     "$numberInt": "200"
+    },
+    "success": true,
+    "attemptedAt": {
+     "$date": {
+      "$numberLong": "1788584801336"
+     }
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201345"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201345"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c69"
+  },
+  "ownerId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "url": "https://example.com/hook3",
+  "events": [
+   "connection.completed"
+  ],
+  "secret": "whsec_test_3",
+  "status": "failed",
+  "failCount": {
+   "$numberInt": "5"
+  },
+  "lastTriggeredAt": {
+   "$date": {
+    "$numberLong": "1788325601337"
+   }
+  },
+  "logs": [
+   {
+    "event": "connection.completed",
+    "statusCode": {
+     "$numberInt": "500"
+    },
+    "success": false,
+    "error": "Invalid URL",
+    "attemptedAt": {
+     "$date": {
+      "$numberLong": "1788325601337"
+     }
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201345"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201345"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

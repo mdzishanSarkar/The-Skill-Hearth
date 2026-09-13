@@ -1,0 +1,2050 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c4"
+  },
+  "categoryName": "Photography & Visual Arts",
+  "skillName": "Photography",
+  "description": "Composition, natural light, and the rule of thirds. Street and portrait photography in Gulshan.",
+  "proficiencyLevel": "advanced",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1212",
+   "neighborhood": "Gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "3"
+   },
+   "completedSessionCount": {
+    "$numberInt": "3"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966655"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982375"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "categoryName": "Technology & Web",
+  "skillName": "JavaScript",
+  "description": "Web development fundamentals from variables to building interactive pages.",
+  "proficiencyLevel": "advanced",
+  "format": "online",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1212",
+   "neighborhood": "Gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966708"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982430"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fcc"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Spanish",
+  "description": "Want to hold a real conversation in Spanish before a summer trip to Spain.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1212",
+   "neighborhood": "Gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966758"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982482"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fce"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Guitar",
+  "description": "Want to learn acoustic guitar from zero for family sing-alongs.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1212",
+   "neighborhood": "Gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966807"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982531"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd0"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Healthy Cooking",
+  "description": "Learning Mediterranean-style meal prep to eat better during the work week.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1212",
+   "neighborhood": "Gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966853"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982595"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd2"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c4"
+  },
+  "categoryName": "Photography & Visual Arts",
+  "skillName": "Photography",
+  "description": "Shoot with confidence, understand light and composition, edit like a pro.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1213",
+   "neighborhood": "Banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966899"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982644"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Spanish",
+  "description": "Conversational Spanish for everyday life. We practise speaking from day one.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1213",
+   "neighborhood": "Banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberDouble": "4.5"
+   },
+   "reviewCount": {
+    "$numberInt": "2"
+   },
+   "completedSessionCount": {
+    "$numberInt": "2"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287966950"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982709"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Guitar",
+  "description": "Acoustic guitar basics: chords, strumming and your first songs.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1213",
+   "neighborhood": "Banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "1"
+   },
+   "completedSessionCount": {
+    "$numberInt": "1"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967003"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982758"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fd8"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "categoryName": "Technology & Web",
+  "skillName": "JavaScript",
+  "description": "Want to learn JavaScript and build my own small web projects.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1213",
+   "neighborhood": "Banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967049"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982809"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fda"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Healthy Cooking",
+  "description": "Learning to meal-prep healthy lunches for the working week.",
+  "proficiencyLevel": "beginner",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1213",
+   "neighborhood": "Banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967133"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982855"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Healthy Cooking",
+  "description": "Mediterranean and plant-based meal prep, plus tips for feeding a family well.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1209",
+   "neighborhood": "Dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "1"
+   },
+   "completedSessionCount": {
+    "$numberInt": "1"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967192"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982905"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Meditation",
+  "description": "Guided meditation and mindfulness for stress relief and deep focus.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1209",
+   "neighborhood": "Dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "1"
+   },
+   "completedSessionCount": {
+    "$numberInt": "1"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967324"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982955"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe0"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c4"
+  },
+  "categoryName": "Photography & Visual Arts",
+  "skillName": "Photography",
+  "description": "Want to take better food photos for my cooking blog.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1209",
+   "neighborhood": "Dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967400"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983009"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe2"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Guitar",
+  "description": "Want to accompany myself singing a few campfire songs.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1209",
+   "neighborhood": "Dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983068"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe4"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "categoryName": "Technology & Web",
+  "skillName": "JavaScript",
+  "description": "Curious about coding - want to learn the basics to build a simple recipe app.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1209",
+   "neighborhood": "Dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967593"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983116"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Yoga & Stretching",
+  "description": "Beginner-friendly yoga, mobility and stretching to stay active and pain-free.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1230",
+   "neighborhood": "Uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.407"
+    },
+    {
+     "$numberDouble": "23.8755"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "18"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967649"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983163"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe8"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Smartphone Basics",
+  "description": "Apps, photos, settings and staying safe online - perfect for beginners.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1230",
+   "neighborhood": "Uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.407"
+    },
+    {
+     "$numberDouble": "23.8755"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "18"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967699"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983208"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fea"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Healthy Cooking",
+  "description": "Want to cook healthier food for my family on a budget.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1230",
+   "neighborhood": "Uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.407"
+    },
+    {
+     "$numberDouble": "23.8755"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "18"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967749"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983253"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fec"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c4"
+  },
+  "categoryName": "Photography & Visual Arts",
+  "skillName": "Photography",
+  "description": "Want to take better photos of my kids and travels.",
+  "proficiencyLevel": "beginner",
+  "format": "either",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1230",
+   "neighborhood": "Uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.407"
+    },
+    {
+     "$numberDouble": "23.8755"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "18"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967820"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983302"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fee"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "English Conversation",
+  "description": "Want to practise conversational English for work calls.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1230",
+   "neighborhood": "Uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.407"
+    },
+    {
+     "$numberDouble": "23.8755"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "18"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967869"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983353"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff0"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Digital Literacy",
+  "description": "Email, video calls, online safety and getting comfortable with technology.",
+  "proficiencyLevel": "advanced",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberDouble": "4.5"
+   },
+   "reviewCount": {
+    "$numberInt": "2"
+   },
+   "completedSessionCount": {
+    "$numberInt": "2"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967936"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983402"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "English Conversation",
+  "description": "Everyday spoken English: confidence, pronunciation and useful phrases.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "1"
+   },
+   "completedSessionCount": {
+    "$numberInt": "1"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287967980"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983456"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb0ff4"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Sewing & Mending",
+  "description": "Hand and machine sewing, repairs, alterations and simple garments.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968029"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983504"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb0ff6"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Healthy Cooking",
+  "description": "Want to learn quick, healthy weekday recipes.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968073"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983557"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb0ff8"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Yoga & Stretching",
+  "description": "Looking for gentle morning stretching to reduce back pain.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968127"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983602"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffa"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "categoryName": "Technology & Web",
+  "skillName": "JavaScript",
+  "description": "Want to understand the basics of programming.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968177"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983651"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffc"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "categoryName": "Technology & Web",
+  "skillName": "Web Design",
+  "description": "Intuitive HTML & CSS for absolute beginners - build your first page.",
+  "proficiencyLevel": "advanced",
+  "format": "online",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968237"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983696"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffe"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Vegetable Gardening",
+  "description": "Grow tomatoes, chilli and leafy greens in pots on a balcony or rooftop.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968286"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983747"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb1000"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Spanish",
+  "description": "Beginner Spanish for travel - want to get conversational.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968350"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983806"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb1002"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Guitar",
+  "description": "Always wanted to play guitar - total beginner.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968411"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983869"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb1004"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Healthy Cooking",
+  "description": "Want to move beyond instant noodles and cook real meals.",
+  "proficiencyLevel": "beginner",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968459"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983926"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2019d1dc63c8cb1006"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "skillName": "Yoga & Stretching",
+  "description": "Want to improve posture and flexibility after long hours at the desk.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287968510"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287983984"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

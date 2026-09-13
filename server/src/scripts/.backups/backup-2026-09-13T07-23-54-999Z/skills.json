@@ -1,0 +1,2375 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4c994340b9768648ae8"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Knitting / Crochet",
+  "description": "I want to learn knitting and crochet from scratch.",
+  "proficiencyLevel": "beginner",
+  "format": "either",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671177376"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671177376"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4c994340b9768648aea"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Conversational Language Practice",
+  "description": "Looking for a patient partner to practice everyday English with.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671177580"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671177580"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4c994340b9768648aec"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Basic Plumbing",
+  "description": "I want to learn basic home plumbing maintenance.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671177690"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671177690"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4c994340b9768648aee"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Hidden Bread Course",
+  "description": "Inactive hidden skill for testing.",
+  "proficiencyLevel": "advanced",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": false,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671177890"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671177890"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ca94340b9768648af0"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Deleted Candle Making",
+  "description": "Soft-deleted skill for testing.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": true,
+  "deletedAt": {
+   "$date": {
+    "$numberLong": "1788239178090"
+   }
+  },
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671178092"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671178092"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ca94340b9768648af2"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Sewing & Mending",
+  "description": "Hand and machine sewing, mending holes and simple alterations.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberDouble": "4.5"
+   },
+   "reviewCount": {
+    "$numberInt": "2"
+   },
+   "completedSessionCount": {
+    "$numberInt": "4"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671178297"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671178297"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ca94340b9768648af4"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Baking",
+  "description": "Sourdough, baguettes and enriched breads.",
+  "proficiencyLevel": "advanced",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "3"
+   },
+   "completedSessionCount": {
+    "$numberInt": "7"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671178502"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671178502"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ca94340b9768648af6"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Knitting / Crochet",
+  "description": "Want to learn knitting.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671178706"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671178706"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ca94340b9768648af8"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Basic Plumbing",
+  "description": "Fix leaks, unblock drains and maintain home plumbing.",
+  "proficiencyLevel": "advanced",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberDouble": "4.2"
+   },
+   "reviewCount": {
+    "$numberInt": "4"
+   },
+   "completedSessionCount": {
+    "$numberInt": "9"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671178803"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671178803"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cb94340b9768648afa"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Upcycling",
+  "description": "Turn old clothes into new favourites.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671179015"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671179015"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cb94340b9768648afc"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Vegetable Gardening",
+  "description": "Want to grow balcony veggies.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671179219"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671179219"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cb94340b9768648afe"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Composting",
+  "description": "Turn kitchen waste into rich soil.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671179423"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671179423"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cb94340b9768648b00"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Email & Video Calls",
+  "description": "Compose, attach and call with confidence.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3643"
+    },
+    {
+     "$numberDouble": "23.8757"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671179629"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671179629"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cb94340b9768648b02"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa9"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Writing & Reading",
+  "description": "Everyday writing, reading and clarity.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mohammadpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3606"
+    },
+    {
+     "$numberDouble": "23.7648"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671179834"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671179834"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cb94340b9768648b04"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aae"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Meal Prep",
+  "description": "Plan and prep meals for the week.",
+  "proficiencyLevel": "advanced",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.406"
+    },
+    {
+     "$numberDouble": "23.798"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671179927"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671179927"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cc94340b9768648b06"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aaf"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Smartphone Basics",
+  "description": "Offline user skill.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671180141"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671180141"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cc94340b9768648b08"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Knitting / Crochet",
+  "description": "Beginner to intermediate knitting and crochet.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "new york",
+   "zipCode": "1207",
+   "neighborhood": "brooklyn",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "-73.9442"
+    },
+    {
+     "$numberDouble": "40.6782"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671180244"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671180244"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cc94340b9768648b0a"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab1"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Vegetable Gardening",
+  "description": "Allotment and container growing in London.",
+  "proficiencyLevel": "intermediate",
+  "format": "in-person",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "london",
+   "zipCode": "1207",
+   "neighborhood": "camden",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "-0.1459"
+    },
+    {
+     "$numberDouble": "51.5413"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671180447"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671180447"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cc94340b9768648b0c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aac"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Smartphone Basics",
+  "description": "Shadow banned user skill.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671180652"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671180652"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cc94340b9768648b0e"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Get Rich Quick",
+  "description": "Buy my course, 100% guaranteed money!!",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3715"
+    },
+    {
+     "$numberDouble": "23.8064"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671180858"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671180858"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cc94340b9768648b10"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aab"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Meal Prep",
+  "description": "Banned user skill.",
+  "proficiencyLevel": "beginner",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671180963"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671180963"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cd94340b9768648b12"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Basic Plumbing",
+  "description": "Generated skill for gen1.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.395"
+    },
+    {
+     "$numberDouble": "23.815"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671181164"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671181164"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cd94340b9768648b14"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Sewing & Mending",
+  "description": "Generated skill for gen2.",
+  "proficiencyLevel": "advanced",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.405"
+    },
+    {
+     "$numberDouble": "23.805"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671181369"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671181369"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cd94340b9768648b16"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Smartphone Basics",
+  "description": "Generated skill for gen3.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "30min",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.42"
+    },
+    {
+     "$numberDouble": "23.79"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671181575"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671181575"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cd94340b9768648b18"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Conversational Language Practice",
+  "description": "Generated skill for gen4.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.385"
+    },
+    {
+     "$numberDouble": "23.82"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671181752"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671181752"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cd94340b9768648b1a"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab6"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Fermentation & Preserving",
+  "description": "Generated skill for gen5.",
+  "proficiencyLevel": "advanced",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.43"
+    },
+    {
+     "$numberDouble": "23.775"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671181834"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671181834"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cd94340b9768648b1c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab7"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Vegetable Gardening",
+  "description": "Generated skill for gen6.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "30min",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.83"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671181924"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671181924"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b1e"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab8"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Knitting / Crochet",
+  "description": "Generated skill for gen7.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.415"
+    },
+    {
+     "$numberDouble": "23.77"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182003"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182003"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b20"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab9"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Email & Video Calls",
+  "description": "Generated skill for gen8.",
+  "proficiencyLevel": "advanced",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.392"
+    },
+    {
+     "$numberDouble": "23.812"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182085"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182085"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b22"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aba"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Writing & Reading",
+  "description": "Generated skill for gen9.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "30min",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.41"
+    },
+    {
+     "$numberDouble": "23.8"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182244"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182244"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b24"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648abb"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Knife Skills",
+  "description": "Generated skill for gen10.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.398"
+    },
+    {
+     "$numberDouble": "23.8"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182324"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182324"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b26"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648abc"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "skillName": "Composting",
+  "description": "Generated skill for gen11.",
+  "proficiencyLevel": "advanced",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.422"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182418"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182418"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b28"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648abd"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "skillName": "Upcycling",
+  "description": "Generated skill for gen12.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "30min",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.38"
+    },
+    {
+     "$numberDouble": "23.815"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182502"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182502"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b2a"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648abe"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "skillName": "Online Safety",
+  "description": "Generated skill for gen13.",
+  "proficiencyLevel": "intermediate",
+  "format": "online",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.425"
+    },
+    {
+     "$numberDouble": "23.8"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182572"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182572"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b2c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648abf"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "skillName": "Conversational Language Practice",
+  "description": "Generated skill for gen14.",
+  "proficiencyLevel": "advanced",
+  "format": "either",
+  "sessionLength": "2hr+",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.388"
+    },
+    {
+     "$numberDouble": "23.795"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182651"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182651"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ce94340b9768648b2e"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ac0"
+  },
+  "type": "learn",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Meal Prep",
+  "description": "Generated skill for gen15.",
+  "proficiencyLevel": "beginner",
+  "format": "in-person",
+  "sessionLength": "30min",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "media": [],
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1207",
+   "neighborhood": "banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4"
+    },
+    {
+     "$numberDouble": "23.82"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671182906"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671182906"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8e985f1165d4d897d3c6"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "teach",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "skillName": "Baking",
+  "description": "I am an expert in baking food.",
+  "proficiencyLevel": "beginner",
+  "format": "either",
+  "sessionLength": "1hr",
+  "showOnMap": true,
+  "isActive": true,
+  "isDeleted": false,
+  "isPromoted": false,
+  "location": {
+   "city": "দত্তপাড়া",
+   "zipCode": "1341",
+   "neighborhood": "",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberInt": "0"
+    },
+    {
+     "$numberInt": "0"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "5"
+   }
+  },
+  "stats": {
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   },
+   "completedSessionCount": {
+    "$numberInt": "0"
+   }
+  },
+  "media": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841624782"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788929898855"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

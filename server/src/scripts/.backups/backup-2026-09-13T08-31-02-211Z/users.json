@@ -1,0 +1,853 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "email": "simoksimon147@gmail.com",
+  "passwordHash": "$2b$12$9Czfo/W64doLqk0xP30z9.dkKJpkHHmDwnv44kghUUPWlIvmIaf9i",
+  "displayName": "Kabir Hossain",
+  "username": "kabir012",
+  "bio": "Photographer and JavaScript developer. I lead the Skill Hearth community team and love swapping skills with neighbours, especially around Gulshan.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "admin",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1212",
+   "neighborhood": "Gulshan",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4135"
+    },
+    {
+     "$numberDouble": "23.7933"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "5"
+   },
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "3"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "1800"
+   },
+   "level": {
+    "$numberInt": "5"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "ready_to_share",
+    "first_session",
+    "first_friend",
+    "skill_swapper",
+    "five_star_debut",
+    "multi_skill",
+    "early_adopter",
+    "streak_7",
+    "streak_30",
+    "ten_sessions",
+    "local_legend"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-840FD6"
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "closeFriendIds": [
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   }
+  ],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": false
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "availability": [
+   {
+    "day": "wednesday",
+    "startTime": "18:00",
+    "endTime": "21:00"
+   },
+   {
+    "day": "thursday",
+    "startTime": "18:00",
+    "endTime": "21:00"
+   },
+   {
+    "day": "sunday",
+    "startTime": "10:00",
+    "endTime": "14:00"
+   }
+  ],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789287987654"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788696992797"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987655"
+   }
+  },
+  "__v": {
+   "$numberInt": "2"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6a9d59a0ec81a378e2840fd6-1788696995116.pdf"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "email": "partoftech150@gmail.com",
+  "passwordHash": "$2b$12$AQTnlckH60ad4N/2Thk00ODf8Igf8TCStIwaUHDFeds8LnMOS1CvS",
+  "displayName": "Abir Rahman",
+  "username": "abir01",
+  "bio": "Spanish teacher, guitarist and photography enthusiast. Currently learning JavaScript. Always happy to trade a language lesson for a coding lesson!",
+  "avatar": "/uploads/avatars/6a9f8e045f1165d4d897d3c3-1788841568540.png",
+  "avatarPublicId": "",
+  "role": "admin",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1213",
+   "neighborhood": "Banani",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4092"
+    },
+    {
+     "$numberDouble": "23.785"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "15"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "5"
+   },
+   "averageRating": {
+    "$numberDouble": "4.666666666666667"
+   },
+   "reviewCount": {
+    "$numberInt": "3"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "1400"
+   },
+   "level": {
+    "$numberInt": "5"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "ready_to_share",
+    "first_session",
+    "first_friend",
+    "skill_swapper",
+    "five_star_debut",
+    "early_adopter",
+    "streak_7",
+    "ten_sessions"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-97D3C3"
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   }
+  ],
+  "closeFriendIds": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   }
+  ],
+  "feedVisibility": "public",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": false
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "unverified",
+  "isShadowBanned": false,
+  "availability": [
+   {
+    "day": "wednesday",
+    "startTime": "18:00",
+    "endTime": "21:00"
+   },
+   {
+    "day": "thursday",
+    "startTime": "18:00",
+    "endTime": "21:00"
+   },
+   {
+    "day": "sunday",
+    "startTime": "10:00",
+    "endTime": "14:00"
+   }
+  ],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789287987654"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841476829"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987655"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6a9f8e045f1165d4d897d3c3-1788841479104.pdf"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "email": "zishan@gmail.com",
+  "passwordHash": "$2b$12$Z18JGGEFQ4FcF88T0/t5t.Hg8Vh9ZpimFzkOlSxJY3XEaqqdtr1yW",
+  "displayName": "Zishan Ahmed",
+  "username": "zishan",
+  "bio": "Home cook and mindfulness coach. I teach Mediterranean-style cooking and lead guided meditation sessions from my home in Dhanmondi.",
+  "avatar": "",
+  "avatarPublicId": "",
+  "role": "admin",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1209",
+   "neighborhood": "Dhanmondi",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.375"
+    },
+    {
+     "$numberDouble": "23.7461"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "5"
+   },
+   "averageRating": {
+    "$numberInt": "5"
+   },
+   "reviewCount": {
+    "$numberInt": "2"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "950"
+   },
+   "level": {
+    "$numberInt": "4"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "ready_to_share",
+    "first_session",
+    "first_friend",
+    "skill_swapper",
+    "five_star_debut",
+    "early_adopter",
+    "streak_7"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-3EF947"
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "list",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": true,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [
+   {
+    "day": "tuesday",
+    "startTime": "16:00",
+    "endTime": "19:00"
+   },
+   {
+    "day": "thursday",
+    "startTime": "17:00",
+    "endTime": "20:00"
+   },
+   {
+    "day": "sunday",
+    "startTime": "11:00",
+    "endTime": "15:00"
+   }
+  ],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789287987654"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788928964021"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987655"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa0e3c420626861e93ef947-1788928966292.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1788929021457"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "email": "freedrob32@gmail.com",
+  "passwordHash": "$2b$12$pH9TMBN.f7liP//xb30yX.U8/lOTDtV5BvpLyRukwBvfc72v6CbHi",
+  "displayName": "Fahim Chowdhury",
+  "username": "fahim0123",
+  "bio": "Yoga instructor and digital-literacy mentor living in Uttara. I help seniors and neighbours get comfortable with smartphones and online safety.",
+  "avatar": "/uploads/avatars/6aa641a629419c4af5348bba-1789280722906.jpg",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1230",
+   "neighborhood": "Uttara",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.407"
+    },
+    {
+     "$numberDouble": "23.8755"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "18"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "3"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "600"
+   },
+   "level": {
+    "$numberInt": "4"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "first_session",
+    "first_friend",
+    "early_adopter"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-348BBA"
+  },
+  "friendIds": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [
+   {
+    "day": "monday",
+    "startTime": "09:00",
+    "endTime": "12:00"
+   },
+   {
+    "day": "friday",
+    "startTime": "09:00",
+    "endTime": "11:00"
+   },
+   {
+    "day": "saturday",
+    "startTime": "10:00",
+    "endTime": "13:00"
+   }
+  ],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789287987654"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280678948"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987655"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa641a629419c4af5348bba-1789280699269.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1789280895566"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "email": "himonchalse@gmail.com",
+  "passwordHash": "$2b$12$OeepDqc2jEsmOzHguV39sOxaD7rAsS5V87JIaS0wuD7lju.iVUZHq",
+  "displayName": "Rakib Hasan",
+  "username": "rakibhasan01",
+  "bio": "Digital literacy trainer and amateur English tutor from Mirpur. I run sewing workshops and help students get started with coding basics.",
+  "avatar": "/uploads/avatars/6aa641ef29419c4af5348bbd-1789280787797.jpg",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1216",
+   "neighborhood": "Mirpur",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.3661"
+    },
+    {
+     "$numberDouble": "23.8089"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "12"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "3"
+   },
+   "averageRating": {
+    "$numberDouble": "4.666666666666667"
+   },
+   "reviewCount": {
+    "$numberInt": "3"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "400"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "first_session",
+    "first_friend"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-348BBD"
+  },
+  "friendIds": [
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   },
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "closeFriendIds": [
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   }
+  ],
+  "feedVisibility": "friends",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": false,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [
+   {
+    "day": "wednesday",
+    "startTime": "18:00",
+    "endTime": "21:00"
+   },
+   {
+    "day": "thursday",
+    "startTime": "18:00",
+    "endTime": "21:00"
+   },
+   {
+    "day": "sunday",
+    "startTime": "10:00",
+    "endTime": "14:00"
+   }
+  ],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789287987654"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280751818"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987655"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa641ef29419c4af5348bbd-1789280763433.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1789280895222"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "email": "arnobmojumder935@gmail.com",
+  "passwordHash": "$2b$12$Yt8bBPSelVN2dMgHAkBxaOFuSsjLr9TFnsbe0h.nbGEeae9jSKoCe",
+  "displayName": "Arnob Mojumder",
+  "username": "arnobmojumder",
+  "bio": "Web designer and home-garden enthusiast from Motijheel. I teach intuitive HTML/CSS and vegetable gardening to absolute beginners.",
+  "avatar": "/uploads/avatars/6aa6423029419c4af5348bc0-1789280858779.jpg",
+  "avatarPublicId": "",
+  "role": "user",
+  "status": "active",
+  "location": {
+   "city": "dhaka",
+   "zipCode": "1000",
+   "neighborhood": "Motijheel",
+   "type": "Point",
+   "coordinates": [
+    {
+     "$numberDouble": "90.4175"
+    },
+    {
+     "$numberDouble": "23.733"
+    }
+   ],
+   "radiusPreference": {
+    "$numberInt": "10"
+   }
+  },
+  "showOnMap": true,
+  "stats": {
+   "sessionsCompleted": {
+    "$numberInt": "1"
+   },
+   "averageRating": {
+    "$numberInt": "0"
+   },
+   "reviewCount": {
+    "$numberInt": "0"
+   }
+  },
+  "gamification": {
+   "xp": {
+    "$numberInt": "300"
+   },
+   "level": {
+    "$numberInt": "3"
+   },
+   "badges": [
+    "first_spark",
+    "full_profile",
+    "first_session",
+    "first_friend"
+   ],
+   "streakFreezeAvailable": {
+    "$numberInt": "2"
+   },
+   "referralCode": "SH-348BC0"
+  },
+  "friendIds": [
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   }
+  ],
+  "closeFriendIds": [],
+  "feedVisibility": "public",
+  "mapPreferences": {
+   "defaultMode": "auto",
+   "defaultView": "map",
+   "clusterMarkers": true
+  },
+  "quietHours": {
+   "enabled": false,
+   "startTime": "22:00",
+   "endTime": "07:00",
+   "timezone": "Asia/Dhaka"
+  },
+  "weeklyDigest": true,
+  "isEmailVerified": true,
+  "hasCompletedOnboarding": true,
+  "verificationStatus": "verified",
+  "isShadowBanned": false,
+  "availability": [
+   {
+    "day": "tuesday",
+    "startTime": "16:00",
+    "endTime": "19:00"
+   },
+   {
+    "day": "thursday",
+    "startTime": "17:00",
+    "endTime": "20:00"
+   },
+   {
+    "day": "sunday",
+    "startTime": "11:00",
+    "endTime": "15:00"
+   }
+  ],
+  "lastActive": {
+   "$date": {
+    "$numberLong": "1789287987654"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280816972"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987655"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "identityVerification": {
+   "idType": "nid",
+   "documentPath": "/opt/render/project/src/server/uploads/identity/6aa6423029419c4af5348bc0-1789280828772.pdf",
+   "reviewedAt": {
+    "$date": {
+     "$numberLong": "1789280893564"
+    }
+   },
+   "reviewedBy": {
+    "$oid": "6aa0e3c420626861e93ef947"
+   }
+  }
+ }
+]

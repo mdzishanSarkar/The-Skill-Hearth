@@ -1,0 +1,352 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb1138"
+  },
+  "creatorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "title": "Photo a Day",
+  "description": "Take one creative photo every day for a month.",
+  "skillCategory": "Photography & Visual Arts",
+  "challengeType": "both",
+  "goalDescription": "Take 30 creative photos",
+  "goalTarget": {
+   "$numberInt": "30"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789028776990"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1791620776990"
+   }
+  },
+  "status": "active",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789028776990"
+     }
+    },
+    "progress": {
+     "$numberInt": "8"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789115176990"
+     }
+    },
+    "progress": {
+     "$numberInt": "5"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789201576991"
+     }
+    },
+    "progress": {
+     "$numberInt": "3"
+    }
+   }
+  ],
+  "badgeName": "Shutterbug",
+  "badgeIcon": "📸",
+  "maxParticipants": {
+   "$numberInt": "50"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976994"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287976994"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb113a"
+  },
+  "creatorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "title": "Spanish Sprint",
+  "description": "Learn 50 new Spanish words in a week.",
+  "skillCategory": "Languages & Communication",
+  "challengeType": "learn",
+  "goalDescription": "Score 5/5 on the weekly quiz",
+  "goalTarget": {
+   "$numberInt": "5"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789460776990"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1790065576990"
+   }
+  },
+  "status": "upcoming",
+  "participants": [],
+  "badgeName": "Polyglot",
+  "badgeIcon": "🗣️",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977049"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977049"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb113c"
+  },
+  "creatorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "title": "Mindful Month",
+  "description": "Meditate every day for 30 days.",
+  "skillCategory": "Music & Performing Arts",
+  "challengeType": "both",
+  "goalDescription": "30 days of meditation",
+  "goalTarget": {
+   "$numberInt": "30"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1786695976990"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1789201576990"
+   }
+  },
+  "status": "completed",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1786695977094"
+     }
+    },
+    "progress": {
+     "$numberInt": "30"
+    },
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1789201576990"
+     }
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1786868777094"
+     }
+    },
+    "progress": {
+     "$numberInt": "22"
+    }
+   }
+  ],
+  "badgeName": "Zen Master",
+  "badgeIcon": "🧘",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977096"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977096"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb113e"
+  },
+  "creatorId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "title": "Tech-Safe Families",
+  "description": "Help one neighbour secure their online accounts.",
+  "skillCategory": "Digital Literacy",
+  "challengeType": "teach",
+  "goalDescription": "Complete 5 family safety checkups",
+  "goalTarget": {
+   "$numberInt": "5"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789374376990"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1790497576990"
+   }
+  },
+  "status": "upcoming",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6aa641ef29419c4af5348bbd"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789287977142"
+     }
+    },
+    "progress": {
+     "$numberInt": "0"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6aa641a629419c4af5348bba"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789287977142"
+     }
+    },
+    "progress": {
+     "$numberInt": "0"
+    }
+   }
+  ],
+  "badgeName": "Cyber Guardian",
+  "badgeIcon": "🛡️",
+  "maxParticipants": {
+   "$numberInt": "30"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977144"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977144"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2919d1dc63c8cb1140"
+  },
+  "creatorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "title": "Grow Your Own Greens",
+  "description": "Grow a potted plant from seed to harvest.",
+  "skillCategory": "Home & Garden",
+  "challengeType": "learn",
+  "goalDescription": "Harvest something edible",
+  "goalTarget": {
+   "$numberInt": "1"
+  },
+  "startDate": {
+   "$date": {
+    "$numberLong": "1789115176990"
+   }
+  },
+  "endDate": {
+   "$date": {
+    "$numberLong": "1791015976990"
+   }
+  },
+  "status": "active",
+  "participants": [
+   {
+    "userId": {
+     "$oid": "6aa6423029419c4af5348bc0"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789115177214"
+     }
+    },
+    "progress": {
+     "$numberInt": "1"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "joinedAt": {
+     "$date": {
+      "$numberLong": "1789201577214"
+     }
+    },
+    "progress": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "badgeName": "Urban Farmer",
+  "badgeIcon": "🌱",
+  "maxParticipants": {
+   "$numberInt": "40"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287977216"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287977216"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

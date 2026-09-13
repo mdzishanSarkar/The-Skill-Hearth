@@ -1,0 +1,448 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f4"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "name": "Beginner guitar",
+  "filters": {
+   "category": "Music & Performing Arts",
+   "format": "in-person",
+   "type": "teach",
+   "availability": []
+  },
+  "alertEnabled": false,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f3"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "name": "Food photography tips",
+  "filters": {
+   "category": "Photography & Visual Arts",
+   "radius": {
+    "$numberInt": "12"
+   },
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789028775468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f5"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "name": "Healthy cooking teachers",
+  "filters": {
+   "category": "Food & Cooking",
+   "type": "teach",
+   "radius": {
+    "$numberInt": "20"
+   },
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789201575468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f6"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "name": "English conversation practice",
+  "filters": {
+   "category": "Languages & Communication",
+   "format": "online",
+   "availability": []
+  },
+  "alertEnabled": false,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f2"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "name": "Beginners JavaScript",
+  "filters": {
+   "category": "Technology & Web",
+   "proficiencyLevel": "beginner",
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1e19d1dc63c8cb0fca"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789287975468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f8"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "name": "Gentle yoga",
+  "filters": {
+   "category": "Music & Performing Arts",
+   "format": "in-person",
+   "type": "teach",
+   "availability": []
+  },
+  "alertEnabled": false,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10ef"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "name": "Spanish teachers nearby",
+  "filters": {
+   "category": "Languages & Communication",
+   "type": "teach",
+   "radius": {
+    "$numberInt": "10"
+   },
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789201575468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975475"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975475"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f1"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "name": "Photography workshops",
+  "filters": {
+   "category": "Photography & Visual Arts",
+   "type": "teach",
+   "radius": {
+    "$numberInt": "15"
+   },
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789115175468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f0"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "name": "Online guitar lessons",
+  "filters": {
+   "category": "Music & Performing Arts",
+   "format": "online",
+   "availability": []
+  },
+  "alertEnabled": false,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f7"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "name": "Cooking for families",
+  "filters": {
+   "category": "Food & Cooking",
+   "radius": {
+    "$numberInt": "15"
+   },
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789115175468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10f9"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "name": "Spanish for travel",
+  "filters": {
+   "category": "Languages & Communication",
+   "type": "teach",
+   "availability": []
+  },
+  "alertEnabled": true,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+   }
+  ],
+  "lastAlertSentAt": {
+   "$date": {
+    "$numberLong": "1789287975468"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10fa"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "name": "Learn guitar chords",
+  "filters": {
+   "category": "Music & Performing Arts",
+   "format": "in-person",
+   "availability": []
+  },
+  "alertEnabled": false,
+  "matchedSkillIds": [
+   {
+    "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287975476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

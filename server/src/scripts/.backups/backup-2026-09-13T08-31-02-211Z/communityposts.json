@@ -1,0 +1,438 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10fb"
+  },
+  "authorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Captured an amazing golden-hour shot on Gulshan Avenue this morning. Anyone else love street photography?",
+  "city": "dhaka",
+  "neighborhood": "gulshan",
+  "voteScore": {
+   "$numberInt": "3"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa641a629419c4af5348bba"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975577"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287986546"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10fd"
+  },
+  "authorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Starting a weekly JavaScript study group - DM me if you want the Zoom link!",
+  "city": "dhaka",
+  "neighborhood": "gulshan",
+  "voteScore": {
+   "$numberInt": "2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa6423029419c4af5348bc0"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975630"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287986624"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb10ff"
+  },
+  "authorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "My first chord progression: D - A - Em on guitar. Thanks Kabir for the encouragement!",
+  "city": "dhaka",
+  "neighborhood": "banani",
+  "voteScore": {
+   "$numberInt": "2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975680"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287986691"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb1101"
+  },
+  "authorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Hosting a free Spanish conversation circle on Sunday. Perfect for beginners!",
+  "city": "dhaka",
+  "neighborhood": "banani",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa641a629419c4af5348bba"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "vote": "down"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975723"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287986797"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb1103"
+  },
+  "authorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Free guided meditation session this Sunday morning at 8 AM on Zoom. Link in the comments!",
+  "city": "dhaka",
+  "neighborhood": "dhanmondi",
+  "voteScore": {
+   "$numberInt": "3"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa6423029419c4af5348bc0"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975771"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287986953"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb1105"
+  },
+  "authorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Falafel wraps for meal prep are a total game changer. Recipe coming tomorrow.",
+  "city": "dhaka",
+  "neighborhood": "dhanmondi",
+  "voteScore": {
+   "$numberInt": "2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa641ef29419c4af5348bbd"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975821"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987023"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb1107"
+  },
+  "authorId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "content": "Teaching free smartphone basics at the Uttara community centre every Friday. Bring your phone!",
+  "city": "dhaka",
+  "neighborhood": "uttara",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6aa641ef29419c4af5348bbd"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975866"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987191"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb1109"
+  },
+  "authorId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "PSA: never reuse passwords. Happy to run a quick online-safety workshop for your building.",
+  "city": "dhaka",
+  "neighborhood": "mirpur",
+  "voteScore": {
+   "$numberInt": "2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6aa641a629419c4af5348bba"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6aa6423029419c4af5348bc0"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975919"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987307"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2719d1dc63c8cb110b"
+  },
+  "authorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "My balcony tomatoes are finally turning red! Growing chillies and mint too.",
+  "city": "dhaka",
+  "neighborhood": "motijheel",
+  "voteScore": {
+   "$numberInt": "2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287975972"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987377"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb110d"
+  },
+  "authorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "Offering a free intro-to-HTML workshop for total beginners next Saturday.",
+  "city": "dhaka",
+  "neighborhood": "motijheel",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6aa641ef29419c4af5348bbd"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976019"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287987492"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

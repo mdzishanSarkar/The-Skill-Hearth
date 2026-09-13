@@ -1,0 +1,331 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4de94340b9768648c40"
+  },
+  "courseId": {
+   "$oid": "6a9cf4dd94340b9768648c38"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "status": "in_progress",
+  "progress": [
+   {
+    "sessionIndex": {
+     "$numberInt": "0"
+    },
+    "completed": true,
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1788584798262"
+     }
+    },
+    "notes": "Great!"
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "1"
+    },
+    "completed": false
+   }
+  ],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1788239198262"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671198264"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671198264"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4de94340b9768648c42"
+  },
+  "courseId": {
+   "$oid": "6a9cf4dd94340b9768648c38"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "status": "enrolled",
+  "progress": [],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1788584798262"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671198402"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671198402"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4de94340b9768648c44"
+  },
+  "courseId": {
+   "$oid": "6a9cf4dd94340b9768648c38"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "status": "completed",
+  "progress": [
+   {
+    "sessionIndex": {
+     "$numberInt": "0"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "1"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "2"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "3"
+    },
+    "completed": true
+   }
+  ],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1786079198262"
+   }
+  },
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788584798262"
+   }
+  },
+  "certificateId": "cert_001",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671198570"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671198570"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4de94340b9768648c46"
+  },
+  "courseId": {
+   "$oid": "6a9cf4dd94340b9768648c3c"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "status": "in_progress",
+  "progress": [
+   {
+    "sessionIndex": {
+     "$numberInt": "0"
+    },
+    "completed": true,
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1788498398262"
+     }
+    }
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "1"
+    },
+    "completed": false
+   }
+  ],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1788152798262"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671198776"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671198776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4de94340b9768648c48"
+  },
+  "courseId": {
+   "$oid": "6a9cf4dd94340b9768648c3c"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "status": "enrolled",
+  "progress": [],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1788498398262"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671198979"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671198979"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4df94340b9768648c4a"
+  },
+  "courseId": {
+   "$oid": "6a9cf4de94340b9768648c3e"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "status": "dropped",
+  "progress": [
+   {
+    "sessionIndex": {
+     "$numberInt": "0"
+    },
+    "completed": true
+   }
+  ],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1786943198262"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671199185"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671199185"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4df94340b9768648c4c"
+  },
+  "courseId": {
+   "$oid": "6a9cf4dd94340b9768648c3c"
+  },
+  "learnerId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "status": "completed",
+  "progress": [
+   {
+    "sessionIndex": {
+     "$numberInt": "0"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "1"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "2"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "3"
+    },
+    "completed": true
+   },
+   {
+    "sessionIndex": {
+     "$numberInt": "4"
+    },
+    "completed": true
+   }
+  ],
+  "startedAt": {
+   "$date": {
+    "$numberLong": "1785215198262"
+   }
+  },
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788411998262"
+   }
+  },
+  "certificateId": "cert_002",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671199281"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671199281"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

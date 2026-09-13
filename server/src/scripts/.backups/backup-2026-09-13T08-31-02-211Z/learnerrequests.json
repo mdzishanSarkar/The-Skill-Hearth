@@ -1,0 +1,240 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11cb"
+  },
+  "authorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillName": "Guitar",
+  "categoryName": "Music & Performing Arts",
+  "description": "Want to play acoustic guitar songs by the fire at family gatherings.",
+  "city": "dhaka",
+  "neighborhood": "gulshan",
+  "format": "in-person",
+  "availability": [
+   "Weekends"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d0"
+  },
+  "authorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "skillName": "Spanish",
+  "categoryName": "Languages & Communication",
+  "description": "Beginner Spanish for an upcoming trip to Mexico.",
+  "city": "dhaka",
+  "neighborhood": "motijheel",
+  "format": "in-person",
+  "availability": [
+   "Weekends"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11d1"
+  },
+  "authorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "skillName": "Guitar",
+  "categoryName": "Music & Performing Arts",
+  "description": "Totally new to music - want to learn simple songs.",
+  "city": "dhaka",
+  "neighborhood": "motijheel",
+  "format": "in-person",
+  "availability": [
+   "Evenings"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11cf"
+  },
+  "authorId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "skillName": "Yoga & Stretching",
+  "categoryName": "Music & Performing Arts",
+  "description": "Need gentle stretches for a stiff back from years of desk work.",
+  "city": "dhaka",
+  "neighborhood": "mirpur",
+  "format": "in-person",
+  "availability": [
+   "Mornings"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11cc"
+  },
+  "authorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "skillName": "JavaScript",
+  "categoryName": "Technology & Web",
+  "description": "Trying to build a small portfolio site and need a mentor.",
+  "city": "dhaka",
+  "neighborhood": "banani",
+  "format": "online",
+  "availability": [
+   "Evenings"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11cd"
+  },
+  "authorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "skillName": "Photography",
+  "categoryName": "Photography & Visual Arts",
+  "description": "Want to take better food photos for my cooking blog.",
+  "city": "dhaka",
+  "neighborhood": "dhanmondi",
+  "format": "in-person",
+  "availability": [
+   "Weekends"
+  ],
+  "status": "filled",
+  "responsesCount": {
+   "$numberInt": "2"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11ce"
+  },
+  "authorId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "skillName": "Healthy Cooking",
+  "categoryName": "Food & Cooking",
+  "description": "Want to cook healthier meals for my family on a budget.",
+  "city": "dhaka",
+  "neighborhood": "uttara",
+  "format": "in-person",
+  "availability": [
+   "Evenings"
+  ],
+  "status": "open",
+  "responsesCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

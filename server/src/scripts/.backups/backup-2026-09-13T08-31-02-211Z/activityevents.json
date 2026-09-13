@@ -1,0 +1,888 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1175"
+  },
+  "actorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "preview": {
+   "title": "Kabir added a skill: Photography",
+   "subtitle": "Photography & Visual Arts"
+  },
+  "visibility": "public",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "emoji": "❤️",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1786782378273"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb1177"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "emoji": "🔥",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1786782378274"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb1178"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794471978273"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786695978273"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786695978273"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1179"
+  },
+  "actorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "eventType": "badge_earned",
+  "subjectType": "badge",
+  "preview": {
+   "title": "Kabir earned: Local Legend",
+   "subtitle": ""
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "emoji": "👏",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788942378326"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb117b"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796631978326"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788855978326"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788855978326"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb117c"
+  },
+  "actorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "eventType": "session_taught",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "preview": {
+   "title": "Kabir taught a photography session",
+   "subtitle": "Photography & Visual Arts"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "emoji": "🎉",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788164778373"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb117e"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795854378372"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788078378372"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788078378372"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb117f"
+  },
+  "actorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "eventType": "challenge_completed",
+  "subjectType": "challenge",
+  "subjectId": {
+   "$oid": "6aa65e2919d1dc63c8cb113c"
+  },
+  "preview": {
+   "title": "Kabir completed: Mindful Month",
+   "subtitle": "Music & Performing Arts"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796804778426"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789028778426"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789028778426"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1181"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "preview": {
+   "title": "Abir added a skill: Spanish",
+   "subtitle": "Languages & Communication"
+  },
+  "visibility": "public",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "emoji": "❤️",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1787214378471"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb1183"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794903978471"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787127978471"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787127978471"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1184"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "session_completed",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "preview": {
+   "title": "Abir completed a Spanish session",
+   "subtitle": "Spanish"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "emoji": "👍",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788596778523"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb1186"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796286378523"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788510378523"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788510378523"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1187"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "review_received",
+  "subjectType": "review",
+  "subjectId": {
+   "$oid": "6aa65e2319d1dc63c8cb1088"
+  },
+  "preview": {
+   "title": "Abir received a 5-star review",
+   "subtitle": "Spanish"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796372778605"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788596778605"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788596778605"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1189"
+  },
+  "actorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "preview": {
+   "title": "Zishan added a skill: Healthy Cooking",
+   "subtitle": "Food & Cooking"
+  },
+  "visibility": "public",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "emoji": "❤️",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1787646378656"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb118b"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795335978656"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787559978656"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787559978656"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb118c"
+  },
+  "actorId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "eventType": "challenge_completed",
+  "subjectType": "challenge",
+  "subjectId": {
+   "$oid": "6aa65e2919d1dc63c8cb113c"
+  },
+  "preview": {
+   "title": "Zishan completed: Mindful Month",
+   "subtitle": "Music & Performing Arts"
+  },
+  "visibility": "public",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "emoji": "🎉",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1789287978710"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb118e"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6a9f8e045f1165d4d897d3c3"
+    },
+    "emoji": "🏆",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1789287978710"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb118f"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796977578710"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201578710"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201578710"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1190"
+  },
+  "actorId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+  },
+  "preview": {
+   "title": "Fahim added a skill: Yoga & Stretching",
+   "subtitle": "Music & Performing Arts"
+  },
+  "visibility": "public",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796027178759"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788251178759"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788251178759"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1192"
+  },
+  "actorId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "eventType": "session_taught",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "preview": {
+   "title": "Rakib taught an English session",
+   "subtitle": "English Conversation"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6aa641a629419c4af5348bba"
+    },
+    "emoji": "😊",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1789201578826"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb1194"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796891178826"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789115178826"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789115178826"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1195"
+  },
+  "actorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffe"
+  },
+  "preview": {
+   "title": "Arnob added a skill: Vegetable Gardening",
+   "subtitle": "Home & Garden"
+  },
+  "visibility": "public",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "emoji": "🌱",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788855978879"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb1197"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796545578879"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788769578879"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788769578879"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1198"
+  },
+  "actorId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "eventType": "friend_joined",
+  "subjectType": "friendship",
+  "subjectId": {
+   "$oid": "6aa65e2419d1dc63c8cb109c"
+  },
+  "preview": {
+   "title": "Kabir and Abir are now friends",
+   "subtitle": ""
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796199978938"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788423978938"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788423978938"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb119a"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "streak_milestone",
+  "subjectType": "streak",
+  "preview": {
+   "title": "Abir hit a 7-day streak",
+   "subtitle": "Learning"
+  },
+  "visibility": "close_friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "emoji": "🔥",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788683178985"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2a19d1dc63c8cb119c"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796372778985"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788596778985"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788596778985"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb119d"
+  },
+  "actorId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "eventType": "joined_group_session",
+  "subjectType": "group_session",
+  "subjectId": {
+   "$oid": "6aa65e2719d1dc63c8cb10e7"
+  },
+  "preview": {
+   "title": "Fahim joined: Desk-Yoga For Programmers",
+   "subtitle": "Workshop"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796977579040"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201579040"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201579040"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb119f"
+  },
+  "actorId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "eventType": "level_up",
+  "subjectType": "badge",
+  "preview": {
+   "title": "Rakib reached level 3: Flame",
+   "subtitle": "Keep it up!"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796891179090"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789115179090"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789115179090"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11a1"
+  },
+  "actorId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "eventType": "skill_swap_accepted",
+  "subjectType": "swap",
+  "subjectId": {
+   "$oid": "6aa65e2619d1dc63c8cb10d5"
+  },
+  "preview": {
+   "title": "Arnob accepted a skill swap with Rakib",
+   "subtitle": "Digital Literacy <-> Web Design"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796804779136"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789028779136"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789028779136"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11a3"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "journal_highlight",
+  "subjectType": "journal_highlight",
+  "preview": {
+   "title": "Abir highlighted a journal entry",
+   "subtitle": "Spanish"
+  },
+  "visibility": "close_friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796718379180"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942379180"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942379180"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,62 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb125e"
+  },
+  "tokenId": "jti_blacklisted_abir_access",
+  "type": "access",
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789374382226"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982227"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb125c"
+  },
+  "tokenId": "jti_blacklisted_kabir_access",
+  "type": "access",
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789374382226"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982227"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb125d"
+  },
+  "tokenId": "jti_blacklisted_fahim_refresh",
+  "type": "refresh",
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1791879982226"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982227"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

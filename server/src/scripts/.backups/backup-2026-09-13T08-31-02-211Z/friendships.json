@@ -1,0 +1,453 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb109c"
+  },
+  "requesterId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "addresseeId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "status": "accepted",
+  "requesterTier": "close_friend",
+  "addresseeTier": "close_friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "directMessageRoomId": "dm_6a9d59a0ec81a378e2840fd6_6a9f8e045f1165d4d897d3c3",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1786523172233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972235"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972235"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb109e"
+  },
+  "requesterId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "addresseeId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "directMessageRoomId": "dm_6a9d59a0ec81a378e2840fd6_6aa0e3c420626861e93ef947",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788337572233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972282"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972282"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10a0"
+  },
+  "requesterId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "addresseeId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "group_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "directMessageRoomId": "dm_6a9d59a0ec81a378e2840fd6_6aa641a629419c4af5348bba",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788510372233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972363"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972363"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10a2"
+  },
+  "requesterId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "addresseeId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "group_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "directMessageRoomId": "dm_6a9f8e045f1165d4d897d3c3_6aa0e3c420626861e93ef947",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788423972233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972456"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972456"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10a4"
+  },
+  "requesterId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "addresseeId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "directMessageRoomId": "dm_6a9f8e045f1165d4d897d3c3_6aa641a629419c4af5348bba",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1789028772233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972512"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972512"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10a6"
+  },
+  "requesterId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "addresseeId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "group_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "directMessageRoomId": "dm_6aa0e3c420626861e93ef947_6aa641ef29419c4af5348bbd",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788769572233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972561"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972561"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10a8"
+  },
+  "requesterId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "addresseeId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "directMessageRoomId": "dm_6aa0e3c420626861e93ef947_6aa641a629419c4af5348bba",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788942372233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972612"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972612"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10aa"
+  },
+  "requesterId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "addresseeId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "status": "accepted",
+  "requesterTier": "close_friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+  },
+  "directMessageRoomId": "dm_6aa641a629419c4af5348bba_6aa641ef29419c4af5348bbd",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788596772233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972659"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972659"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10ac"
+  },
+  "requesterId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "addresseeId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff0"
+  },
+  "directMessageRoomId": "dm_6aa641ef29419c4af5348bbd_6aa6423029419c4af5348bc0",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1788683172233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972717"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972717"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10ae"
+  },
+  "requesterId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "addresseeId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "directMessageRoomId": "dm_6aa0e3c420626861e93ef947_6aa6423029419c4af5348bc0",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1789115172233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972770"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972770"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10b0"
+  },
+  "requesterId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "addresseeId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "directMessageRoomId": "dm_6a9d59a0ec81a378e2840fd6_6aa6423029419c4af5348bc0",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1789201572233"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972829"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972829"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

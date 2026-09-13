@@ -1,0 +1,182 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c19"
+  },
+  "tokenId": "jti_blacklisted_refresh",
+  "type": "refresh",
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1791263196419"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196421"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9d591181716bc2fd4bdef7"
+  },
+  "type": "refresh",
+  "tokenId": "103f23d5140deafecd9882e1eb4984bef93765bfd5459119",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788696849151"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789301649151"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa0e35c5c89aa072baefd72"
+  },
+  "type": "refresh",
+  "tokenId": "86113be1ec5cbefe750b5c746ad220c1d698eb2e9012436e",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788928859997"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789533659997"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6414b5c89aa072baf8ec2"
+  },
+  "type": "refresh",
+  "tokenId": "e3c589007d6b9f0390a90dabc8311720288c722533c3fe95",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280587209"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789885387209"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641805c89aa072baf8ec4"
+  },
+  "type": "refresh",
+  "tokenId": "0eda0d784692bc70d9f5b5558c9ecde0b3b530c571f61052",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280640020"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789885440020"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6419b5c89aa072baf8ec6"
+  },
+  "tokenId": "631826120391d3b24b9496703b560e41d991375a1aef0e20",
+  "type": "refresh",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280667005"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789885467005"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641de5c89aa072baf8ecd"
+  },
+  "tokenId": "d0c5651e2d919c23f82556ecc843de53699b585c39b9dd85",
+  "type": "refresh",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280733990"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789885533989"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6421e5c89aa072baf8ed2"
+  },
+  "tokenId": "c6ab71677f8fae647ab230f6f8a761d68c9c01bbdf931d7f",
+  "type": "refresh",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280798531"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789885598531"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa642665c89aa072baf8ed7"
+  },
+  "tokenId": "4188aabca73de83cfe2ee2d83bbd27d68aa84c617330121b",
+  "type": "refresh",
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280870063"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1789885670063"
+   }
+  }
+ }
+]

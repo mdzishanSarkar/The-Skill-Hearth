@@ -1,0 +1,1433 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2119d1dc63c8cb1034"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Hey Kabir! So excited to start learning photography.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787559969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787559969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2119d1dc63c8cb1036"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Welcome aboard! Do you have a DSLR or mirrorless?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787559969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787559969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2119d1dc63c8cb1038"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "I have a Canon M50.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787646369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787646369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2119d1dc63c8cb103a"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Perfect! We will start with aperture and shutter speed this weekend.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787646369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787646369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb103c"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Ready for our Spanish session?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787991969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787991969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb103e"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Yes, I have been practising greetings all week.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787991969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787991969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1040"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Awesome. Role-play at the cafe on Saturday?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788078369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788078369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1042"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "See you at 4pm!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788078369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788078369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1044"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100c"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "I have been practising the G and C chords.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1046"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100c"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Nice! Next we will add D and Em.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1048"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100e"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Can we start with variables and loops?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb104a"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100e"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Definitely - I will send you a CodePen link to play with.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb104c"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "I want to photograph my bowls of pasta for the blog.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788251169726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788251169726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb104e"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Great goal! Natural window light and a 45-degree angle work wonders.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788251169726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788251169726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1050"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1012"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Zishan, your chickpea stew recipe was incredible!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1052"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1012"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Thanks! I will share the full recipe card with you.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1054"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1014"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Tried the breathing exercise - already calmer.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1056"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1014"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Keep up the 10-minute morning routine!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb1058"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1018"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "The guitar lesson was so much fun!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb105a"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1018"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Glad you enjoyed it! Practice those three chords daily.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb105c"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101a"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "The body scan really helped me focus before coding.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2219d1dc63c8cb105e"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101a"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Wonderful - try it again before your next feature sprint!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1060"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "senderId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "content": "My daughter loved the portrait tips, thank you!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1062"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "So glad to hear it - catch the light in their eyes!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789028769726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1064"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "senderId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "content": "That call script saved me in today meeting!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1066"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "senderId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Awesome - keep rehearsing it until it feels natural.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789115169726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1068"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "senderId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "The cloud backup setup is now running automatically.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb106a"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "senderId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Great work! That is real peace of mind.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb106c"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "senderId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "The HTML page is live on my laptop.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb106e"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "senderId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "Love it - next week we add some CSS colour!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287969726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1070"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1020"
+  },
+  "senderId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "content": "Hola Abir! Is basic Spanish for travel easy to pick up?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789201569726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1072"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1030"
+  },
+  "senderId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "Those desk stretches are a lifesaver.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1074"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1030"
+  },
+  "senderId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "content": "Great - add them to your calendar twice a day.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "editHistory": [],
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788942369726"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1077"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "",
+  "type": "system",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "systemEvent": "connection_completed",
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971571"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971571"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb107b"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "senderId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Happy Monday!",
+  "type": "gif",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "gifUrl": "https://example.com/monday.gif",
+  "gifWidth": {
+   "$numberInt": "320"
+  },
+  "gifHeight": {
+   "$numberInt": "240"
+  },
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971572"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971572"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb107a"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "voice note",
+  "type": "voice_note",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteUrl": "https://example.com/spanish-intro.ogg",
+  "voiceNoteDurationSeconds": {
+   "$numberInt": "22"
+  },
+  "voiceNoteWaveform": [
+   {
+    "$numberInt": "1"
+   },
+   {
+    "$numberInt": "2"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "2"
+   },
+   {
+    "$numberInt": "1"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "2"
+   }
+  ],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971571"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971571"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1078"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Edited message demo",
+  "type": "text",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9d59a0ec81a378e2840fd6"
+    },
+    "emoji": "👍",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788164771563"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2319d1dc63c8cb1080"
+    }
+   },
+   {
+    "userId": {
+     "$oid": "6aa0e3c420626861e93ef947"
+    },
+    "emoji": "❤️",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788164771563"
+     }
+    },
+    "_id": {
+     "$oid": "6aa65e2319d1dc63c8cb1081"
+    }
+   }
+  ],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editedAt": {
+   "$date": {
+    "$numberLong": "1788164771563"
+   }
+  },
+  "editHistory": [
+   {
+    "content": "Original message",
+    "editedAt": {
+     "$date": {
+      "$numberLong": "1788078371563"
+     }
+    }
+   }
+  ],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971575"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971575"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1076"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Photography basics for this week",
+  "type": "skill_card",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "skillCardData": {
+   "skillId": {
+    "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+   },
+   "skillName": "Photography",
+   "teacherName": "Kabir Hossain",
+   "teacherAvatarUrl": "",
+   "requestStatus": "accepted"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971575"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971575"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb107c"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "This was unsent",
+  "type": "text",
+  "deletedAt": {
+   "$date": {
+    "$numberLong": "1787732771563"
+   }
+  },
+  "deletedBy": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "unsentAt": {
+   "$date": {
+    "$numberLong": "1787732771563"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971572"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971572"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2319d1dc63c8cb1079"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "https://example.com/golden-hour.jpg",
+  "type": "image",
+  "imageUrl": "https://example.com/golden-hour.jpg",
+  "imageThumbnailUrl": "https://example.com/golden-hour-thumb.jpg",
+  "imagePublicId": "demo/golden-hour",
+  "imageWidth": {
+   "$numberInt": "1200"
+  },
+  "imageHeight": {
+   "$numberInt": "800"
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287971571"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287971571"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,394 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4d994340b9768648bde"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "title": "Weekend Sourdough Workshop",
+  "description": "A hands-on workshop for beginners.",
+  "maxParticipants": {
+   "$numberInt": "8"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa4"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1788930393442"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-001",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671193443"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671193443"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d994340b9768648be0"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "title": "Smartphone Basics Meetup",
+  "description": "Weekly open drop-in.",
+  "maxParticipants": {
+   "$numberInt": "10"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa7"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab2"
+   }
+  ],
+  "format": "online",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789103193442"
+   }
+  },
+  "status": "open",
+  "sessionType": "regular",
+  "chatRoomId": "gs-002",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671193525"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671193525"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d994340b9768648be2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af4"
+  },
+  "title": "Bread Baking Circle",
+  "description": "Advanced dough handling.",
+  "maxParticipants": {
+   "$numberInt": "5"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa5"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa6"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aa7"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1788843993442"
+   }
+  },
+  "status": "full",
+  "sessionType": "regular",
+  "chatRoomId": "gs-003",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671193628"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671193628"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d994340b9768648be4"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c994340b9768648ae6"
+  },
+  "title": "Container Gardening Talk",
+  "description": "Past completed session.",
+  "maxParticipants": {
+   "$numberInt": "6"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648ab2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab3"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab4"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1787807193442"
+   }
+  },
+  "status": "completed",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-004",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671193750"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671193750"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d994340b9768648be6"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af2"
+  },
+  "title": "Mending Circle",
+  "description": "Cancelled session.",
+  "maxParticipants": {
+   "$numberInt": "6"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   }
+  ],
+  "format": "online",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1788498393442"
+   }
+  },
+  "status": "cancelled",
+  "sessionType": "regular",
+  "chatRoomId": "gs-005",
+  "cancelledReason": "Not enough interest",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671193844"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671193844"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648be8"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "title": "Flaky Pastry Masterclass",
+  "description": "Flagged content test session.",
+  "maxParticipants": {
+   "$numberInt": "8"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648ab5"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab6"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab7"
+   }
+  ],
+  "format": "either",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789275993442"
+   }
+  },
+  "status": "open",
+  "sessionType": "workshop",
+  "chatRoomId": "gs-006",
+  "isFlagged": true,
+  "flagReason": "Reported as suspicious",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194065"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194065"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648bea"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af8"
+  },
+  "title": "Fix a Leaky Tap",
+  "description": "Hands-on plumbing session.",
+  "maxParticipants": {
+   "$numberInt": "5"
+  },
+  "participants": [
+   {
+    "$oid": "6a9cf4a594340b9768648aa2"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab8"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648ab9"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648aba"
+   },
+   {
+    "$oid": "6a9cf4a594340b9768648abb"
+   }
+  ],
+  "format": "in-person",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1788757593442"
+   }
+  },
+  "status": "full",
+  "sessionType": "regular",
+  "chatRoomId": "gs-007",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194163"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194163"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648bec"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "title": "Senior Phone Help Hour",
+  "description": "Empty open session.",
+  "maxParticipants": {
+   "$numberInt": "8"
+  },
+  "participants": [],
+  "format": "online",
+  "scheduledAt": {
+   "$date": {
+    "$numberLong": "1789535193442"
+   }
+  },
+  "status": "open",
+  "sessionType": "regular",
+  "chatRoomId": "gs-008",
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194372"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194372"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

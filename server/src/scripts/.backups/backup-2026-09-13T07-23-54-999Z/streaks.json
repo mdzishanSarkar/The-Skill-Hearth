@@ -1,0 +1,436 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648ccc"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "teaching",
+  "currentStreak": {
+   "$numberInt": "8"
+  },
+  "longestStreak": {
+   "$numberInt": "14"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788584807787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1787980007787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [
+   {
+    "$numberInt": "7"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671207789"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671207789"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648ccd"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "learning",
+  "currentStreak": {
+   "$numberInt": "23"
+  },
+  "longestStreak": {
+   "$numberInt": "30"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788671207787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1786684007787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [
+   {
+    "$numberInt": "7"
+   },
+   {
+    "$numberInt": "14"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671207879"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671207879"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cce"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "logging",
+  "currentStreak": {
+   "$numberInt": "5"
+  },
+  "longestStreak": {
+   "$numberInt": "9"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788671207787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1788239207787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "1"
+  },
+  "freezesAvailable": {
+   "$numberInt": "2"
+  },
+  "milestones": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671207973"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671207973"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e894340b9768648ccf"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "type": "teaching",
+  "currentStreak": {
+   "$numberInt": "12"
+  },
+  "longestStreak": {
+   "$numberInt": "12"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788671207787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1787634407787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [
+   {
+    "$numberInt": "7"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671208126"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671208126"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e894340b9768648cd0"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "type": "learning",
+  "currentStreak": {
+   "$numberInt": "30"
+  },
+  "longestStreak": {
+   "$numberInt": "30"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788671207787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1786079207787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [
+   {
+    "$numberInt": "7"
+   },
+   {
+    "$numberInt": "14"
+   },
+   {
+    "$numberInt": "30"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671208269"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671208269"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e894340b9768648cd1"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "type": "teaching",
+  "currentStreak": {
+   "$numberInt": "6"
+  },
+  "longestStreak": {
+   "$numberInt": "10"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788584807787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1788152807787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [
+   {
+    "$numberInt": "7"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671208424"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671208424"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e894340b9768648cd2"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "type": "learning",
+  "currentStreak": {
+   "$numberInt": "4"
+  },
+  "longestStreak": {
+   "$numberInt": "7"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788498407787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1788325607787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671208607"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671208607"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e894340b9768648cd3"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "type": "learning",
+  "currentStreak": {
+   "$numberInt": "3"
+  },
+  "longestStreak": {
+   "$numberInt": "3"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788671207787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1788412007787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671208879"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671208879"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cd4"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "type": "teaching",
+  "currentStreak": {
+   "$numberInt": "2"
+  },
+  "longestStreak": {
+   "$numberInt": "5"
+  },
+  "lastActivityDate": {
+   "$date": {
+    "$numberLong": "1788412007787"
+   }
+  },
+  "streakStartDate": {
+   "$date": {
+    "$numberLong": "1788498407787"
+   }
+  },
+  "freezesUsed": {
+   "$numberInt": "0"
+  },
+  "freezesAvailable": {
+   "$numberInt": "1"
+  },
+  "milestones": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209211"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209211"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

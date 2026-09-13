@@ -1,0 +1,392 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bbd"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "targetType": "user",
+  "targetId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "reason": "spam",
+  "description": "User spamming advertisements.",
+  "status": "open",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671191260"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671191260"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bbf"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "targetType": "skill",
+  "targetId": {
+   "$oid": "6a9cf4cc94340b9768648b0e"
+  },
+  "reason": "misleading",
+  "description": "Fake get rich quick course.",
+  "status": "open",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584791360"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584791360"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bc1"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "targetType": "message",
+  "targetId": {
+   "$oid": "6a9cf4d394340b9768648b76"
+  },
+  "reason": "harassment",
+  "description": "Offensive message during a session.",
+  "status": "under_review",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa1"
+  },
+  "contextMessages": [
+   {
+    "$oid": "6a9cf4d394340b9768648b76"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498391454"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498391454"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bc3"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "targetType": "review",
+  "targetId": {
+   "$oid": "6a9cf4d594340b9768648ba0"
+  },
+  "reason": "fake",
+  "description": "Review looks suspicious.",
+  "status": "resolved",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "action": "no_action",
+  "resolution": "No issue found after review.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411991709"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411991709"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bc5"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "targetType": "post",
+  "targetId": {
+   "$oid": "6a9cf4d794340b9768648bba"
+  },
+  "reason": "inappropriate",
+  "description": "Inappropriate community post.",
+  "status": "resolved",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "action": "remove_content",
+  "resolution": "Post content removed.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325591837"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325591837"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bc7"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648ab6"
+  },
+  "targetType": "skill",
+  "targetId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "reason": "fake",
+  "description": "Suspected fake listing.",
+  "status": "dismissed",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa1"
+  },
+  "action": "no_action",
+  "resolution": "Listings verified as genuine.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239191928"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239191928"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bc9"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648ab7"
+  },
+  "targetType": "post",
+  "targetId": {
+   "$oid": "6a9cf4d794340b9768648bbb"
+  },
+  "reason": "spam",
+  "description": "Spam post.",
+  "status": "under_review",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa1"
+  },
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671192118"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671192118"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bcb"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "targetType": "user",
+  "targetId": {
+   "$oid": "6a9cf4a594340b9768648aac"
+  },
+  "reason": "other",
+  "description": "Odd behaviour.",
+  "status": "open",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584792204"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584792204"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bcd"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648aa9"
+  },
+  "targetType": "review",
+  "targetId": {
+   "$oid": "6a9cf4d494340b9768648b94"
+  },
+  "reason": "fake",
+  "description": "Rating seems inflated.",
+  "status": "dismissed",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "action": "no_action",
+  "resolution": "Legitimate rating.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498392425"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498392425"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bcf"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "targetType": "message",
+  "targetId": {
+   "$oid": "6a9cf4d394340b9768648b7e"
+  },
+  "reason": "spam",
+  "description": "Spammy message.",
+  "status": "open",
+  "contextMessages": [
+   {
+    "$oid": "6a9cf4d394340b9768648b7e"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411992558"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411992558"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bd1"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "targetType": "user",
+  "targetId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "reason": "harassment",
+  "description": "Harassing other members.",
+  "status": "resolved",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "action": "ban",
+  "resolution": "User banned for repeated harassment.",
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325592644"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325592644"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d894340b9768648bd3"
+  },
+  "reporterId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "targetType": "post",
+  "targetId": {
+   "$oid": "6a9cf4d794340b9768648bbc"
+  },
+  "reason": "inappropriate",
+  "description": "Report for testing queue.",
+  "status": "under_review",
+  "assignedTo": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "contextMessages": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239192756"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239192756"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

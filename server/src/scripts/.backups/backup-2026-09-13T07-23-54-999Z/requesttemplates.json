@@ -1,0 +1,118 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce6"
+  },
+  "title": "Sewing Introduction",
+  "intro": "Old inactive template.",
+  "body": "This template is no longer used.",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c1"
+  },
+  "categoryName": "Textile & Craft",
+  "isActive": false,
+  "createdBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209509"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209509"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce4"
+  },
+  "title": "Gardening Help",
+  "intro": "Hello! My balcony garden needs help.",
+  "body": "Would you be able to show me how to care for my tomato plants?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c0"
+  },
+  "categoryName": "Home & Garden",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209509"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209509"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce5"
+  },
+  "title": "Smartphone Coaching",
+  "intro": "Hi there, I need phone help.",
+  "body": "I struggle with apps and photos. Can you help?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c2"
+  },
+  "categoryName": "Digital Literacy",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209509"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209509"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce3"
+  },
+  "title": "Learn a Kitchen Skill",
+  "intro": "Hi! I'd love to learn cooking from you.",
+  "body": "I'm a complete beginner and would love to book a session. Are you free on weekends?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6a9cf4a594340b9768648aa0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209508"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209508"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,530 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb1118"
+  },
+  "teacherId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "title": "Photography Fundamentals",
+  "description": "A complete beginner course covering camera basics, composition, light and simple editing.",
+  "sessions": [
+   {
+    "title": "Camera Basics",
+    "description": "Understanding exposure modes and your camera controls.",
+    "objectives": [
+     "Identify camera parts",
+     "Set exposure modes"
+    ],
+    "order": {
+     "$numberInt": "0"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   },
+   {
+    "title": "Composition",
+    "description": "Rule of thirds, leading lines and framing.",
+    "objectives": [
+     "Apply rule of thirds"
+    ],
+    "order": {
+     "$numberInt": "1"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   },
+   {
+    "title": "Natural Light",
+    "description": "Working with available light, including golden hour.",
+    "objectives": [
+     "Use golden hour effectively"
+    ],
+    "order": {
+     "$numberInt": "2"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   },
+   {
+    "title": "Editing Basics",
+    "description": "A gentle introduction to photo editing.",
+    "objectives": [
+     "Edit a photo end to end"
+    ],
+    "order": {
+     "$numberInt": "3"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   }
+  ],
+  "maxEnrollments": {
+   "$numberInt": "20"
+  },
+  "enrollmentCount": {
+   "$numberInt": "2"
+  },
+  "status": "published",
+  "totalEstimatedMinutes": {
+   "$numberInt": "240"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976159"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287984343"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb111a"
+  },
+  "teacherId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "title": "JavaScript for Absolute Beginners",
+  "description": "Draft course covering variables, functions and the DOM.",
+  "sessions": [
+   {
+    "title": "Variables & Types",
+    "description": "The building blocks.",
+    "objectives": [
+     "Declare variables"
+    ],
+    "order": {
+     "$numberInt": "0"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Functions",
+    "description": "Write and call functions.",
+    "objectives": [
+     "Write functions"
+    ],
+    "order": {
+     "$numberInt": "1"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "DOM Manipulation",
+    "description": "Make pages interactive.",
+    "objectives": [
+     "Manipulate the DOM"
+    ],
+    "order": {
+     "$numberInt": "2"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   }
+  ],
+  "maxEnrollments": {
+   "$numberInt": "10"
+  },
+  "enrollmentCount": {
+   "$numberInt": "0"
+  },
+  "status": "draft",
+  "totalEstimatedMinutes": {
+   "$numberInt": "135"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976213"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287976213"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb111c"
+  },
+  "teacherId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "skillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "title": "Conversational Spanish",
+  "description": "Speak Spanish with confidence - from greetings to real conversations.",
+  "sessions": [
+   {
+    "title": "Greetings & Introductions",
+    "description": "Say hello properly.",
+    "objectives": [
+     "Greet people"
+    ],
+    "order": {
+     "$numberInt": "0"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "At the Cafe",
+    "description": "Order food and drinks.",
+    "objectives": [
+     "Order food and drinks"
+    ],
+    "order": {
+     "$numberInt": "1"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Getting Around",
+    "description": "Ask for and give directions.",
+    "objectives": [
+     "Ask for directions"
+    ],
+    "order": {
+     "$numberInt": "2"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Shopping",
+    "description": "Prices, bargaining and buying.",
+    "objectives": [
+     "Bargain and buy"
+    ],
+    "order": {
+     "$numberInt": "3"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Conversation Practice",
+    "description": "Put it all together.",
+    "objectives": [
+     "Hold a full conversation"
+    ],
+    "order": {
+     "$numberInt": "4"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   }
+  ],
+  "maxEnrollments": {
+   "$numberInt": "15"
+  },
+  "enrollmentCount": {
+   "$numberInt": "2"
+  },
+  "status": "published",
+  "totalEstimatedMinutes": {
+   "$numberInt": "225"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976261"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287984081"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb111e"
+  },
+  "teacherId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "title": "Mindfulness for Beginners",
+  "description": "A gentle 4-session introduction to daily meditation.",
+  "sessions": [
+   {
+    "title": "Breathing",
+    "description": "Foundational breathing techniques.",
+    "objectives": [
+     "Practice deep breathing"
+    ],
+    "order": {
+     "$numberInt": "0"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "30"
+    }
+   },
+   {
+    "title": "Body Scan",
+    "description": "Relax each part of the body.",
+    "objectives": [
+     "Run a body scan"
+    ],
+    "order": {
+     "$numberInt": "1"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "30"
+    }
+   },
+   {
+    "title": "Walking Meditation",
+    "description": "Bringing mindfulness into motion.",
+    "objectives": [
+     "Practice mindful walking"
+    ],
+    "order": {
+     "$numberInt": "2"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "30"
+    }
+   },
+   {
+    "title": "Loving-Kindness",
+    "description": "Compassion for self and others.",
+    "objectives": [
+     "Practice loving-kindness"
+    ],
+    "order": {
+     "$numberInt": "3"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "30"
+    }
+   }
+  ],
+  "maxEnrollments": {
+   "$numberInt": "12"
+  },
+  "enrollmentCount": {
+   "$numberInt": "3"
+  },
+  "status": "published",
+  "totalEstimatedMinutes": {
+   "$numberInt": "120"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976310"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287984205"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb1120"
+  },
+  "teacherId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "skillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff0"
+  },
+  "title": "Digital Skills for Daily Life",
+  "description": "Email, video calls, online safety and confidence with technology.",
+  "sessions": [
+   {
+    "title": "Email Done Right",
+    "description": "Compose, attach and organise.",
+    "objectives": [
+     "Send a well-formed email"
+    ],
+    "order": {
+     "$numberInt": "0"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Video Calls",
+    "description": "Join and host calls comfortably.",
+    "objectives": [
+     "Join a video call"
+    ],
+    "order": {
+     "$numberInt": "1"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Online Safety",
+    "description": "Spot scams and protect accounts.",
+    "objectives": [
+     "Create strong passwords"
+    ],
+    "order": {
+     "$numberInt": "2"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   },
+   {
+    "title": "Backups & Clouds",
+    "description": "Keep files safe.",
+    "objectives": [
+     "Set up automatic backups"
+    ],
+    "order": {
+     "$numberInt": "3"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "45"
+    }
+   }
+  ],
+  "maxEnrollments": {
+   "$numberInt": "12"
+  },
+  "enrollmentCount": {
+   "$numberInt": "2"
+  },
+  "status": "published",
+  "totalEstimatedMinutes": {
+   "$numberInt": "180"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976357"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287984130"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2819d1dc63c8cb1122"
+  },
+  "teacherId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "skillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffc"
+  },
+  "title": "Build Your First Web Page",
+  "description": "HTML & CSS from zero - finish with your own live-looking page.",
+  "sessions": [
+   {
+    "title": "HTML Structure",
+    "description": "Headings, paragraphs and links.",
+    "objectives": [
+     "Write semantic HTML"
+    ],
+    "order": {
+     "$numberInt": "0"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   },
+   {
+    "title": "CSS Styling",
+    "description": "Color, spacing and fonts.",
+    "objectives": [
+     "Style a page with CSS"
+    ],
+    "order": {
+     "$numberInt": "1"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   },
+   {
+    "title": "Images & Layout",
+    "description": "Make it look professional.",
+    "objectives": [
+     "Create a simple layout"
+    ],
+    "order": {
+     "$numberInt": "2"
+    },
+    "estimatedMinutes": {
+     "$numberInt": "60"
+    }
+   }
+  ],
+  "maxEnrollments": {
+   "$numberInt": "10"
+  },
+  "enrollmentCount": {
+   "$numberInt": "1"
+  },
+  "status": "draft",
+  "totalEstimatedMinutes": {
+   "$numberInt": "180"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287976406"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287984277"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,1139 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b30"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "status": "pending",
+  "message": "Hi! I would love to learn how to use my phone camera better. Are you available Saturdays?",
+  "proposedFormat": "in-person",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584783044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584783044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "accepted",
+  "message": "Could you teach me a proper sourdough?",
+  "responseMessage": "Of course! How about Sunday morning?",
+  "proposedFormat": "in-person",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325583149"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325583149"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b34"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "rejected",
+  "message": "Interested in your bread class.",
+  "responseMessage": "Sorry, I am booked this month.",
+  "proposedFormat": "either",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325583255"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325583255"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b36"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c994340b9768648ae6"
+  },
+  "status": "completed",
+  "message": "Help me set up balcony containers?",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1786943183043"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786943183043"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786943183043"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b38"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "status": "cancelled",
+  "message": "Phone help please.",
+  "proposedFormat": "online",
+  "cancelledBy": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "cancellationReason": "Found another teacher",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787893583454"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787893583454"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "completed",
+  "message": "Want to learn bread basics.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788584783043"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584783043"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584783043"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b3c"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "status": "completed",
+  "message": "Need help with apps.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788498383043"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498383043"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498383043"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4cf94340b9768648b3e"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c994340b9768648ae6"
+  },
+  "status": "completed",
+  "message": "Gardening on my roof.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788411983044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411983044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411983044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b40"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "completed",
+  "message": "Sourdough starter help.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788152783044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788152783044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788152783044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b42"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab6"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "status": "completed",
+  "message": "Photos and settings.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787979983044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787979983044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787979983044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b44"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab7"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "withdrawn",
+  "message": "Bread help.",
+  "proposedFormat": "either",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671184244"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671184244"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b46"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab8"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c994340b9768648ae6"
+  },
+  "status": "completed",
+  "message": "Companion planting.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1786511183044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786511183044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786511183044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b48"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "pending",
+  "message": "Fresh to the platform, love bread!",
+  "proposedFormat": "in-person",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788152784537"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788152784537"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b4a"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af4"
+  },
+  "status": "accepted",
+  "message": "Teach me your sourdough technique?",
+  "responseMessage": "Happy to! Bring your starter.",
+  "proposedFormat": "in-person",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787893584614"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787893584614"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b4c"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af2"
+  },
+  "status": "pending",
+  "message": "I would like to learn mending basics.",
+  "proposedFormat": "in-person",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671184695"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671184695"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af8"
+  },
+  "status": "completed",
+  "message": "Fix a dripping tap with me?",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788584783044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584783044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584783044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d094340b9768648b50"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cb94340b9768648afe"
+  },
+  "status": "completed",
+  "message": "Help me start a compost bin.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788498383044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498383044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498383044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b52"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cb94340b9768648afa"
+  },
+  "status": "completed",
+  "message": "Upcycle an old shirt with me.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788325583044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325583044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325583044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b54"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aae"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cb94340b9768648b04"
+  },
+  "status": "completed",
+  "message": "Weekly meal prep planning.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787893583044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787893583044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787893583044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b56"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648ab9"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b20"
+  },
+  "status": "rejected",
+  "message": "Interested.",
+  "responseMessage": "Sorry, too busy.",
+  "proposedFormat": "online",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239185227"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239185227"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b58"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aba"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b22"
+  },
+  "status": "completed",
+  "message": "Session please.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788239183044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239183044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239183044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b5a"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648abb"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b24"
+  },
+  "status": "cancelled",
+  "message": "Let us try.",
+  "proposedFormat": "online",
+  "cancelledBy": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "cancellationReason": "Scheduling conflict",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239185476"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239185476"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b5c"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648abc"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b26"
+  },
+  "status": "completed",
+  "message": "Help me learn.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787634383044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787634383044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787634383044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b5e"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648abd"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b28"
+  },
+  "status": "completed",
+  "message": "Please teach me.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1786079183044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786079183044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786079183044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d194340b9768648b60"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648abe"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b2a"
+  },
+  "status": "withdrawn",
+  "message": "On second thought.",
+  "proposedFormat": "online",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788152785966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788152785966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b62"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648abf"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b2c"
+  },
+  "status": "accepted",
+  "message": "Let us connect.",
+  "proposedFormat": "online",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325586054"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325586054"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b64"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648ac0"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ce94340b9768648b2e"
+  },
+  "status": "completed",
+  "message": "Final test session.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788411983044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788411983044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788411983044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b66"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cd94340b9768648b14"
+  },
+  "status": "completed",
+  "message": "Swap practice.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788239183044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239183044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239183044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b68"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af4"
+  },
+  "status": "completed",
+  "message": "Learn baguettes.",
+  "proposedFormat": "in-person",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788066383044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788066383044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788066383044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b6a"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "status": "completed",
+  "message": "Video calls help.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787375183044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787375183044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787375183044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b6c"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cd94340b9768648b12"
+  },
+  "status": "completed",
+  "message": "Learn from you.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787807183044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787807183044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787807183044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b6e"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cd94340b9768648b14"
+  },
+  "status": "completed",
+  "message": "Teach me yours.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787720783044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787720783044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787720783044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b70"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "teacherId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cd94340b9768648b16"
+  },
+  "status": "completed",
+  "message": "Another session.",
+  "proposedFormat": "online",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787634383044"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787634383044"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787634383044"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8f925f1165d4d897d3cb"
+  },
+  "requesterId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "teacherId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "skillId": {
+   "$oid": "6a9f8e985f1165d4d897d3c6"
+  },
+  "status": "accepted",
+  "message": "Hi! I'd like to lean this",
+  "proposedFormat": "either",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841874832"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841891423"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

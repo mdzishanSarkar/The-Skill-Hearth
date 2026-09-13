@@ -1,0 +1,147 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11fb"
+  },
+  "title": "Healthy Cooking",
+  "intro": "Hello! I want to cook healthier meals.",
+  "body": "I want to learn quick, balanced meals I can prep ahead for the week. Would you be able to help?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "categoryName": "Food & Cooking",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11fa"
+  },
+  "title": "Conversational English",
+  "intro": "Hi there! I want to practise English.",
+  "body": "I am comfortable reading but want to speak more confidently for work calls. Could we practise?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c3"
+  },
+  "categoryName": "Languages & Communication",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11f8"
+  },
+  "title": "Learn Photography",
+  "intro": "Hi! I'd love to learn photography from you.",
+  "body": "I have a camera but need help with the basics. Are you available for a session this week?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c4"
+  },
+  "categoryName": "Photography & Visual Arts",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11f9"
+  },
+  "title": "Meditation Intro",
+  "intro": "Hello! I want to start meditating.",
+  "body": "I have never meditated before. Can you guide me through the basics over a video call?",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c6"
+  },
+  "categoryName": "Music & Performing Arts",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11fc"
+  },
+  "title": "Web Design Basics",
+  "intro": "Hey! I want to learn web design.",
+  "body": "I would love to understand how to structure a simple webpage with HTML and CSS.",
+  "categoryId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9c5"
+  },
+  "categoryName": "Technology & Web",
+  "isActive": true,
+  "createdBy": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

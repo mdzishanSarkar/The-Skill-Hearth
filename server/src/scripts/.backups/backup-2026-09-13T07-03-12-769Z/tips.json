@@ -1,0 +1,217 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dd94340b9768648c32"
+  },
+  "payerId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "payeeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "amount": {
+   "$numberInt": "500"
+  },
+  "currency": "usd",
+  "stripePaymentIntentId": "pi_test_1",
+  "status": "completed",
+  "platformFee": {
+   "$numberInt": "50"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671197078"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671197078"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dd94340b9768648c33"
+  },
+  "payerId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "payeeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3c"
+  },
+  "amount": {
+   "$numberInt": "300"
+  },
+  "currency": "usd",
+  "status": "pending",
+  "platformFee": {
+   "$numberInt": "30"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671197192"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671197192"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dd94340b9768648c34"
+  },
+  "payerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "payeeId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b50"
+  },
+  "amount": {
+   "$numberInt": "200"
+  },
+  "currency": "usd",
+  "stripePaymentIntentId": "pi_test_2",
+  "status": "completed",
+  "platformFee": {
+   "$numberInt": "20"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671197290"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671197290"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dd94340b9768648c35"
+  },
+  "payerId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "payeeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3e"
+  },
+  "amount": {
+   "$numberInt": "1000"
+  },
+  "currency": "usd",
+  "stripePaymentIntentId": "pi_test_3",
+  "status": "completed",
+  "platformFee": {
+   "$numberInt": "100"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671197376"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671197376"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dd94340b9768648c36"
+  },
+  "payerId": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "payeeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b40"
+  },
+  "amount": {
+   "$numberInt": "150"
+  },
+  "currency": "usd",
+  "stripePaymentIntentId": "pi_test_4",
+  "status": "failed",
+  "platformFee": {
+   "$numberInt": "15"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671197496"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671197496"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dd94340b9768648c37"
+  },
+  "payerId": {
+   "$oid": "6a9cf4a594340b9768648ab6"
+  },
+  "payeeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b42"
+  },
+  "amount": {
+   "$numberInt": "750"
+  },
+  "currency": "usd",
+  "stripePaymentIntentId": "pi_test_5",
+  "status": "refunded",
+  "platformFee": {
+   "$numberInt": "75"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671197588"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671197588"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

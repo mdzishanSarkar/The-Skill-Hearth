@@ -1,0 +1,566 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cd5"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Hey! Ready for our baking session tomorrow?",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809292"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cdc"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Excited to trade knitting tips!",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cdb"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Got the plumbing book you mentioned.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788498409292"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cda"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Will do. Talk soon!",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cd7"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "See you at 10.",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cd8"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Thanks for the phone tips today!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809292"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cdd"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "content": "See you at the group session.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809292"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cd9"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "Anytime! Let me know if you need more help.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809292"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cd6"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Absolutely! Bring your starter.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809292"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209295"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d09"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Sourdough class was a hit, thanks for recommending it.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584812743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d07"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "My fabric stash is huge now. Come grab some!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671212743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d08"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "On my way after work.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671212743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d0f"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Trade knitting patterns this weekend?",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d0d"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "I will bring extra starter.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671212743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d0b"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "content": "Nice! Keep it moist, not wet.",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d0c"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "See you at the baking circle on Friday.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671212743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d0e"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "My first loaf turned out perfect!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671212743"
+   }
+  },
+  "isDeleted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d0a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "The compost bin is full of life!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584812743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d10"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "recipientId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Thanks for the video call help!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584812743"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212746"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

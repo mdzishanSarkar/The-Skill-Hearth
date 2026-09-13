@@ -1,0 +1,21 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb123d"
+  },
+  "blockerId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "blockedId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981831"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

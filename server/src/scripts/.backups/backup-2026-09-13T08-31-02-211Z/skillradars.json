@@ -1,0 +1,539 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1206"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "signals": [
+   {
+    "type": "category_browse",
+    "category": "Food & Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789201580073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.5"
+    }
+   },
+   {
+    "type": "message_sent",
+    "category": "Music & Performing Arts",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789201580073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.4"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Music & Performing Arts",
+    "inferredSkillNames": [
+     "Yoga",
+     "Stretching"
+    ],
+    "confidence": "medium",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "12"
+    },
+    "reasoning": "Browsed food category and discussed stretching",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980090"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980090"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1201"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "signals": [
+   {
+    "type": "skill_view",
+    "category": "Technology & Web",
+    "skillName": "JavaScript",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789201580073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.7"
+    }
+   },
+   {
+    "type": "endorsement_given",
+    "category": "Food & Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789115180073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.4"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Technology & Web",
+    "inferredSkillNames": [
+     "JavaScript",
+     "Web Design"
+    ],
+    "confidence": "medium",
+    "preferredFormat": "online",
+    "reasoning": "Viewed coding skills and endorsed a cooking teacher",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1e19d1dc63c8cb0fca"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980090"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980090"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb11ff"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Music & Performing Arts",
+    "skillName": "Guitar",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789028780073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.8"
+    }
+   },
+   {
+    "type": "category_browse",
+    "category": "Food & Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789115180073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.5"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Music & Performing Arts",
+    "inferredSkillNames": [
+     "Guitar",
+     "Ukulele"
+    ],
+    "confidence": "high",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "10"
+    },
+    "reasoning": "Searched for guitar and browsed the music category",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "Nearby Spanish teachers",
+    "filters": {
+     "category": "Languages & Communication",
+     "type": "teach",
+     "format": "in-person",
+     "radius": {
+      "$numberInt": "10"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+     }
+    ],
+    "_id": {
+     "$oid": "6aa65e2c19d1dc63c8cb1200"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1204"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Food & Cooking",
+    "skillName": "Healthy Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789115180073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.8"
+    }
+   },
+   {
+    "type": "profile_view",
+    "category": "Languages & Communication",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789201580073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.3"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Food & Cooking",
+    "inferredSkillNames": [
+     "Healthy Cooking",
+     "Meal Prep"
+    ],
+    "confidence": "high",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "20"
+    },
+    "reasoning": "Searched healthy cooking and viewed a cooking profile",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "English practice partners",
+    "filters": {
+     "category": "Languages & Communication",
+     "format": "online",
+     "radius": {
+      "$numberInt": "20"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+     }
+    ],
+    "_id": {
+     "$oid": "6aa65e2c19d1dc63c8cb1205"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1202"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Photography & Visual Arts",
+    "skillName": "Photography",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789287980073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.9"
+    }
+   },
+   {
+    "type": "skill_view",
+    "category": "Music & Performing Arts",
+    "skillName": "Guitar",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789201580073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.6"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Photography & Visual Arts",
+    "inferredSkillNames": [
+     "Photography",
+     "Food Photography"
+    ],
+    "confidence": "high",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "12"
+    },
+    "reasoning": "Searched photography and viewed food-photo showcases",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "Guitar near Dhanmondi",
+    "filters": {
+     "category": "Music & Performing Arts",
+     "type": "teach",
+     "format": "in-person",
+     "radius": {
+      "$numberInt": "12"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+     }
+    ],
+    "_id": {
+     "$oid": "6aa65e2c19d1dc63c8cb1203"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2c19d1dc63c8cb1207"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Languages & Communication",
+    "skillName": "Spanish",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789287980073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.9"
+    }
+   },
+   {
+    "type": "skill_view",
+    "category": "Music & Performing Arts",
+    "skillName": "Guitar",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1789201580073"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.6"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Languages & Communication",
+    "inferredSkillNames": [
+     "Spanish",
+     "Conversational Language Practice"
+    ],
+    "confidence": "high",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "10"
+    },
+    "reasoning": "Searched Spanish for travel",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   },
+   {
+    "category": "Music & Performing Arts",
+    "inferredSkillNames": [
+     "Guitar"
+    ],
+    "confidence": "medium",
+    "preferredFormat": "in-person",
+    "reasoning": "Viewed guitar lessons recently",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "Guitar teachers",
+    "filters": {
+     "category": "Music & Performing Arts",
+     "type": "teach",
+     "format": "in-person",
+     "radius": {
+      "$numberInt": "10"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+     }
+    ],
+    "_id": {
+     "$oid": "6aa65e2c19d1dc63c8cb1208"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980091"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

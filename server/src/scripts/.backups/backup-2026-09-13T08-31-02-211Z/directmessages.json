@@ -1,0 +1,426 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b2"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "recipientId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Ready for our guitar session tomorrow?",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789201579345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b4"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "recipientId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "See you at 6 PM.",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b3"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "recipientId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Yes! Bring your capo.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789201579345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11bb"
+  },
+  "senderId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "recipientId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "The homepage looks fantastic, Arnob!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789201579345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11ba"
+  },
+  "senderId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "recipientId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "content": "So proud of you. Rehearse it one more time tomorrow.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789287979345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b7"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "recipientId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Your chickpea stew recipe was amazing.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789287979345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b9"
+  },
+  "senderId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "recipientId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Coached my first client call in English - thank you!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789287979345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b6"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "recipientId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Anytime! Tell me how the breathing exercises go.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789201579345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b5"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "recipientId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Thanks for the meditation tips today!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789201579345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11b8"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "recipientId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "I will send you the full recipe card tonight!",
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11bc"
+  },
+  "senderId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "recipientId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "content": "Thanks! CSS color lesson next week.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789201579345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11be"
+  },
+  "senderId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "recipientId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "content": "Come over for a stir-fry when they turn red.",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789115179345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11bd"
+  },
+  "senderId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "recipientId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "Your balcony chillies are almost ready to harvest!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789115179345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11bf"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "recipientId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "content": "Great JS progress today - keep going!",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1789287979345"
+   }
+  },
+  "isDeleted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979348"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

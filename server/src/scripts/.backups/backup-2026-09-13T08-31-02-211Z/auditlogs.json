@@ -1,0 +1,154 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1240"
+  },
+  "performedBy": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "action": "review",
+  "targetType": "report",
+  "targetId": {
+   "$oid": "6aa65e2d19d1dc63c8cb1236"
+  },
+  "after": {
+   "action": "no_action",
+   "status": "dismissed"
+  },
+  "metadata": {
+   "source": "seed"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981885"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1241"
+  },
+  "performedBy": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "action": "create",
+  "targetType": "post",
+  "targetId": {
+   "$oid": "6aa65e2719d1dc63c8cb1109"
+  },
+  "after": {
+   "content": "PSA: never reuse passwords"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981885"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb123e"
+  },
+  "performedBy": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "action": "update",
+  "targetType": "skill",
+  "targetId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "after": {
+   "description": "Updated skill description"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981885"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1243"
+  },
+  "performedBy": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "action": "create",
+  "targetType": "review",
+  "targetId": {
+   "$oid": "6aa65e2419d1dc63c8cb109a"
+  },
+  "after": {
+   "rating": {
+    "$numberInt": "4"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981885"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb123f"
+  },
+  "performedBy": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "action": "update",
+  "targetType": "user",
+  "targetId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "after": {
+   "bio": "Updated bio"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981885"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d19d1dc63c8cb1242"
+  },
+  "performedBy": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "action": "update",
+  "targetType": "category",
+  "targetId": {
+   "$oid": "6a9cf4a581716bc2fd4bd9bf"
+  },
+  "after": {
+   "displayOrder": {
+    "$numberInt": "1"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287981885"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,332 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c2"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb100a"
+  },
+  "prompt": "How did the session go?",
+  "content": "Kabir ordered coffee entirely in Spanish. We celebrated with churros.",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c1"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1012"
+  },
+  "prompt": "What went well?",
+  "content": "Zishan showed me the trick to creamy hummus - the tahini ratio!",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c8"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "prompt": "Teaching observation",
+  "content": "Arnob picks up new concepts fast when I use analogies. Cloud backups now automated.",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c9"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "prompt": "New skill",
+  "content": "Cloud backup is finally automatic. Peace of mind is priceless.",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c5"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1018"
+  },
+  "prompt": "How did it feel?",
+  "content": "I can play three chords now. Simple but it feels amazing.",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c0"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "prompt": "What did you learn today?",
+  "content": "Abir picked up composition rules really quickly. The golden-hour light for our walk was perfect.",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c3"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101a"
+  },
+  "prompt": "Biggest takeaway?",
+  "content": "The 4-7-8 breathing technique really works for focus before coding.",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c7"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "prompt": "Confidence check",
+  "content": "Felt nervous but the call script carried me through. Rakib is a fantastic coach.",
+  "mood": {
+   "$numberInt": "4"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c4"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "prompt": "What was the best part?",
+  "content": "Kabir showed me how to use natural window light for food photography. A game changer for my blog!",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11c6"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "prompt": "Reflection",
+  "content": "First portrait session with Kabir - my kids photos finally look as good as they do in real life.",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11ca"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "connectionId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "prompt": "Post-session note",
+  "content": "Fahim asked great questions about catching candid moments. Eager to see his shots!",
+  "mood": {
+   "$numberInt": "5"
+  },
+  "isHighlighted": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979466"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

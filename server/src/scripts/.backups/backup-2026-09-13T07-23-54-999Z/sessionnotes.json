@@ -1,0 +1,102 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c2e"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b36"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Covered container setup, soil mix and watering schedule.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c30"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Learned to replace a tap washer.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c31"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Practised shaping and scoring.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c2f"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b40"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Sourdough starter feeding and first bake.",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196967"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

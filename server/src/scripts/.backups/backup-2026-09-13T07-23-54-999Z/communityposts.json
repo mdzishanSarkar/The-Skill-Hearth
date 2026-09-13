@@ -1,0 +1,309 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bba"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Who else is baking sourdough this weekend?",
+  "city": "dhaka",
+  "neighborhood": "gulshan",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa3"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa4"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648ab2"
+    },
+    "vote": "down"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194697"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194697"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bbb"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "Sewing meetup at my place Friday!",
+  "city": "dhaka",
+  "neighborhood": "gulshan",
+  "voteScore": {
+   "$numberInt": "2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "vote": "up"
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa4"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194792"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194792"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d794340b9768648bbc"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "content": "Any knitters in Brooklyn?",
+  "city": "new york",
+  "neighborhood": "brooklyn",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648ab1"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194882"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194882"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4da94340b9768648bf4"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab1"
+  },
+  "content": "Allotment season is here!",
+  "city": "london",
+  "neighborhood": "camden",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648ab0"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671194966"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671194966"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4db94340b9768648bf6"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "content": "Selling cheap watches click here!!",
+  "city": "dhaka",
+  "neighborhood": "mirpur",
+  "voteScore": {
+   "$numberInt": "-2"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "vote": "down"
+   },
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648ab4"
+    },
+    "vote": "down"
+   }
+  ],
+  "isDeleted": true,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671195147"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671195147"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4db94340b9768648bf8"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "content": "Roof garden harvest pics.",
+  "city": "dhaka",
+  "neighborhood": "dhanmondi",
+  "voteScore": {
+   "$numberInt": "1"
+  },
+  "userVotes": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "vote": "up"
+   }
+  ],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671195293"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671195293"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4db94340b9768648bfa"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab5"
+  },
+  "content": "Looking for a cooking buddy.",
+  "city": "dhaka",
+  "neighborhood": "banani",
+  "voteScore": {
+   "$numberInt": "0"
+  },
+  "userVotes": [],
+  "isDeleted": false,
+  "isFlagged": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671195383"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671195383"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4db94340b9768648bfc"
+  },
+  "authorId": {
+   "$oid": "6a9cf4a594340b9768648ab6"
+  },
+  "content": "Flagged spam post for the queue.",
+  "city": "dhaka",
+  "neighborhood": "uttara",
+  "voteScore": {
+   "$numberInt": "0"
+  },
+  "userVotes": [],
+  "isDeleted": false,
+  "isFlagged": true,
+  "flagReason": "Spam advertisement",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671195473"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671195473"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,338 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "status": "accepted",
+  "requesterTier": "close_friend",
+  "addresseeTier": "close_friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "skill_session",
+  "sharedSkillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa3",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1786943201928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201930"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201930"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c7a"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "friend_request",
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa4",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1787375201928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202027"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202027"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c7c"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "group_session",
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa5",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1787634401928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202257"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202257"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c7e"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "friend_request",
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa6",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1787807201928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202365"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202365"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c80"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "status": "accepted",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "metVia": "friend_request",
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa7",
+  "acceptedAt": {
+   "$date": {
+    "$numberLong": "1787980001928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202455"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202455"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c82"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "status": "pending",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa8",
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1791263201928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202563"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202563"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c84"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa9"
+  },
+  "status": "pending",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648aa9",
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1791263201928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202645"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202645"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c86"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "status": "declined",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aa2_6a9cf4a594340b9768648ab2",
+  "declinedAt": {
+   "$date": {
+    "$numberLong": "1788239201928"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202752"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202752"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c88"
+  },
+  "requesterId": {
+   "$oid": "6a9cf4a594340b9768648aab"
+  },
+  "addresseeId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "status": "blocked",
+  "requesterTier": "friend",
+  "addresseeTier": "friend",
+  "showStreakTo": {
+   "requester": true,
+   "addressee": true
+  },
+  "directMessageRoomId": "dm_6a9cf4a594340b9768648aab_6a9cf4a594340b9768648ab3",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202848"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202848"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

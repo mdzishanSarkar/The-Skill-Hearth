@@ -1,0 +1,568 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4ed94340b9768648d23"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa8"
+  },
+  "signals": [
+   {
+    "type": "skill_view",
+    "category": "Digital Literacy",
+    "skillName": "Smartphone Basics",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788584813751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.8"
+    }
+   },
+   {
+    "type": "search",
+    "category": "Languages & Communication",
+    "skillName": "Conversational Language Practice",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788671213751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.7"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Languages & Communication",
+    "inferredSkillNames": [
+     "Conversational Language Practice"
+    ],
+    "confidence": "medium",
+    "preferredFormat": "online",
+    "preferredRadius": {
+     "$numberInt": "5"
+    },
+    "reasoning": "Searched for language practice.",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4c994340b9768648aea"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671213774"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671213774"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ed94340b9768648d20"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Textile & Craft",
+    "skillName": "Knitting / Crochet",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788498413751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.9"
+    }
+   },
+   {
+    "type": "profile_view",
+    "category": "Food & Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788584813751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.3"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Textile & Craft",
+    "inferredSkillNames": [
+     "Knitting / Crochet"
+    ],
+    "confidence": "low",
+    "preferredFormat": "online",
+    "preferredRadius": {
+     "$numberInt": "10"
+    },
+    "reasoning": "Searched for knitting once.",
+    "status": "paused",
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4cc94340b9768648b08"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "1"
+    }
+   }
+  ],
+  "manualRadars": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671213774"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671213774"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ed94340b9768648d1c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Textile & Craft",
+    "skillName": "Knitting / Crochet",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788498413751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.9"
+    }
+   },
+   {
+    "type": "skill_view",
+    "category": "Food & Cooking",
+    "skillName": "Baking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788584813751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.7"
+    }
+   },
+   {
+    "type": "category_browse",
+    "category": "Home & Garden",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788412013751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.5"
+    }
+   },
+   {
+    "type": "endorsement_given",
+    "category": "Textile & Craft",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788498413751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.4"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Textile & Craft",
+    "inferredSkillNames": [
+     "Knitting / Crochet",
+     "Upcycling"
+    ],
+    "confidence": "high",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "10"
+    },
+    "reasoning": "Searched for knitting and browsed craft categories often.",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4ca94340b9768648af2"
+     },
+     {
+      "$oid": "6a9cf4cc94340b9768648b08"
+     },
+     {
+      "$oid": "6a9cf4cb94340b9768648afa"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "3"
+    }
+   },
+   {
+    "category": "Food & Cooking",
+    "inferredSkillNames": [
+     "Baking",
+     "Meal Prep"
+    ],
+    "confidence": "medium",
+    "preferredFormat": "either",
+    "preferredRadius": {
+     "$numberInt": "5"
+    },
+    "reasoning": "Views baking skills frequently.",
+    "status": "paused",
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4ca94340b9768648af4"
+     },
+     {
+      "$oid": "6a9cf4cb94340b9768648b04"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "2"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "Knitting teachers near me",
+    "filters": {
+     "category": "Textile & Craft",
+     "type": "teach",
+     "format": "in-person",
+     "proficiencyLevel": "beginner",
+     "radius": {
+      "$numberInt": "10"
+     },
+     "availability": []
+    },
+    "lastAlertedAt": {
+     "$date": {
+      "$numberLong": "1788584813751"
+     }
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4ca94340b9768648af2"
+     },
+     {
+      "$oid": "6a9cf4cc94340b9768648b08"
+     }
+    ],
+    "_id": {
+     "$oid": "6a9cf4ed94340b9768648d1d"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671213776"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671213776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ed94340b9768648d1e"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Home & Garden",
+    "skillName": "Vegetable Gardening",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788584813751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.8"
+    }
+   },
+   {
+    "type": "category_browse",
+    "category": "Food & Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788412013751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.5"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Home & Garden",
+    "inferredSkillNames": [
+     "Vegetable Gardening",
+     "Composting"
+    ],
+    "confidence": "medium",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "5"
+    },
+    "reasoning": "Searched for gardening and browsed food categories.",
+    "status": "active",
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4c994340b9768648ae6"
+     },
+     {
+      "$oid": "6a9cf4cb94340b9768648afe"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "2"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "Balcony gardening help",
+    "filters": {
+     "category": "Home & Garden",
+     "type": "learn",
+     "format": "in-person",
+     "radius": {
+      "$numberInt": "5"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4c994340b9768648ae6"
+     }
+    ],
+    "_id": {
+     "$oid": "6a9cf4ed94340b9768648d1f"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671213776"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671213776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ed94340b9768648d21"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "signals": [
+   {
+    "type": "search",
+    "category": "Food & Cooking",
+    "skillName": "Baking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788671213751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.95"
+    }
+   },
+   {
+    "type": "message_sent",
+    "category": "Food & Cooking",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788584813751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.6"
+    }
+   }
+  ],
+  "intents": [
+   {
+    "category": "Food & Cooking",
+    "inferredSkillNames": [
+     "Baking"
+    ],
+    "confidence": "high",
+    "preferredFormat": "in-person",
+    "preferredRadius": {
+     "$numberInt": "7"
+    },
+    "reasoning": "Searched for baking and messaged a baking teacher.",
+    "status": "dismissed",
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4c894340b9768648ae2"
+     },
+     {
+      "$oid": "6a9cf4ca94340b9768648af4"
+     }
+    ],
+    "matchCount": {
+     "$numberInt": "2"
+    }
+   }
+  ],
+  "manualRadars": [
+   {
+    "name": "Bread courses",
+    "filters": {
+     "category": "Food & Cooking",
+     "type": "teach",
+     "format": "in-person",
+     "proficiencyLevel": "beginner",
+     "radius": {
+      "$numberInt": "7"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4c894340b9768648ae2"
+     }
+    ],
+    "_id": {
+     "$oid": "6a9cf4ed94340b9768648d22"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671213777"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671213777"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ed94340b9768648d24"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "signals": [
+   {
+    "type": "swap_declined",
+    "category": "Home & Garden",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788412013751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.5"
+    }
+   },
+   {
+    "type": "category_browse",
+    "category": "Home & Garden",
+    "timestamp": {
+     "$date": {
+      "$numberLong": "1788498413751"
+     }
+    },
+    "weight": {
+     "$numberDouble": "0.6"
+    }
+   }
+  ],
+  "intents": [],
+  "manualRadars": [
+   {
+    "name": "Gardening projects",
+    "filters": {
+     "category": "Home & Garden",
+     "radius": {
+      "$numberInt": "10"
+     },
+     "availability": []
+    },
+    "alertedSkillIds": [
+     {
+      "$oid": "6a9cf4c994340b9768648ae6"
+     }
+    ],
+    "_id": {
+     "$oid": "6a9cf4ed94340b9768648d25"
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671213777"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671213777"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

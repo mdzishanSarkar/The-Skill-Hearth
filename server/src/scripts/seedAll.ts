@@ -47,6 +47,11 @@ import {
   DirectMessage,
   SkillJournal,
   RequestTemplate,
+  SkillRadar,
+  SwapReadyMatch,
+  SkillDemandSnapshot,
+  ConversationSettings,
+  UserInboxPreference,
 } from '../models';
 
 const PASSWORD = 'Demo1234!';
@@ -55,6 +60,10 @@ const D = 24 * H;
 const daysAgo = (n: number) => new Date(Date.now() - n * D);
 const daysFromNow = (n: number) => new Date(Date.now() + n * D);
 const OID = () => new Types.ObjectId();
+
+function canonicalPair(a: string, b: string): { a: string; b: string } {
+  return a < b ? { a, b } : { a: b, b: a };
+}
 
 async function clearAll(): Promise<void> {
   const collections = [
@@ -67,6 +76,8 @@ async function clearAll(): Promise<void> {
     'challenges', 'mentorships', 'showcases', 'webhooks', 'apikeys',
     'calendarintegrations', 'botinstallations', 'friendships', 'activityevents',
     'streaks', 'directmessages', 'skilljournals', 'requesttemplates',
+    'skillradars', 'swapreadymatches', 'skilldemandsnapshots',
+    'conversationsettings', 'userinboxpreferences',
   ];
   for (const name of collections) {
     const { deletedCount } = await require('mongoose').connection.collection(name).deleteMany({});
@@ -406,7 +417,7 @@ async function main(): Promise<void> {
     { key: 'M10', conn: 'C6', sender: 'gen1', content: 'Loved the bread session!', readAt: daysAgo(1), deliveredAt: daysAgo(1) },
     { key: 'M11', conn: 'C6', sender: 'demo', content: 'Come back next month!', readAt: undefined, deliveredAt: daysAgo(1) },
     { key: 'M12', conn: 'C16', sender: 'demo', content: 'The tap is fixed, thank you Rahim!', readAt: daysAgo(1), deliveredAt: daysAgo(1) },
-    { key: 'M13', conn: 'C16', sender: 'rahim', content: 'Anytime!', readAt: daysAgo(1), deliveredAt: daysAgo(1), reactions: [{ userId: U.demo, emoji: '🎉', createdAt: daysAgo(1) }] },
+    { key: 'M13', conn: 'C16', sender: 'rahim', content: 'Anytime!', readAt: daysAgo(1), deliveredAt: daysAgo(1), reactions: [{ userId: U.demo, emoji: '👍', createdAt: daysAgo(1) }] },
     { key: 'M14', conn: 'C29', sender: 'kabir', content: 'Baguette class was excellent.', readAt: daysAgo(7), deliveredAt: daysAgo(7) },
     { key: 'M15', conn: 'C29', sender: 'maria', content: 'I will bring the photos!', readAt: daysAgo(7), deliveredAt: daysAgo(7) },
     { key: 'M16', conn: 'C2', sender: 'kabir', content: 'Deleted message for testing.', isDeleted: true },
@@ -1052,6 +1063,316 @@ async function main(): Promise<void> {
     { title: 'Smartphone Coaching', intro: 'Hi there, I need phone help.', body: 'I struggle with apps and photos. Can you help?', categoryId: catBySlug.get('digital-literacy')!._id, categoryName: 'Digital Literacy', isActive: true, createdBy: U.admin },
     { title: 'Sewing Introduction', intro: 'Old inactive template.', body: 'This template is no longer used.', categoryId: catBySlug.get('textile-craft')!._id, categoryName: 'Textile & Craft', isActive: false, createdBy: U.admin },
   ]);
+
+  console.log('\n== Seeding extended session chat messages ==');
+  const extMsgInputs: any[] = [
+    { connection: 'C2', sender: 'kabir', content: '', type: 'image', imageUrl: 'https://res.cloudinary.com/demo/image/upload/v1/msg/starter-jar.jpg', imageThumbnailUrl: 'https://res.cloudinary.com/demo/image/upload/v1/msg/starter-jar_thumb.jpg', imagePublicId: 'msg/starter-jar', imageWidth: 1200, imageHeight: 800, readAt: daysAgo(0), deliveredAt: daysAgo(0) },
+    { connection: 'C2', sender: 'demo', content: 'That starter looks perfect! Keep feeding it daily.', type: 'text', editedAt: daysAgo(0), editHistory: [{ content: 'That starter looks good!', editedAt: daysAgo(0) }], readAt: daysAgo(0), deliveredAt: daysAgo(0) },
+    { connection: 'C2', sender: 'kabir', content: 'Excited for bake number two!', type: 'gif', gifUrl: 'https://media.tenor.com/demo/baking.gif', gifWidth: 320, gifHeight: 240, deliveredAt: daysAgo(0) },
+    { connection: 'C2', sender: 'demo', content: '', type: 'voice_note', voiceNoteUrl: 'https://res.cloudinary.com/demo/video/upload/v1/voice/fold.m4a', voiceNoteDurationSeconds: 12, voiceNoteWaveform: [2, 4, 3, 6, 5, 8, 6, 4, 3, 5, 7, 9, 6, 4, 3], readAt: daysAgo(0), deliveredAt: daysAgo(0) },
+    { connection: 'C2', sender: 'demo', content: '', type: 'skill_card', skillCardData: { skillId: S.DEMO_BAKE, skillName: 'Baking Basics', teacherName: 'Demo Tester', teacherAvatarUrl: '', requestStatus: 'accepted' }, deliveredAt: daysAgo(0) },
+    { connection: 'C2', sender: 'demo', content: 'Session scheduled for Sunday 10am at the community kitchen.', type: 'system', systemEvent: 'session_scheduled', deliveredAt: daysAgo(1) },
+    { connection: 'C2', sender: 'kabir', content: 'Remember to meet in a public place and let someone know where you are.', type: 'system', systemEvent: 'safe_meeting_reminder', deliveredAt: daysAgo(0) },
+    { connection: 'C6', sender: 'gen1', content: 'The bread came out amazing at home!', readAt: daysAgo(1), deliveredAt: daysAgo(1) },
+    { connection: 'C6', sender: 'demo', content: 'Told you it would! Share a photo next time.', replyToMessageId: M.M10, replyToPreview: { senderId: U.gen1, senderName: 'Gen 1 User', contentPreview: 'Loved the bread session!' }, readAt: daysAgo(1), deliveredAt: daysAgo(1) },
+    { connection: 'C6', sender: 'gen1', content: 'This message was unsent.', type: 'text', unsentAt: daysAgo(1) },
+    { connection: 'C16', sender: 'demo', content: 'Connection completed - the tap is fixed. 🎉', type: 'system', systemEvent: 'connection_completed', deliveredAt: daysAgo(1) },
+    { connection: 'C17', sender: 'demo', content: 'Connection completed - compost bin built.', type: 'system', systemEvent: 'connection_completed', deliveredAt: daysAgo(1) },
+    { connection: 'C4', sender: 'demo', content: 'Please remember to review our gardening session.', type: 'system', systemEvent: 'review_prompt', deliveredAt: daysAgo(2) },
+    { connection: 'C14', sender: 'demo', content: 'Connection request accepted.', type: 'system', systemEvent: 'connection_accepted', deliveredAt: daysAgo(2) },
+  ];
+  for (const input of extMsgInputs) {
+    await Message.create({
+      connectionId: C[input.connection],
+      senderId: U[input.sender],
+      content: input.content ?? '',
+      type: input.type ?? 'text',
+      imageUrl: input.imageUrl,
+      imageThumbnailUrl: input.imageThumbnailUrl,
+      imagePublicId: input.imagePublicId,
+      imageWidth: input.imageWidth,
+      imageHeight: input.imageHeight,
+      readAt: input.readAt,
+      deliveredAt: input.deliveredAt,
+      unsentAt: input.unsentAt,
+      reactions: input.reactions ?? [],
+      isReported: input.isReported ?? false,
+      reportCount: input.reportCount ?? 0,
+      editedAt: input.editedAt,
+      editHistory: input.editHistory ?? [],
+      skillCardData: input.skillCardData,
+      voiceNoteUrl: input.voiceNoteUrl,
+      voiceNoteDurationSeconds: input.voiceNoteDurationSeconds,
+      voiceNoteWaveform: input.voiceNoteWaveform ?? [],
+      gifUrl: input.gifUrl,
+      gifWidth: input.gifWidth,
+      gifHeight: input.gifHeight,
+      replyToMessageId: input.replyToMessageId,
+      replyToPreview: input.replyToPreview,
+      systemEvent: input.systemEvent,
+    });
+  }
+  console.log(`  ${extMsgInputs.length} extended session messages`);
+
+  console.log('\n== Seeding friend chat messages ==');
+  const friendMsgInputs: any[] = [
+    { friendship: 'F1', sender: 'demo', content: 'Hey Maria! Did you see the new mending workshop posting?' },
+    { friendship: 'F1', sender: 'maria', content: 'Yes! I already signed up. Want to go together?', reactions: [{ userId: U.demo, emoji: '👍', createdAt: daysAgo(1) }] },
+    { friendship: 'F1', sender: 'demo', content: 'Definitely. I will bring the fabric scraps we talked about.' },
+    { friendship: 'F1', sender: 'maria', content: '', type: 'image', imageUrl: 'https://res.cloudinary.com/demo/image/upload/v1/msg/fabric.jpg', imageThumbnailUrl: 'https://res.cloudinary.com/demo/image/upload/v1/msg/fabric_thumb.jpg', imagePublicId: 'msg/fabric', imageWidth: 900, imageHeight: 900 },
+    { friendship: 'F1', sender: 'demo', content: 'You are now friends with Maria Ahmed.', type: 'system', systemEvent: 'friend_accepted', createdAt: daysAgo(20) },
+    { friendship: 'F1', sender: 'maria', content: 'So excited!', type: 'gif', gifUrl: 'https://media.tenor.com/demo/hi.gif', gifWidth: 320, gifHeight: 240 },
+    { friendship: 'F1', sender: 'demo', content: '', type: 'voice_note', voiceNoteUrl: 'https://res.cloudinary.com/demo/video/upload/v1/voice/mend.m4a', voiceNoteDurationSeconds: 18, voiceNoteWaveform: [1, 3, 5, 4, 6, 8, 7, 5, 3, 2, 4, 6, 9, 7, 5, 3, 2, 1, 4, 6], readAt: undefined },
+    { friendship: 'F1', sender: 'demo', content: '', type: 'skill_card', skillCardData: { skillId: S.DEMO_PHONE, skillName: 'Smartphone Basics', teacherName: 'Demo Tester', teacherAvatarUrl: '', requestStatus: 'accepted' } },
+    { friendship: 'F1', sender: 'maria', content: 'This was removed by the sender.', type: 'text', unsentAt: daysAgo(2) },
+    { friendship: 'F1', sender: 'demo', content: 'By the way, the sewing class photo you sent earlier was great. 🤩', type: 'text', editedAt: daysAgo(1), editHistory: [{ content: 'By the way, the sewing class photo you sent earlier was great.', editedAt: daysAgo(1) }], replyToPreview: { senderId: U.maria, senderName: 'Maria Ahmed', contentPreview: 'My fabric stash is huge now.' } },
+    { friendship: 'F2', sender: 'kabir', content: 'Ready for tomorrow’s bake?' },
+    { friendship: 'F2', sender: 'demo', content: 'Always! See you at 9.' },
+    { friendship: 'F2', sender: 'kabir', content: 'Perfect. I edited my reminder to include the starter feeding schedule.', type: 'text', editedAt: daysAgo(0), editHistory: [{ content: 'Perfect. Bring the starter.', editedAt: daysAgo(0) }] },
+    { friendship: 'F3', sender: 'rahim', content: 'The plumbing textbook arrived. Thanks for the tip!', readAt: undefined },
+    { friendship: 'F5', sender: 'demo', content: 'Noah, how is the compost doing?' },
+    { friendship: 'F5', sender: 'noah', content: 'Smells healthy! Worms are thriving.' },
+    { friendship: 'F4', sender: 'fatima', content: 'Upcycling class tomorrow, do not forget the old jeans!', readAt: undefined },
+  ];
+  for (const input of friendMsgInputs) {
+    await Message.create({
+      friendshipId: F[input.friendship],
+      senderId: U[input.sender],
+      content: input.content ?? '',
+      type: input.type ?? 'text',
+      imageUrl: input.imageUrl,
+      imageThumbnailUrl: input.imageThumbnailUrl,
+      imagePublicId: input.imagePublicId,
+      imageWidth: input.imageWidth,
+      imageHeight: input.imageHeight,
+      readAt: input.readAt,
+      deliveredAt: input.deliveredAt,
+      unsentAt: input.unsentAt,
+      reactions: input.reactions ?? [],
+      isReported: input.isReported ?? false,
+      reportCount: input.reportCount ?? 0,
+      editedAt: input.editedAt,
+      editHistory: input.editHistory ?? [],
+      skillCardData: input.skillCardData,
+      voiceNoteUrl: input.voiceNoteUrl,
+      voiceNoteDurationSeconds: input.voiceNoteDurationSeconds,
+      voiceNoteWaveform: input.voiceNoteWaveform ?? [],
+      gifUrl: input.gifUrl,
+      gifWidth: input.gifWidth,
+      gifHeight: input.gifHeight,
+      replyToMessageId: input.replyToMessageId,
+      replyToPreview: input.replyToPreview,
+      systemEvent: input.systemEvent,
+      createdAt: input.createdAt,
+    });
+  }
+  console.log(`  ${friendMsgInputs.length} friend chat messages`);
+
+  console.log('\n== Seeding additional direct messages ==');
+  await DirectMessage.create([
+    { senderId: U.maria, recipientId: U.demo, content: 'My fabric stash is huge now. Come grab some!', readAt: daysAgo(0) },
+    { senderId: U.demo, recipientId: U.maria, content: 'On my way after work.', readAt: daysAgo(0) },
+    { senderId: U.kabir, recipientId: U.demo, content: 'Sourdough class was a hit, thanks for recommending it.', readAt: daysAgo(1) },
+    { senderId: U.noah, recipientId: U.demo, content: 'The compost bin is full of life!', readAt: daysAgo(1) },
+    { senderId: U.demo, recipientId: U.noah, content: 'Nice! Keep it moist, not wet.', readAt: undefined },
+    { senderId: U.maria, recipientId: U.kabir, content: 'See you at the baking circle on Friday.', readAt: daysAgo(0) },
+    { senderId: U.kabir, recipientId: U.maria, content: 'I will bring extra starter.', readAt: daysAgo(0) },
+    { senderId: U.gen1, recipientId: U.demo, content: 'My first loaf turned out perfect!', readAt: daysAgo(0), isDeleted: true },
+    { senderId: U.nyc, recipientId: U.demo, content: 'Trade knitting patterns this weekend?', readAt: undefined },
+    { senderId: U.ayesha, recipientId: U.demo, content: 'Thanks for the video call help!', readAt: daysAgo(1) },
+  ]);
+  console.log('  10 additional direct messages');
+
+  console.log('\n== Seeding skill demand snapshots ==');
+  await SkillDemandSnapshot.create([
+    {
+      skills: [
+        { skillName: 'Baking', categoryName: 'Food & Cooking', demandScore: 92, topRegions: [{ name: 'Gulshan', count: 24 }, { name: 'Dhanmondi', count: 18 }, { name: 'Banani', count: 12 }] },
+        { skillName: 'Vegetable Gardening', categoryName: 'Home & Garden', demandScore: 84, topRegions: [{ name: 'Uttara', count: 21 }, { name: 'Mirpur', count: 15 }, { name: 'Gulshan', count: 9 }] },
+        { skillName: 'Sewing & Mending', categoryName: 'Textile & Craft', demandScore: 77, topRegions: [{ name: 'Dhanmondi', count: 16 }, { name: 'Gulshan', count: 11 }] },
+        { skillName: 'Smartphone Basics', categoryName: 'Digital Literacy', demandScore: 88, topRegions: [{ name: 'Mohammadpur', count: 19 }, { name: 'Uttara', count: 13 }] },
+      ],
+      windowStart: daysAgo(30),
+      windowEnd: daysAgo(0),
+    },
+    {
+      skills: [
+        { skillName: 'Knitting / Crochet', categoryName: 'Textile & Craft', demandScore: 71, topRegions: [{ name: 'Banani', count: 14 }, { name: 'Gulshan', count: 10 }] },
+        { skillName: 'Basic Plumbing', categoryName: 'Home & Garden', demandScore: 66, topRegions: [{ name: 'Mirpur', count: 12 }, { name: 'Uttara', count: 8 }] },
+        { skillName: 'Composting', categoryName: 'Home & Garden', demandScore: 58, topRegions: [{ name: 'Gulshan', count: 7 }] },
+        { skillName: 'Upcycling', categoryName: 'Textile & Craft', demandScore: 61, topRegions: [{ name: 'Dhanmondi', count: 9 }, { name: 'Gulshan', count: 6 }] },
+      ],
+      windowStart: daysAgo(14),
+      windowEnd: daysAgo(0),
+    },
+    {
+      skills: [
+        { skillName: 'Conversational Language Practice', categoryName: 'Languages & Communication', demandScore: 63, topRegions: [{ name: 'Gulshan', count: 9 }, { name: 'Dhanmondi', count: 6 }] },
+        { skillName: 'Photography', categoryName: 'Photography & Visual Arts', demandScore: 75, topRegions: [{ name: 'Banani', count: 13 }, { name: 'Gulshan', count: 10 }] },
+        { skillName: 'JavaScript / Web Development', categoryName: 'Technology & Web', demandScore: 81, topRegions: [{ name: 'Uttara', count: 17 }, { name: 'Gulshan', count: 11 }] },
+        { skillName: 'Guitar', categoryName: 'Music & Performing Arts', demandScore: 69, topRegions: [{ name: 'Dhanmondi', count: 11 }, { name: 'Banani', count: 8 }] },
+      ],
+      windowStart: daysAgo(7),
+      windowEnd: daysAgo(0),
+    },
+  ]);
+  console.log('  3 demand snapshots');
+
+  console.log('\n== Seeding swap ready matches ==');
+  const srmPairs: any[] = [
+    { a: 'demo', aSkill: 'DEMO_BAKE', b: 'kabir', bSkill: 'KABIR_BAKE', status: 'accepted', last: daysAgo(1) },
+    { a: 'demo', aSkill: 'DEMO_PHONE', b: 'maria', bSkill: 'MARIA_SEW', status: 'available', last: daysAgo(2) },
+    { a: 'demo', aSkill: 'DEMO_GARDEN', b: 'noah', bSkill: 'NOAH_COMPOST', status: 'declined', last: daysAgo(3) },
+    { a: 'demo', aSkill: 'DEMO_GARDEN', b: 'rahim', bSkill: 'RAHIM_PLUMB', status: 'proposed', last: daysAgo(0) },
+    { a: 'maria', aSkill: 'MARIA_SEW', b: 'kabir', bSkill: 'KABIR_BAKE', status: 'available', last: daysAgo(4) },
+    { a: 'demo', aSkill: 'DEMO_BAKE', b: 'pro', bSkill: 'PRO_MEAL', status: 'hidden', last: daysAgo(5) },
+    { a: 'gen1', aSkill: 'GEN1_SKILL', b: 'gen2', bSkill: 'GEN2_SKILL', status: 'available', last: daysAgo(6) },
+    { a: 'demo', aSkill: 'DEMO_PHONE', b: 'ayesha', bSkill: 'AYESHA_EMAIL', status: 'available', last: daysAgo(1) },
+  ];
+  for (const m of srmPairs) {
+    const { a, b } = canonicalPair(String(U[m.a]), String(U[m.b]));
+    const aIsA = a === String(U[m.a]);
+    await SwapReadyMatch.create({
+      userAId: new Types.ObjectId(a),
+      userATeachesSkillId: aIsA ? S[m.aSkill] : S[m.bSkill],
+      userBId: new Types.ObjectId(b),
+      userBTeachesSkillId: aIsA ? S[m.bSkill] : S[m.aSkill],
+      status: m.status,
+      lastMatchDate: m.last,
+    });
+  }
+  console.log(`  ${srmPairs.length} swap ready matches`);
+
+  console.log('\n== Seeding skill radars ==');
+  await SkillRadar.create([
+    {
+      userId: U.demo,
+      signals: [
+        { type: 'search', category: 'Textile & Craft', skillName: 'Knitting / Crochet', timestamp: daysAgo(2), weight: 0.9 },
+        { type: 'skill_view', category: 'Food & Cooking', skillName: 'Baking', timestamp: daysAgo(1), weight: 0.7 },
+        { type: 'category_browse', category: 'Home & Garden', timestamp: daysAgo(3), weight: 0.5 },
+        { type: 'endorsement_given', category: 'Textile & Craft', timestamp: daysAgo(2), weight: 0.4 },
+      ],
+      intents: [
+        { category: 'Textile & Craft', inferredSkillNames: ['Knitting / Crochet', 'Upcycling'], confidence: 'high', preferredFormat: 'in-person', preferredRadius: 10, reasoning: 'Searched for knitting and browsed craft categories often.', status: 'active', alertedSkillIds: [S.MARIA_SEW, S.NYC_KNIT, S.FATIMA_UP], matchCount: 3 },
+        { category: 'Food & Cooking', inferredSkillNames: ['Baking', 'Meal Prep'], confidence: 'medium', preferredFormat: 'either', preferredRadius: 5, reasoning: 'Views baking skills frequently.', status: 'paused', alertedSkillIds: [S.KABIR_BAKE, S.PRO_MEAL], matchCount: 2 },
+      ],
+      manualRadars: [
+        { name: 'Knitting teachers near me', filters: { category: 'Textile & Craft', type: 'teach', format: 'in-person', radius: 10, proficiencyLevel: 'beginner' }, alertedSkillIds: [S.MARIA_SEW, S.NYC_KNIT], lastAlertedAt: daysAgo(1) },
+      ],
+    },
+    {
+      userId: U.maria,
+      signals: [
+        { type: 'search', category: 'Home & Garden', skillName: 'Vegetable Gardening', timestamp: daysAgo(1), weight: 0.8 },
+        { type: 'category_browse', category: 'Food & Cooking', timestamp: daysAgo(3), weight: 0.5 },
+      ],
+      intents: [
+        { category: 'Home & Garden', inferredSkillNames: ['Vegetable Gardening', 'Composting'], confidence: 'medium', preferredFormat: 'in-person', preferredRadius: 5, reasoning: 'Searched for gardening and browsed food categories.', status: 'active', alertedSkillIds: [S.DEMO_GARDEN, S.NOAH_COMPOST], matchCount: 2 },
+      ],
+      manualRadars: [
+        { name: 'Balcony gardening help', filters: { category: 'Home & Garden', type: 'learn', format: 'in-person', radius: 5 }, alertedSkillIds: [S.DEMO_GARDEN] },
+      ],
+    },
+    {
+      userId: U.kabir,
+      signals: [
+        { type: 'search', category: 'Textile & Craft', skillName: 'Knitting / Crochet', timestamp: daysAgo(2), weight: 0.9 },
+        { type: 'profile_view', category: 'Food & Cooking', timestamp: daysAgo(1), weight: 0.3 },
+      ],
+      intents: [
+        { category: 'Textile & Craft', inferredSkillNames: ['Knitting / Crochet'], confidence: 'low', preferredFormat: 'online', preferredRadius: 10, reasoning: 'Searched for knitting once.', status: 'paused', alertedSkillIds: [S.NYC_KNIT], matchCount: 1 },
+      ],
+      manualRadars: [],
+    },
+    {
+      userId: U.gen1,
+      signals: [
+        { type: 'search', category: 'Food & Cooking', skillName: 'Baking', timestamp: daysAgo(0), weight: 0.95 },
+        { type: 'message_sent', category: 'Food & Cooking', timestamp: daysAgo(1), weight: 0.6 },
+      ],
+      intents: [
+        { category: 'Food & Cooking', inferredSkillNames: ['Baking'], confidence: 'high', preferredFormat: 'in-person', preferredRadius: 7, reasoning: 'Searched for baking and messaged a baking teacher.', status: 'dismissed', alertedSkillIds: [S.DEMO_BAKE, S.KABIR_BAKE], matchCount: 2 },
+      ],
+      manualRadars: [
+        { name: 'Bread courses', filters: { category: 'Food & Cooking', type: 'teach', format: 'in-person', proficiencyLevel: 'beginner', radius: 7 }, alertedSkillIds: [S.DEMO_BAKE] },
+      ],
+    },
+    {
+      userId: U.ayesha,
+      signals: [
+        { type: 'skill_view', category: 'Digital Literacy', skillName: 'Smartphone Basics', timestamp: daysAgo(1), weight: 0.8 },
+        { type: 'search', category: 'Languages & Communication', skillName: 'Conversational Language Practice', timestamp: daysAgo(0), weight: 0.7 },
+      ],
+      intents: [
+        { category: 'Languages & Communication', inferredSkillNames: ['Conversational Language Practice'], confidence: 'medium', preferredFormat: 'online', preferredRadius: 5, reasoning: 'Searched for language practice.', status: 'active', alertedSkillIds: [S.DEMO_ENGLISH_LEARN], matchCount: 1 },
+      ],
+      manualRadars: [],
+    },
+    {
+      userId: U.noah,
+      signals: [
+        { type: 'swap_declined', category: 'Home & Garden', timestamp: daysAgo(3), weight: 0.5 },
+        { type: 'category_browse', category: 'Home & Garden', timestamp: daysAgo(2), weight: 0.6 },
+      ],
+      intents: [],
+      manualRadars: [
+        { name: 'Gardening projects', filters: { category: 'Home & Garden', radius: 10 }, alertedSkillIds: [S.DEMO_GARDEN] },
+      ],
+    },
+  ]);
+  console.log('  6 skill radars');
+
+  console.log('\n== Seeding conversation settings ==');
+  const demoMariaRoom = getDirectMessageRoomId(String(U.demo), String(U.maria));
+  const demoKabirRoom = getDirectMessageRoomId(String(U.demo), String(U.kabir));
+  const demoRahimRoom = getDirectMessageRoomId(String(U.demo), String(U.rahim));
+  const demoNoahRoom = getDirectMessageRoomId(String(U.demo), String(U.noah));
+  const demoFatimaRoom = getDirectMessageRoomId(String(U.demo), String(U.fatima));
+  await ConversationSettings.create([
+    { userId: U.demo, conversationId: demoMariaRoom, conversationType: 'friend', isPinned: true, pinnedAt: daysAgo(3), isMuted: false, isArchived: false, notificationOverride: 'all', chatTheme: 'ocean', lastReadAt: daysAgo(0) },
+    { userId: U.maria, conversationId: demoMariaRoom, conversationType: 'friend', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default', lastReadAt: daysAgo(0) },
+    { userId: U.demo, conversationId: demoKabirRoom, conversationType: 'friend', isPinned: false, isMuted: true, mutedUntil: daysFromNow(2), isArchived: false, notificationOverride: 'none', chatTheme: 'midnight' },
+    { userId: U.kabir, conversationId: demoKabirRoom, conversationType: 'friend', isPinned: true, pinnedAt: daysAgo(1), isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: demoRahimRoom, conversationType: 'friend', isPinned: false, isMuted: false, isArchived: true, archivedAt: daysAgo(2), notificationOverride: 'default', chatTheme: 'sunset' },
+    { userId: U.rahim, conversationId: demoRahimRoom, conversationType: 'friend', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: demoNoahRoom, conversationType: 'friend', isPinned: true, pinnedAt: daysAgo(0), isMuted: false, isArchived: false, notificationOverride: 'mentions_only', chatTheme: 'forest', customNickname: 'Compost King' },
+    { userId: U.noah, conversationId: demoNoahRoom, conversationType: 'friend', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: demoFatimaRoom, conversationType: 'friend', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.fatima, conversationId: demoFatimaRoom, conversationType: 'friend', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: String(C.C2), conversationType: 'skill', isPinned: true, pinnedAt: daysAgo(1), isMuted: false, isArchived: false, notificationOverride: 'all', chatTheme: 'ocean', lastReadAt: daysAgo(0) },
+    { userId: U.kabir, conversationId: String(C.C2), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: String(C.C6), conversationType: 'skill', isPinned: false, isMuted: true, mutedUntil: daysFromNow(7), isArchived: false, notificationOverride: 'none', chatTheme: 'sunset' },
+    { userId: U.gen1, conversationId: String(C.C6), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: String(C.C14), conversationType: 'skill', isPinned: true, pinnedAt: daysAgo(2), isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.kabir, conversationId: String(C.C14), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: String(C.C4), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: true, archivedAt: daysAgo(5), notificationOverride: 'default', chatTheme: 'midnight' },
+    { userId: U.fatima, conversationId: String(C.C4), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.demo, conversationId: String(C.C16), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+    { userId: U.rahim, conversationId: String(C.C16), conversationType: 'skill', isPinned: false, isMuted: false, isArchived: false, notificationOverride: 'default', chatTheme: 'default' },
+  ]);
+  console.log('  20 conversation settings');
+
+  console.log('\n== Seeding user inbox preferences ==');
+  await UserInboxPreference.create([
+    { userId: U.demo, connectionId: C.C2, isPinned: true, isMuted: false, isArchived: false, lastReadAt: daysAgo(0) },
+    { userId: U.kabir, connectionId: C.C2, isPinned: false, isMuted: false, isArchived: false, lastReadAt: daysAgo(0) },
+    { userId: U.demo, connectionId: C.C16, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.rahim, connectionId: C.C16, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.demo, connectionId: C.C4, isPinned: false, isMuted: false, isArchived: true, archivedAt: daysAgo(5) },
+    { userId: U.fatima, connectionId: C.C4, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.demo, connectionId: C.C6, isPinned: false, isMuted: true, mutedUntil: daysFromNow(7), isArchived: false },
+    { userId: U.gen1, connectionId: C.C6, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.demo, connectionId: C.C14, isPinned: true, isMuted: false, isArchived: false, lastReadAt: daysAgo(2) },
+    { userId: U.kabir, connectionId: C.C14, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.demo, connectionId: C.C1, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.maria, connectionId: C.C1, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.demo, connectionId: C.C17, isPinned: true, isMuted: false, isArchived: false },
+    { userId: U.noah, connectionId: C.C17, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.demo, connectionId: C.C8, isPinned: false, isMuted: false, isArchived: false },
+    { userId: U.gen3, connectionId: C.C8, isPinned: true, isMuted: false, isArchived: false },
+  ]);
+  console.log('  16 inbox preferences');
 
   console.log('\n== Done ==');
   await disconnectDatabase();

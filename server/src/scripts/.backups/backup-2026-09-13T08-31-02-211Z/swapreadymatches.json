@@ -1,0 +1,254 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2d5c89aa072baf903e"
+  },
+  "userBId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "userAId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980154"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789201580152"
+   }
+  },
+  "status": "accepted",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980154"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d5c89aa072baf903f"
+  },
+  "userBId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "userAId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980217"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789115180152"
+   }
+  },
+  "status": "proposed",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980217"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d5c89aa072baf9040"
+  },
+  "userBId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+  },
+  "userAId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980269"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789201580152"
+   }
+  },
+  "status": "available",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980269"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d5c89aa072baf9041"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffc"
+  },
+  "userAId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "userBId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff0"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980318"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789028780152"
+   }
+  },
+  "status": "accepted",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980318"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2d5c89aa072baf9042"
+  },
+  "userBId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+  },
+  "userAId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980372"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789201580152"
+   }
+  },
+  "status": "available",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980372"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e5c89aa072baf9043"
+  },
+  "userBId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffe"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "userAId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980419"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789287980152"
+   }
+  },
+  "status": "available",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980419"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e5c89aa072baf9044"
+  },
+  "userBId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "userAId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287980467"
+   }
+  },
+  "lastMatchDate": {
+   "$date": {
+    "$numberLong": "1789115180152"
+   }
+  },
+  "status": "declined",
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287980467"
+   }
+  }
+ }
+]

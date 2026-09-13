@@ -1,0 +1,112 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c25"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "date": {
+   "$date": {
+    "$numberLong": "1789275996774"
+   }
+  },
+  "reason": "Out of town",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c26"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "date": {
+   "$date": {
+    "$numberLong": "1789880796774"
+   }
+  },
+  "reason": "Family event",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c28"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "date": {
+   "$date": {
+    "$numberLong": "1788843996774"
+   }
+  },
+  "reason": "Personal",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c24"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "date": {
+   "$date": {
+    "$numberLong": "1788930396774"
+   }
+  },
+  "reason": "Doctor appointment",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c27"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "date": {
+   "$date": {
+    "$numberLong": "1789016796774"
+   }
+  },
+  "reason": "Holiday",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196776"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

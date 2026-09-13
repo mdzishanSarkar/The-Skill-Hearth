@@ -1,0 +1,335 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c56"
+  },
+  "mentorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "menteeId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "status": "active",
+  "goals": [
+   {
+    "title": "Master sourdough",
+    "description": "Learn full process",
+    "targetDate": {
+     "$date": {
+      "$numberLong": "1791263200311"
+     }
+    },
+    "completed": false
+   },
+   {
+    "title": "Bake weekly",
+    "description": "Once a week",
+    "completed": true,
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1788239200311"
+     }
+    }
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1788412000311"
+     }
+    },
+    "notes": "Practised scoring.",
+    "mentorNotes": "Keep hydration at 75%."
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1787461600311"
+   }
+  },
+  "targetEndDate": {
+   "$date": {
+    "$numberLong": "1795237600311"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "3"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200314"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200314"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c58"
+  },
+  "mentorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "menteeId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c894340b9768648ae4"
+  },
+  "status": "pending",
+  "goals": [
+   {
+    "title": "Phone setup",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788584800311"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "biweekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200413"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200413"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c5a"
+  },
+  "mentorId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "menteeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af4"
+  },
+  "status": "active",
+  "goals": [
+   {
+    "title": "Baguette technique",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1788152800311"
+     }
+    },
+    "notes": "Worked on shaping.",
+    "mentorNotes": "Good progress."
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1787807200311"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200620"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200620"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c5c"
+  },
+  "mentorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "menteeId": {
+   "$oid": "6a9cf4a594340b9768648ab4"
+  },
+  "skillId": {
+   "$oid": "6a9cf4c994340b9768648ae6"
+  },
+  "status": "completed",
+  "goals": [
+   {
+    "title": "Container setup",
+    "description": "",
+    "completed": true,
+    "completedAt": {
+     "$date": {
+      "$numberLong": "1788325600311"
+     }
+    }
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1787634400311"
+     }
+    },
+    "notes": "Set up pots.",
+    "mentorNotes": "Done."
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1785215200311"
+   }
+  },
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1788325600311"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "2"
+  },
+  "meetingFrequency": "monthly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200722"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200722"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c5e"
+  },
+  "mentorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "menteeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4ca94340b9768648af2"
+  },
+  "status": "paused",
+  "goals": [
+   {
+    "title": "Finish apron",
+    "description": "",
+    "completed": false
+   }
+  ],
+  "checkIns": [
+   {
+    "date": {
+     "$date": {
+      "$numberLong": "1787375200311"
+     }
+    },
+    "notes": "Halfway through."
+   }
+  ],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1786943200311"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "1"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200804"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200804"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e094340b9768648c60"
+  },
+  "mentorId": {
+   "$oid": "6a9cf4a594340b9768648aae"
+  },
+  "menteeId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "skillId": {
+   "$oid": "6a9cf4cb94340b9768648b04"
+  },
+  "status": "cancelled",
+  "goals": [],
+  "checkIns": [],
+  "startDate": {
+   "$date": {
+    "$numberLong": "1788239200311"
+   }
+  },
+  "durationMonths": {
+   "$numberInt": "1"
+  },
+  "meetingFrequency": "weekly",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671200893"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671200893"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

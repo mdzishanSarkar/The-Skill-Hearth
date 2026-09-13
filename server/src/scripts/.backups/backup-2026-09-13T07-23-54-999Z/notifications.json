@@ -1,0 +1,614 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e294340b9768648c8a"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6a9cf4cf94340b9768648b30"
+  },
+  "referenceModel": "Connection",
+  "message": "Maria Ahmed sent you a skill request.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671202942"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671202942"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c8b"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6a9cf4d094340b9768648b4a"
+  },
+  "referenceModel": "Connection",
+  "message": "Kabir Hossain accepted your request.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203031"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203031"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c8c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "request_rejected",
+  "referenceId": {
+   "$oid": "6a9cf4cf94340b9768648b34"
+  },
+  "referenceModel": "Connection",
+  "message": "Your request was declined by rahim.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203112"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203112"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c8d"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "new_message",
+  "referenceId": {
+   "$oid": "6a9cf4d294340b9768648b72"
+  },
+  "referenceModel": "Message",
+  "message": "New message from Kabir Hossain.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203204"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203204"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c8e"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "review_prompt",
+  "referenceId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "referenceModel": "Connection",
+  "message": "You have a session ready to review.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203293"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203293"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c8f"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "system_warning",
+  "referenceId": {
+   "$oid": "6a9cf4d794340b9768648bbd"
+  },
+  "referenceModel": "Report",
+  "message": "Your report has been received and is under review.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203384"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203384"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c90"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6a9cf4d494340b9768648b94"
+  },
+  "referenceModel": "Review",
+  "message": "Fatima Begum reviewed you 5 stars!",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203504"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203504"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c91"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "group_session_joined",
+  "referenceId": {
+   "$oid": "6a9cf4d994340b9768648bde"
+  },
+  "referenceModel": "GroupSession",
+  "message": "You joined Weekend Sourdough Workshop.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203607"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203607"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c92"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "group_session_left",
+  "referenceId": {
+   "$oid": "6a9cf4d994340b9768648bde"
+  },
+  "referenceModel": "GroupSession",
+  "message": "You left a group session.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203694"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203694"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c93"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "group_session_completed",
+  "referenceId": {
+   "$oid": "6a9cf4d994340b9768648be4"
+  },
+  "referenceModel": "GroupSession",
+  "message": "Container Gardening Talk is complete.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203784"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203784"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e394340b9768648c94"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "group_session_cancelled",
+  "referenceId": {
+   "$oid": "6a9cf4d994340b9768648be6"
+  },
+  "referenceModel": "GroupSession",
+  "message": "A group session was cancelled.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671203922"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671203922"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c95"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "friend_request",
+  "referenceId": {
+   "$oid": "6a9cf4e294340b9768648c82"
+  },
+  "referenceModel": "Friendship",
+  "message": "Ayesha Siddiqua sent you a friend request.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204058"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204058"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c96"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "friend_request_accepted",
+  "referenceId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "referenceModel": "Friendship",
+  "message": "Maria Ahmed accepted your friend request.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204160"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204160"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c97"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "friend_joined",
+  "referenceId": {
+   "$oid": "6a9cf4e294340b9768648c7a"
+  },
+  "referenceModel": "Friendship",
+  "message": "Kabir Hossain is now your friend.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204407"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204407"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c98"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aaa"
+  },
+  "type": "account_suspended",
+  "referenceId": {
+   "$oid": "6a9cf4d894340b9768648bd1"
+  },
+  "referenceModel": "Report",
+  "message": "Your account has been suspended.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204493"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204493"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c99"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aab"
+  },
+  "type": "account_banned",
+  "message": "Your account has been banned.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204714"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204714"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c9a"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "type": "skill_removed",
+  "referenceId": {
+   "$oid": "6a9cf4cd94340b9768648b14"
+  },
+  "referenceModel": "Skill",
+  "message": "A skill you created was removed.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204813"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204813"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e494340b9768648c9b"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "review_prompt",
+  "referenceId": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "referenceModel": "Connection",
+  "message": "You have a session ready to review.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671204894"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671204894"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648c9c"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "new_message",
+  "referenceId": {
+   "$oid": "6a9cf4d394340b9768648b85"
+  },
+  "referenceModel": "Message",
+  "message": "New message from gen1.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671205123"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671205123"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648c9d"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6a9cf4d094340b9768648b48"
+  },
+  "referenceModel": "Connection",
+  "message": "Ayesha Siddiqua sent you a skill request.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671205326"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671205326"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8f935f1165d4d897d3cc"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6a9f8f925f1165d4d897d3cb"
+  },
+  "referenceModel": "Connection",
+  "message": "New skill request from Kabir",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841875041"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841887310"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8fa35f1165d4d897d3cd"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6a9f8f925f1165d4d897d3cb"
+  },
+  "referenceModel": "Connection",
+  "message": "Your skill request was accepted!",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841891625"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841891625"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

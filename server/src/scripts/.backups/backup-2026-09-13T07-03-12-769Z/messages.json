@@ -1,0 +1,2214 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b72"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Thanks again for agreeing!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671186851"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671186851"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d294340b9768648b74"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Anytime! Bring a jar for the starter.",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671186945"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671186945"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b76"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "This is an inappropriate spam message for reporting.",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "reactions": [],
+  "isReported": true,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187042"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187042"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b78"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Here is the recipe photo:",
+  "type": "image",
+  "imageUrl": "https://res.cloudinary.com/demo/image/upload/v1/msg/sourdough.jpg",
+  "imagePublicId": "msg/sourdough",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187123"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187123"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b7a"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Session scheduled for Sunday 10am.",
+  "type": "system",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786847"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187216"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187216"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b7c"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "My starter is ready!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788498386847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788498386847"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187303"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187303"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b7e"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Great, see you Thursday.",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788498386847"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788498386847"
+   }
+  },
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "👍",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788498386848"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4d394340b9768648b80"
+    }
+   }
+  ],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187396"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187396"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b81"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3c"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab3"
+  },
+  "content": "That app lesson helped a lot!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788498386848"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788498386848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187484"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187484"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b83"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3c"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Happy to hear it!",
+  "type": "text",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788498386848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187614"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187614"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b85"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "content": "Loved the bread session!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187818"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187818"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d394340b9768648b87"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Come back next month!",
+  "type": "text",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671187921"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671187921"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d494340b9768648b89"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "The tap is fixed, thank you Rahim!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671188009"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671188009"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d494340b9768648b8b"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "content": "Anytime!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584786848"
+   }
+  },
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "👍",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584786848"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4d494340b9768648b8d"
+    }
+   }
+  ],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671188093"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671188093"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d494340b9768648b8e"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d294340b9768648b68"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Baguette class was excellent.",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788066386848"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788066386848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671188238"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671188238"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d494340b9768648b90"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d294340b9768648b68"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "I will bring the photos!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788066386848"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788066386848"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671188323"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671188323"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4d494340b9768648b92"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Deleted message for testing.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671188416"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671188416"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce7"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "",
+  "type": "image",
+  "imageUrl": "https://res.cloudinary.com/demo/image/upload/v1/msg/starter-jar.jpg",
+  "imageThumbnailUrl": "https://res.cloudinary.com/demo/image/upload/v1/msg/starter-jar_thumb.jpg",
+  "imagePublicId": "msg/starter-jar",
+  "imageWidth": {
+   "$numberInt": "1200"
+  },
+  "imageHeight": {
+   "$numberInt": "800"
+  },
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209602"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209602"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce8"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "That starter looks perfect! Keep feeding it daily.",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editedAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "editHistory": [
+   {
+    "content": "That starter looks good!",
+    "editedAt": {
+     "$date": {
+      "$numberLong": "1788671209599"
+     }
+    }
+   }
+  ],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209725"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209725"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648ce9"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Excited for bake number two!",
+  "type": "gif",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "gifUrl": "https://media.tenor.com/demo/baking.gif",
+  "gifWidth": {
+   "$numberInt": "320"
+  },
+  "gifHeight": {
+   "$numberInt": "240"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209804"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209804"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e994340b9768648cea"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "",
+  "type": "voice_note",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteUrl": "https://res.cloudinary.com/demo/video/upload/v1/voice/fold.m4a",
+  "voiceNoteDurationSeconds": {
+   "$numberInt": "12"
+  },
+  "voiceNoteWaveform": [
+   {
+    "$numberInt": "2"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "6"
+   },
+   {
+    "$numberInt": "5"
+   },
+   {
+    "$numberInt": "8"
+   },
+   {
+    "$numberInt": "6"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "5"
+   },
+   {
+    "$numberInt": "7"
+   },
+   {
+    "$numberInt": "9"
+   },
+   {
+    "$numberInt": "6"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "3"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671209915"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671209915"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648ceb"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "",
+  "type": "skill_card",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "skillCardData": {
+   "skillId": {
+    "$oid": "6a9cf4c894340b9768648ae2"
+   },
+   "skillName": "Baking Basics",
+   "teacherName": "Demo Tester",
+   "teacherAvatarUrl": "",
+   "requestStatus": "accepted"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210010"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210010"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cec"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Session scheduled for Sunday 10am at the community kitchen.",
+  "type": "system",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "session_scheduled",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210103"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210103"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648ced"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b32"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Remember to meet in a public place and let someone know where you are.",
+  "type": "system",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788671209599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "safe_meeting_reminder",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210200"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210200"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cee"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "content": "The bread came out amazing at home!",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210279"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210279"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cef"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Told you it would! Share a photo next time.",
+  "type": "text",
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "replyToMessageId": {
+   "$oid": "6a9cf4d394340b9768648b85"
+  },
+  "replyToPreview": {
+   "senderId": {
+    "$oid": "6a9cf4a594340b9768648ab2"
+   },
+   "senderName": "Gen 1 User",
+   "contentPreview": "Loved the bread session!"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210372"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210372"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cf0"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b3a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "content": "This message was unsent.",
+  "type": "text",
+  "unsentAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210465"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210465"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cf1"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4e"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Connection completed - the tap is fixed. 🎉",
+  "type": "system",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "connection_completed",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210569"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210569"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cf2"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b50"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Connection completed - compost bin built.",
+  "type": "system",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788584809599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "connection_completed",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210646"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210646"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cf3"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4cf94340b9768648b36"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Please remember to review our gardening session.",
+  "type": "system",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788498409599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "review_prompt",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210724"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210724"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cf4"
+  },
+  "connectionId": {
+   "$oid": "6a9cf4d094340b9768648b4a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Connection request accepted.",
+  "type": "system",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788498409599"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "connection_accepted",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210833"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210833"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ea94340b9768648cf5"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Hey Maria! Did you see the new mending workshop posting?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671210919"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671210919"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cf6"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "Yes! I already signed up. Want to go together?",
+  "type": "text",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "👍",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584810917"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4eb94340b9768648cf7"
+    }
+   }
+  ],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211026"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211026"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cf8"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Definitely. I will bring the fabric scraps we talked about.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211111"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211111"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cf9"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "",
+  "type": "image",
+  "imageUrl": "https://res.cloudinary.com/demo/image/upload/v1/msg/fabric.jpg",
+  "imageThumbnailUrl": "https://res.cloudinary.com/demo/image/upload/v1/msg/fabric_thumb.jpg",
+  "imagePublicId": "msg/fabric",
+  "imageWidth": {
+   "$numberInt": "900"
+  },
+  "imageHeight": {
+   "$numberInt": "900"
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211215"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211215"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cfa"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "You are now friends with Maria Ahmed.",
+  "type": "system",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "systemEvent": "friend_accepted",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786943210917"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786943210917"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cfb"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "So excited!",
+  "type": "gif",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "gifUrl": "https://media.tenor.com/demo/hi.gif",
+  "gifWidth": {
+   "$numberInt": "320"
+  },
+  "gifHeight": {
+   "$numberInt": "240"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211399"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211399"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cfc"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "",
+  "type": "voice_note",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteUrl": "https://res.cloudinary.com/demo/video/upload/v1/voice/mend.m4a",
+  "voiceNoteDurationSeconds": {
+   "$numberInt": "18"
+  },
+  "voiceNoteWaveform": [
+   {
+    "$numberInt": "1"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "5"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "6"
+   },
+   {
+    "$numberInt": "8"
+   },
+   {
+    "$numberInt": "7"
+   },
+   {
+    "$numberInt": "5"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "2"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "6"
+   },
+   {
+    "$numberInt": "9"
+   },
+   {
+    "$numberInt": "7"
+   },
+   {
+    "$numberInt": "5"
+   },
+   {
+    "$numberInt": "3"
+   },
+   {
+    "$numberInt": "2"
+   },
+   {
+    "$numberInt": "1"
+   },
+   {
+    "$numberInt": "4"
+   },
+   {
+    "$numberInt": "6"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211493"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211493"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cfd"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "",
+  "type": "skill_card",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "skillCardData": {
+   "skillId": {
+    "$oid": "6a9cf4c894340b9768648ae4"
+   },
+   "skillName": "Smartphone Basics",
+   "teacherName": "Demo Tester",
+   "teacherAvatarUrl": "",
+   "requestStatus": "accepted"
+  },
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211585"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211585"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cfe"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "content": "This was removed by the sender.",
+  "type": "text",
+  "unsentAt": {
+   "$date": {
+    "$numberLong": "1788498410917"
+   }
+  },
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211676"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211676"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648cff"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "By the way, the sewing class photo you sent earlier was great. 🤩",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editedAt": {
+   "$date": {
+    "$numberLong": "1788584810917"
+   }
+  },
+  "editHistory": [
+   {
+    "content": "By the way, the sewing class photo you sent earlier was great.",
+    "editedAt": {
+     "$date": {
+      "$numberLong": "1788584810917"
+     }
+    }
+   }
+  ],
+  "voiceNoteWaveform": [],
+  "replyToPreview": {
+   "senderId": {
+    "$oid": "6a9cf4a594340b9768648aa3"
+   },
+   "senderName": "Maria Ahmed",
+   "contentPreview": "My fabric stash is huge now."
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211766"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211766"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648d00"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c7a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Ready for tomorrow’s bake?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211855"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211855"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4eb94340b9768648d01"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c7a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Always! See you at 9.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671211945"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671211945"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d02"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c7a"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "content": "Perfect. I edited my reminder to include the starter feeding schedule.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editedAt": {
+   "$date": {
+    "$numberLong": "1788671210917"
+   }
+  },
+  "editHistory": [
+   {
+    "content": "Perfect. Bring the starter.",
+    "editedAt": {
+     "$date": {
+      "$numberLong": "1788671210917"
+     }
+    }
+   }
+  ],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212085"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212085"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d03"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c7c"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "content": "The plumbing textbook arrived. Thanks for the tip!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212247"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212247"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d04"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c80"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "content": "Noah, how is the compost doing?",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212435"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212435"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d05"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c80"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "content": "Smells healthy! Worms are thriving.",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212569"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212569"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4ec94340b9768648d06"
+  },
+  "friendshipId": {
+   "$oid": "6a9cf4e294340b9768648c7e"
+  },
+  "senderId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "content": "Upcycling class tomorrow, do not forget the old jeans!",
+  "type": "text",
+  "reactions": [],
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "editHistory": [],
+  "voiceNoteWaveform": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671212654"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671212654"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8fb45f1165d4d897d3ce"
+  },
+  "connectionId": {
+   "$oid": "6a9f8f925f1165d4d897d3cb"
+  },
+  "senderId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "content": "Hello Kabir",
+  "type": "text",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788841908611"
+   }
+  },
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "reactions": [],
+  "editHistory": [
+   {
+    "content": "Hello Abir",
+    "editedAt": {
+     "$date": {
+      "$numberLong": "1788841915614"
+     }
+    }
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841908612"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841919477"
+   }
+  },
+  "__v": {
+   "$numberInt": "1"
+  },
+  "editedAt": {
+   "$date": {
+    "$numberLong": "1788841915615"
+   }
+  },
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788841919477"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8fd85f1165d4d897d3cf"
+  },
+  "connectionId": {
+   "$oid": "6a9f8f925f1165d4d897d3cb"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Hi, I'd love to lean this skill.",
+  "type": "text",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788841944083"
+   }
+  },
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "reactions": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841944084"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841945210"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788841945210"
+   }
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa0e78020626861e93ef959"
+  },
+  "connectionId": {
+   "$oid": "6a9f8f925f1165d4d897d3cb"
+  },
+  "senderId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "content": "Hello",
+  "type": "text",
+  "deliveredAt": {
+   "$date": {
+    "$numberLong": "1788929920578"
+   }
+  },
+  "isReported": false,
+  "reportCount": {
+   "$numberInt": "0"
+  },
+  "voiceNoteWaveform": [],
+  "reactions": [],
+  "editHistory": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788929920579"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788929921732"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  },
+  "readAt": {
+   "$date": {
+    "$numberLong": "1788929921732"
+   }
+  }
+ }
+]

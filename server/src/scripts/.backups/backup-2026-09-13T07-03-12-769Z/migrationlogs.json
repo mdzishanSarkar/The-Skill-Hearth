@@ -1,0 +1,33 @@
+[
+ {
+  "_id": {
+   "$oid": "6a8ffdbb7c7693d6fb0549cf"
+  },
+  "name": "savedSearchToRadar_v1",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787821499483"
+   }
+  },
+  "migrated": {
+   "$numberInt": "0"
+  },
+  "users": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a8ffdbc7c7693d6fb0549d0"
+  },
+  "name": "normalizeSkillRadar_v1",
+  "completedAt": {
+   "$date": {
+    "$numberLong": "1787821500085"
+   }
+  },
+  "updated": {
+   "$numberInt": "0"
+  }
+ }
+]

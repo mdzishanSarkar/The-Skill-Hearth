@@ -1,5 +1,8 @@
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
+import { isIP } from 'node:net';
+import * as dns from 'node:dns';
+import { resolve4 } from 'node:dns/promises';
 import { HttpError } from './errors';
 
 // 30 seconds timeout to handle Render cold starts
@@ -58,16 +61,53 @@ export function validateSmtpConfiguration(): void {
 }
 
 /**
+ * Nodemailer v9 resolves both A and AAAA records itself and dials a randomly
+ * picked address. On hosts without IPv6 routing (e.g. Render) that random pick
+ * can land on an unreachable IPv6 address, making delivery fail with
+ * ENETUNREACH. Resolve the SMTP host to a literal IPv4 so the transport always
+ * connects over IPv4, while keeping the original hostname for TLS SNI.
+ */
+async function resolveSmptHostIpv4(hostname: string): Promise<string> {
+  // Some hosts (dev machines, restricted sandboxes) have a flaky default
+  // resolver for external domains; try a known public resolver first.
+  const resolver = new dns.Resolver();
+  resolver.setServers(['8.8.8.8', '1.1.1.1']);
+  const attempts: Array<() => Promise<string[]>> = [
+    () =>
+      new Promise((resolve, reject) => {
+        resolver.resolve4(hostname, (err, addresses) => (err ? reject(err) : resolve(addresses)));
+      }),
+    () => resolve4(hostname),
+  ];
+
+  for (const attempt of attempts) {
+    try {
+      const addresses = await attempt();
+      if (addresses.length > 0) return addresses[0];
+    } catch {
+      // fall through to the next strategy
+    }
+  }
+
+  console.warn(
+    `[email] ⚠️ Could not resolve IPv4 for SMTP host "${hostname}". Using hostname directly.`
+  );
+  return hostname;
+}
+
+/**
  * Creates or returns the singleton Nodemailer transporter.
  */
-function getTransporter(): Transporter {
+async function getTransporter(): Promise<Transporter> {
   if (transporter) return transporter;
 
+  const hostname = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const host = isIP(hostname) ? hostname : await resolveSmptHostIpv4(hostname);
   const port = Number(process.env.SMTP_PORT) || 587;
   const isSecure = port === 465;
 
   const transportOptions: any = {
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    host,
     port,
     secure: isSecure, // false for 587, true for 465
     family: 4, // Force IPv4 connection to prevent ENETUNREACH on Render
@@ -81,6 +121,7 @@ function getTransporter(): Transporter {
     tls: {
       rejectUnauthorized: process.env.NODE_ENV === 'production',
       minVersion: 'TLSv1.2',
+      servername: hostname, // keep SNI/cert validation against the real hostname
     },
   };
 
@@ -117,7 +158,7 @@ async function sendEmail(
 
   try {
     const fromAddress = getEmailFrom();
-    const info = await getTransporter().sendMail({
+    const info = await (await getTransporter()).sendMail({
       from: fromAddress,
       to,
       subject,

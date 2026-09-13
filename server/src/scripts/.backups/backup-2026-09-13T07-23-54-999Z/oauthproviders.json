@@ -1,0 +1,184 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c15"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648ab0"
+  },
+  "provider": "apple",
+  "providerUserId": "apple_98765",
+  "email": "nyc@skillhearth.test",
+  "displayName": "NYC Sarah",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196081"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196081"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4dc94340b9768648c14"
+  },
+  "userId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "provider": "google",
+  "providerUserId": "google_12345",
+  "email": "demo@skillhearth.test",
+  "displayName": "Demo Tester",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671196081"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671196081"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf647caf9e95c20038c8c"
+  },
+  "userId": {
+   "$oid": "6a9cf645caf9e95c20038c8b"
+  },
+  "provider": "google",
+  "providerUserId": "103348313846290209470",
+  "email": "partoftech150@gmail.com",
+  "displayName": "Tech",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJGub2BF2tmuOxSN52LxGEXttXh3dXXY2d2DMuLItPzugLo=s96-c",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671559666"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671559666"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6418e29419c4af5348bb8"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "provider": "google",
+  "providerUserId": "106207866240074283217",
+  "email": "simoksimon147@gmail.com",
+  "displayName": "Simon Simok",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIredeyBnPQ5hS3Y6BeDbrSKJeBIMbWhbbBRQ_dh07w2OAJfw=s96-c",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280654947"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280654947"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641a929419c4af5348bbb"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "provider": "google",
+  "providerUserId": "108925769876076379992",
+  "email": "freedrob32@gmail.com",
+  "displayName": "Freed Rob",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIxH2NEoxI6aV2H2RECVk14DaNKXJ6JttyjtqJKAvJqmV330w=s96-c",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280681333"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280681333"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa641f229419c4af5348bbe"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "provider": "google",
+  "providerUserId": "112194171547415737174",
+  "email": "himonchalse@gmail.com",
+  "displayName": "Content Creation",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJGeSPirKUBDRon1xnrL5VLUZRkUl-FtUHVSUu7ukt18SmH=s96-c",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280754138"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280754138"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa6423329419c4af5348bc1"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "provider": "google",
+  "providerUserId": "100644217631923449025",
+  "email": "arnobmojumder935@gmail.com",
+  "displayName": "Arnob Mojumder",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKO7i2Vvk6PjO3lyEryAHh5hh1xXaoomUA7bZKtw-xyGrh_bQ=s96-c",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789280819336"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789280819336"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

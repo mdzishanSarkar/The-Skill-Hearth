@@ -1,0 +1,220 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1166"
+  },
+  "ownerId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "key": "sk_prod_kabir_1",
+  "name": "Kabir Production Key",
+  "scopes": [
+   "skills:read",
+   "stats:read"
+  ],
+  "status": "active",
+  "rateLimit": {
+   "$numberInt": "100"
+  },
+  "requestCount": {
+   "$numberInt": "55"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1789287978113"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794471978113"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978115"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978115"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1167"
+  },
+  "ownerId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "key": "sk_prod_kabir_old",
+  "name": "Kabir Legacy Key",
+  "scopes": [
+   "skills:read"
+  ],
+  "status": "revoked",
+  "rateLimit": {
+   "$numberInt": "100"
+  },
+  "requestCount": {
+   "$numberInt": "12"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1787991978113"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1785399978113"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb116a"
+  },
+  "ownerId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "key": "sk_prod_arnob_1",
+  "name": "Arnob Production Key",
+  "scopes": [
+   "skills:read"
+  ],
+  "status": "active",
+  "rateLimit": {
+   "$numberInt": "50"
+  },
+  "requestCount": {
+   "$numberInt": "4"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1789115178113"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1797063978113"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1168"
+  },
+  "ownerId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "key": "sk_prod_abir_1",
+  "name": "Abir Production Key",
+  "scopes": [
+   "users:read",
+   "skills:read"
+  ],
+  "status": "active",
+  "rateLimit": {
+   "$numberInt": "100"
+  },
+  "requestCount": {
+   "$numberInt": "30"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1789201578113"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1793175978113"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2a19d1dc63c8cb1169"
+  },
+  "ownerId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "key": "sk_prod_zishan_1",
+  "name": "Zishan Production Key",
+  "scopes": [
+   "skills:read",
+   "stats:read"
+  ],
+  "status": "active",
+  "rateLimit": {
+   "$numberInt": "75"
+  },
+  "requestCount": {
+   "$numberInt": "9"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1789028778113"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1791879978113"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287978116"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

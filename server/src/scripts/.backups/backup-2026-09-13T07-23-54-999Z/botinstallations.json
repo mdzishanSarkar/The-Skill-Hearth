@@ -1,0 +1,131 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c74"
+  },
+  "externalId": "ext_slack_demo",
+  "name": "Skill Hearth Bot",
+  "platform": "slack",
+  "accessToken": "at_slack_demo",
+  "botToken": "bt_slack_demo",
+  "teamId": "T_DEMO",
+  "teamName": "Demo Workspace",
+  "channelId": "C_DEMO",
+  "channelName": "general",
+  "installedBy": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "status": "active",
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1788584801836"
+   }
+  },
+  "commandCount": {
+   "$numberInt": "15"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c75"
+  },
+  "externalId": "ext_discord_demo",
+  "name": "Hearth Bot",
+  "platform": "discord",
+  "accessToken": "at_discord_demo",
+  "botToken": "bt_discord_demo",
+  "installedBy": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "status": "disabled",
+  "commandCount": {
+   "$numberInt": "3"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c76"
+  },
+  "externalId": "ext_slack_kabir",
+  "name": "Kabir Bot",
+  "platform": "slack",
+  "accessToken": "at_slack_kabir",
+  "botToken": "bt_slack_kabir",
+  "installedBy": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "status": "active",
+  "commandCount": {
+   "$numberInt": "8"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c77"
+  },
+  "externalId": "ext_discord_gen",
+  "name": "Gen Bot",
+  "platform": "discord",
+  "accessToken": "at_discord_gen",
+  "botToken": "bt_discord_gen",
+  "installedBy": {
+   "$oid": "6a9cf4a594340b9768648ab2"
+  },
+  "status": "error",
+  "commandCount": {
+   "$numberInt": "1"
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201838"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

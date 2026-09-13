@@ -1,0 +1,219 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10cf"
+  },
+  "userAId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "userBId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd4"
+  },
+  "status": "accepted",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974473"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974473"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10d1"
+  },
+  "userAId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "userBId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fc8"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fdc"
+  },
+  "status": "accepted",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974530"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974530"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10d3"
+  },
+  "userAId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "userBId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fd6"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "status": "accepted",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974577"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974577"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10d5"
+  },
+  "userAId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "userBId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff0"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffc"
+  },
+  "status": "accepted",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974628"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974628"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10d7"
+  },
+  "userAId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "userBId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fca"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1e19d1dc63c8cb0fd2"
+  },
+  "status": "declined",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974878"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974878"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10d9"
+  },
+  "userAId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "userBId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fe6"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0ff2"
+  },
+  "status": "suggested",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974926"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974926"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10db"
+  },
+  "userAId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "userBId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "userATeachesSkillId": {
+   "$oid": "6aa65e1f19d1dc63c8cb0fde"
+  },
+  "userBTeachesSkillId": {
+   "$oid": "6aa65e2019d1dc63c8cb0ffe"
+  },
+  "status": "suggested",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974973"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974973"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

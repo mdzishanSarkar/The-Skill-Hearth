@@ -1,0 +1,122 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c6f"
+  },
+  "ownerId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "key": "sk_test_kabir_1",
+  "name": "Kabir Key",
+  "scopes": [
+   "users:read"
+  ],
+  "status": "active",
+  "rateLimit": {
+   "$numberInt": "100"
+  },
+  "requestCount": {
+   "$numberInt": "5"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1788498401540"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201543"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201543"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c6e"
+  },
+  "ownerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "key": "sk_test_demo_revoked_2",
+  "name": "Demo Revoked Key",
+  "scopes": [
+   "skills:read"
+  ],
+  "status": "revoked",
+  "rateLimit": {
+   "$numberInt": "100"
+  },
+  "requestCount": {
+   "$numberInt": "10"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1787807201540"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201543"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201543"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e194340b9768648c6d"
+  },
+  "ownerId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "key": "sk_test_demo_active_1",
+  "name": "Demo Active Key",
+  "scopes": [
+   "skills:read",
+   "stats:read"
+  ],
+  "status": "active",
+  "rateLimit": {
+   "$numberInt": "100"
+  },
+  "requestCount": {
+   "$numberInt": "42"
+  },
+  "lastUsedAt": {
+   "$date": {
+    "$numberLong": "1788584801540"
+   }
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1793855201540"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788671201543"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788671201543"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

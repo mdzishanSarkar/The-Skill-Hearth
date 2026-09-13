@@ -1,0 +1,158 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb1256"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "provider": "apple",
+  "providerUserId": "apple_fahim_004",
+  "email": "freedrob32@gmail.com",
+  "displayName": "Fahim Chowdhury",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb1255"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "provider": "google",
+  "providerUserId": "google_zishan_003",
+  "email": "zishan@gmail.com",
+  "displayName": "Zishan Ahmed",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb1253"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "provider": "google",
+  "providerUserId": "google_kabir_001",
+  "email": "simoksimon147@gmail.com",
+  "displayName": "Kabir Hossain",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb1254"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "provider": "google",
+  "providerUserId": "google_abir_002",
+  "email": "partoftech150@gmail.com",
+  "displayName": "Abir Rahman",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb1257"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "provider": "google",
+  "providerUserId": "google_rakib_005",
+  "email": "himonchalse@gmail.com",
+  "displayName": "Rakib Hasan",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2e19d1dc63c8cb1258"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "provider": "apple",
+  "providerUserId": "apple_arnob_006",
+  "email": "arnobmojumder935@gmail.com",
+  "displayName": "Arnob Mojumder",
+  "avatar": "",
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287982099"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

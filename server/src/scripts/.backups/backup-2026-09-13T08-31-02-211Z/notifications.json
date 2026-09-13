@@ -1,0 +1,802 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10b2"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb101c"
+  },
+  "referenceModel": "Connection",
+  "message": "Fahim wants to learn Photography from you.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972893"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972893"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10b3"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2019d1dc63c8cb100c"
+  },
+  "referenceModel": "Connection",
+  "message": "Abir accepted your request to learn Guitar.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972945"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972945"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2419d1dc63c8cb10b4"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6aa65e2319d1dc63c8cb108a"
+  },
+  "referenceModel": "Review",
+  "message": "Zishan reviewed you 5 stars after a photography session.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287972992"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287972992"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10b5"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "new_message",
+  "referenceId": {
+   "$oid": "6aa65e2219d1dc63c8cb104a"
+  },
+  "referenceModel": "Message",
+  "message": "New message from Abir.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973039"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973039"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10b6"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "friend_request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2419d1dc63c8cb109c"
+  },
+  "referenceModel": "Friendship",
+  "message": "Abir accepted your friend request.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973089"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973089"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10b7"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "type": "radar_match",
+  "referenceModel": "SkillRadar",
+  "message": "New guitar teachers matched your radar near Gulshan.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973135"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973135"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10b8"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6aa65e2019d1dc63c8cb100e"
+  },
+  "referenceModel": "Connection",
+  "message": "Kabir wants to learn JavaScript from you.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973200"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973200"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10b9"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2019d1dc63c8cb1008"
+  },
+  "referenceModel": "Connection",
+  "message": "Kabir accepted your request to learn Photography.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973253"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973253"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10ba"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6aa65e2319d1dc63c8cb1088"
+  },
+  "referenceModel": "Review",
+  "message": "Kabir reviewed you 5 stars after your Spanish session.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973303"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973303"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10bb"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6aa65e2319d1dc63c8cb108e"
+  },
+  "referenceModel": "Review",
+  "message": "Zishan reviewed you 4 stars.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973349"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973349"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10bc"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "group_session_joined",
+  "referenceModel": "GroupSession",
+  "message": "Zishan joined your Spanish Conversation Circle.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973396"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973396"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10bd"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "type": "saved_search_match",
+  "referenceModel": "SavedSearch",
+  "message": "New JavaScript teachers matched your saved search.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973449"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973449"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10be"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6aa65e2019d1dc63c8cb1014"
+  },
+  "referenceModel": "Connection",
+  "message": "Kabir wants to learn Meditation from you.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973494"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973494"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10bf"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2019d1dc63c8cb1010"
+  },
+  "referenceModel": "Connection",
+  "message": "Kabir accepted your request to learn Photography.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973549"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973549"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c0"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6aa65e2319d1dc63c8cb108c"
+  },
+  "referenceModel": "Review",
+  "message": "Kabir reviewed you 5 stars.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973602"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973602"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c1"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "friend_request",
+  "referenceId": {
+   "$oid": "6aa65e2419d1dc63c8cb10ae"
+  },
+  "referenceModel": "Friendship",
+  "message": "Arnob sent you a friend request.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973650"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973650"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c2"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "type": "new_message",
+  "referenceId": {
+   "$oid": "6aa65e2219d1dc63c8cb1056"
+  },
+  "referenceModel": "Message",
+  "message": "New message from Kabir.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973710"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973710"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c3"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb1020"
+  },
+  "referenceModel": "Connection",
+  "message": "Zishan wants to learn Healthy Cooking from you.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973758"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973758"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c4"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb1022"
+  },
+  "referenceModel": "Connection",
+  "message": "Rakib accepted your request to learn English.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973812"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973812"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c5"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6aa65e2419d1dc63c8cb1094"
+  },
+  "referenceModel": "Review",
+  "message": "Kabir reviewed you 5 stars.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973859"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973859"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2519d1dc63c8cb10c6"
+  },
+  "userId": {
+   "$oid": "6aa641a629419c4af5348bba"
+  },
+  "type": "review_prompt",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb101e"
+  },
+  "referenceModel": "Connection",
+  "message": "How was your cooking session with Zishan? Leave a review.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287973970"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287973970"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10c7"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb1028"
+  },
+  "referenceModel": "Connection",
+  "message": "Arnob wants to learn Digital Literacy from you.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974026"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974026"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10c8"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "referenceModel": "Connection",
+  "message": "Arnob accepted your request to learn Web Design.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974091"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974091"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10c9"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "review_received",
+  "referenceId": {
+   "$oid": "6aa65e2419d1dc63c8cb109a"
+  },
+  "referenceModel": "Review",
+  "message": "Arnob reviewed you 4 stars.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974147"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974147"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10ca"
+  },
+  "userId": {
+   "$oid": "6aa641ef29419c4af5348bbd"
+  },
+  "type": "friend_joined",
+  "referenceId": {
+   "$oid": "6aa65e2419d1dc63c8cb10aa"
+  },
+  "referenceModel": "Friendship",
+  "message": "Fahim accepted your friend request.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974195"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974195"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10cb"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "request_received",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "referenceModel": "Connection",
+  "message": "Rakib wants to learn Web Design from you.",
+  "isRead": true,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974244"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974244"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10cc"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "request_accepted",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb102e"
+  },
+  "referenceModel": "Connection",
+  "message": "Kabir accepted your request to learn JavaScript.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974304"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974304"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10cd"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "review_prompt",
+  "referenceId": {
+   "$oid": "6aa65e2119d1dc63c8cb102a"
+  },
+  "referenceModel": "Connection",
+  "message": "How did the web design session go? Leave a review.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974358"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974358"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2619d1dc63c8cb10ce"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "type": "radar_match",
+  "referenceModel": "SkillRadar",
+  "message": "New Spanish teachers matched your radar.",
+  "isRead": false,
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287974414"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287974414"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

@@ -1,0 +1,956 @@
+[
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648c9e"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6a9cf4ca94340b9768648af2"
+  },
+  "preview": {
+   "title": "Maria added a new skill: Sewing & Mending 🧵",
+   "subtitle": "Textile & Craft"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "❤️",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584805532"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4e594340b9768648ca0"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "1"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796274405532"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788498405532"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788498405532"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648ca1"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "eventType": "badge_earned",
+  "subjectType": "badge",
+  "preview": {
+   "title": "Kabir earned a badge ✨",
+   "subtitle": "First Spark"
+  },
+  "visibility": "public",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "👏",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788498405532"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4e594340b9768648ca3"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796188005612"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788412005612"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788412005612"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648ca4"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "session_taught",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6a9cf4cf94340b9768648b36"
+  },
+  "preview": {
+   "title": "Demo taught a session 🧑‍🏫",
+   "subtitle": "Vegetable Gardening"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa3"
+    },
+    "emoji": "🎉",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788412005532"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4e594340b9768648ca6"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796101605694"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788325605694"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788325605694"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648ca7"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "eventType": "streak_milestone",
+  "subjectType": "streak",
+  "preview": {
+   "title": "Maria hit a 7-day streak 🔥",
+   "subtitle": "Learning"
+  },
+  "visibility": "close_friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "🔥",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788584805532"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4e594340b9768648ca9"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796360805793"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788584805793"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788584805793"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e594340b9768648caa"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "eventType": "session_completed",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6a9cf4d294340b9768648b68"
+  },
+  "preview": {
+   "title": "Kabir completed a session 🎓",
+   "subtitle": "Baking"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa2"
+    },
+    "emoji": "👍",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788325605532"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4e594340b9768648cac"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796015205908"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788239205908"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788239205908"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cad"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "eventType": "skill_swap_accepted",
+  "subjectType": "swap",
+  "subjectId": {
+   "$oid": "6a9cf4d994340b9768648bdc"
+  },
+  "preview": {
+   "title": "Noah accepted a skill swap 🔀",
+   "subtitle": "Composting"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795928806038"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788152806038"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788152806038"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648caf"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "review_received",
+  "subjectType": "review",
+  "subjectId": {
+   "$oid": "6a9cf4d494340b9768648b94"
+  },
+  "preview": {
+   "title": "Demo received a 5-star review ⭐",
+   "subtitle": "Vegetable Gardening"
+  },
+  "visibility": "friends",
+  "reactions": [
+   {
+    "userId": {
+     "$oid": "6a9cf4a594340b9768648aa3"
+    },
+    "emoji": "❤️",
+    "createdAt": {
+     "$date": {
+      "$numberLong": "1788152805532"
+     }
+    },
+    "_id": {
+     "$oid": "6a9cf4e694340b9768648cb1"
+    }
+   }
+  ],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795842406132"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788066406132"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788066406132"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cb2"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa5"
+  },
+  "eventType": "level_up",
+  "subjectType": "badge",
+  "preview": {
+   "title": "Rahim reached level 3 🔥",
+   "subtitle": "Flame"
+  },
+  "visibility": "public",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795756006227"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787980006227"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787980006227"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cb4"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "friend_joined",
+  "subjectType": "friendship",
+  "subjectId": {
+   "$oid": "6a9cf4e194340b9768648c78"
+  },
+  "preview": {
+   "title": "Demo and Maria are now friends 👥",
+   "subtitle": ""
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795669606400"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787893606400"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787893606400"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cb6"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "eventType": "joined_group_session",
+  "subjectType": "group_session",
+  "subjectId": {
+   "$oid": "6a9cf4d994340b9768648bde"
+  },
+  "preview": {
+   "title": "Maria joined a group session 📅",
+   "subtitle": "Weekend Sourdough Workshop"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795583206488"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787807206488"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787807206488"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cb8"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa4"
+  },
+  "eventType": "review_received",
+  "subjectType": "review",
+  "subjectId": {
+   "$oid": "6a9cf4d794340b9768648bb6"
+  },
+  "preview": {
+   "title": "Kabir received a review ⭐",
+   "subtitle": "Baking"
+  },
+  "visibility": "public",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795496806659"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787720806659"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787720806659"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cba"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "journal_highlight",
+  "subjectType": "journal_highlight",
+  "preview": {
+   "title": "Demo highlighted a journal entry 📖",
+   "subtitle": "Gardening"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795410406782"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787634406782"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787634406782"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e694340b9768648cbc"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "eventType": "session_learned",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6a9cf4d094340b9768648b50"
+  },
+  "preview": {
+   "title": "Noah learned a session 🎯",
+   "subtitle": "Composting"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795324006882"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787548006882"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787548006882"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cbe"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "challenge_completed",
+  "subjectType": "challenge",
+  "subjectId": {
+   "$oid": "6a9cf4df94340b9768648c52"
+  },
+  "preview": {
+   "title": "Demo completed a challenge 🏆",
+   "subtitle": "Gardening Week"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795237607007"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787461607007"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787461607007"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cc0"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "skill_swap_accepted",
+  "subjectType": "swap",
+  "subjectId": {
+   "$oid": "6a9cf4d994340b9768648bda"
+  },
+  "preview": {
+   "title": "Demo accepted a skill swap 🔀",
+   "subtitle": "Smartphone Basics"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795151207143"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787375207143"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787375207143"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cc2"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa3"
+  },
+  "eventType": "session_taught",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6a9cf4d294340b9768648b68"
+  },
+  "preview": {
+   "title": "Maria taught a session 🧑‍🏫",
+   "subtitle": "Baking"
+  },
+  "visibility": "public",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1795064807254"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787288807254"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787288807254"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cc4"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "streak_milestone",
+  "subjectType": "streak",
+  "preview": {
+   "title": "Demo hit a 14-day streak 🔥",
+   "subtitle": "Teaching"
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794978407395"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787202407395"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787202407395"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cc6"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa7"
+  },
+  "eventType": "friend_request_accepted",
+  "subjectType": "friendship",
+  "subjectId": {
+   "$oid": "6a9cf4e294340b9768648c80"
+  },
+  "preview": {
+   "title": "Noah accepted a friend request 👥",
+   "subtitle": ""
+  },
+  "visibility": "friends",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794892007493"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787116007493"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787116007493"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cc8"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa6"
+  },
+  "eventType": "session_completed",
+  "subjectType": "connection",
+  "subjectId": {
+   "$oid": "6a9cf4cf94340b9768648b36"
+  },
+  "preview": {
+   "title": "Fatima completed a session 🎓",
+   "subtitle": "Vegetable Gardening"
+  },
+  "visibility": "public",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794805607573"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1787029607573"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1787029607573"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9cf4e794340b9768648cca"
+  },
+  "actorId": {
+   "$oid": "6a9cf4a594340b9768648aa2"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6a9cf4c894340b9768648ae2"
+  },
+  "preview": {
+   "title": "Demo added a skill: Baking Basics 🧑‍🏫",
+   "subtitle": "Food & Cooking"
+  },
+  "visibility": "public",
+  "reactions": [],
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1794719207682"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1786943207682"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1786943207682"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8e995f1165d4d897d3c7"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "badge_earned",
+  "subjectType": "badge",
+  "preview": {
+   "title": "Earned: First Spark ✨",
+   "subtitle": "Added your first skill",
+   "emoji": "✨"
+  },
+  "visibility": "friends",
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796617625988"
+   }
+  },
+  "reactions": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841625989"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841625989"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6a9f8e9a5f1165d4d897d3c8"
+  },
+  "actorId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "eventType": "skill_added",
+  "subjectType": "skill",
+  "subjectId": {
+   "$oid": "6a9f8e985f1165d4d897d3c6"
+  },
+  "preview": {
+   "title": "Added first skill: Baking 🧑‍🏫",
+   "subtitle": "Food & Cooking",
+   "emoji": "🧑‍🏫"
+  },
+  "visibility": "public",
+  "commentCount": {
+   "$numberInt": "0"
+  },
+  "expiresAt": {
+   "$date": {
+    "$numberLong": "1796617626191"
+   }
+  },
+  "reactions": [],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1788841626192"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1788841626192"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]

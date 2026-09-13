@@ -1,0 +1,169 @@
+[
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11ed"
+  },
+  "userId": {
+   "$oid": "6aa6423029419c4af5348bc0"
+  },
+  "skillName": "Budgeting Basics",
+  "categoryName": "Languages & Communication",
+  "description": "Everyday money skills for young adults.",
+  "status": "rejected",
+  "adminNotes": "Consider a better-fitting category.",
+  "votes": {
+   "$numberInt": "1"
+  },
+  "votedBy": [
+   {
+    "$oid": "6aa6423029419c4af5348bc0"
+   }
+  ],
+  "reviewedBy": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "reviewedAt": {
+   "$date": {
+    "$numberLong": "1788855979856"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11eb"
+  },
+  "userId": {
+   "$oid": "6a9f8e045f1165d4d897d3c3"
+  },
+  "skillName": "Ukulele",
+  "categoryName": "Music & Performing Arts",
+  "description": "Easy beginner instrument, great for songwriting.",
+  "status": "approved",
+  "adminNotes": "",
+  "votes": {
+   "$numberInt": "4"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   },
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6aa641a629419c4af5348bba"
+   }
+  ],
+  "reviewedAt": {
+   "$date": {
+    "$numberLong": "1789115179856"
+   }
+  },
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11ea"
+  },
+  "userId": {
+   "$oid": "6a9d59a0ec81a378e2840fd6"
+  },
+  "skillName": "Drone Photography",
+  "categoryName": "Photography & Visual Arts",
+  "description": "Aerial photography with consumer drones.",
+  "status": "pending",
+  "adminNotes": "",
+  "votes": {
+   "$numberInt": "2"
+  },
+  "votedBy": [
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6a9f8e045f1165d4d897d3c3"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ },
+ {
+  "_id": {
+   "$oid": "6aa65e2b19d1dc63c8cb11ec"
+  },
+  "userId": {
+   "$oid": "6aa0e3c420626861e93ef947"
+  },
+  "skillName": "Thai Cooking",
+  "categoryName": "Food & Cooking",
+  "description": "Curries, stir-fries and fresh herbs.",
+  "status": "pending",
+  "adminNotes": "",
+  "votes": {
+   "$numberInt": "3"
+  },
+  "votedBy": [
+   {
+    "$oid": "6aa0e3c420626861e93ef947"
+   },
+   {
+    "$oid": "6a9d59a0ec81a378e2840fd6"
+   },
+   {
+    "$oid": "6aa641ef29419c4af5348bbd"
+   }
+  ],
+  "createdAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "updatedAt": {
+   "$date": {
+    "$numberLong": "1789287979859"
+   }
+  },
+  "__v": {
+   "$numberInt": "0"
+  }
+ }
+]
