@@ -1041,7 +1041,7 @@ async function main(): Promise<void> {
     { _id: (SS.SU1 = OID()), userId: U.kabir, skillName: 'Drone Photography', categoryName: 'Photography & Visual Arts', description: 'Aerial photography with consumer drones.', status: 'pending', votes: 2, votedBy: [U.kabir, U.abir] },
     { _id: (SS.SU2 = OID()), userId: U.abir, skillName: 'Ukulele', categoryName: 'Music & Performing Arts', description: 'Easy beginner instrument, great for songwriting.', status: 'approved', votes: 4, votedBy: [U.kabir, U.abir, U.zishan, U.fahim], reviewedAt: daysAgo(2) },
     { _id: (SS.SU3 = OID()), userId: U.zishan, skillName: 'Thai Cooking', categoryName: 'Food & Cooking', description: 'Curries, stir-fries and fresh herbs.', status: 'pending', votes: 3, votedBy: [U.zishan, U.kabir, U.rakib] },
-    { _id: (SS.SU4 = OID()), userId: U.arnob, skillName: 'Budgeting Basics', categoryName: 'Languages & Communication', description: 'Everyday money skills for young adults.', status: 'rejected', votes: 1, votedBy: [U.arnob], reviewedBy: U.zishan, reviewedAt: daysAgo(5), adminNotes: 'Consider a better-fitting category.', votes: 1 },
+    { _id: (SS.SU4 = OID()), userId: U.arnob, skillName: 'Budgeting Basics', categoryName: 'Languages & Communication', description: 'Everyday money skills for young adults.', status: 'rejected', votes: 1, votedBy: [U.arnob], reviewedBy: U.zishan, reviewedAt: daysAgo(5), adminNotes: 'Consider a better-fitting category.' },
   ]);
   console.log('  4 skill suggestions');
 
