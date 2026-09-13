@@ -5,10 +5,14 @@ import * as dns from 'node:dns';
 import { resolve4 } from 'node:dns/promises';
 import { HttpError } from './errors';
 
-// 30 seconds timeout to handle Render cold starts
-const SMTP_TIMEOUT_MS = 30_000;
+// Per-attempt SMTP timeout. Kept short because delivery is retried across
+// several host/port candidates (see sendEmail), so a stall on one candidate
+// should not hang the request for too long.
+const SMTP_TIMEOUT_MS = 10_000;
 
-let transporter: Transporter | null = null;
+const MAX_CANDIDATE_ATTEMPTS = 6;
+
+let smtpHostCandidates: string[] | null = null;
 
 /**
  * Dynamically resolves the Frontend Client URL (removes any trailing slash).
@@ -61,50 +65,92 @@ export function validateSmtpConfiguration(): void {
 }
 
 /**
- * Nodemailer v9 resolves both A and AAAA records itself and dials a randomly
- * picked address. On hosts without IPv6 routing (e.g. Render) that random pick
- * can land on an unreachable IPv6 address, making delivery fail with
- * ENETUNREACH. Resolve the SMTP host to a literal IPv4 so the transport always
- * connects over IPv4, while keeping the original hostname for TLS SNI.
+ * Returns true for network-level errors that are worth retrying against a
+ * different host/port. Auth or 5xx-style SMTP errors are NOT retryable.
  */
-async function resolveSmptHostIpv4(hostname: string): Promise<string> {
+function isRetryableNetworkError(error: any): boolean {
+  const code: string = error?.code || '';
+  const message: string = error?.message || '';
+  return (
+    code === 'ETIMEDOUT' ||
+    code === 'ESOCKET' ||
+    code === 'EAI_AGAIN' ||
+    code === 'ECONNREFUSED' ||
+    code === 'ENETUNREACH' ||
+    code === 'ECONNRESET' ||
+    code === 'EADDRNOTAVAIL' ||
+    code === 'EDNS' ||
+    code === 'ECONNECTION' ||
+    /Connection timeout|getaddrinfo|greeting timed out/i.test(message)
+  );
+}
+
+/**
+ * Resolves the SMTP host to its IPv4 addresses. Nodemailer v9 resolves both
+ * A and AAAA records itself and dials a randomly picked address, and on hosts
+ * without IPv6 routing (e.g. Render) that can fail with ENETUNREACH — so we
+ * resolve IPv4 ourselves (deduped) and drive the connection to literal IPs.
+ */
+async function resolveSmtpHostIpv4List(hostname: string): Promise<string[]> {
   // Some hosts (dev machines, restricted sandboxes) have a flaky default
   // resolver for external domains; try a known public resolver first.
   const resolver = new dns.Resolver();
   resolver.setServers(['8.8.8.8', '1.1.1.1']);
+  const addresses = new Set<string>();
   const attempts: Array<() => Promise<string[]>> = [
     () =>
       new Promise((resolve, reject) => {
-        resolver.resolve4(hostname, (err, addresses) => (err ? reject(err) : resolve(addresses)));
+        resolver.resolve4(hostname, (err, result) => (err ? reject(err) : resolve(result)));
       }),
     () => resolve4(hostname),
   ];
 
   for (const attempt of attempts) {
     try {
-      const addresses = await attempt();
-      if (addresses.length > 0) return addresses[0];
+      for (const addr of await attempt()) addresses.add(addr);
     } catch {
       // fall through to the next strategy
     }
   }
 
-  console.warn(
-    `[email] ⚠️ Could not resolve IPv4 for SMTP host "${hostname}". Using hostname directly.`
-  );
-  return hostname;
+  if (addresses.size > 0) {
+    smtpHostCandidates = [...addresses];
+    return smtpHostCandidates;
+  }
+
+  console.warn(`[email] ⚠️ Could not resolve IPv4 for SMTP host "${hostname}". Using hostname directly.`);
+  smtpHostCandidates = [hostname];
+  return smtpHostCandidates;
+}
+
+function getSmtpHostname(): string {
+  return process.env.SMTP_HOST || 'smtp.gmail.com';
 }
 
 /**
- * Creates or returns the singleton Nodemailer transporter.
+ * Builds the ordered list of (host, port) candidates to try. Primary port
+ * first (as configured), the other standard SMTP port second, across every
+ * resolved IPv4 address, capped so the whole fan-out stays bounded.
  */
-async function getTransporter(): Promise<Transporter> {
-  if (transporter) return transporter;
+async function buildCandidatePairs(): Promise<Array<[string, number]>> {
+  const hostname = getSmtpHostname();
+  const hosts = isIP(hostname) ? [hostname] : await resolveSmtpHostIpv4List(hostname);
+  const configuredPort = Number(process.env.SMTP_PORT) || 587;
+  const ports = configuredPort === 465 ? [587, 465] : [465, 587];
 
-  const hostname = process.env.SMTP_HOST || 'smtp.gmail.com';
-  const host = isIP(hostname) ? hostname : await resolveSmptHostIpv4(hostname);
-  const port = Number(process.env.SMTP_PORT) || 587;
+  const candidates: Array<[string, number]> = [];
+  for (const host of hosts) {
+    for (const port of ports) candidates.push([host, port]);
+  }
+  return candidates.slice(0, MAX_CANDIDATE_ATTEMPTS);
+}
+
+/**
+ * Creates a Nodemailer transporter for a literal IPv4 host and port.
+ */
+function buildTransporter(host: string, port: number): Transporter {
   const isSecure = port === 465;
+  const hostname = getSmtpHostname();
 
   const transportOptions: any = {
     host,
@@ -125,8 +171,7 @@ async function getTransporter(): Promise<Transporter> {
     },
   };
 
-  transporter = nodemailer.createTransport(transportOptions);
-  return transporter;
+  return nodemailer.createTransport(transportOptions);
 }
 
 export interface SendEmailResult {
@@ -158,14 +203,34 @@ async function sendEmail(
 
   try {
     const fromAddress = getEmailFrom();
-    const info = await (await getTransporter()).sendMail({
-      from: fromAddress,
-      to,
-      subject,
-      html,
-    });
+    const candidates = await buildCandidatePairs();
+    let sent = false;
+    let lastError: any = null;
 
-    console.log(`✉️ Email successfully delivered to ${to} | Message ID: ${info.messageId}`);
+    for (const [host, port] of candidates) {
+      try {
+        const info = await buildTransporter(host, port).sendMail({
+          from: fromAddress,
+          to,
+          subject,
+          html,
+        });
+
+        console.log(`✉️ Email successfully delivered to ${to} | Message ID: ${info.messageId}`);
+        sent = true;
+        break;
+      } catch (error: any) {
+        lastError = error;
+        if (!isRetryableNetworkError(error)) break;
+        console.warn(
+          `[email] ⚠️ Attempt to ${host}:${port} failed (${error?.code || error?.message}); trying next candidate...`
+        );
+      }
+    }
+
+    if (!sent) {
+      throw lastError || new Error('Failed to deliver email after all candidates');
+    }
     return { delivered: true };
   } catch (error: any) {
     console.error(`❌ Email delivery FAILED to ${to}:`, {
