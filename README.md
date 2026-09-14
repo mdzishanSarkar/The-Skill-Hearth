@@ -237,8 +237,10 @@ Reference: `.env.example`
 | `ADMIN_SIGNUP_CODE`       | Server  | Required code to register an admin account                 |
 | `REDIS_URL`               | Server  | Redis connection (token blacklist, queues, caching)        |
 | `SMTP_HOST` / `SMTP_PORT` | Server  | SMTP host and port for transactional email                 |
-| `SMTP_USER` / `SMTP_PASS` | Server  | SMTP credentials (Gmail App Password recommended)          |
+| `SMTP_USER` / `SMTP_PASS` | Server  | SMTP credentials for your provider; Gmail is not recommended on Render |
 | `EMAIL_FROM`              | Server  | From-address for outbound email                            |
+
+> Important: Gmail SMTP is often blocked or times out from Render due to outbound egress restrictions. For production, prefer a dedicated provider such as Resend, SendGrid, or Brevo and set `SMTP_HOST` to that provider's SMTP endpoint instead of `smtp.gmail.com`.
 | `CLOUDINARY_*`            | Server  | Cloudinary credentials (avatar and media uploads)          |
 | `STRIPE_SECRET_KEY`       | Server  | Stripe secret key (tipping and promotions)                 |
 | `VITE_API_URL`            | Client  | Base URL of the API (`https://the-skill-hearth.onrender.com/api`)          |

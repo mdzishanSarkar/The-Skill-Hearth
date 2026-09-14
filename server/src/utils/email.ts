@@ -1,8 +1,5 @@
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
-import { isIP } from 'node:net';
-import * as dns from 'node:dns';
-import { resolve4 } from 'node:dns/promises';
 import { HttpError } from './errors';
 
 // Per-attempt SMTP timeout. Kept short because delivery is retried across
@@ -10,9 +7,7 @@ import { HttpError } from './errors';
 // should not hang the request for too long.
 const SMTP_TIMEOUT_MS = 10_000;
 
-const MAX_CANDIDATE_ATTEMPTS = 6;
-
-let smtpHostCandidates: string[] | null = null;
+const MAX_CANDIDATE_ATTEMPTS = 2;
 
 /**
  * Dynamically resolves the Frontend Client URL (removes any trailing slash).
@@ -86,62 +81,37 @@ function isRetryableNetworkError(error: any): boolean {
 }
 
 /**
- * Resolves the SMTP host to its IPv4 addresses. Nodemailer v9 resolves both
- * A and AAAA records itself and dials a randomly picked address, and on hosts
- * without IPv6 routing (e.g. Render) that can fail with ENETUNREACH — so we
- * resolve IPv4 ourselves (deduped) and drive the connection to literal IPs.
+ * Returns the canonical SMTP hostname the provider expects to be contacted on.
+ * We intentionally do not force literal IPv4 addresses here because Render's
+ * outbound routing can fail against specific Gmail IPs even when the hostname
+ * itself is reachable.
  */
-async function resolveSmtpHostIpv4List(hostname: string): Promise<string[]> {
-  // Some hosts (dev machines, restricted sandboxes) have a flaky default
-  // resolver for external domains; try a known public resolver first.
-  const resolver = new dns.Resolver();
-  resolver.setServers(['8.8.8.8', '1.1.1.1']);
-  const addresses = new Set<string>();
-  const attempts: Array<() => Promise<string[]>> = [
-    () =>
-      new Promise((resolve, reject) => {
-        resolver.resolve4(hostname, (err, result) => (err ? reject(err) : resolve(result)));
-      }),
-    () => resolve4(hostname),
-  ];
-
-  for (const attempt of attempts) {
-    try {
-      for (const addr of await attempt()) addresses.add(addr);
-    } catch {
-      // fall through to the next strategy
-    }
-  }
-
-  if (addresses.size > 0) {
-    smtpHostCandidates = [...addresses];
-    return smtpHostCandidates;
-  }
-
-  console.warn(`[email] ⚠️ Could not resolve IPv4 for SMTP host "${hostname}". Using hostname directly.`);
-  smtpHostCandidates = [hostname];
-  return smtpHostCandidates;
-}
-
 function getSmtpHostname(): string {
   return process.env.SMTP_HOST || 'smtp.gmail.com';
 }
 
 /**
- * Builds the ordered list of (host, port) candidates to try. Primary port
- * first (as configured), the other standard SMTP port second, across every
- * resolved IPv4 address, capped so the whole fan-out stays bounded.
+ * Builds the ordered list of (host, port) candidates to try. We prefer the
+ * configured port first, then the alternate standard port, and keep only the
+ * hostname (not resolved IP literals) to avoid Render/Gmail egress issues.
  */
 async function buildCandidatePairs(): Promise<Array<[string, number]>> {
   const hostname = getSmtpHostname();
-  const hosts = isIP(hostname) ? [hostname] : await resolveSmtpHostIpv4List(hostname);
   const configuredPort = Number(process.env.SMTP_PORT) || 587;
-  const ports = configuredPort === 465 ? [587, 465] : [465, 587];
+  const ports = configuredPort === 465 ? [465, 587] : [587, 465];
 
   const candidates: Array<[string, number]> = [];
-  for (const host of hosts) {
-    for (const port of ports) candidates.push([host, port]);
+  for (const port of ports) {
+    candidates.push([hostname, port]);
   }
+
+  const providerHint = hostname.toLowerCase();
+  if (process.env.RENDER === 'true' && /gmail\.com|googlemail\.com/.test(providerHint)) {
+    console.warn(
+      '[email] ⚠️ Render + Gmail SMTP is frequently blocked by outbound egress restrictions. Prefer a dedicated transactional email provider (Resend/SendGrid/Mailgun) for production.'
+    );
+  }
+
   return candidates.slice(0, MAX_CANDIDATE_ATTEMPTS);
 }
 
