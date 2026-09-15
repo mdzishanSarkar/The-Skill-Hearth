@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import clsx from 'clsx';
-import { FiUser } from 'react-icons/fi';
 import { resolveMediaUrl } from '../../utils/media';
 import { getAvatarDisplayMode } from '../../utils/avatar';
 
@@ -16,24 +16,16 @@ const sizes = {
   lg: 'h-20 w-20 text-2xl',
 };
 
-const iconSizes = {
-  sm: 'h-4 w-4',
-  md: 'h-6 w-6',
-  lg: 'h-10 w-10',
-};
-
 export default function Avatar({ src, name, size = 'md', className }: AvatarProps) {
-  const { mode, src: safeSrc } = getAvatarDisplayMode(src, name);
+  const { mode, src: safeSrc, fallbackLabel } = getAvatarDisplayMode(src, name);
+  const [imageFailed, setImageFailed] = useState(false);
 
-  if (mode === 'image' && safeSrc) {
+  if (mode === 'image' && safeSrc && !imageFailed) {
     return (
       <img
         src={resolveMediaUrl(safeSrc)}
         alt={name}
-        onError={(event) => {
-          event.currentTarget.style.display = 'none';
-          event.currentTarget.nextElementSibling?.removeAttribute('hidden');
-        }}
+        onError={() => setImageFailed(true)}
         className={clsx('rounded-full object-cover ring-2 ring-white dark:ring-gray-800', sizes[size], className)}
       />
     );
@@ -44,12 +36,12 @@ export default function Avatar({ src, name, size = 'md', className }: AvatarProp
       title={name}
       aria-label={name}
       className={clsx(
-        'flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-amber-100 text-indigo-500 ring-2 ring-white dark:from-indigo-900/60 dark:to-amber-900/40 dark:text-indigo-300 dark:ring-gray-800',
+        'flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-amber-100 text-indigo-500 ring-2 ring-white dark:from-indigo-900/60 dark:to-amber-900/40 dark:text-indigo-300 dark:ring-gray-800 font-semibold select-none',
         sizes[size],
         className
       )}
     >
-      <FiUser className={iconSizes[size]} />
+      {fallbackLabel}
     </div>
   );
 }

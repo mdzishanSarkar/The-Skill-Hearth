@@ -183,6 +183,9 @@ export async function votePost(
     throw new HttpError(400, 'CANNOT_VOTE_OWN_POST', 'You cannot vote on your own post');
   }
 
+  post.voteScore = Number.isFinite(post.voteScore) ? post.voteScore : 0;
+  post.userVotes = Array.isArray(post.userVotes) ? post.userVotes : [];
+
   const existingIndex = post.userVotes.findIndex(
     (v: IUserVote) => String(v.userId) === userId
   );

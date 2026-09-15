@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 import { FiUsers, FiMapPin, FiCalendar, FiVideo } from 'react-icons/fi';
 import type { GroupSession } from '../../types/groupSession.types';
+import Avatar from '../ui/Avatar';
 
 interface GroupSessionCardProps {
   session: GroupSession;
@@ -74,13 +75,7 @@ export default function GroupSessionCard({ session }: GroupSessionCardProps) {
         <div className="flex items-center gap-2">
           {teacher && (
             <Link to={`/profile/${teacher._id}`} className="flex items-center gap-2 hover:text-indigo-600">
-              {teacher.avatar ? (
-                <img src={teacher.avatar} alt={teacher.displayName} className="h-6 w-6 rounded-full object-cover" />
-              ) : (
-                <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-xs font-medium text-indigo-600 dark:text-indigo-400">
-                  {teacher.displayName[0]}
-                </div>
-              )}
+              <Avatar src={teacher.avatar} name={teacher.displayName} size="sm" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{teacher.displayName}</span>
             </Link>
           )}
@@ -101,23 +96,11 @@ export default function GroupSessionCard({ session }: GroupSessionCardProps) {
 
       {session.participants.length > 0 && (
         <div className="mt-3 flex -space-x-2">
-          {session.participants.slice(0, 5).map((p) =>
-            p.avatar ? (
-              <img
-                key={p._id}
-                src={p.avatar}
-                alt={p.displayName}
-                className="h-7 w-7 rounded-full border-2 border-white object-cover"
-              />
-            ) : (
-              <div
-                key={p._id}
-                className="h-7 w-7 rounded-full border-2 border-white bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-xs font-medium text-indigo-600 dark:text-indigo-400"
-              >
-                {p.displayName[0]}
-              </div>
-            )
-          )}
+          {session.participants.slice(0, 5).map((p) => (
+            <div key={p._id} className="border-2 border-white rounded-full overflow-hidden">
+              <Avatar src={p.avatar} name={p.displayName} size="sm" className="h-7 w-7 text-[10px]" />
+            </div>
+          ))}
           {session.participants.length > 5 && (
             <div className="h-7 w-7 rounded-full border-2 border-white bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xs font-medium text-gray-500 dark:text-gray-400">
               +{session.participants.length - 5}

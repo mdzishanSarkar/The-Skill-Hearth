@@ -239,8 +239,10 @@ Reference: `.env.example`
 | `SMTP_HOST` / `SMTP_PORT` | Server  | SMTP host and port for transactional email                 |
 | `SMTP_USER` / `SMTP_PASS` | Server  | SMTP credentials for your provider; Gmail is not recommended on Render |
 | `EMAIL_FROM`              | Server  | From-address for outbound email                            |
+| `RESEND_API_KEY`          | Server  | Recommended Render email delivery via HTTPS                |
 
 > Important: Gmail SMTP is often blocked or times out from Render due to outbound egress restrictions. For production, prefer a dedicated provider such as Resend, SendGrid, or Brevo and set `SMTP_HOST` to that provider's SMTP endpoint instead of `smtp.gmail.com`.
+> When `RESEND_API_KEY` and `EMAIL_FROM` are configured, verification and password-reset emails use Resend over HTTPS and do not use SMTP.
 | `CLOUDINARY_*`            | Server  | Cloudinary credentials (avatar and media uploads)          |
 | `STRIPE_SECRET_KEY`       | Server  | Stripe secret key (tipping and promotions)                 |
 | `VITE_API_URL`            | Client  | Base URL of the API (`https://the-skill-hearth.onrender.com/api`)          |

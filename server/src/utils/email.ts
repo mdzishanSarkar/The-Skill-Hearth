@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
+import axios from 'axios';
 import { HttpError } from './errors';
 
 // Per-attempt SMTP timeout. Kept short because delivery is retried across
@@ -41,10 +42,16 @@ export function smtpConfigured(): boolean {
   );
 }
 
+function resendConfigured(): boolean {
+  return Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
+}
+
 /**
  * Validates configuration at server boot and logs warnings if keys are missing.
  */
 export function validateSmtpConfiguration(): void {
+  if (resendConfigured()) return;
+
   const missing = [
     !process.env.SMTP_HOST && 'SMTP_HOST',
     !process.env.SMTP_PORT && 'SMTP_PORT',
@@ -144,6 +151,27 @@ function buildTransporter(host: string, port: number): Transporter {
   return nodemailer.createTransport(transportOptions);
 }
 
+async function sendWithResend(
+  to: string,
+  subject: string,
+  html: string,
+  from: string
+): Promise<string> {
+  const response = await axios.post(
+    'https://api.resend.com/emails',
+    { from, to: [to], subject, html },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      timeout: SMTP_TIMEOUT_MS,
+    }
+  );
+
+  return response.data?.id || 'resend-delivery';
+}
+
 export interface SendEmailResult {
   delivered: boolean;
 }
@@ -162,7 +190,7 @@ async function sendEmail(
     console.log(`🔗 Link: ${link}\n`);
   }
 
-  if (!smtpConfigured()) {
+  if (!resendConfigured() && !smtpConfigured()) {
     console.error('[email] Cannot send email: SMTP credentials are missing.');
     throw new HttpError(
       503,
@@ -173,6 +201,13 @@ async function sendEmail(
 
   try {
     const fromAddress = getEmailFrom();
+
+    if (resendConfigured()) {
+      const messageId = await sendWithResend(to, subject, html, fromAddress);
+      console.log(`✉️ Email successfully delivered to ${to} via Resend | Message ID: ${messageId}`);
+      return { delivered: true };
+    }
+
     const candidates = await buildCandidatePairs();
     let sent = false;
     let lastError: any = null;

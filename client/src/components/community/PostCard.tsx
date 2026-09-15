@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import type { CommunityPost } from '../../types/community.types';
 import ConfirmDialog from '../ui/ConfirmDialog';
 import ReportDialog from '../ui/ReportDialog';
+import Avatar from '../ui/Avatar';
 
 interface PostCardProps {
   post: CommunityPost;
@@ -27,15 +28,21 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
 
   async function handleVote(vote: 'up' | 'down') {
     if (!user || isVoting) return;
+
+    const previousVote = userVote;
+    const previousScore = voteScore;
+    const newVote = userVote === vote ? 'remove' : vote;
+
     setIsVoting(true);
     try {
-      const newVote = userVote === vote ? 'remove' : vote;
       const result = await votePost(post._id, newVote);
       setVoteScore(result.voteScore);
       setUserVote(result.userVote);
       onVote?.(post._id, result.voteScore, result.userVote);
-    } catch {
-      toast.error('Failed to vote');
+    } catch (error) {
+      setVoteScore(previousScore);
+      setUserVote(previousVote);
+      toast.error('Failed to vote. Please try again.');
     } finally {
       setIsVoting(false);
     }
@@ -106,17 +113,7 @@ export default function PostCard({ post, onDelete, onVote }: PostCardProps) {
                 to={`/profile/${author._id}`}
                 className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100 hover:text-indigo-600"
               >
-                {author.avatar ? (
-                  <img
-                    src={author.avatar}
-                    alt={author.displayName}
-                    className="h-6 w-6 rounded-full object-cover"
-                  />
-                ) : (
-                  <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center text-xs font-medium text-indigo-600 dark:text-indigo-400">
-                    {author.displayName[0]}
-                  </div>
-                )}
+                <Avatar src={author.avatar} name={author.displayName} size="sm" />
                 {author.displayName}
               </Link>
             )}
