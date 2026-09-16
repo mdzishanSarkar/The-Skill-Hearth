@@ -113,7 +113,7 @@ export default function MapFilters({
           id="map-radius"
           type="range"
           min={1}
-          max={20}
+          max={100}
           step={1}
           value={radiusKm}
           onChange={(e) => onRadiusChange(Number(e.target.value))}
