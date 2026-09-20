@@ -20,7 +20,7 @@ export const googleCallback = asyncHandler(async (req: AuthRequest, res: Respons
   const result = await oauthService.handleGoogleCallback(code);
   setRefreshCookie(res, result.refreshToken);
 
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  const clientUrl = process.env.CLIENT_URL || 'https://the-skill-hearth.onrender.com';
   const isNewUser = result.isNewUser ? '1' : '0';
   res.redirect(
     `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`
@@ -44,7 +44,7 @@ export const appleCallback = asyncHandler(async (req: AuthRequest, res: Response
 
   const result = await oauthService.handleAppleCallback(code, idToken, user);
   setRefreshCookie(res, result.refreshToken);
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  const clientUrl = process.env.CLIENT_URL || 'https://the-skill-hearth.onrender.com';
   const isNewUser = result.isNewUser ? '1' : '0';
   res.redirect(
     `${clientUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}&newUser=${isNewUser}`

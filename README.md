@@ -194,7 +194,7 @@ npm run dev                    # runs the API (:5000) and the SPA (:5173) concur
 
 | Service | URL                    |
 | ------- | ---------------------- |
-| Client  | http://localhost:5173  |
+| Client  | https://the-skill-hearth.onrender.com  |
 | Server  | https://the-skill-hearth.onrender.com  |
 
 ### 6. Seed Demo Data (Optional)

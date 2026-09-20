@@ -11,7 +11,7 @@ const buildAllowedOrigins = () => {
     .filter(Boolean);
 
   const defaults = [
-    "http://localhost:5173",
+    "https://the-skill-hearth.onrender.com",
     "http://localhost:5174",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:5174",

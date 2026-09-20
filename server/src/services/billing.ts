@@ -158,8 +158,8 @@ export async function promoteSkill(
       },
       quantity: 1,
     }],
-    success_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/my-skills?promoted=true`,
-    cancel_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/my-skills`,
+    success_url: `${process.env.CLIENT_URL || 'https://the-skill-hearth.onrender.com'}/my-skills?promoted=true`,
+    cancel_url: `${process.env.CLIENT_URL || 'https://the-skill-hearth.onrender.com'}/my-skills`,
     metadata: { userId, skillId, duration: String(duration) },
   });
 

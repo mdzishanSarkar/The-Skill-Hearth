@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'https://the-skill-hearth.onrender.com',
     trace: 'on-first-retry',
   },
 
@@ -29,7 +29,7 @@ export default defineConfig({
 
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:5173',
+    url: 'https://the-skill-hearth.onrender.com',
     reuseExistingServer: !process.env.CI,
   },
 });
