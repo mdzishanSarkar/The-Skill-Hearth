@@ -68,7 +68,7 @@ test('getMapPins returns sanitized teachers and both pins without a viewer', asy
 
 test('getMapPins excludes blocked users when a viewerId is provided', async () => {
   await blockUser(String(viewer._id), String(teacherB._id));
-  const blockedView = await getMapPins({ lat: 23.8103, lng: 90.4125, radiusKm: 20, viewerId: String(viewer._id) });
+  const blockedView = await getMapPins({ lat: 23.8103, lng: 90.4125, https://the-skill-hearth.onrender.com: 20, viewerId: String(viewer._id) });
   assert.ok(blockedView.some((p) => p.skillName === 'Geo Pottery A'));
   assert.ok(!blockedView.some((p) => p.skillName === 'Geo Pottery B'));
 
@@ -78,7 +78,7 @@ test('getMapPins excludes blocked users when a viewerId is provided', async () =
 
 test('getMapPins excludes shadow-banned teachers', async () => {
   await User.updateOne({ _id: teacherA._id }, { $set: { isShadowBanned: true } });
-  const pins = await getMapPins({ lat: 23.8103, lng: 90.4125, radiusKm: 20, viewerId: String(teacherA._id) });
+  const pins = await getMapPins({ lat: 23.8103, lng: 90.4125, https://the-skill-hearth.onrender.com: 20, viewerId: String(teacherA._id) });
   assert.ok(!pins.some((p) => p.skillName === 'Geo Pottery A'));
   assert.ok(pins.some((p) => p.skillName === 'Geo Pottery B'));
   await User.updateOne({ _id: teacherA._id }, { $set: { isShadowBanned: false } });
