@@ -40,6 +40,7 @@ Modern life has given us unprecedented connectivity while quietly deepening our 
 *   **Community Showcase:** A visual feed for members to share projects—from a fixed bookshelf to a successful harvest.
 *   **The Learner Board:** A localized "help wanted" space where neighbors post skill requests for others to fulfill.
 
+
 ---
 
 ## 🛠️ Tech Stack
