@@ -15,7 +15,7 @@ export default defineConfig({
         short_name: 'Skill Hearth',
         description: 'Hyperlocal skill-sharing — connection as a byproduct of learning together.',
         theme_color: '#4f46e5',
-        background_color: '#ffffff',
+        background_color: '#111418',
         display: 'standalone',
         start_url: '/',
         icons: [

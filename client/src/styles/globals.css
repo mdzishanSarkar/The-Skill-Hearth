@@ -48,27 +48,6 @@
 
 @layer base {
   :root {
-    color-scheme: light;
-    --bg-app: #ffffff;
-    --bg-elevated: #f9f9f9;
-    --surface-raised: #ffffff;
-    --bg-hover: #f2f2f2;
-    --text-primary: #050505;
-    --text-secondary: #65676b;
-    --text-tertiary: #8a8d91;
-    --border-default: #e0e3e7;
-    --accent: #0084ff;
-    --accent-soft: #e7f3ff;
-    --danger: #ff0033;
-    --z-window: 300;
-    --z-fab: 300;
-    --z-drawer: 350;
-    --z-modal: 400;
-    --bubble-accent-from: #1c92ff;
-    --bubble-accent-to: #0f73f5;
-  }
-
-  .dark {
     color-scheme: dark;
     --bg-app: #111418;
     --bg-elevated: #181c20;
@@ -81,68 +60,38 @@
     --accent: #4d9fff;
     --accent-soft: #1c3146;
     --danger: #ff4d4d;
+    --z-window: 300;
+    --z-fab: 300;
+    --z-drawer: 350;
+    --z-modal: 400;
+    --bubble-accent-from: #1c92ff;
+    --bubble-accent-to: #0f73f5;
   }
 
   body {
-    @apply bg-gray-50 text-gray-900 antialiased;
-    background-image:
-      radial-gradient(38rem 26rem at 12% -6%, rgb(99 102 241 / 0.12), transparent 62%),
-      radial-gradient(44rem 28rem at 88% -12%, rgb(14 165 233 / 0.12), transparent 62%),
-      radial-gradient(50rem 32rem at 50% 112%, rgb(245 158 11 / 0.1), transparent 62%),
-      radial-gradient(circle at 1px 1px, rgb(15 23 42 / 0.055) 1px, transparent 1.5px);
-    background-size: auto, auto, auto, 26px 26px;
-    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
-    background-attachment: fixed;
-  }
-
-  .dark body {
-    @apply bg-gray-950 text-gray-100;
+    @apply bg-gray-950 text-gray-100 antialiased;
     background-image:
       radial-gradient(60rem 30rem at 85% -10%, rgb(99 102 241 / 0.14), transparent),
       radial-gradient(50rem 28rem at -10% 0%, rgb(245 158 11 / 0.08), transparent);
   }
 
-  /* Native select dropdowns must always stay readable in both themes */
+  /* Native select dropdowns must always stay readable */
   select {
-    background-color: #ffffff;
-    color: #111827;
+    background-color: #111827;
+    color: #f3f4f6;
   }
 
   select option {
-    background-color: #ffffff;
-    color: #111827;
-  }
-
-  .dark select {
     background-color: #111827;
     color: #f3f4f6;
   }
 
-  .dark select option {
-    background-color: #111827;
-    color: #f3f4f6;
-  }
-
-  .dark select option:disabled {
+  select option:disabled {
     color: #6b7280;
   }
 
   ::selection {
-    @apply bg-indigo-500/25 text-indigo-900 dark:text-indigo-100;
-  }
-
-  /* Smooth color transition while switching themes (class applied transiently) */
-  .theme-transition,
-  .theme-transition *,
-  .theme-transition *::before,
-  .theme-transition *::after {
-    transition:
-      background-color 0.3s ease,
-      border-color 0.3s ease,
-      color 0.3s ease,
-      fill 0.3s ease,
-      stroke 0.3s ease,
-      box-shadow 0.3s ease !important;
+    @apply bg-indigo-500/25 text-indigo-100;
   }
 }
 
@@ -327,130 +276,6 @@ input[type='password']::-webkit-caps-lock-indicator {
 
 .messenger-typing-dot--delay-2 {
   animation-delay: 0.32s;
-}
-
-:root:not(.dark) .page-messenger-shell {
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 26%),
-    linear-gradient(180deg, #f8fafc, #eef2f7);
-}
-
-:root:not(.dark) .messenger-app-surface,
-:root:not(.dark) .messenger-window {
-  background: linear-gradient(180deg, #ffffff, #f7f9fc);
-  border-color: rgba(15, 23, 42, 0.12);
-  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.14);
-}
-
-:root:not(.dark) .messenger-header,
-:root:not(.dark) .messenger-message-list,
-:root:not(.dark) .messenger-composer {
-  background: #f8fafc;
-  background-image: none;
-}
-
-:root:not(.dark) .messenger-message-list {
-  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
-}
-
-:root:not(.dark) .messenger-message-list::-webkit-scrollbar-thumb {
-  background-color: rgba(100, 116, 139, 0.35);
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-slate-100 {
-  color: #0f172a;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-slate-200,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-slate-300 {
-  color: #334155;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-slate-400,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-slate-500 {
-  color: #64748b;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .hover\:text-white:hover {
-  color: #0f172a;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-blue-200,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-blue-300,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-\[\#7dd3fc\] {
-  color: #1d4ed8;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .text-rose-300 {
-  color: #be123c;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) textarea,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) input {
-  background: rgba(15, 23, 42, 0.04);
-  border-color: rgba(15, 23, 42, 0.12);
-  color: #0f172a;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) textarea::placeholder,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) input::placeholder {
-  color: #64748b;
-}
-
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(18\,22\,30\,0\.9\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(18\,22\,30\,0\.96\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(18\,22\,31\,0\.9\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(18\,22\,31\,0\.95\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(18\,22\,31\,0\.96\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(18\,22\,31\,0\.98\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(13\,16\,22\,0\.96\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(13\,17\,23\,0\.9\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(13\,17\,23\,0\.94\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(13\,17\,23\,0\.96\)\],
-:root:not(.dark) :is(.messenger-app-surface, .messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(26\,31\,39\,0\.96\)\] {
-  background: #ffffff;
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(26\,31\,39\,0\.6\)\],
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(26\,31\,39\,0\.7\)\],
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(26\,31\,39\,0\.8\)\],
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(255\,255\,255\,0\.04\)\],
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-\[rgba\(255\,255\,255\,0\.05\)\] {
-  background-color: rgba(15, 23, 42, 0.06);
-  border-color: rgba(15, 23, 42, 0.12);
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-white\/4,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-white\/5,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-white\/6,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .bg-white\/8 {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .hover\:bg-\[rgba\(37\,45\,60\,0\.95\)\]:hover,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .hover\:bg-white\/6:hover,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .hover\:bg-white\/8:hover,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .hover\:bg-white\/10:hover,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .hover\:bg-white\/12:hover {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .border-white\/8,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .border-white\/10,
-:root:not(.dark) :is(.messenger-window, .messenger-sidebar, .messenger-drawer) .border-white\/12 {
-  border-color: rgba(15, 23, 42, 0.12);
-}
-
-:root:not(.dark) .messenger-sidebar {
-  background: linear-gradient(180deg, #f8fafc, #eef2f7);
-}
-
-:root:not(.dark) .messenger-drawer {
-  background: linear-gradient(180deg, #ffffff, #f1f5f9);
-}
-
-:root:not(.dark) .messenger-drawer-header {
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
 }
 
 @keyframes messenger-typing-bounce {

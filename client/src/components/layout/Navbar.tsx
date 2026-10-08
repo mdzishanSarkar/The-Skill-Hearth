@@ -33,7 +33,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { useSocket } from '../../hooks/useSocket';
 import { getUnreadRadarCount } from '../../services/notifications';
 import { getUnreadMessageCount } from '../../services/messages';
-import ThemeToggle from '../ui/ThemeToggle';
 import NotificationBell from './NotificationBell';
 import UserMenu from '../ui/UserMenu';
 import NavDropdown, { type NavItem } from '../ui/NavDropdown';
@@ -213,7 +212,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <ThemeToggle className="hidden sm:inline-flex" />
           {isAuthenticated && user ? (
             <>
               <div className="hidden md:flex md:items-center md:gap-2">
@@ -281,10 +279,6 @@ export default function Navbar() {
             {groupsWithBadges.map((group) => (
               <DrawerGroup key={group.label} label={group.label} items={group.items} />
             ))}
-          </div>
-
-          <div className="mt-6 border-t border-gray-100 pt-4 sm:hidden dark:border-gray-800">
-            <ThemeToggle />
           </div>
 
           <div className="mt-6 border-t border-gray-100 pt-4 dark:border-gray-800">
