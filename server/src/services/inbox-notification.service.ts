@@ -3,14 +3,18 @@ import { Message, User } from '../models';
 import { getIO } from '../config/socket';
 import mongoose from 'mongoose';
 
-export const inboxQueue = new Bull('inbox-notifications', {
-  redis: process.env.REDIS_URL || 'redis://localhost:6379',
-  defaultJobOptions: {
-    attempts: 3,
-    backoff: { type: 'exponential', delay: 2000 },
-    removeOnComplete: true,
-  },
-});
+const REDIS_URL = process.env.REDIS_URL;
+
+export const inboxQueue: Bull.Queue | null = REDIS_URL
+  ? new Bull('inbox-notifications', {
+      redis: REDIS_URL,
+      defaultJobOptions: {
+        attempts: 3,
+        backoff: { type: 'exponential', delay: 2000 },
+        removeOnComplete: true,
+      },
+    })
+  : null;
 
 export type InboxNotificationJobType = 'send_message_notification' | 'send_digest_notification';
 
@@ -32,6 +36,9 @@ interface DigestJob {
  * Processed asynchronously by the job handler.
  */
 export async function queueMessageNotification(job: MessageNotificationJob) {
+  if (!inboxQueue) {
+    return { queued: false };
+  }
   try {
     await inboxQueue.add('send_message_notification', job, {
       delay: 0,
@@ -41,7 +48,7 @@ export async function queueMessageNotification(job: MessageNotificationJob) {
     return { queued: true };
   } catch (error) {
     console.error('Failed to queue message notification:', error);
-    throw error;
+    return { queued: false };
   }
 }
 
@@ -50,6 +57,9 @@ export async function queueMessageNotification(job: MessageNotificationJob) {
  * Collects unread message counts and digests them into a single notification.
  */
 export async function queueDigestNotification(userId: string) {
+  if (!inboxQueue) {
+    return { queued: false };
+  }
   try {
     await inboxQueue.add('send_digest_notification', { userId } as DigestJob, {
       delay: 1000 * 60 * 5, // 5 minutes batching window
@@ -59,7 +69,7 @@ export async function queueDigestNotification(userId: string) {
     return { queued: true };
   } catch (error) {
     console.error('Failed to queue digest notification:', error);
-    throw error;
+    return { queued: false };
   }
 }
 
@@ -139,6 +149,11 @@ async function processDigestNotification(job: Bull.Job<DigestJob>) {
  * Register job processors and error handlers.
  */
 export function setupInboxNotificationHandlers() {
+  if (!inboxQueue) {
+    console.log('Inbox notification handlers skipped (REDIS_URL not set)');
+    return;
+  }
+
   // Process message notifications
   inboxQueue.process('send_message_notification', 10, async (job) => {
     return processMessageNotification(job);

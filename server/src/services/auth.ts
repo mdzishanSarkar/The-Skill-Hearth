@@ -33,6 +33,10 @@ const PASSWORD_MIN = 8;
 const PASSWORD_MAX = 72;
 const USERNAME_REGEX = /^[a-z][a-z0-9][a-z0-9._]{1,18}$/;
 
+export function emailVerificationSkipped(): boolean {
+  return process.env.SKIP_EMAIL_VERIFICATION === 'true';
+}
+
 export const PASSWORD_POLICY_MESSAGE =
   'Password must be at least 8 characters and include a lowercase letter, an uppercase letter, a number and a special character';
 
@@ -110,6 +114,8 @@ export async function register(input: RegisterInput) {
     throw new HttpError(409, 'USERNAME_TAKEN', 'That username is already taken');
   }
 
+  const skipEmailVerification = emailVerificationSkipped();
+
   const user = await User.create({
     email,
     passwordHash: input.password,
@@ -119,6 +125,7 @@ export async function register(input: RegisterInput) {
     role,
     hasCompletedOnboarding: false,
     verificationStatus: 'unverified',
+    isEmailVerified: skipEmailVerification,
   });
   user.identityVerification = {
     idType: input.identityIdType,
@@ -126,14 +133,26 @@ export async function register(input: RegisterInput) {
   };
   await user.save();
 
-  const token = generateToken();
-  await EmailVerificationToken.create({
-    userId: user._id,
-    tokenHash: hashToken(token),
-    expiresAt: new Date(Date.now() + VERIFICATION_TTL_MS),
-  });
+  let emailVerificationSent = false;
+  if (!skipEmailVerification) {
+    try {
+      const token = generateToken();
+      await EmailVerificationToken.create({
+        userId: user._id,
+        tokenHash: hashToken(token),
+        expiresAt: new Date(Date.now() + VERIFICATION_TTL_MS),
+      });
 
-  await sendVerificationEmail(user.email, token);
+      await sendVerificationEmail(user.email, token);
+      emailVerificationSent = true;
+    } catch (error) {
+      // Never fail signup over email delivery — auto-verify instead of
+      // leaving an orphaned unverified account that cannot log in.
+      console.error('[auth] Verification email failed, auto-verifying user:', error);
+      user.isEmailVerified = true;
+      await user.save();
+    }
+  }
 
   try {
     await ensureGamification(user._id);
@@ -142,7 +161,7 @@ export async function register(input: RegisterInput) {
     // best-effort
   }
 
-  return { user: sanitizeUser(user) };
+  return { user: sanitizeUser(user), emailVerificationSent };
 }
 
 export async function verifyEmail(token: string) {
@@ -182,14 +201,19 @@ export async function resendVerification(email: string) {
 
   const user = await User.findOne({ email: email.toLowerCase().trim() });
   if (user && !user.isEmailVerified) {
-    const token = generateToken();
-    await EmailVerificationToken.create({
-      userId: user._id,
-      tokenHash: hashToken(token),
-      expiresAt: new Date(Date.now() + VERIFICATION_TTL_MS),
-    });
+    if (emailVerificationSkipped()) {
+      user.isEmailVerified = true;
+      await user.save();
+    } else {
+      const token = generateToken();
+      await EmailVerificationToken.create({
+        userId: user._id,
+        tokenHash: hashToken(token),
+        expiresAt: new Date(Date.now() + VERIFICATION_TTL_MS),
+      });
 
-    await sendVerificationEmail(user.email, token);
+      await sendVerificationEmail(user.email, token);
+    }
   }
 
   return { message: 'If the account exists and is unverified, a new verification email has been sent' };
@@ -254,7 +278,12 @@ export async function login({ email, password, ip }: LoginInput) {
   }
 
   if (!user.isEmailVerified) {
-    throw new HttpError(403, 'EMAIL_NOT_VERIFIED', 'Please verify your email before signing in');
+    if (emailVerificationSkipped()) {
+      // Self-heal accounts left unverified by an earlier failed email send.
+      user.isEmailVerified = true;
+    } else {
+      throw new HttpError(403, 'EMAIL_NOT_VERIFIED', 'Please verify your email before signing in');
+    }
   }
 
   await clearLoginFailures(emailNorm, ip);

@@ -28,6 +28,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [emailSent, setEmailSent] = useState(true);
   const [identityIdType, setIdentityIdType] = useState<'nid' | 'student_id' | 'passport'>('nid');
   const [identityFile, setIdentityFile] = useState<File | null>(null);
 
@@ -61,7 +62,7 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      await register({
+      const result = await register({
         email,
         password,
         username: username.trim(),
@@ -70,6 +71,7 @@ export default function RegisterPage() {
         identityIdType,
         identityFile,
       });
+      setEmailSent(result.emailVerificationSent);
       setSuccess(true);
     } catch (err) {
       setError(getApiError(err));
@@ -96,14 +98,29 @@ export default function RegisterPage() {
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-3xl text-white shadow-soft">
             🎉
           </div>
-          <h1 className="mt-5 text-2xl font-bold text-gray-900 dark:text-gray-100">Check your inbox</h1>
+          <h1 className="mt-5 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            {emailSent ? 'Check your inbox' : 'Your account is ready'}
+          </h1>
           <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
-            We sent a verification link to <span className="font-medium">{email}</span>. Click it to
-            activate your account. Your identity document will be reviewed by our team before your profile is marked verified.
+            {emailSent ? (
+              <>
+                We sent a verification link to <span className="font-medium">{email}</span>. Click it
+                to activate your account. Your identity document will be reviewed by our team before
+                your profile is marked verified.
+              </>
+            ) : (
+              <>
+                Your account has been created and is ready to use. Sign in to get started. Your
+                identity document will be reviewed by our team before your profile is marked
+                verified.
+              </>
+            )}
           </p>
-          <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-            Didn't get it? Check your spam folder or try again in a few minutes.
-          </p>
+          {emailSent && (
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+              Didn't get it? Check your spam folder or try again in a few minutes.
+            </p>
+          )}
           <Link to="/login" className="mt-6 inline-block">
             <Button>Go to sign in</Button>
           </Link>

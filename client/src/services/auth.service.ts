@@ -10,7 +10,7 @@ export interface AuthResult {
   accessToken: string;
 }
 
-export async function register(input: RegisterInput): Promise<void> {
+export async function register(input: RegisterInput): Promise<{ emailVerificationSent: boolean }> {
   const form = new FormData();
   form.append('email', input.email);
   form.append('password', input.password);
@@ -20,7 +20,9 @@ export async function register(input: RegisterInput): Promise<void> {
   form.append('identity', input.identityFile);
   if (input.bio) form.append('bio', input.bio);
   if (input.adminCode) form.append('adminCode', input.adminCode);
-  await api.post('/auth/register', form);
+  const { data } = await api.post('/auth/register', form);
+  const payload = data.data as { emailVerificationSent?: boolean } | undefined;
+  return { emailVerificationSent: payload?.emailVerificationSent !== false };
 }
 
 export async function verifyEmail(token: string): Promise<User> {
